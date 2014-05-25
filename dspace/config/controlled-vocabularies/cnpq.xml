@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<node id="cnpq" label="CNPq"> 
+		<isComposedBy>
+	  		<node id="1" label="Ciências Exatas e da Terra">
+				<isComposedBy>
+					<node id="101" label="Matemática">
+					</node>
+					<node id="102" label="Probabilidade e Estatística ">
+					</node>
+					<node id="103" label="Ciência da Computação">
+					</node>
+					<node id="104" label="Astronomia">
+					</node>
+					<node id="105" label="Física">
+					</node>
+					<node id="106" label="Química">
+					</node>
+					<node id="107" label="GeoCiências">
+					</node>
+					<node id="108" label="Oceanografia">
+					</node>
+				</isComposedBy>
+	  		</node>		
+	  		<node id="2" label="Ciências Biológicas">	
+			<isComposedBy>
+					<node id="201" label="Biologia Geral">
+					</node>
+					<node id="202" label="Genética">
+					</node>
+					<node id="203" label="Botânica">
+					</node>
+					<node id="204" label="Zoologia">
+					</node>
+					<node id="205" label="Ecologia">
+					</node>
+					<node id="206" label="Morfologia">
+					</node>
+					<node id="207" label="Fisiologia">
+					</node>
+					<node id="208" label="Bioquímica">
+					</node>
+					<node id="209" label="Biofísica">
+					</node>
+					<node id="210" label="Farmacologia">
+					</node>
+					<node id="211" label="Imunologia">
+					</node>
+					<node id="212" label="Microbiologia">
+					</node>					
+					<node id="213" label="Parasitologia">
+					</node>
+			</isComposedBy>
+			</node>	
+	  		<node id="3" label="Engenharias">
+			<isComposedBy>
+					<node id="301" label="Engenharia Civil">
+					</node>
+					<node id="302" label="Engenharia de Minas">
+					</node>
+					<node id="303" label="Engenharia de Materiais e Metalúrgica">
+					</node>
+					<node id="304" label="Engenharia Elétrica">			
+					</node>
+					<node id="305" label="Engenharia Mecânica">
+					</node>
+					<node id="306" label="Engenharia Química">	
+					</node>
+					<node id="307" label="Engenharia Sanitária">
+					</node>
+					<node id="308" label="Engenharia de Produção">
+					</node>
+					<node id="309" label="Engenharia Nuclear">
+					</node>
+					<node id="310" label="Engenharia de Transportes">
+					</node>
+					<node id="311" label="Engenharia Naval e Oceânica">
+					</node>
+					<node id="312" label="Engenharia Aeroespacial">
+					</node>
+					<node id="313" label="Engenharia Biomédica">
+					</node>
+			</isComposedBy>
+	  		</node>
+	  		<node id="4" label="Ciências da Saúde">
+			<isComposedBy>
+					<node id="401" label="Medicina">
+					</node>
+					<node id="402" label="Odontologia">
+					</node>
+					<node id="403" label="Farmácia">
+					</node>
+					<node id="404" label="Enfermagem">
+					</node>
+					<node id="405" label="Nutrição">
+					</node>
+					<node id="406" label="Saúde Coletiva">
+					</node>
+					<node id="407" label="Fonoaudiologia">
+					</node>
+					<node id="408" label="Fisioterapia e Terapia Ocupacional">
+					</node>
+					<node id="409" label="Educação Física">
+					</node>
+			</isComposedBy>
+	  		</node>
+	  		<node id="5" label="Ciências Agrárias">
+			<isComposedBy>
+					<node id="501" label="Agronomia">
+					</node>
+					<node id="502" label="Recursos Florestais e Engenharia Florestal">
+					</node>
+					<node id="503" label="Engenharia Agrícola">
+					</node>
+					<node id="504" label="Zootecnia">
+					</node>
+					<node id="505" label="Medicina Veterinária">
+					</node>
+					<node id="506" label="Recursos Pesqueiros e Engenharia de Pesca">
+					</node>
+					<node id="507" label="Ciência e Tecnologia de Alimentos">
+					</node>
+			</isComposedBy>
+	  		</node>
+	  		<node id="6" label="Ciências Sociais Aplicadas">
+				<isComposedBy>
+					<node id="601" label="Direito">
+					</node>
+					<node id="602" label="Administração">				
+					</node>
+					<node id="603" label="Economia">
+					</node>
+					<node id="604" label="Arquitetura e Urbanismo">
+					</node>
+					<node id="605" label="Planejamento Urbano e Regional">
+					</node>
+					<node id="606" label="Demografia">
+					</node>
+					<node id="607" label="Ciência da Informação">
+					</node>
+					<node id="608" label="Museologia"/>
+					<node id="609" label="Comunicação">
+					</node>
+					<node id="610" label="Serviço Social">
+					</node>
+					<node id="611" label="Economia Doméstica"/>
+					<node id="612" label="Desenho Industrial">
+					</node>
+					<node id="613"  abel="Turismo"/>	
+				</isComposedBy>
+			</node>
+	  		<node id="7" label="Ciências Humanas">
+			<isComposedBy>
+					<node id="701" label="Filosofia">
+					</node>
+					<node id="702" label="Sociologia">
+					</node>
+					<node id="703" label="Antropologia">
+					</node>
+					<node id="704" label="Arqueologia">
+					</node>
+					<node id="705" label="História">
+					</node>
+					<node id="706" label="Geografia">
+					</node>
+					<node id="707" label="Psicologia">
+					</node>
+					<node id="708" label="Educação">
+					</node>
+					<node id="709" label="Ciência Política">
+					</node>
+					<node id="710" label="Teologia">
+					</node>
+			</isComposedBy>
+	  		</node>
+	  		<node id="8" label="Linguística, Letras e Artes">
+			<isComposedBy>
+					<node id="801" label="Lingüística">
+					</node>
+					<node id="802" label="Letras">
+					</node>
+					<node id="803" label="Artes">
+					</node>
+			</isComposedBy>
+	  		</node>
+	  		<node id="9" label="Outros">
+			<isComposedBy>
+					<node id="901" label="Administração Hospitalar">
+					</node>
+					<node id="902" label="Administração Rural">
+					</node>
+					<node id="903" label="Carreira Militar">
+					</node>
+					<node id="904" label="Carreira Religiosa">
+					</node>
+					<node id="905" label="Ciências">
+					</node>
+					<node id="906" label="Biomedicina">
+					</node>
+					<node id="907" label="Ciências Atuariais">
+					</node>
+					<node id="908" label="Ciências Sociais">
+					</node>
+					<node id="909" label="Decoração">
+					</node>
+					<node id="910" label="Desenho de Moda">
+					</node>
+					<node id="911" label="Desenho de Projetos">
+					</node>
+					<node id="912" label="Diplomacia">
+					</node>
+					<node id="913" label="Engenharia de Agrimensura">
+					</node>
+					<node id="914" label="Engenharia Cartográfica">
+					</node>
+					<node id="915" label="Engenharia de Armamentos">
+					</node>
+					<node id="916" label="Engenharia Mecatrônica">
+					</node>
+					<node id="917" label="Engenharia Têxtil">
+					</node>
+					<node id="918" label="Estudos Sociais">
+					</node>
+					<node id="919" label="História Natural">
+					</node>
+					<node id="920" label="Química Industrial">
+					</node>
+					<node id="921" label="Relações Internacionais">
+					</node>
+					<node id="922" label="Relações Publicas">
+					</node>
+					<node id="923" label="Secretariado Executivo">
+					</node>
+			</isComposedBy>
+	  		</node>
+		</isComposedBy>
+		</node>

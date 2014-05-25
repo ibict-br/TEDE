@@ -1,0 +1,472 @@
+<!--
+
+    The contents of this file are subject to the license and copyright
+    detailed in the LICENSE and NOTICE files at the root of the source
+    tree and available online at
+
+    http://www.dspace.org/license/
+
+-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<title>DSpace Help</title>
+<link rel="stylesheet" href="../styles.css" type="text/css"/>
+</head>
+<body class="help">
+
+<h2>Ajuda<br /></h2>
+<table>
+  <tr> 
+    <td><h3><a name="contents">Conteúdo:</a></h3></td>
+    <td class="rightAlign"> 
+     <a href="#" onclick="window.close()">Sair</a>
+  </td>
+  </tr>
+  </table>
+  <h5><a href="#browse">Navegar</a></h5>
+  <h5><a href="#search">Pesquisar</a></h5>
+  <h5><a href="#advanced">Pesquisa Avançada</a></h5>
+  <h5><a href="#subjectsearch">Busca por Categoria de Assunto</a></h5>
+  <h5><a href="#communities">Comunidades</a></h5>
+  <h5><a href="#collections">Coleções</a></h5>
+  <h5><a href="#login">Entrar no TEDE</a></h5>
+  <h5><a href="#submit">Submeter Arquivos</a></h5>
+  <h5><a href="#formats">Formatos dos Arquivos </a></h5>
+  <h5><a href="#handles">Identificadores Persistentes (Handles)</a></h5>  
+  <h5><a href="#mydspace">Meu Espaço</a></h5>
+  <h5><a href="#subscribe">Editar Perfil</a></h5>
+  <h5><a href="#subscribe">Inscrever-se a alerta de e-mails</a></h5>
+  <h5>&nbsp;</h5>
+ <p>O Sistema TEDE foi desenvolvido pelo Ibict para proporcionar a implantação de bibliotecas digitais de teses e dissertações nas instituições de ensino e pesquisa e sua integração à Biblioteca Digital de Teses e Dissertações - BDTD nacional. O TEDE disponibiliza e preserva Teses e Dissertações em formato digital utilizando tecnologia de arquivos abertos.</p>
+  <p>O conteúdo cresce constantemente com o depósito de documentos. </p>
+<p>O conteúdo deste sistema está organizado em Comunidades, que podem ser organizadas por entidades administrativas, como departamentos, por áreas temáticas ou por tipo de documento. Cada Comunidade pode conter um número ilimitado de subcomunidades. Os documentos digitais são denominados de Itens e estão agrupados em Coleções. As Comunidades e subcomunidades podem ter também um número ilimitado de Coleções.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="browse"></a><strong>Navegar</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p><strong>A navegação</strong> permite ver os itens em uma ordem específica:</p>
+<p><strong>Navegar por Comunidade e Coleção</strong> permite listar as Comunidades em ordem alfabética. Para cada Comunidade aparecerá a lista, um pouco recuada, de suas subcomunidades e Coleções.</p>
+<p><strong>Navegar por Data</strong> permite ver uma lista de itens em ordem cronológica.</p>
+<p><strong>Navegar por Autor</strong> permite ver uma lista de itens ordenada pelo nome do autor.</p>
+<p><strong>Navegar por Título</strong> permite listar, em ordem alfabética, os títulos dos itens, de todas as Coleções do sistema. Uma ferramenta auxiliar de busca aparecerá na parte superior para ajudar a localizar o item desejado.</p>
+<p><strong>Navegar por Assunto </strong> permite ver os itens por uma lista alfabética de assuntos.</p>
+
+<p><strong>Os cadastrados no sistema podem:</strong> </p>
+<ul>
+  <li>Receber um email avisando sobre novos itens adicionados à Coleção a qual está cadastrado</li>
+  <li>Submeter itens a coleção a qual está cadastrado</li>
+  <li>Alterar seus perfis</li>
+</ul>
+<p><strong>Submeter</strong> É o processo pelo qual são adicionados itens à Coleção, este processo consiste em preencher formulário com os metadados e carregar o documento. Pode possuir um fluxo de publicação como verificação e aprovação. Cada Coleção possui uma política para esse fluxo.</p>
+<p><strong>Meu Espaço</strong> É uma área de trabalho para cada usuário cadastrado. Pode conter uma lista das submissões do usuário e tarefas a serem executadas tais como: editar, checar ou rever submissões de outros usuários ou dele mesmo.</p>
+<p><strong>Editar Perfil</strong> permite a troca de senha</p>
+<p><strong>Sobre</strong> traz informações sobre o software DSpace e seu desenvolvimento.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="search"></a><strong>Pesquisar</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td> 
+    </tr>
+</table>
+<p>Para fazer pesquisas no TEDE, use a ferramenta de pesquisa simples, no topo do menu de navegação, ou a pesquisa no meio da página principal.
+O resultado da pesquisa oferece um novo formulário no qual pode-se restringir a pesquisa em uma Coleção ou Comunidade específica.</p>
+<p align="center"> <img src = "http://img822.imageshack.us/img822/6577/77528599.jpg">
+  </p>
+<p>Este sistema utiliza a tecnologia para pesquisas textuais<strong> Jakarta 
+  Lucene.</strong> Algumas informações importantes sobre a pesquisa:</p>
+<blockquote> 
+  <p>A pesquisa é feita nos metadados do item (pode ser feita no texto completo dependendo da configuração do sistema), como autor, título etc. A(s) palavra(s) utilizada(s) para a pesquisa são então comparadas com as existentes nos campos de cada item.</p>
+      <p><strong>Palavras que não são utilizadas na pesquisa 
+    - Stop Words<br />
+    </strong>Algumas palavras não são utilizadas nas pesquisas, tais como: artigos, preposições e conjunções. Algumas dessas palavras em Português estão listadas abaixo: </p>
+  <p align="center"> "a", "as , "o" , "os" , "de" , "para" , "mas" , "por" , "para" , "se , "em" , "até"
+    </p>
+  <p align="center">"e" ,"no" , "na" , "num , "numa" , "ou" , "cada", "um" , "uma"</p>
+  
+  <p><strong>Truncagem<br />
+    </strong>Utilize um asterisco (*) depois de um pedaço da palavra indicando que quer pesquisar por itens que tenham palavras começadas por fragmento de palavra: </p>
+  <blockquote> 
+    <p><img src = "http://img834.imageshack.us/img834/4586/43571483.jpg">&nbsp;&nbsp; 
+       recuperará internacional, interpessoal, interno.... </p>
+  </blockquote>
+  <p><strong>Recuperar variações morfológicas (Stemming) <br />
+    </strong>O motor de busca expande automaticamente a palavra podendo recuperar as palavras no plural ou flexionadas. Exemplo: Se a pesquisa for por "escreve" recuperará tambem as variações "escrevemos", "escrevem" .....</p>
+  <p><strong>Pesquisa por frase</strong><br />
+    Para pesquisar termos compostos ou frase, colocá-las entre aspas duplas ("). O sistema buscará pela expressão ou frase exatamente como escrito.</p>
+  <p><img src = "http://img841.imageshack.us/img841/8175/11236543.jpg"> 
+    </p>
+  <p><strong>Pesquisa precisa</strong><br />
+    Coloque um sinal de mais (+) antes da palavra desejada no resultado. 
+     </p>
+  <blockquote> 
+    <p><img src = "http://img703.imageshack.us/img703/5618/40290597.jpg"></p>
+    <p>A palavra cooperação é obrigatória, mas nacional é opcional</p>
+  </blockquote>
+  <p><strong>Eliminar itens com palavras não desejadas<br />
+    </strong>Coloque um sinal de menos (-) antes da palavra a qual não deve aparecer no resultado da pesquisa. Para obter o mesmo resultado pode-se utilizar o operador booleano <strong>NOT</strong>. Estes operadores restringem o resultado da pesquisa, eliminando itens indesejados da lista de resultados.</p>
+  <blockquote> 
+    <p><img src = "http://img803.imageshack.us/img803/1296/51811563.jpg">
+      &nbsp; ou &nbsp; <img src = "http://img201.imageshack.us/img201/1343/49291186.jpg"></p>
+  </blockquote>
+  <p>Os itens na lista de resultado devem conter o termo "documento", exceto aqueles que contêm o termo "digital".</p>
+  <p><strong>Operadores lógicos (Booleanos)</strong></p>
+  <p>Para pesquisas mais específicas pode-se utilizar operadores lógicos AND (E) e OR (OU) para combinar os termos de pesquisa. Note que é necessário que estejam em caixa alta.</p>
+  <p><strong>AND</strong> - A lista de itens retornada deve conter os termos agrupados pelo operador. Este operador geralmente diminui a lista de resultados.</p>
+  <blockquote> 
+    <p> 
+     Por exemplo, ao pesquisar por "Gato AND Rato" os itens na lista de resultado devem conter os termos <strong>gato</strong> e <strong>rato</strong></p>
+  </blockquote>
+  <p><strong>OR</strong> - Os itens na lista de resultados devem conter um termo ou o outro termo e também aqueles itens que possuem os dois, pois esse operador não é exclusivo. Este operador geralmente aumenta a lista de resultados. </p>
+  <blockquote> 
+    <p>
+      Ao pesquisar por "Gato OR Rato", os itens na lista de resultado devem conter os termos <strong>gato</strong> ou <strong>rato</strong> ou os dois. </p>
+  </blockquote>
+  <p><strong>NOT - </strong>Os itens na lista de retorno não devem conter o termo. </p>
+  <blockquote> 
+    <p>Ao pesquisar por "Documento NOT Digital" Os itens na lista de resultado devem conter o termo <strong>documento</strong> exceto aqueles que contenham também o termo <strong>digital</strong>.</p>
+  </blockquote>
+  <p> Os parênteses podem ser utilizados para agrupar termos de busca. Esta técnica ajuda a facilitar a criação de buscas mais complexas, pois cria uma precedência na busca, na qual primeiro é efetuada a busca dos termos agrupados. Ex: (Gato OR Rato) AND (treinamento OR disciplina).</p>
+  <p>
+    </p>
+  <hr />
+</blockquote>
+<table>
+    <tr>
+    <td class="leftAlign"><a name="advanced"></a><strong>Pesquisa Avançada</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p> A pesquisa avançada permite especificar campos e fazer combinações entre campos com os operadores lógicos "AND (E)", "OR (OU)" ou "NOT". </p>
+<p>Pode-se restringir a pesquisa a uma comunidade ou pesquisar em todo o sistema. Para restringir a pesquisa a uma comunidade, basta selecioná-la na lista que aparece na parte superior do formulário. No entanto, o padrão é pesquisar em todo o sistema.</p>
+<p>Selecione o campo desejado na lista a esquerda e entre com o termo a direita. Caso deseje utilizar mais que um campo, escolha o operador lógico entre campos, o campo e entre com o termo para a pesquisa.</p>
+<p><strong>Nota: O preenchimento do formulário de pesquisa avançada dever ser feita em ordem, de cima para baixo. Não se pode preencher a primeira linha , pular a segunda e preencher a terceira.</strong></p>
+<hr />
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="subjectsearch"></a><strong>Busca por Categoria de Assunto</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+
+<p> Um vocabulário controlado é uma lista de termos elaborados para fins de indexação, e recuperação de documentos, permitindo maior coincidência entre o termo escolhido pelo indexador e o procurado pelo usuário. Esta ferramenta auxilia a aumentar a relevância dos resultados recuperados pelo sistema.
+</p>
+
+<p>Ao filtrar a lista de categorias, você poderá remover todos os termos que não combinam com o filtro. Os termos restantes são qualquer categoria ou sub-categoria que contém o termo de filtro em qualquer lugar na hierarquia.
+Para pesquisar os itens arquivados por categoria de assunto, marque as caixas ao lado das categorias, conforme necessário, antes de clicar em "Buscar ...". A pesquisa irá retornar todos os itens que combinam com as categorias selecionadas , ou que são categorizados sob uma categoria de nível superior. Clicando no sinal "+" ao lado da categoria, vai expandir a árvore para mostrar os refinamentos que estão disponíveis para a categoria selecionada. </p>
+
+<hr/>
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="communities"></a><strong>Comunidades</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>O conteúdo do TEDE está organizado em Comunidades, subcomunidades e Coleções. Uma Comunidade pode conter um número ilimitado de subcomunidades, uma subcomunidade pode conter ilimitadas Coleções e uma Coleção pode conter ilimitados Itens. Essa organização flexível permite ajustar a vários tipos de necessidades. As Coleções podem aparecer também nas Comunidades. Esta organização dá ao sistema a flexibilidade para acomodar diferentes necessidades de cada comunidade permitindo que: </p>
+<ul>
+  <li> Decida-se sobre questões como:
+    <div align="left"> - - 
+      Quem contribuirá com o conteúdo</div>
+    <div align="left"> - - 
+      Como será feita a revisão </div>
+    <div align="left">- - Quem terá e quais serão os acessos </div>
+  </li>
+  <li> Como será o fluxo de publicação - revisão, edição, seleção de metadados</li>
+  <li>Como será feito o gerenciamento das coleções </li>
+</ul>
+<p>As Comunidades são mostradas em página própria e terão suas informações, notícias e links próprios, além de mostrar a lista com suas subcomunidades e Coleções.</p>
+<hr />
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="collections"></a><strong>Coleções</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Comunidades podem manter um número ilimitado de coleções. A organização da Coleção pode por assuntos, tipos de documento (Tese ou Dissertação) ou por outra forma de categorização desejada pelo adminsitrador. As coleções podem ter políticas e fluxo de submissão diferenciadas em uma comunidade.</p>
+<p>As Coleções são mostradas em página própria incluindo as informações, notícias e links.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="login"></a><strong>Entrar no TEDE</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Para acessar as áreas restritas é necessário um cadastro. O cadastramento é livre e qualquer usuário pode fazê-lo. Algumas tarefas requerem, além do cadastro, uma autorização, como a submissão de Itens.</p>
+
+    <p> Para cadastrar basta clicar em "Meu espaço" ou "Editar Perfil", isso o remeterá a um formulário para logar-se , com uma opção para usuários novos. Ao clicar nesta opção, aparecerá um formulário para entrar com o seu email. Antes de logar-se pela primeira vez, será necessário registrar-se no sistema, clicando em <strong>"Novo usuário? Clique aqui para se registrar"</strong> e seguindo as instruções. Entre com seu email e senha no formulário para logar.</p>
+    <p>Ao entrar com a senha certifique-se que está exatamente igual a digitada no cadastramento.</p>
+
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="submit"></a><strong>Submeter</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Pausa durante o processo de submissão:</p>
+<p>Em qualquer etapa do processo de submissão pode-se parar a tarefa e retomá-la depois através do botão "cancelar/salvar". As informações digitadas serão guardadas e podem ser recuperadas no "Meu espaço", para continuar ou cancelar a submissão. </p>
+<p><a name="choosecollection"></a><strong>Selecionar Coleção</strong></p>
+<p>Barra de acompanhamento:</p>
+<p>Na parte superior da página há uma série de figuras que representam o fluxo de submissão (essas figuras mostram em que etapa está no momento). As figuras mudarão de cor conforme as etapas de submissão estão sendo concluídas. As figuras tornam-se botões para navegação, ou seja pode-se navegar pelas páginas de fluxo de submissão clicando nas figuras, agilizando a checagem e correções.</p>
+<p><img src = "http://www.repositorio.uniceub.br/jspui/help/progressbar.JPG"></p>
+<p>Selecionar Coleção:</p>
+<p><strong>Selecione a Coleção na lista (para ver todos clicar na seta para baixo). Clique na Coleção em que deseja submeter o Item.</strong></p>
+<p>(Caso não tenha permissão para submeter nesta Coleção, entre em contato com o Administrador para maiores informações.)</p>
+<p>É necessário ter autorização para submeter itens para algumas Coleções. Estas políticas podem ser implementadas e diferenciadas para cada coleção. Caso deseje submeter Itens e não encontre uma Comunidade ou Coleção adequada, entre em contato com o Administador para solucionar o problema.</p>
+<hr />
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="describe1"></a><strong>Submeter: Descrição do Item - Parte 1</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Caso tenha respondido "sim" para alguma das questões nesta página, isto alterará os metadados necessários para identificação do Item. Isto não altera a submissão, apenas adequa as necessidades de cada tipo de Item. Caso não tenha sido marcado nada, a submissão será padrão. </p>
+<blockquote> 
+  <p>* Mais que um título - Alguns Itens necessitam incluir mais de um título devido a abreviaturas, acrônimos ou títulos em outras línguas. Neste caso basta marcar essa opção. </p>
+  <p>* Publicado anteriormente - As Teses e Dissertações a serem inseridas no sistema não precisam ter sido publicados ou distribuídos anteriormente. Caso isso tenha acontecido é recomendável marcar esta opção, pois ela incluirá informações referentes a publicação.</p>
+  <p>* Múltiplos arquivos - Caso o seu Item possua mais que um arquivo deve-se marcar este item. Exemplos de múltiplos arquivos seriam: Arquivos em formato HTML com as imagens que são externas ao arquivo, como vídeos, anexos, etc. </p>
+</blockquote>
+<p>Depois clique em "próximo" para continuar a submissão ou em "cancelar/salvar" para cancelar ou suspender a submissão.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="describe2"></a><strong>Submeter: Descrição do Item - Parte 2</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p> As informações digitadas nas duas páginas seguintes são os metadados que descreverão o seu Item. Isto serve para que a pesquisa possa ser efetuada, portanto quanto melhor for a informação digitada, mais fácil será a recuperação do Item. Para informar-se mais sobre a descrição dos itens, consulte o Manual para o preenchimento do novo padrão de metadados da Biblioteca Digital Brasileira de Teses e Dissertações – BDTD. </p>
+<blockquote> 
+  <p><strong>Autor:</strong></p>
+  <p> É a pessoa responsável por criar o conteúdo do Item e que recebeu a titulação de Mestre ou Doutor com o trabalho apresentado. Caso tenha mais que um nome, basta clicar em "mais", isso abrirá outro campo permitindo a entrada de mais nomes. </p>
+    <p><strong>Identificação do Autor:</strong></p>
+  <p>Identificação unívoca do autor a critério da instituição criadora do registro. </p>
+  <p><strong>Orientador:</strong></p>
+  <p> É a pessoa que orientou o trabalho. Caso tenha mais que um nome, basta clicar em "mais", isso abrirá outro campo permitindo a entrada de mais nomes.</p>
+  <p><strong>Co-orientador:</strong></p>
+  <p> É a pessoa que participou da orientação do trabalho, colaborando com o Orientador. Caso tenha mais que um nome, basta clicar em "mais", isso abrirá outro campo permitindo a entrada de mais nomes. </p>
+  <p><strong>Membros da banca:</strong></p>
+  <p>São as pessoas que avaliaram o trabalho apresentado. Caso tenha mais que um nome, basta clicar em "mais", isso abrirá outro campo permitindo a entrada de mais nomes. </p>
+  <hr />
+  <p><strong>Título:</strong> </p>
+  <p>Digite o título completo pelo qual o Item será conhecido. Todos os Itens no TEDE devem ter um título.</p>
+  <hr />
+  <strong>Título Alternativo:</strong> (Nota - Este campo só será visto caso a opção "mais de um título", da página anterior, esteja marcada.)
+  <p> Se o item tiver um título alternativo válido, por exemplo, um título em outro idioma ou uma abreviação, insira-o neste campo. </p>
+  <hr />
+  <p><strong>Data de Publicação:</strong> 
+    (nota - Este campo só será visto se a opção: "Publicado anteriormente" tiver sido marcada. Caso o item tenha sido disponibilizado apenas neste sistema, a data de publicação é colocada automaticamente ao final da submissão.)</p>
+  <p>Caso o Item tenha sido publicado anteriormente ou apresentado ao público, digite a data do evento. Apenas o ano é obrigatório, caso não lembre o mês deixe o padrão "mês" e o campo do dia pode ser deixado em branco caso não tenha certeza do dia.</p>
+  <hr />
+  <p>&nbsp;</p>
+  <p><strong>Editor: </strong>(nota - Este campo só será visto se a opção: "Publicado anteriormente" tiver sido marcada.) </p>
+  <p>Insira o nome da editora do item.</p>
+  <hr />
+  <p><strong>Citação: </strong>(nota - Este campo só será visto se a opção: "Publicado anteriormente" tiver sido marcada.) </p>
+  <p>Digite a informação de citação para este Item caso seja um artigo de periódico ou parte de um trabalho maior, como capítulo de livro. Para <strong>artigos de periódicos</strong>, entre com o nome do periódico, volume, data e páginas.<br />
+    Para <strong>capítulos de livro</strong>,  inclua o título do livro, lugar da publicação, editora, ano e páginas.</p>
+  <hr />
+  <p><strong>Identificadores: </strong></p>
+  <p>Caso conheça uma identificação única do Item em algum sistema digite neste campo. As opções estão abaixo e podem ser selecionadas com o mouse:</p>
+  <hr />
+  <p><strong>Tipo: </strong></p>
+  <p>Selecione o tipo do trabalho: Tese ou Dissertação. </p>
+  <p><strong>Idioma:</strong></p>
+  <p align="left">Selecione o idioma do conteúdo do Item na lista apresentada.</p>
+</blockquote>
+<p>Clique em "Próximo" para continuar ou "Cancelar/Salvar" para cancelar ou suspender a submissão.
+</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="describe3"></a><strong>Submeter: Descrição do Item - Parte 3</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<blockquote>
+<p><strong>Assunto/Palavras-chave:</strong></p>
+<p> Entre com os assuntos mais apropriados para descrever este item, do geral ao específico. Quanto mais palavras significativas fornecer mais chances de recuperar o Item. Utilize um campo para cada termo ou frase, para obter mais campos basta clicar em "mais".
+  </p>
+<p>A comunidade pode sugerir a utilização de um vocabulário específico, taxonomia ou tesauro. Neste caso selecione as palavras em uma lista.</p>
+<hr />
+<p><strong>Resumo:</strong></p>
+<p>Pode-se copiar e colar o resumo neste campo (tomar cuidado com os caracteres especiais) ou pode-se digitá-lo. Não há limite de tamanho.</p>
+<p><strong>Instituição de Pesquisa:</strong></p>
+<p>Instituição na qual foi realizada a defesa da Tese ou Dissertação. Este campo é livre.</p>
+<p><strong>Descrição:</strong></p>
+<p>Pode-se digitar informações que descrevem o Item ou comentários que interessem aos usuários.</p>
+  </blockquote>
+<p>Clique em "próximo" para continuar ou "cancelar/Salvar" para cancelar ou suspender a submissão.</p>
+<hr/>
+
+  <table>
+    <tr>
+    <td class="leftAlign"><a name="controlledvocabulary"></a><strong>Submeter: Vocabulário Controlado</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+
+<p>Um vocabulário controlado é um conjunto de termos que formam um dicionário de descrições de tipos particulares de conteúdo ou assunto. Estes são mantidos por organismos de normalização, a fim de padronizar a forma que os materiais similares são categorizados em arquivos.</p>
+
+<p>Categorizar materiais com precisão, usando um vocabulário controlado, aumenta a probabilidade de resultados relevantes serem retornados aos usuários na pesquisa de arquivos individuais ou múltiplos.</p>
+
+<p>Para digitar um termo de vocabulário controlado no formulário, selecione "Categorias de assunto" abaixo do campo de entrada. Isto irá abrir uma janela contendo os vocabulários disponíveis. Você pode filtrar as listas de vocabulário, como descrito acima, a fim de encontrar os termos mais relevantes para a sua apresentação. Depois de ter encontrado o termo que você quiser inserir, basta clicar sobre ele, e o mesmo será automaticamente inserido no formulário de inscrição e a janela popup será fechada. Você pode adicionar quantos termos quiser no formulário. Use "Adicionar mais" a direita para gerar mais caixas de entrada. </p>
+
+<p>Filtrar a lista de categorias irá remover da lista todos os termos que não combinam com o filtro. Os termos restantes são qualquer categoria ou sub-categoria que contém o termo de filtro em qualquer lugar na hierarquia. Expandindo cada categoria irá mostrar-lhe quais os termos (ou sub-termos ) foram encontrados no filtro.</p>
+
+<hr/>
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="upload"></a><strong>Submeter: Enviar um arquivo</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Há dois métodos para entrar com o nome do arquivo que se quer carregar:</p>
+<ol>
+  <li>
+    <p>Digite o caminho completo para o arquivo e o nome do arquivo e clique em "próximo" .</p>
+  </li>
+  <li>
+    <p>Clique em "procurar". Será exibida uma janela com os arquivos de sua máquina. Navegue pelas pastas para encontrar o arquivo desejado. Clique duas vezes no nome do arquivo para inserir seu nome no campo.</p>
+  </li>
+</ol>
+<p>Com o nome correto do arquivo no campo, clique no botão "próximo".</p>
+<p><a name="filedescription"></a><strong>Descrição do Arquivo</strong></p>
+<p>Caso tenha especificado que o Item possui mais de um arquivo, este campo ajudará a entender o conteúdo de cada arquivo, por exemplo "documento principal", "imagens", "programas" etc. Escreva a descrição e clique em "próximo".</p>
+  <hr />
+
+<hr/>
+
+  <table>
+    <tr>
+    <td class="leftAlign"><a name="formats"></a><strong>Submeter: Formato dos arquivos</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Para arquivar e liberar o arquivo é necessário indicar o seu formato, por exemplo: "PDF", "HTML", ou "DOC (arquivo word)". Caso o sistema não reconheça automaticamente o formato do arquivo será necessário descrevê-lo. Caso o formato apareça na lista oferecida, basta clicar no nome do formato e depois clicar em "Enviar". Caso o formato não apareça clique em "formato não listado" e descreva o formato no campo na parte inferior da página, assegure-se de informar o nome do formato e versão, por exemplo: "Autodesk AutoCAD R20 para UNIX".</p>
+<p>Para mais informações sobre formatos, veja em <a href="http://devds-01.ibict.br:8080/Tede2-jspui/help/formats.jsp">Formatos</a>.</p>
+<p><strong><a name="uploadedfile"></a>Arquivo Enviado</strong></p>
+<p>Após carregar o arquivo, verifique se o envio foi efetuado corretamente. Há duas maneiras de fazer essa verificação:</p>
+<ul>
+  <li> Clique no nome do arquivo. O navegador deve abrir uma janela com o conteúdo do arquivo. </li>
+  <li>Compare o <a href="#checksum"> 
+    checksum</a> mostrado com o calculado ou visto no computador fonte </li>
+</ul>
+<p><strong>Caso esteja enviando apenas um arquivo</strong>, e este foi carregado corretamente, clique em "próximo" para prosseguir.</p>
+<p><strong>Caso esteja enviando mais de um arquivo</strong>, clique em "Adicionar outro arquivo" (Este botão aparecerá somente se a opção "o Item consiste em mais de um arquivo" na página inicial da submissão tiver sido marcada). Após todos os arquivos serem enviados e verificados clique em "próximo". </p>
+  <p><strong><a name="HTML"></a>Caso esteja enviando uma página HTML com arquivos incorporados</strong>,
+   ,envie todos os arquivos incorporados utilizando o botão de "adicionar mais um arquivo". Tenha certeza de carregar todos os arquivos incorporados no arquivo HTML. Após verificar a página HTML clique em "próximo".</p>
+
+<p><strong><a name="checksum"></a> 
+  Checksums </strong></p>
+<p>O sistema gera um número, denominado checksum padrão MD5, para checar integridade de cada arquivo; Pode-se utilizar esse número para verificar se o arquivo foi enviado corretamente comparando com o checksum fornecido pelo computador fonte do arquivo (aquele onde o arquivo está originalmente).</p>
+<p>Caso queira verificar a integridade do arquivo com o checksum, clique em "Mostrar checksums" na página de "Arquivo enviado". O sistema gera o checksum para todo arquivo enviado e será necessário um programa local para fazer o mesmo, depois é só comparar os dois números. Os sistemas baseados em UNIX já geram esse tipo de checagem. Para os sistemas MicroSoft, como o Windows, exitem programas gratuítos como o: try md5 (da <a 
+  href="http://www.fourmilab.ch/md5/">http://www.fourmilab.ch/md5/</a>), ou md5sum, 
+  da Cygwin (<a 
+  href="http://www.cygwin.com/">http://www.cygwin.com/</a>). Estes programas deverão ser executados a partir de um comando em linha. Os dados exibidos pela ferramenta md5 devem ser exatamente iguais aos relatados pelo TEDE.</p>
+<hr />
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="verify"></a><strong>Submeter: verificar submissão</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Esta página permite rever as informações digitadas para descrever o Item (metadados). Para corrigir ou editar as informações utilize o botão ao lado de cada informação ou utilize os botões de navegação no topo da página para ir direto na página correspondente àquela fase. Depois de verificada a submissão clique em "próximo" para continuar. </p>
+<p>Clique em "Cancelar/Salvar" para cancelar ou salvar a submissão.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="license"></a><strong>Submeter: Licença</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>O sistema requer que uma licença seja especificada antes de arquivar um Item. Leia a licença cuidadosamente. Em caso de dúvidas entre em contato com o <a href="http://devds-01.ibict.br:8080/Tede2-jspui/components/contact-info.jsp">Administrador</a>. </p>
+<hr />
+
+<table>
+    <tr>
+    <td class="leftAlign"><a name="complete"></a><strong>Submeter: Submissão Completa</strong></td>
+    <td class="rightAlign"><a href="#submit">voltar a Submeter</a></td>    
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Agora que sua submissão está completa, passará para o fluxo de trabalho da Coleção a qual foi submetida. Algumas Coleções possuem passos de Edição e Checagem de metadados e outras são arquivadas automaticamente. Um email é enviado tão logo o Item seja arquivado ou caso tenha algum problema (para as coleções que tenham edição e checagem). Para verificar o status da submissão, vá até o "meu espaço". Caso tenha dúvidas sobre a Coleção entre em contato como o responsável pela comunidade.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="handles"></a><strong>Handles</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Quando seu item é arquivado no TEDE, ele deve receber uma URL persistente, ou seja, uma URL que não mudará mesmo se o arquivo mudar de servidor. Uma sugestão é utilizar o <a href="http://www.handle.net/">Handle 
+  System</a>,para manter um identificador conhecido como "handle," utilizado para objetos digitais e outros recursos da Internet. O Handle System é administrado por <a href="http://www.cnri.reston.va.us/">Corporation 
+  for National Research Initiatives (CNRI)</a>.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="mydspace"></a><strong>Meu Espaço</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Caso você seja um Publicador, Supervisor, ou membro de apoio ao TEDE, você poderá ter uma área denominada "Meu espaço". Nela pode-se achar:</p>
+<ul>
+  <li>Uma lista das submissões em andamento onde pode-se cancelar ou remover o Item.</li>
+  <li>Uma lista das submissões que o usuário supervisionar ou colabora.</li>
+  <li>Uma lista das submissões que aguardam um tipo de ação (arquivar, cancelar, etc...).</li>
+  <li>Um link para a lista dos itens enviados pelo usuário e que já foram arquivados. </li>
+</ul>
+<p />
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="editprofile"></a><strong>Editar Perfil</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Esta página permite alterar as informações fornecidas no Cadastro. É necessário logar para acessar esta página.</p>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="subscribe"></a><strong>Inscrever-se a alerta de e-mails</strong></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Um usuário pode se cadastrar no TEDE para receber notificações de novos Itens nas Coleções desejadas. Pode-se cadastrar em quantas Coleções desejar. Para realizar o cadastro:</p>
+<ul>
+  <li> Na página inicial clicar em "Receber alterações via email" no menu à esquerda</li>
+  <li>Preencha o formulário</li>
+  <li>Navegue até a Coleção para a qual deseja receber as notificações e clique em "cadastre". Repita para todas as Coleções desejadas.</li>
+  <li>Para editar suas informações, vá para a página de Cadastro.</li>
+</ul>
+<hr />
+<table>
+    <tr>
+    <td class="leftAlign"><a name="admin"></a><h3><strong>Para mais informações...</strong></h3></td>
+    <td class="rightAlign"><a href="#contents">topo</a></td>
+    </tr>
+</table>
+<p>Para obter mais ajuda ou tirar dúvidas específicas entre em contato com o Administrador do TEDE. Para obter informações e notícias sobre o software DSpace, visite o site do <a href="http://www.dspace.org">DSpace </a>.</p> 
+<hr />
+<p class="bottomLinks"><a href="#contents">Conteúdo</a> | <a href="#browse">Navegar</a> | <a href="#search"> Pesquisar</a> |&nbsp;<a href="#communities">Comunidades</a> 
+  | <a href="#collections">Coleções</a> | <a href="#submit">Submeter Arquivos</a> | <a href="#formats">Formatos dos Arquivos</a> | <a href="#mydspace"> Meu Espaço</a> | <a href="#editprofile">Editar 
+  Perfil</a> | <a href="#subscribe">Inscrever-se a alerta de e-mails</a></p>
+
+</body>
+</html>
