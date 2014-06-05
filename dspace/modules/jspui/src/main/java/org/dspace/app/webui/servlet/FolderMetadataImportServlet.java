@@ -131,7 +131,6 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			ServletException, IOException {
 		
     	String baseFolderNumber = request.getParameter("selectedFolder");
-    	Map<Long, Long> parentsMapping = new HashMap<Long, Long>();
     	
     	HttpSession session = request.getSession();
 		@SuppressWarnings("unchecked")
