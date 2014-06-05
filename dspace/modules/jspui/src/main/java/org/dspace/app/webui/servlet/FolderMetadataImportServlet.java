@@ -11,21 +11,27 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
-import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.log4j.Logger;
+import org.dspace.app.webui.servlet.constants.FolderMetadataImportConstants;
 import org.dspace.app.webui.util.JSPManager;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Collection;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
-import org.dspace.itemimport.FolderMetadataImport;
+import org.dspace.folderimport.FolderMetadataProcessor;
+import org.dspace.folderimport.FolderReader;
+import org.dspace.folderimport.domain.ImportType;
+import org.dspace.folderimport.dto.FolderAnalyseResult;
 
 
 /**
@@ -36,8 +42,10 @@ import org.dspace.itemimport.FolderMetadataImport;
  */
 public class FolderMetadataImportServlet extends DSpaceServlet
 {
-	
-	
+
+	private static final long serialVersionUID = 1L;
+    private static Logger logger = Logger.getLogger(MetadataImportServlet.class);
+    
 	/**
 	 * Registra possibilidades de importação
 	 */
@@ -50,34 +58,55 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	}};
 	
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
 	@Override
-	protected void doDSPost(Context context, HttpServletRequest request,
+	protected void doDSGet(Context context, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			SQLException, AuthorizeException {
 		
-		String folderLocation = request.getParameter("folder_location");
-		String importTypeStr = request.getParameter("import_type");
-		String collectionStr = request.getParameter("collection");
-		
-		Integer idImportType = NumberUtils.isNumber(importTypeStr) ? NumberUtils.createInteger(importTypeStr) : null;
-		Integer idCollection = NumberUtils.isNumber(collectionStr) ? NumberUtils.createInteger(collectionStr) : null;
-		
-		ImportType importType = ImportType.getById(idImportType);
-		
-		Collection foundCollection = Collection.find(context, idCollection);
+		doDSPost(context, request, response);
+	}
 
-		FolderMetadataImport myloader = new FolderMetadataImport();
-		try {
-			myloader.addItems(context, new Collection[]{foundCollection}, folderLocation, getMappingFileLocation(), false, 
-					importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
-		} catch (Exception e1) {
-			e1.printStackTrace();
+	/**
+	 * @see DSpaceServlet#doDSPost(Context, HttpServletRequest, HttpServletResponse)a
+	 */
+	@Override
+	protected void doDSPost(Context context, HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException,
+			SQLException, AuthorizeException 
+	{
+		
+		if(request.getParameter("submit_selection") != null)
+		{
+			/** Usuário solicitou apresentação desta página **/
+			preparePage(context, request, response);
 		}
+		else if(request.getParameter("submit_import") != null)
+		{
+			/** Usuário solicitou importação **/
+			String folderLocation = request.getParameter("folder_location");
+			String importTypeStr = request.getParameter("import_type");
+			String collectionStr = request.getParameter("collection");
+			
+			Integer idImportType = NumberUtils.isNumber(importTypeStr) ? NumberUtils.createInteger(importTypeStr) : null;
+			Integer idCollection = NumberUtils.isNumber(collectionStr) ? NumberUtils.createInteger(collectionStr) : null;
+			
+			ImportType importType = ImportType.getById(idImportType);
+			
+			Collection foundCollection = Collection.find(context, idCollection);
+			
+			FolderMetadataProcessor myloader = new FolderMetadataProcessor();
+			
+			try 
+			{
+				myloader.addItems(context, new Collection[]{foundCollection}, folderLocation, getMappingFileLocation(), false, 
+						importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
+			} 
+			catch (Exception e) 
+			{
+				logger.error(e.getMessage(), e);
+			}
+		}
+		
 	}
 
 	/**
@@ -97,92 +126,46 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	}
 
 	
-	/**
-	 *   if ("add".equals(command))
-                {
-                    myloader.addItems(c, mycollections, sourcedir, mapfile, template);
-                }
-                else if ("replace".equals(command))
-                {
-                    myloader.replaceItems(c, mycollections, sourcedir, mapfile, template);
-                }
-                else if ("delete".equals(command))
-                {
-                    myloader.deleteItems(c, mapfile);
-                }
-                else if ("add-bte".equals(command))
-                {
-                    myloader.addBTEItems(c, mycollections, sourcedir, mapfile, template, bteInputType, null);
-                }
-
-	 */
-	
-	/**
-	 * Recupera informações necessárias para renderização de tela a encaminha para renderização.
-	 * 
-	 * @param context Contexto do DSpace
-	 * @param request requisição HTTP
-	 * @param response reposta HTTP
-	 * @throws ServletException
-	 * @throws IOException
-	 * @throws SQLException
-	 * @throws AuthorizeException
-	 */
-    protected void doDSGet(Context context, HttpServletRequest request,
-            HttpServletResponse response) throws ServletException, IOException,
-            SQLException, AuthorizeException
-    {
+	private void preparePage(Context context, HttpServletRequest request,
+			HttpServletResponse response) throws SQLException,
+			ServletException, IOException {
+		
+    	String baseFolderNumber = request.getParameter("selectedFolder");
+    	Map<Long, Long> parentsMapping = new HashMap<Long, Long>();
+    	
+    	HttpSession session = request.getSession();
+		@SuppressWarnings("unchecked")
+		Map<Long, File> serverMappingRoot = (Map<Long, File>)session.getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT);
+    	@SuppressWarnings("unchecked")
+		Map<Long, String> userReadbleRoot = (Map<Long, String>)session.getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT);
+    	
+    	/** Assegura erros de conversão **/
+		if(NumberUtils.isNumber(baseFolderNumber))
+		{
+			File selectedFolder = serverMappingRoot.get(Long.valueOf(baseFolderNumber));
+			if(selectedFolder != null)
+			{
+				
+				/** O diretório base DEVE exitir **/
+				if(selectedFolder.exists())
+				{
+					FolderReader folderReader = new FolderReader(selectedFolder);
+					FolderAnalyseResult buildTree = folderReader.buildTree();
+					
+					session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY, buildTree.getUserReadble());
+					session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE, buildTree.getServerReadble());
+					session.setAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING, buildTree.getMappingParent());
+				}
+				
+			}
+			request.setAttribute("exportDateTime", userReadbleRoot.get(Long.valueOf(baseFolderNumber)));
+		}
+    	
     	/** Recupera todas coleçõs **/
     	request.setAttribute("collections", Arrays.asList(Collection.findAll(context)));
     	request.setAttribute("supportedTypes", supportedImportTypes);
     	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataimport.jsp");
-    }
-
-}
-
-/**
- * Registra tipos possíveis de importação
- * @author Márcio Ribeiro Gurgel do Amaral
- *
- */
-enum ImportType {
-	
-
-	TEST(1, "jsp.dspace-admin.foldermetadataimport.type.test"),
-	WORKFLOW(2, "jsp.dspace-admin.foldermetadataimport.type.workflow"),
-	IMPORT(3, "jsp.dspace-admin.foldermetadataimport.type.import");
-	
-	private Integer id;
-	private String key;
-
-	private ImportType(Integer id, String key) {
-		this.id = id;
-		this.key = key;
 	}
 
-	/**
-	 * Recupera instância de enum tendo como base (de busca) o <i>ID</i>
-	 * @param id Parâmetro-base para busca
-	 * @return Instância encontrada
-	 */
-	public static ImportType getById(Integer id) {
-		
-		for(ImportType importType : EnumSet.allOf(ImportType.class)) {
-			
-			if(importType.getId().equals(id)) {
-				
-				return importType;
-			}
-		}
-		return null;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public String get18nKey() {
-		return key;
-	}
-	
+    
 }

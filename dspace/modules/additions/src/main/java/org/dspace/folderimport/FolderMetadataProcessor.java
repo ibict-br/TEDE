@@ -5,7 +5,7 @@
  *
  * http://www.dspace.org/license/
  */
-package org.dspace.itemimport;
+package org.dspace.folderimport;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -33,6 +33,7 @@ import javax.xml.transform.TransformerException;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.xpath.XPathAPI;
+import org.dspace.app.itemimport.ItemImport;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.AuthorizeManager;
 import org.dspace.authorize.ResourcePolicy;
@@ -61,11 +62,14 @@ import org.xml.sax.SAXException;
 
 
 /**
- * 
+ * Classe baseada em {@link ItemImport}<br>
+ * Modificada para atender importação de itens via pasta, por módulo WEB
+ * @author Márcio Ribeiro Gurgel do Amaral
+ *
  */
-public class FolderMetadataImport
+public class FolderMetadataProcessor
 {
-    private static final Logger log = Logger.getLogger(FolderMetadataImport.class);
+    private static final Logger log = Logger.getLogger(FolderMetadataProcessor.class);
 
     private static boolean useWorkflow = false;
 
