@@ -168,6 +168,7 @@
 				
 				if(this.id.search('parent') != -1)
 				{
+					window.alert("a função de seleção de itens não está completa");
 				}
 				else
 				{
