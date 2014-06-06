@@ -29,9 +29,9 @@
 	Map<Long, String> userDataSelection = (Map<Long, String>) request.getSession().getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY);
 	Map<Long, Long> parentFolderMapping = (Map<Long, Long>) request.getSession().getAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING);
 	String exportDateTime = (String) request.getAttribute("exportDateTime");
-	String hasErrorS = (String)request.getAttribute("has-error");
-	boolean hasError = (hasErrorS==null) ? true : (Boolean.parseBoolean((String)request.getAttribute("has-error")));
-    String message = (String)request.getAttribute("message");
+	String hasErrorS = String.valueOf(request.getAttribute("has-error"));
+	boolean hasError = (request.getAttribute("has-error") != null ? Boolean.valueOf(request.getAttribute("has-error").toString()) : Boolean.FALSE);
+	String message = (String)request.getAttribute("message");
 %>
 
 <dspace:layout style="submission"
@@ -44,29 +44,24 @@
 	</h1>
 
 	<%
-	if (hasErrorS == null){
-	
-	}
-	else if (hasError && message!=null){
-%>
-	<%= message %>
+	if (hasError && message!=null){
+	%>
+		<div class="alert alert-warning">
+			<fmt:message key="<%= message %>"></fmt:message>
+		</div>
 	<%  
     }
-	else if (hasError && message==null){
-%>
-	<div class="alert alert-warning">
-		<fmt:message key="jsp.dspace-admin.batchmetadataimport.genericerror" />
-	</div>
+	%>
+
+	<%
+	if (!hasError && message!=null){
+	%>
+		<div class="alert alert-info">
+			<fmt:message key="<%= message %>"></fmt:message>
+		</div>
 	<%  
-	}
-	else {
-%>
-	<div class="alert alert-info">
-		<fmt:message key="jsp.dspace-admin.batchmetadataimport.success" />
-	</div>
-	<%  
-	}
-%>
+    }
+	%>
 
 	<%
 		if(exportDateTime != null)
@@ -103,7 +98,7 @@
 			<div class="input-group">
 				<span class="input-group-addon"> 
 				
-				<input type="checkbox" type="checkbox" id="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>" name="selected_folders" value="true" />
+				<input type="checkbox" type="checkbox" id="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>" name="selected_folders" value="<%= typeEntry.getKey() %>" />
 				</span> 
 					<label class="form-control" for="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>"><%=typeEntry.getValue()%>
 				</label>
@@ -151,7 +146,7 @@
 			</select>
 		</div>
 
-		<input class="btn btn-success" type="submit_not_working_yet" name="submit"
+		<input class="btn btn-success" type="submit" name="submit_import"
 			value="<fmt:message key="jsp.dspace-admin.general.upload"/>" />
 			
 		<input class="btn btn-default" type="submit" name="submit_return"
@@ -160,30 +155,6 @@
 	</form>
 	
 	
-	<script type="text/javascript">
-
-		$(document).ready(function(){
-
-			$("input[id^='folder_']").click(function(){
-				
-				if(this.id.search('parent') != -1)
-				{
-					window.alert("a função de seleção de itens não está completa");
-				}
-				else
-				{
-					selectAllChildren(this);
-				}
-				
-			});
-			
-		});
-
-		function selectAllChildren(parentObject)
-		{
-			$("input[id*='parent_" + parentObject.id.split("_")[1] + "']").click();
-		}
-		
-	</script>
+	<script type="text/javascript" language="JavaScript" src="<%= request.getContextPath() %>/dspace-admin/js/folder-import-tree-selection-control.js"></script>
 
 </dspace:layout>
