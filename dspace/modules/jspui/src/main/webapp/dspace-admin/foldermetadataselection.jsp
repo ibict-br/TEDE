@@ -45,7 +45,7 @@
 	if (hasError && message!=null){
 	%>
 		<div class="alert alert-warning">
-			<fmt:message key="<%= FolderMetadataImportConstants.KEY_MESSAGE_NO_FOLDER_EXISTS %>"></fmt:message>
+			<fmt:message key="<%= message %>"></fmt:message>
 		</div>
 	<%  
     }

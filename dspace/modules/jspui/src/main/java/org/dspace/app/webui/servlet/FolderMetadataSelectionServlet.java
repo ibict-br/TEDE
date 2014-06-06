@@ -71,9 +71,7 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 				/** Segue para próxima página **/
 				response.sendRedirect(response.encodeRedirectURL(request
 	                    .getContextPath() + "/dspace-admin/foldermetadataimport?submit_selection"));
-
 			}
-			
 		}
 		else
 		{

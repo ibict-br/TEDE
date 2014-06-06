@@ -10,9 +10,10 @@ package org.dspace.app.webui.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -83,30 +84,138 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		else if(request.getParameter("submit_import") != null)
 		{
 			/** Usuário solicitou importação **/
-			String folderLocation = request.getParameter("folder_location");
+			String[] selectedFolders = request.getParameterValues("selected_folders");
 			String importTypeStr = request.getParameter("import_type");
-			String collectionStr = request.getParameter("collection");
+			String[] collectionsStr = request.getParameterValues("collection");
 			
-			Integer idImportType = NumberUtils.isNumber(importTypeStr) ? NumberUtils.createInteger(importTypeStr) : null;
-			Integer idCollection = NumberUtils.isNumber(collectionStr) ? NumberUtils.createInteger(collectionStr) : null;
+			@SuppressWarnings("unchecked")
+			Map<Long, String> availableFolders = (Map<Long, String>) request.getSession().getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY);
 			
-			ImportType importType = ImportType.getById(idImportType);
-			
-			Collection foundCollection = Collection.find(context, idCollection);
-			
-			FolderMetadataProcessor myloader = new FolderMetadataProcessor();
-			
-			try 
+			if((availableFolders.size() > 0 && selectedFolders != null) && importTypeStr != null && collectionsStr != null)
 			{
-				myloader.addItems(context, new Collection[]{foundCollection}, folderLocation, getMappingFileLocation(), false, 
-						importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
-			} 
-			catch (Exception e) 
-			{
-				logger.error(e.getMessage(), e);
+				List<String> folderStringList = Arrays.asList(selectedFolders);
+				
+				/** Associação de diretórios **/
+				@SuppressWarnings("unchecked")
+				Map<Long, File> serverFolderData = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE);
+				@SuppressWarnings("unchecked")
+				Map<Long, Long> parentMapping = (Map<Long, Long>) request.getSession().getAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING);
+				
+				Integer idImportType = NumberUtils.isNumber(importTypeStr) ? NumberUtils.createInteger(importTypeStr) : null;
+				ImportType importType = ImportType.getById(idImportType);
+				
+				Collection[] selectedCollections = buildCollectionsArray(context, collectionsStr);
+				List<Long> filesToExport = identifiesImportableFolders(folderStringList, parentMapping);
+				
+				
+				try 
+				{
+					doImport(context, serverFolderData, importType, selectedCollections, filesToExport);
+					handlePageReturnAfterAction(context, request, response, FolderMetadataImportConstants.KEY_MESSAGE_REQUIRED_FIELDS, false);
+				} 
+				catch (Exception e) 
+				{
+					logger.error(e.getMessage(), e);
+					handlePageReturnAfterAction(context, request, response, FolderMetadataImportConstants.KEY_MESSAGE_ERROR_IMPORT, true);
+				}
 			}
+			else
+			{
+				handlePageReturnAfterAction(context, request, response, FolderMetadataImportConstants.KEY_MESSAGE_REQUIRED_FIELDS, true);
+			}
+			
+		}
+		else
+		{
+			/** Usuário tentou acessar diretamente a página sem passar pela seleção **/
+			response.sendRedirect(request.getContextPath() + "/dspace-admin/foldermetadataselection");
 		}
 		
+	}
+
+	/**
+	 * Efetua operações comuns de apresentação de página para o usuário
+	 * @param context
+	 * @param request
+	 * @param response
+	 * @param message
+	 * @param hasError
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	private void handlePageReturnAfterAction(Context context, HttpServletRequest request, HttpServletResponse response, String message, boolean hasError)
+			throws SQLException, ServletException, IOException {
+		
+		request.setAttribute("has-error", hasError);
+		request.setAttribute("message", message);
+		
+		fillRequestAttributes(context, request);
+		JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataimport.jsp");
+	}
+
+	/**
+	 * Efetua importação efetivamente
+	 * @param context
+	 * @param serverFolderData
+	 * @param importType
+	 * @param selectedCollections
+	 * @param filesToExport
+	 * @throws Exception 
+	 * @throws IOException 
+	 */
+	private void doImport(Context context, Map<Long, File> serverFolderData,
+			ImportType importType, Collection[] selectedCollections,
+			List<Long> filesToExport) throws IOException, Exception {
+		
+		FolderMetadataProcessor myloader = new FolderMetadataProcessor();
+
+		for(Long selectedFolder : filesToExport)
+		{
+			myloader.addItems(context, selectedCollections, serverFolderData.get(selectedFolder).getCanonicalPath(), getMappingFileLocation(), false, 
+					importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
+		} 
+	}
+
+	/**
+	 * Itera sob os identificadores de array e os utiliza como critério para recuperação de coleções junto à base de dados.
+	 * @param context Contexto do DSpace
+	 * @param collectionsStr Lista de coleções oriundas de seleção do usuário
+	 * @return Array de coleções
+	 * @throws SQLException
+	 */
+	private Collection[] buildCollectionsArray(Context context, String[] collectionsStr) throws SQLException {
+		Collection[] selectedCollections = new Collection[collectionsStr.length];
+		
+		int control = 0;
+		for(String selectedCollection : collectionsStr)
+		{
+			selectedCollections[control] =  Collection.find(context,  NumberUtils.createInteger(selectedCollection));
+			control++;
+		}
+		return selectedCollections;
+	}
+
+	/**
+	 * Identifica pastas <i>aptas</i> para importação, a fim de evitar que um mesmo item seja importado mais de uma vez.
+	 * @param folderStringList Listagem de identificadores de diretórios informada pelo usuário
+	 * @param parentMapping Mapeamento de pastas pai/filho
+	 * @return Identificadores de pastas aptas para importação
+	 */
+	private List<Long> identifiesImportableFolders(List<String> folderStringList, Map<Long, Long> parentMapping) {
+		List<Long> filesToExport = new ArrayList<Long>();
+		
+		for(String selectedFolder : folderStringList)
+		{
+			Long folderId = Long.valueOf(selectedFolder);
+			
+			/** filho com diretório pai não selecioado, Caso seja diretório "pai" ou **/
+			if(!(parentMapping.get(folderId) != null && folderStringList.contains(String.valueOf(parentMapping.get(folderId)))) || parentMapping.get(folderId) == null)
+			{
+				filesToExport.add(folderId);
+			}
+		}
+		return filesToExport;
 	}
 
 	/**
@@ -125,7 +234,15 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		return mappingBuilder.toString();
 	}
 
-	
+	/**
+	 * Efetua ações necessárias para renderização da página
+	 * @param context
+	 * @param request
+	 * @param response
+	 * @throws SQLException
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void preparePage(Context context, HttpServletRequest request,
 			HttpServletResponse response) throws SQLException,
 			ServletException, IOException {
@@ -161,9 +278,21 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		}
     	
     	/** Recupera todas coleçõs **/
-    	request.setAttribute("collections", Arrays.asList(Collection.findAll(context)));
-    	request.setAttribute("supportedTypes", supportedImportTypes);
+    	fillRequestAttributes(context, request);
     	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataimport.jsp");
+	}
+
+	
+	/**
+	 * Preenche atributos a serem apresentados em tela os quais tem tempo de vida igual a "request"
+	 * @param context Contexto do DSpace
+	 * @param request HttpServletRequest
+	 * @throws SQLException
+	 */
+	private void fillRequestAttributes(Context context,
+			HttpServletRequest request) throws SQLException {
+		request.setAttribute("collections", Arrays.asList(Collection.findAll(context)));
+    	request.setAttribute("supportedTypes", supportedImportTypes);
 	}
 
     

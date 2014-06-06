@@ -13,5 +13,8 @@ public class FolderMetadataImportConstants {
 	public static String SERVER_DATA_READBLE = "serverReadble";
 	public static String PARENT_FOLDER_MAPPPING = "parentFolderMapping";
 	public static String KEY_MESSAGE_NO_FOLDER_EXISTS = "jsp.dspace-admin.foldermetadataimport.errors.nofolder";
+	public static String KEY_MESSAGE_REQUIRED_FIELDS = "jsp.dspace-admin.foldermetadataimport.errors.requiredfields";
+	public static String KEY_MESSAGE_IMPORT_SUCCESS = "jsp.dspace-admin.foldermetadataimport.success";
+	public static String KEY_MESSAGE_ERROR_IMPORT = "jsp.dspace-admin.foldermetadataimport.errors.importprocess";
 	
 }
