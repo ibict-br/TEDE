@@ -11,7 +11,7 @@
   - Form to upload a csv metadata file
 --%>
 
-<%@ page import="org.dspace.app.webui.servlet.constants.FolderMetadataImportConstants"%>
+<%@ page import="org.dspace.folderimport.constants.FolderMetadataImportConstants"%>
 <%@ page import="java.util.Map"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
@@ -31,7 +31,9 @@
 	String exportDateTime = (String) request.getAttribute("exportDateTime");
 	String hasErrorS = String.valueOf(request.getAttribute("has-error"));
 	boolean hasError = (request.getAttribute("has-error") != null ? Boolean.valueOf(request.getAttribute("has-error").toString()) : Boolean.FALSE);
+	boolean blockpage = (request.getAttribute("has-error") != null ? Boolean.valueOf(request.getAttribute("blockpage").toString()) : Boolean.FALSE);
 	String message = (String)request.getAttribute("message");
+	String messageParam = (String)request.getAttribute("messageParam");
 %>
 
 <dspace:layout style="submission"
@@ -57,7 +59,9 @@
 	if (!hasError && message!=null){
 	%>
 		<div class="alert alert-info">
-			<fmt:message key="<%= message %>"></fmt:message>
+			<fmt:message key="<%= message %>">
+				<fmt:param value="<%=  messageParam %>"/>
+			</fmt:message>
 		</div>
 	<%  
     }
@@ -79,76 +83,79 @@
 	%>
 
 	<form method="post" action="" id="folder_form">
-
 	
-		<!-- 
-			Folder location / Checkbox
-		 -->
-		<%
-			if (userDataSelection != null && !userDataSelection.isEmpty()) {
-		%>
-		<div class="form-group">
-			<label for="import_type"> <fmt:message
-					key="jsp.dspace-admin.foldermetadataimport.folder" />
-			</label>
-
+		<% if(!blockpage) { %>
+	
+			<!-- 
+				Folder location / Checkbox
+			 -->
 			<%
-				for (Map.Entry<Long, String> typeEntry : userDataSelection.entrySet()) {
+				if (userDataSelection != null && !userDataSelection.isEmpty()) {
 			%>
-			<div class="input-group">
-				<span class="input-group-addon"> 
-				
-				<input type="checkbox" type="checkbox" id="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>" name="selected_folders" value="<%= typeEntry.getKey() %>" />
-				</span> 
-					<label class="form-control" for="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>"><%=typeEntry.getValue()%>
+			<div class="form-group">
+				<label for="import_type"> <fmt:message
+						key="jsp.dspace-admin.foldermetadataimport.folder" />
 				</label>
+	
+				<%
+					for (Map.Entry<Long, String> typeEntry : userDataSelection.entrySet()) {
+				%>
+				<div class="input-group">
+					<span class="input-group-addon"> 
+					
+					<input type="checkbox" type="checkbox" id="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>" name="selected_folders" value="<%= typeEntry.getKey() %>" />
+					</span> 
+						<label class="form-control" for="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>"><%=typeEntry.getValue()%>
+					</label>
+				</div>
+				<%
+					}
+				%>
+	
 			</div>
 			<%
 				}
 			%>
-
-		</div>
-		<%
-			}
-		%>
-
-		<!-- 
-			Import type
-		 -->
-		<div class="form-group">
-			<label for="import_type">
-				<fmt:message key="jsp.dspace-admin.foldermetadataimport.type" />
-			</label> 
-			<select	class="form-control" name="import_type">
-			<% 
-		 		for (Map.Entry<Integer, String> typeEntry : supportedTypes.entrySet()){
-			%>
-						<option value="<%= typeEntry.getKey() %>"><fmt:message key="<%= typeEntry.getValue() %>" /></option>
-			<%
-		 		}
-	 		%>			
- 		</select>
-		</div>
-		
-		
-		<div class="form-group">
-			<label for="collection">
-				<fmt:message key="jsp.dspace-admin.foldermetadataimport.collection" />
-			</label> 
-			<select class="form-control" name="collection">
-			<% 
-		 		for (Collection collection : collections){
-			%>
-					<option value="<%= collection.getID() %>"><%= collection.getName() %></option>
-			<%
+	
+			<!-- 
+				Import type
+			 -->
+			<div class="form-group">
+				<label for="import_type">
+					<fmt:message key="jsp.dspace-admin.foldermetadataimport.type" />
+				</label> 
+				<select	class="form-control" name="import_type">
+				<% 
+			 		for (Map.Entry<Integer, String> typeEntry : supportedTypes.entrySet()){
+				%>
+							<option value="<%= typeEntry.getKey() %>"><fmt:message key="<%= typeEntry.getValue() %>" /></option>
+				<%
 			 		}
-			 %>
-			</select>
-		</div>
-
-		<input class="btn btn-success" type="submit" name="submit_import"
-			value="<fmt:message key="jsp.dspace-admin.general.upload"/>" />
+		 		%>			
+	 		</select>
+			</div>
 			
+			
+			<div class="form-group">
+				<label for="collection">
+					<fmt:message key="jsp.dspace-admin.foldermetadataimport.collection" />
+				</label> 
+				<select class="form-control" name="collection">
+				<% 
+			 		for (Collection collection : collections){
+				%>
+						<option value="<%= collection.getID() %>"><%= collection.getName() %></option>
+				<%
+				 		}
+				 %>
+				</select>
+			</div>
+	
+			
+			<input class="btn btn-success" type="submit" name="submit_import"
+				value="<fmt:message key="jsp.dspace-admin.general.upload"/>" />
+		<% } %>	
+		
 		<input class="btn btn-default" type="submit" name="submit_return"
 			value="<fmt:message key="jsp.dspace-admin.foldermetadataimport.button.back"/>" />
 

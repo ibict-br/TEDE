@@ -16,13 +16,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.dspace.app.webui.servlet.constants.FolderMetadataImportConstants;
 import org.dspace.app.webui.util.JSPManager;
 import org.dspace.app.webui.util.UIUtil;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.folderimport.FolderReader;
+import org.dspace.folderimport.constants.FolderMetadataImportConstants;
 import org.dspace.folderimport.dto.FolderAnalyseResult;
 
 

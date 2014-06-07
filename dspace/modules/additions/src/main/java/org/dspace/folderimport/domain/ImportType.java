@@ -10,16 +10,18 @@ import java.util.EnumSet;
 public enum ImportType {
 	
 
-	TEST(1, "jsp.dspace-admin.foldermetadataimport.type.test"),
-	WORKFLOW(2, "jsp.dspace-admin.foldermetadataimport.type.workflow"),
-	IMPORT(3, "jsp.dspace-admin.foldermetadataimport.type.import");
+	TEST(1, "jsp.dspace-admin.foldermetadataimport.type.test", "jsp.dspace-admin.foldermetadataimport.success.test"),
+	WORKFLOW(2, "jsp.dspace-admin.foldermetadataimport.type.workflow", "jsp.dspace-admin.foldermetadataimport.success.workflow"),
+	IMPORT(3, "jsp.dspace-admin.foldermetadataimport.type.import", "jsp.dspace-admin.foldermetadataimport.success");
 	
 	private Integer id;
 	private String key;
+	private String successMessageKey;
 
-	private ImportType(Integer id, String key) {
+	private ImportType(Integer id, String key, String successMessageKey) {
 		this.id = id;
 		this.key = key;
+		this.successMessageKey = successMessageKey;
 	}
 
 	/**
@@ -38,12 +40,16 @@ public enum ImportType {
 		}
 		return null;
 	}
+	
+	public String getSuccessMessageKey() {
+		return successMessageKey;
+	}
 
 	public Integer getId() {
 		return id;
 	}
 
-	public String get18nKey() {
+	public String getKey() {
 		return key;
 	}
 	

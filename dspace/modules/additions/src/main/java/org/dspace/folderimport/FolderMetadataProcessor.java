@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import javax.mail.MessagingException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -51,8 +52,11 @@ import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.eperson.Group;
+import org.dspace.folderimport.exception.FolderMetadataException;
 import org.dspace.handle.HandleManager;
 import org.dspace.workflow.WorkflowManager;
+import org.dspace.xmlworkflow.WorkflowConfigurationException;
+import org.dspace.xmlworkflow.WorkflowException;
 import org.dspace.xmlworkflow.XmlWorkflowManager;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -71,15 +75,15 @@ public class FolderMetadataProcessor
 {
     private static final Logger log = Logger.getLogger(FolderMetadataProcessor.class);
 
-    private static boolean useWorkflow = false;
+    private boolean useWorkflow = false;
 
-    private static boolean useWorkflowSendEmail = false;
+    private boolean useWorkflowSendEmail = false;
 
-    private static boolean isTest = false;
+    private boolean isTest = false;
 
-    private static boolean isQuiet = false;
+    private boolean isQuiet = false;
 
-    private static PrintWriter mapOut = null;
+    private PrintWriter mapOut = null;
 
     // File listing filter to look for metadata files
     private static FilenameFilter metadataFileFilter = new FilenameFilter()
@@ -102,8 +106,13 @@ public class FolderMetadataProcessor
 
 
     public void addItems(Context c, Collection[] mycollections,
-            String sourceDir, String mapFile, boolean template, boolean isTest, boolean isResume, boolean useWorkflowSendEmail, boolean useWorkflow) throws Exception
+            String sourceDir, String mapFile, boolean template, boolean isTestParam, boolean isResume, boolean useWorkflowSendEmailParam, boolean useWorkflowParam) throws Exception
     {
+    	this.isTest = isTestParam;
+    	this.useWorkflow = useWorkflowParam;
+    	this.useWorkflowSendEmail = useWorkflowSendEmailParam;
+    	
+    	
         Map<String, String> skipItems = new HashMap<String, String>(); // set of items to skip if in 'resume'
         // mode
 
@@ -125,11 +134,15 @@ public class FolderMetadataProcessor
             // sneaky isResume == true means open file in append mode
             outFile = new File(mapFile);
             mapOut = new PrintWriter(new FileWriter(outFile, isResume));
+            
 
             if (mapOut == null)
             {
                 throw new Exception("can't open mapfile: " + mapFile);
             }
+
+            /** Writes source folder **/
+            mapOut.write(sourceDir + "\n");
         }
 
         // open and process the source directory
@@ -157,6 +170,12 @@ public class FolderMetadataProcessor
                 c.clearCache();
             }
         }
+        
+        if(mapOut != null)
+        {
+        	mapOut.flush();
+        	mapOut.close();
+        }
     }
 
     /**
@@ -165,9 +184,19 @@ public class FolderMetadataProcessor
      * @param path - directory containing the item directories.
      * @param itemname handle - non-null means we have a pre-defined handle already 
      * @param mapOut - mapfile we're writing
+     * @throws IOException 
+     * @throws SQLException 
+     * @throws AuthorizeException 
+     * @throws TransformerException 
+     * @throws SAXException 
+     * @throws ParserConfigurationException 
+     * @throws WorkflowException 
+     * @throws MessagingException 
+     * @throws WorkflowConfigurationException 
+     * @throws FolderMetadataException 
      */
     private Item addItem(Context c, Collection[] mycollections, String path,
-            String itemname, PrintWriter mapOut, boolean template) throws Exception
+            String itemname, PrintWriter mapOut, boolean template) throws AuthorizeException, SQLException, IOException, ParserConfigurationException, SAXException, TransformerException, WorkflowConfigurationException, MessagingException, WorkflowException, FolderMetadataException 
     {
         String mapOutput = null;
 
@@ -489,7 +518,7 @@ public class FolderMetadataProcessor
                     }
                     catch (IOException e1)
                     {
-                        System.err.println("Non-critical problem releasing resources.");
+                    	log.error(e1.getMessage(), e1);
                     }
                 }
             }
@@ -915,9 +944,10 @@ public class FolderMetadataProcessor
      * @param options
      * @throws SQLException
      * @throws AuthorizeException
+     * @throws FolderMetadataException 
      */
     private void processOptions(Context c, Item myItem, List<String> options)
-            throws SQLException, AuthorizeException
+            throws SQLException, AuthorizeException, FolderMetadataException
     {
         for (String line : options)
         {
@@ -1043,8 +1073,7 @@ public class FolderMetadataProcessor
                     }
                     else if (actionID == -1)
                     {
-                        System.out
-                                .println("\tinvalid permissions flag, permissions set to default");
+                        throw new FolderMetadataException("jsp.dspace-admin.foldermetadataimport.errors.folderpermission");
                     }
                     else
                     {

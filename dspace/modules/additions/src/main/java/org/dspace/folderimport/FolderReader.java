@@ -5,9 +5,11 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
@@ -15,7 +17,9 @@ import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.log4j.Logger;
+import org.dspace.core.ConfigurationManager;
 import org.dspace.file.utils.FileUtils;
+import org.dspace.folderimport.constants.FolderMetadataImportConstants;
 import org.dspace.folderimport.dto.FolderAnalyseResult;
 
 
@@ -41,8 +45,9 @@ public class FolderReader {
 	 * Constrói árvore de diretórios aptos para a importação de itens
 	 * @param fileBase Diretório base para construção da árvore
 	 * @return Objeto contendo resultado da análise de diretórios
+	 * @throws IOException 
 	 */
-    public FolderAnalyseResult buildTree()
+    public FolderAnalyseResult buildTree() throws IOException
     {
     	Map<Long, String> userReadble = new LinkedHashMap<Long, String>();
     	Map<Long, File> serverReadble = new LinkedHashMap<Long, File>();
@@ -50,19 +55,146 @@ public class FolderReader {
     	Map<Long, Long> mappingParent = new HashMap<Long, Long>();
     	
     	Set<Long> keyControl = new HashSet<Long>();
+    	boolean allImportsAreFinished = false;
 
 		try 
 		{
 			/** "new file" para assegurar que "root" e "searchBase" sejam objetos distintos **/
 			innerBuild(new File(root.getCanonicalPath()), userReadble, serverReadble, keyControl, reverseServerReadble, mappingParent);
+			
+			/** A existência de valores em "mappingParent" garante a existência de diretórios **/
+			if(!mappingParent.isEmpty())
+			{
+				allImportsAreFinished = removeImportedFolders(userReadble, serverReadble, reverseServerReadble, mappingParent);
+			}
 		} 
 		catch (IOException e) 
 		{
 			logger.error(e.getMessage(), e);
+			throw e;
 		}
     
-    	return new FolderAnalyseResult(userReadble, serverReadble, mappingParent);
+    	FolderAnalyseResult folderAnalyseResult = new FolderAnalyseResult(userReadble, serverReadble, mappingParent);
+    	folderAnalyseResult.setAllImportsAreFinished(allImportsAreFinished);
+		return folderAnalyseResult;
     }
+
+	private boolean removeImportedFolders(Map<Long, String> userReadble, Map<Long, File> serverReadble, 
+			Map<File, Long> reverseServerReadble, Map<Long, Long> mappingParent) throws IOException {
+		List<File> listPreviousImport = listPreviousImport();
+		
+		Map<Long, Long> mappingParentCopy = new HashMap<Long, Long>(mappingParent);
+		boolean hasInitialContent = !serverReadble.isEmpty();
+		
+		if(listPreviousImport != null && !listPreviousImport.isEmpty())
+		{
+			for(File importedDir : listPreviousImport)
+			{
+				clearMaps(userReadble, serverReadble, reverseServerReadble, mappingParent, reverseServerReadble.get(importedDir));
+			}
+			
+			for(Map.Entry<Long, Long> parentCandidate : mappingParentCopy.entrySet())
+			{
+				
+				if(parentCandidate.getValue() == null)
+				{
+					boolean allChildrenIsImported = true;
+					/** Trata-se de um diretório pai, logo, verifica se todos seus filhos já foram importados **/
+					File parentFolder = serverReadble.get(parentCandidate.getKey());
+					List<File> parentChildren = new ArrayList<File>();
+					FileUtils.searchRecursiveAddingDirs(parentChildren, parentFolder, DUBLIN_CORE_XML_FILE_NAME, 2, false);
+					
+					for(File folderChild : parentChildren)
+					{
+						if(!listPreviousImport.contains(folderChild))
+						{
+							allChildrenIsImported = false;
+							break;
+						}
+					}
+					
+					if(allChildrenIsImported)
+					{
+						clearMaps(userReadble, serverReadble, reverseServerReadble, mappingParent, parentCandidate.getKey());
+					}
+					
+				}
+			}
+		}
+		
+		return hasInitialContent && serverReadble.isEmpty();
+	}
+
+	private void clearMaps(Map<Long, String> userReadble,
+			Map<Long, File> serverReadble,
+			Map<File, Long> reverseServerReadble,
+			Map<Long, Long> mappingParent, Long idToRemove) {
+		
+		
+		reverseServerReadble.remove(serverReadble.get(idToRemove));
+		userReadble.remove(idToRemove);
+		serverReadble.remove(idToRemove);
+		mappingParent.remove(idToRemove);
+	}
+	
+	private int countChildren(Long idParent, Map<Long, Long> mappingParent)
+	{
+		int counter = 0;
+		for(Map.Entry<Long, Long> parentMapping : mappingParent.entrySet())
+		{
+			if(parentMapping.getValue() != null && parentMapping.getValue().equals(idParent))
+			{
+				counter++;
+			}
+		}
+		
+		return counter;
+	}
+
+	private List<File> listPreviousImport()
+			throws IOException {
+		List<File> folderWithImport = null;
+    	/** Identifica diretórios já carregados **/
+		StringBuilder mappingBuilder = new StringBuilder();
+		mappingBuilder.append(ConfigurationManager.getProperty("dspace.dir"));
+		mappingBuilder.append(File.separator);
+		mappingBuilder.append("imports");
+		
+		List<File> foundImportMappings = new ArrayList<File>();
+		FileUtils.searchRecursiveAddingDirs(foundImportMappings, new File(mappingBuilder.toString()), FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX, 0, true);
+
+		
+		if(!foundImportMappings.isEmpty())
+		{
+			/** Já existem importações **/
+			for(File foundMappingFile : foundImportMappings)
+			{
+				
+				List<String> firstLineMappingFile = FileUtils.readFile(foundMappingFile, 1);
+				if(firstLineMappingFile != null && !firstLineMappingFile.isEmpty())
+				{
+					String lineFolderCandidate = firstLineMappingFile.get(0);
+					if(lineFolderCandidate != null && !firstLineMappingFile.isEmpty())
+					{
+						File exportedFolder = new File(lineFolderCandidate.trim());
+						if(exportedFolder.exists() && exportedFolder.isDirectory())
+						{
+							if(folderWithImport == null)
+							{
+								folderWithImport = new ArrayList<File>();
+							}
+							
+							folderWithImport.add(exportedFolder);
+						}
+					}
+						
+				}
+				
+			}
+		}
+		
+		return folderWithImport;
+	}
     
     
     /**

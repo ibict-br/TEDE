@@ -13,6 +13,7 @@ public class FolderAnalyseResult {
 	private Map<Long, String> userReadble;
 	private Map<Long, File> serverReadble;
 	private Map<Long, Long> mappingParent;
+	private boolean allImportsAreFinished;
 	
 	
 	public FolderAnalyseResult(Map<Long, String> userReadble,
@@ -33,7 +34,14 @@ public class FolderAnalyseResult {
 	public Map<Long, Long> getMappingParent() {
 		return mappingParent;
 	}
-	
+
+	public boolean isAllImportsAreFinished() {
+		return allImportsAreFinished;
+	}
+
+	public void setAllImportsAreFinished(boolean allImportsAreFinished) {
+		this.allImportsAreFinished = allImportsAreFinished;
+	}
 	
 	
 }

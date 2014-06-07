@@ -1,10 +1,9 @@
 package org.dspace.folderimport;
 
 import java.io.File;
-import java.util.HashMap;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
 
 import junit.framework.Assert;
 
@@ -40,9 +39,10 @@ public class FolderReaderTest {
 	
 	/**
 	 * Efetua teste do método {@link FolderReader#buildTree()}
+	 * @throws IOException 
 	 */
 	@Test
-	public void testBuildTree()
+	public void testBuildTree() throws IOException
 	{
 		
 		FolderReader folderReader = new FolderReader(new File("/work/dspace/install/tede/exports/20140429091811/exportados"));

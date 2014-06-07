@@ -11,7 +11,7 @@
   - Form to upload a csv metadata file
 --%>
 
-<%@page import="org.dspace.app.webui.servlet.constants.FolderMetadataImportConstants"%>
+<%@page import="org.dspace.folderimport.constants.FolderMetadataImportConstants"%>
 <%@page import="java.util.Map"%>
 <%@ page contentType="text/html;charset=UTF-8"%>
 
