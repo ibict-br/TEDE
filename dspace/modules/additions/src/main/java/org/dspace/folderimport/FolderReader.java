@@ -137,20 +137,6 @@ public class FolderReader {
 		mappingParent.remove(idToRemove);
 	}
 	
-	private int countChildren(Long idParent, Map<Long, Long> mappingParent)
-	{
-		int counter = 0;
-		for(Map.Entry<Long, Long> parentMapping : mappingParent.entrySet())
-		{
-			if(parentMapping.getValue() != null && parentMapping.getValue().equals(idParent))
-			{
-				counter++;
-			}
-		}
-		
-		return counter;
-	}
-
 	private List<File> listPreviousImport()
 			throws IOException {
 		List<File> folderWithImport = null;
