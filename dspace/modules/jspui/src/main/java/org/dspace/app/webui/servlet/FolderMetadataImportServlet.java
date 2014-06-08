@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,17 +97,22 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			@SuppressWarnings("unchecked")
 			Map<Long, String> availableFolders = (Map<Long, String>) request.getSession().getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY);
 			
-			if((availableFolders.size() > 0 && selectedFolders != null) && importTypeStr != null && collectionsStr != null)
+			if(((availableFolders.size() > 0 && selectedFolders != null) || availableFolders.size() == 0) && importTypeStr != null && collectionsStr != null)
 			{
-				List<String> folderStringList = Arrays.asList(selectedFolders);
+				List<String> folderStringList = selectedFolders != null ? Arrays.asList(selectedFolders) : null;
 				
 				Integer idImportType = NumberUtils.isNumber(importTypeStr) ? NumberUtils.createInteger(importTypeStr) : null;
 				ImportType importType = ImportType.getById(idImportType);
 				Collection[] selectedCollections = buildCollectionsArray(context, collectionsStr);
 				
-				@SuppressWarnings("unchecked")
-				Map<Long, Long> parentMapping = (Map<Long, Long>) request.getSession().getAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING);
-				List<Long> filesToExport = identifiesImportableFolders(folderStringList, parentMapping);
+				Object parentFolderMappingCandidate = request.getSession().getAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING);
+				List<Long> filesToExport = null;
+				if(folderStringList != null)
+				{
+					@SuppressWarnings("unchecked")
+					Map<Long, Long> parentMapping = parentFolderMappingCandidate != null ? (Map<Long, Long>) parentFolderMappingCandidate : null;
+					identifiesImportableFolders(folderStringList, parentMapping);
+				}
 				
 				try 
 				{
@@ -170,25 +176,34 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		@SuppressWarnings("unchecked")
 		Map<Long, File> serverFolderData = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE);
 
-		for(Long selectedFolder : filesToExport)
+		if(filesToExport != null)
 		{
-			try
+			for(Long selectedFolder : filesToExport)
 			{
-				List<File> storageList = new ArrayList<File>();
-				FileUtils.searchRecursiveAddingDirs(storageList, serverFolderData.get(selectedFolder), "dublin_core.xml", 2, false);
-				
-				for(File suitableDirectory : storageList)
+				try
 				{
-					myloader.addItems(context, selectedCollections, suitableDirectory.getCanonicalPath(), getMappingFileLocation(), false, 
-							importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
+					List<File> storageList = new ArrayList<File>();
+					FileUtils.searchRecursiveAddingDirs(storageList, serverFolderData.get(selectedFolder), "dublin_core.xml", 2, false);
+					
+					for(File suitableDirectory : storageList)
+					{
+						myloader.addItems(context, selectedCollections, suitableDirectory.getCanonicalPath(), getMappingFileLocation(), false, 
+								importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
+					}
 				}
-			}
-			catch (MetadataImportException mie)
-			{
-				logger.error(mie.getMessage(), mie);
-				handlePageReturnAfterAction(context, request, response, mie.getMessage(), true);
-			}
-		} 
+				catch (MetadataImportException mie)
+				{
+					logger.error(mie.getMessage(), mie);
+					handlePageReturnAfterAction(context, request, response, mie.getMessage(), true);
+				}
+			} 
+		}
+		else
+		{
+			myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getRootSelectedFolderId(request)).getCanonicalPath(), getMappingFileLocation(), false, 
+					importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
+
+		}
 	}
 
 	/**
@@ -229,6 +244,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 				filesToExport.add(folderId);
 			}
 		}
+		
 		return filesToExport;
 	}
 
@@ -262,46 +278,37 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			HttpServletResponse response) throws SQLException,
 			ServletException, IOException {
 		
-    	String baseFolderNumber = request.getParameter("selectedFolder");
     	
     	HttpSession session = request.getSession();
-		@SuppressWarnings("unchecked")
-		Map<Long, File> serverMappingRoot = (Map<Long, File>)session.getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT);
-    	@SuppressWarnings("unchecked")
-		Map<Long, String> userReadbleRoot = (Map<Long, String>)session.getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT);
 
+		Long rootBaseFolderSelected = getRootSelectedFolderId(request);
+		File selectedFolder = getRootSelectedFolder(request, rootBaseFolderSelected );
     	
     	/** Assegura erros de conversão **/
-		if(NumberUtils.isNumber(baseFolderNumber))
+		if(selectedFolder != null && selectedFolder.exists())
 		{
-			File selectedFolder = serverMappingRoot.get(Long.valueOf(baseFolderNumber));
-			if(selectedFolder != null)
+			@SuppressWarnings("unchecked")
+			Map<Long, String> userReadbleRoot = (Map<Long, String>)session.getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT);
+			
+			FolderReader folderReader = new FolderReader(selectedFolder);
+			FolderAnalyseResult buildTree = folderReader.buildTree();
+			
+			String rootImportFolder = userReadbleRoot.get(Long.valueOf(rootBaseFolderSelected));
+
+			if(!buildTree.isAllImportsAreFinished())
 			{
+				session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY, buildTree.getUserReadble());
+				session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE, buildTree.getServerReadble());
+				session.setAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING, buildTree.getMappingParent());
 				
-				/** O diretório base DEVE exitir **/
-				if(selectedFolder.exists())
-				{
-					FolderReader folderReader = new FolderReader(selectedFolder);
-					FolderAnalyseResult buildTree = folderReader.buildTree();
-					
-					String rootImportFolder = userReadbleRoot.get(Long.valueOf(baseFolderNumber));
-					if(!buildTree.isAllImportsAreFinished())
-					{
-						session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY, buildTree.getUserReadble());
-						session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE, buildTree.getServerReadble());
-						session.setAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING, buildTree.getMappingParent());
-						
-						request.setAttribute("exportDateTime", rootImportFolder);
-					}
-					else
-					{
-						request.setAttribute("has-error", false);
-						request.setAttribute("blockpage", true);
-						request.setAttribute("message", FolderMetadataImportConstants.KEY_MESSAGE_ALL_FOLDERS_IMPORTED);
-						request.setAttribute("messageParam", rootImportFolder);
-					}
-				}
-				
+				request.setAttribute("exportDateTime", rootImportFolder);
+			}
+			else
+			{
+				request.setAttribute("has-error", false);
+				request.setAttribute("blockpage", true);
+				request.setAttribute("message", FolderMetadataImportConstants.KEY_MESSAGE_ALL_FOLDERS_IMPORTED);
+				request.setAttribute("messageParam", rootImportFolder);
 			}
 		}
     	
@@ -309,6 +316,20 @@ public class FolderMetadataImportServlet extends DSpaceServlet
     	fillRequestAttributes(context, request);
     	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataimport.jsp");
 	}
+	
+	private Long getRootSelectedFolderId(HttpServletRequest request)
+	{
+    	String baseFolderNumber = request.getParameter("selectedFolder");
+    	return NumberUtils.isNumber(baseFolderNumber) ? Long.valueOf(baseFolderNumber) : null;
+	}
+	
+	private File getRootSelectedFolder(HttpServletRequest request, Long rootBaseFolderSelected)
+	{
+		@SuppressWarnings("unchecked")
+		Map<Long, File> serverMappingRoot = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT);
+		return serverMappingRoot.get(Long.valueOf(rootBaseFolderSelected));
+	}
+	
 
 	
 	/**
@@ -319,6 +340,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	 */
 	private void fillRequestAttributes(Context context,
 			HttpServletRequest request) throws SQLException {
+		request.setAttribute("selectedFolder", request.getParameter("selectedFolder"));
 		request.setAttribute("collections", Arrays.asList(Collection.findAll(context)));
     	request.setAttribute("supportedTypes", supportedImportTypes);
 	}

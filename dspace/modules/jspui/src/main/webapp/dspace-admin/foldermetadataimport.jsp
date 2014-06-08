@@ -23,7 +23,6 @@
 <%@ page import="org.dspace.content.Collection"%>
 
 <%
-
 	List<Collection> collections = (List<Collection>) request.getAttribute("collections");
 	Map<Integer, String> supportedTypes = (Map<Integer, String>) request.getAttribute("supportedTypes");
 	Map<Long, String> userDataSelection = (Map<Long, String>) request.getSession().getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY);
@@ -31,9 +30,9 @@
 	String exportDateTime = (String) request.getAttribute("exportDateTime");
 	String hasErrorS = String.valueOf(request.getAttribute("has-error"));
 	boolean hasError = (request.getAttribute("has-error") != null ? Boolean.valueOf(request.getAttribute("has-error").toString()) : Boolean.FALSE);
-	boolean blockpage = (request.getAttribute("has-error") != null ? Boolean.valueOf(request.getAttribute("blockpage").toString()) : Boolean.FALSE);
-	String message = (String)request.getAttribute("message");
-	String messageParam = (String)request.getAttribute("messageParam");
+	boolean blockpage = (request.getAttribute("blockpage") != null ? Boolean.valueOf(request.getAttribute("blockpage").toString()) : Boolean.FALSE);
+	String message = (String) request.getAttribute("message");
+	String messageParam =  (String) request.getAttribute("messageParam");
 %>
 
 <dspace:layout style="submission"
@@ -72,7 +71,7 @@
 		{
 	%>
 	
-		<div class="alert alert-info">
+		<div class="well">
 			<fmt:message key="jsp.dspace-admin.foldermetadataimport.dateexport" >
 				<fmt:param value="<%=  exportDateTime %>"/>
 			</fmt:message>
@@ -85,6 +84,8 @@
 	<form method="post" action="" id="folder_form">
 	
 		<% if(!blockpage) { %>
+		
+			<input type="hidden" name="selectedFolder" value="<%= request.getAttribute("selectedFolder") %>"/>
 	
 			<!-- 
 				Folder location / Checkbox

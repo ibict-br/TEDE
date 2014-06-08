@@ -67,6 +67,11 @@ public class FolderReader {
 			{
 				allImportsAreFinished = removeImportedFolders(userReadble, serverReadble, reverseServerReadble, mappingParent);
 			}
+			else
+			{
+				List<File> listPreviousImport = listPreviousImport();
+				allImportsAreFinished = listPreviousImport != null && listPreviousImport.contains(root);
+			}
 		} 
 		catch (IOException e) 
 		{

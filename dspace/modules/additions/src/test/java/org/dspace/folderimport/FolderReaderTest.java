@@ -45,7 +45,7 @@ public class FolderReaderTest {
 	public void testBuildTree() throws IOException
 	{
 		
-		FolderReader folderReader = new FolderReader(new File("/work/dspace/install/tede/exports/20140429091811/exportados"));
+		FolderReader folderReader = new FolderReader(new File("/work/dspace/install/tede/exports/20140429081811/exportados"));
 		FolderAnalyseResult buildTreeResult = folderReader.buildTree();
 		
 		Map<Long, File> serverReadble = buildTreeResult.getServerReadble();
