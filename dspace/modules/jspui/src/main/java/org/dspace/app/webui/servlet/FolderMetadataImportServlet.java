@@ -183,7 +183,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			{
 				try
 				{
-					List<File> storageList = FileUtils.searchRecursiveAddingDirs(serverFolderData.get(selectedFolder), "dublin_core.xml", 2, false);
+					List<File> storageList = FileUtils.searchRecursiveAddingDirs(serverFolderData.get(selectedFolder), "dublin_core.xml", 2);
 					
 					for(File suitableDirectory : storageList)
 					{

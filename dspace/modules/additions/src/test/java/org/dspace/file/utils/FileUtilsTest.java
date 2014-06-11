@@ -34,14 +34,14 @@ public class FileUtilsTest {
 	@Test
 	public void testSearchRecursiveWithParent()
 	{
-		List<File> storageList = FileUtils.searchRecursiveAddingDirs(new File("/work/dspace/install/tede/exports/20140610141126"), "dublin_core.xml", 2, false);
+		List<File> storageList = FileUtils.searchRecursiveAddingDirs(new File("/work/dspace/install/tede/exports/20140610141126"), "dublin_core.xml", 2);
 		Assert.assertEquals(true, !storageList.isEmpty());
 	}
 	
 	@Test
 	public void testSearchRecusriveToFindMappings()
 	{
-		List<File> storageList = FileUtils.searchRecursiveAddingDirs(new File("/work/dspace/install/tede/imports"), FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX, 0, true);
+		List<File> storageList = FileUtils.searchRecursiveAddingDirs(new File("/work/dspace/install/tede/imports"), FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX, 0);
 		Assert.assertEquals(true, !storageList.isEmpty());
 	}
 	

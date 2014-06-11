@@ -110,7 +110,7 @@ public class FolderReader {
 					boolean allChildrenIsImported = true;
 					/** Trata-se de um diretório pai, logo, verifica se todos seus filhos já foram importados **/
 					File parentFolder = serverReadble.get(parentCandidate.getKey());
-					List<File> parentChildren = FileUtils.searchRecursiveAddingDirs(parentFolder, DUBLIN_CORE_XML_FILE_NAME, 2, false);
+					List<File> parentChildren = FileUtils.searchRecursiveAddingDirs(parentFolder, DUBLIN_CORE_XML_FILE_NAME, 2);
 					
 					for(File folderChild : parentChildren)
 					{

@@ -11,7 +11,6 @@ import java.util.List;
 
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.FileFilterUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
 
 /**
  * Dispõe de funcionalidades utilitárias para manuseio de arquivos.
@@ -42,7 +41,7 @@ public class FileUtils {
 	 * Efetua busca em diretório, considerando a penas o diretório corrente.
 	 * @param metadataFoldersCandidate Arquivo base para busca
 	 * @param searchName Critério de busca
-	 * @return Indicativo de arquivo encontrado
+	 * @return Listagem contendo arquivos encontrados com intermédio do operador "contains"
 	 */
 	public static List<File> searchFileNoDepthListReturn(File metadataFoldersCandidate, String searchName) {
 		
@@ -105,34 +104,12 @@ public class FileUtils {
 	 * As ocorrências encontradas serão registradas em lista
 	 * @param metadataFoldersCandidate Diretório a ser verificado
 	 * @param searchName Critério de busca
-	 * @param useContains Indicador para utilização de <i>contains</i> ao invés de <i>equals</i>
 	 * @return Identificador de arquivo encontrado
 	 */
-	public static List<File> searchRecursiveAddingDirs(File metadataFoldersCandidate, final String searchName, int depthToStore, boolean useContains) {
+	public static List<File> searchRecursiveAddingDirs(File metadataFoldersCandidate, final String searchName, int depthToStore) {
 		
 		List<File> listStoredValues = new ArrayList<File>();
-		Collection<File> foundFiles = null;
-		if(useContains)
-		{
-			org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, new IOFileFilter() {
-				
-				@Override
-				public boolean accept(File dir, String name) {
-					// TODO Auto-generated method stub
-					return true;
-				}
-				
-				@Override
-				public boolean accept(File file) {
-					// TODO Auto-generated method stub
-					return file.getName().contains("folderimport");
-				}
-			}, FileFilterUtils.directoryFileFilter());
-		}
-		else
-		{
-			foundFiles = org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, FileFilterUtils.nameFileFilter(useContains ? "*" + searchName + "*" : searchName, IOCase.SENSITIVE), FileFilterUtils.directoryFileFilter());
-		}
+		Collection<File> foundFiles = org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, FileFilterUtils.nameFileFilter(searchName, IOCase.SENSITIVE), FileFilterUtils.directoryFileFilter());
 		
 		for(File foundFile : foundFiles)
 		{
