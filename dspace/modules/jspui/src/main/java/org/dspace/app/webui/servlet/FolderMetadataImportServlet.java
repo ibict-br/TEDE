@@ -48,7 +48,6 @@ import org.dspace.folderimport.dto.FolderAnalyseResult;
 public class FolderMetadataImportServlet extends DSpaceServlet
 {
 
-	
 	private static final long serialVersionUID = 1L;
     private static Logger logger = Logger.getLogger(MetadataImportServlet.class);
     
@@ -64,6 +63,16 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	}};
 	
 
+	/**
+	 * Requisições "GET" serão tratadas no método {@link #doPost(HttpServletRequest, HttpServletResponse)}
+	 * @param request Requisição HTTP
+	 * @param response Resposta HTTP
+	 * @param context Contexo do DSpace
+	 * @throws ServletException
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws AuthorizeException
+	 */
 	@Override
 	protected void doDSGet(Context context, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
@@ -108,6 +117,8 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 				/** Recupera mapeamento de pastas "pai" **/
 				Object parentFolderMappingCandidate = request.getSession().getAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING);
 				List<Long> filesToExport = null;
+				
+				/** Verificação de segurança, a fim de certificar de que o mapeamento "parents" não veio nulo **/
 				if(folderStringList != null)
 				{
 					@SuppressWarnings("unchecked")
@@ -142,11 +153,11 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 
 	/**
 	 * Efetua operações comuns de apresentação de página para o usuário
-	 * @param context
-	 * @param request
-	 * @param response
-	 * @param message
-	 * @param hasError
+	 * @param request Requisição HTTP
+	 * @param response Resposta HTTP
+	 * @param context Contexo do DSpace
+	 * @param message Mensagem a ser apresentada ao usuário
+	 * @param hasError Booleano indicativo de mensagem de erro
 	 * @throws SQLException
 	 * @throws ServletException
 	 * @throws IOException
@@ -161,30 +172,33 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	}
 
 	/**
-	 * Efetua importação efetivamente
-	 * @param request 
-	 * @param response 
-	 * @param context
-	 * @param importType
-	 * @param selectedCollections
-	 * @param filesToExport
-	 * @throws Exception 
-	 * @throws IOException 
+	 * Efetua tratamento da importação propriamente dita.
+	 * @param request Requisição HTTP
+	 * @param response Resposta HTTP
+	 * @param context Contexo do DSpace
+	 * @param importType Tipo de importação a ser efeutada
+	 * @param selectedCollections Coleção (só haverá uma no array) selecionada para receber os itens
+	 * @param idsFromFilesToImport identificadores de diretórios aptos a ereceberam importação
+	 * @throws IOException
+	 * @throws Exception
 	 */
-	private void doImport(HttpServletRequest request, HttpServletResponse response, Context context, ImportType importType, Collection[] selectedCollections, List<Long> filesToExport) throws IOException, Exception {
+	private void doImport(HttpServletRequest request, HttpServletResponse response, Context context, ImportType importType, Collection[] selectedCollections, List<Long> idsFromFilesToImport) throws IOException, Exception {
 		
 		FolderMetadataProcessor myloader = new FolderMetadataProcessor();
 		@SuppressWarnings("unchecked")
 		Map<Long, File> serverFolderData = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE);
 
-		if(filesToExport != null)
+		/** Somente prossegue caso existam ids de diretórios disponívies **/
+		if(idsFromFilesToImport != null)
 		{
-			for(Long selectedFolder : filesToExport)
+			for(Long selectedFolder : idsFromFilesToImport)
 			{
 				try
 				{
+					/** Recupera diretórios dois níveis acima do arquivo "dublin_core.xml" **/
 					List<File> storageList = FileUtils.searchRecursiveAddingDirs(serverFolderData.get(selectedFolder), "dublin_core.xml", 2);
 					
+					/** Itera sob os diretórios passíveis de importação, para então, enviar a API de importação **/
 					for(File suitableDirectory : storageList)
 					{
 						myloader.addItems(context, selectedCollections, suitableDirectory.getCanonicalPath(), getMappingFileLocation(), false, 
@@ -250,7 +264,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 
 	/**
 	 * Constrói localização de arquivo de mapeamento
-	 * @return
+	 * @return String contendo padrão para criação de arquivo de mapeamento (mapping file)
 	 */
 	private String getMappingFileLocation() {
 		
@@ -266,10 +280,10 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	}
 
 	/**
-	 * Efetua ações necessárias para renderização da página
-	 * @param context
-	 * @param request
-	 * @param response
+	 * Efetua ações necessárias para renderização da página.
+	 * @param context Contexo do DSpace
+	 * @param request Requisição HTTP
+	 * @param response Resposta HTTP
 	 * @throws SQLException
 	 * @throws ServletException
 	 * @throws IOException
@@ -278,38 +292,49 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			HttpServletResponse response) throws SQLException,
 			ServletException, IOException {
 		
-    	
     	HttpSession session = request.getSession();
-
 		Long rootBaseFolderSelected = getRootSelectedFolderId(request);
-		File selectedFolder = getRootSelectedFolder(request, rootBaseFolderSelected );
-    	
-    	/** Assegura erros de conversão **/
-		if(selectedFolder != null && selectedFolder.exists())
+		
+		if(rootBaseFolderSelected != null)
 		{
-			@SuppressWarnings("unchecked")
-			Map<Long, String> userReadbleRoot = (Map<Long, String>)session.getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT);
+			File selectedFolder = getRootSelectedFolder(request, rootBaseFolderSelected);
 			
-			FolderReader folderReader = new FolderReader(selectedFolder);
-			FolderAnalyseResult buildTree = folderReader.buildTree();
-			
-			String rootImportFolder = userReadbleRoot.get(Long.valueOf(rootBaseFolderSelected));
-
-			if(!buildTree.isAllImportsAreFinished())
+			/** Assegura erros de conversão **/
+			if(selectedFolder != null && selectedFolder.exists())
 			{
-				session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY, buildTree.getUserReadble());
-				session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE, buildTree.getServerReadble());
-				session.setAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING, buildTree.getMappingParent());
+				@SuppressWarnings("unchecked")
+				Map<Long, String> userReadbleRoot = (Map<Long, String>)session.getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT);
 				
-				request.setAttribute("exportDateTime", rootImportFolder);
+				/** Inicia API responsável por idenfificar diretórios passíveis de importação e seleção do usuário **/
+				FolderReader folderReader = new FolderReader(selectedFolder);
+				FolderAnalyseResult buildTree = folderReader.buildTree();
+				
+				String rootImportFolder = userReadbleRoot.get(Long.valueOf(rootBaseFolderSelected));
+				
+				/** Caso todos os diretórios presentes na pasta de exportação já tenham sido importadas, é emitido um alerta para o usuário **/
+				if(!buildTree.isAllImportsAreFinished())
+				{
+					session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY, buildTree.getUserReadble());
+					session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE, buildTree.getServerReadble());
+					session.setAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING, buildTree.getMappingParent());
+					
+					request.setAttribute("exportDateTime", rootImportFolder);
+				}
+				else
+				{
+					/** Importação concluída, porém ainda existem diretórios aptos para importação **/
+					request.setAttribute("has-error", false);
+					request.setAttribute("blockpage", true);
+					request.setAttribute("message", FolderMetadataImportConstants.KEY_MESSAGE_ALL_FOLDERS_IMPORTED);
+					request.setAttribute("messageParam", rootImportFolder);
+				}
 			}
-			else
-			{
-				request.setAttribute("has-error", false);
-				request.setAttribute("blockpage", true);
-				request.setAttribute("message", FolderMetadataImportConstants.KEY_MESSAGE_ALL_FOLDERS_IMPORTED);
-				request.setAttribute("messageParam", rootImportFolder);
-			}
+		}
+		else
+		{
+	    	/** Um número de pasta root inválido foi informado. Provavelmente o usuário tentou re-submeter uma página após timeout de sessão **/
+	    	fillRequestAttributes(context, request);
+	    	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadaselection.jsp");
 		}
     	
     	/** Recupera todas coleçõs **/
@@ -317,12 +342,24 @@ public class FolderMetadataImportServlet extends DSpaceServlet
     	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataimport.jsp");
 	}
 	
+	/**
+	 * Recupera nome da pasta "root" do diretório de exportação.<br>
+	 * O preenchimento do referido diretório se deu na página de seleção (que pode ou não ter sido apresentada ao usuário)
+	 * @param request Requisição HTTP
+	 * @return Número identificador da pasta "root"
+	 */
 	private Long getRootSelectedFolderId(HttpServletRequest request)
 	{
     	String baseFolderNumber = request.getParameter("selectedFolder");
     	return NumberUtils.isNumber(baseFolderNumber) ? Long.valueOf(baseFolderNumber) : null;
 	}
 	
+	/**
+	 * Recupera instância de {@link File} para o identificador obtido no método {@link #getRootSelectedFolderId(HttpServletRequest)}
+	 * @param request Resquisição HTTP
+	 * @param rootBaseFolderSelected Identificador da pasta root
+	 * @return Arquivo encontrado
+	 */
 	private File getRootSelectedFolder(HttpServletRequest request, Long rootBaseFolderSelected)
 	{
 		@SuppressWarnings("unchecked")
