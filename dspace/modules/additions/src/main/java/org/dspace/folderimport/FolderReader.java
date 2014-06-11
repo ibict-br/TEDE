@@ -36,6 +36,10 @@ public class FolderReader {
 	private static final String DUBLIN_CORE_XML_FILE_NAME = "dublin_core.xml";
 	private File root;
 	
+	/**
+	 * Construtor utilizado
+	 * @param root
+	 */
 	public FolderReader(File root)
 	{
 		this.root = root;
@@ -106,8 +110,7 @@ public class FolderReader {
 					boolean allChildrenIsImported = true;
 					/** Trata-se de um diretório pai, logo, verifica se todos seus filhos já foram importados **/
 					File parentFolder = serverReadble.get(parentCandidate.getKey());
-					List<File> parentChildren = new ArrayList<File>();
-					FileUtils.searchRecursiveAddingDirs(parentChildren, parentFolder, DUBLIN_CORE_XML_FILE_NAME, 2, false);
+					List<File> parentChildren = FileUtils.searchRecursiveAddingDirs(parentFolder, DUBLIN_CORE_XML_FILE_NAME, 2, false);
 					
 					for(File folderChild : parentChildren)
 					{
@@ -151,8 +154,7 @@ public class FolderReader {
 		mappingBuilder.append(File.separator);
 		mappingBuilder.append("imports");
 		
-		List<File> foundImportMappings = new ArrayList<File>();
-		FileUtils.searchRecursiveAddingDirs(foundImportMappings, new File(mappingBuilder.toString()), FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX, 0, true);
+		List<File> foundImportMappings = FileUtils.searchFileNoDepthListReturn(new File(mappingBuilder.toString()), FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
 
 		
 		if(!foundImportMappings.isEmpty())
@@ -192,6 +194,7 @@ public class FolderReader {
      * Identifica diretórios aptos a serem marcados para importação
      * @param folderToAdd Indica, via nome, se algum conjunto de diretório deve ser considerado para compor o diretório final.
      * @return DTO contendo informações da exportação
+     * @throws EmptyFolderException 
      */
     public FolderAnalyseResult listAvailableExport(Locale locale, String folderToAdd)
     {
@@ -255,24 +258,24 @@ public class FolderReader {
      * @param mappingParent 
      */
 	private void innerBuild(File fileBase, Map<Long, String> userReadble, Map<Long, File> serverReadble, Set<Long> keyControl, Map<File, Long> reverseServerReadble, Map<Long, Long> mappingParent) {
-		
+	
 		if(!FileUtils.searchFileNoDepth(fileBase, DUBLIN_CORE_XML_FILE_NAME) && FileUtils.searchRecursive(fileBase, DUBLIN_CORE_XML_FILE_NAME))
-    	{
-    		if(!fileBase.equals(root))
-    		{
-    			long keyAssotiation = garanteeUnusedKey(keyControl);
-    			boolean isParentFolder = fileBase.getParentFile() != null && !fileBase.getParentFile().equals(root);
-    			serverReadble.put(keyAssotiation, fileBase);
-    			reverseServerReadble.put(fileBase, keyAssotiation);
-    			mappingParent.put(keyAssotiation, reverseServerReadble.get(fileBase.getParentFile()));
+		{
+			if(!fileBase.equals(root))
+			{
+				long keyAssotiation = garanteeUnusedKey(keyControl);
+				boolean isParentFolder = fileBase.getParentFile() != null && !fileBase.getParentFile().equals(root);
+				serverReadble.put(keyAssotiation, fileBase);
+				reverseServerReadble.put(fileBase, keyAssotiation);
+				mappingParent.put(keyAssotiation, reverseServerReadble.get(fileBase.getParentFile()));
 				userReadble.put(keyAssotiation, (isParentFolder ? fileBase.getParentFile().getName() + "/" : "") + fileBase.getName());
-    		}
-    		
-    		for(File currentFile : fileBase.listFiles())
-    		{
-    			innerBuild(currentFile, userReadble, serverReadble, keyControl, reverseServerReadble, mappingParent);
-    		}
-    	}
+			}
+			
+			for(File currentFile : fileBase.listFiles())
+			{
+				innerBuild(currentFile, userReadble, serverReadble, keyControl, reverseServerReadble, mappingParent);
+			}
+		}
 	}
 
 	/**

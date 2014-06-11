@@ -6,7 +6,12 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import org.apache.commons.io.IOCase;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
 
 /**
  * Dispõe de funcionalidades utilitárias para manuseio de arquivos.
@@ -32,6 +37,24 @@ public class FileUtils {
 			}
 		}
 		return false;
+	}
+	/**
+	 * Efetua busca em diretório, considerando a penas o diretório corrente.
+	 * @param metadataFoldersCandidate Arquivo base para busca
+	 * @param searchName Critério de busca
+	 * @return Indicativo de arquivo encontrado
+	 */
+	public static List<File> searchFileNoDepthListReturn(File metadataFoldersCandidate, String searchName) {
+		
+		List<File> result = new ArrayList<File>();
+		for(File metadataContainerCandidate : metadataFoldersCandidate.listFiles())
+		{
+			if(metadataContainerCandidate.getName().contains(searchName))
+			{
+				result.add(metadataContainerCandidate);
+			}
+		}
+		return result;
 	}
 	
 	
@@ -69,69 +92,73 @@ public class FileUtils {
 	 * @param metadataFoldersCandidate Diretório a ser verificado
 	 * @param searchName Critério de busca
 	 * @return Identificador de arquivo encontrado
+	 * @throws EmptyFolderException 
 	 */
-	public static boolean searchRecursive(File metadataFoldersCandidate, String searchName) {
+	public static boolean searchRecursive(File metadataFoldersCandidate, final String searchName)  {
 		
-		for(File metadataContainerCandidate : metadataFoldersCandidate.listFiles())
-		{
-			if(metadataContainerCandidate.isDirectory())
-			{
-				return searchRecursive(metadataContainerCandidate, searchName);
-			}
-			else
-			{
-				if(metadataContainerCandidate.getName().equals(searchName))
-				{
-					return true;
-				}
-			}
-		}
-		return false;
+		Collection<File> foundFiles = org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, FileFilterUtils.nameFileFilter(searchName, IOCase.SENSITIVE), FileFilterUtils.directoryFileFilter());
+		return foundFiles != null && !foundFiles.isEmpty();
 	}
 	
 	/**
 	 * Efetua busca recursiva em cima de diretório a fim de identificar existência de arquivo <b>searchName</b> nas subpastas do diretório recebido via parâmetro.<br>
 	 * As ocorrências encontradas serão registradas em lista
-	 * @param storageList Lista para armazenamento dos resultados encontrados
 	 * @param metadataFoldersCandidate Diretório a ser verificado
 	 * @param searchName Critério de busca
 	 * @param useContains Indicador para utilização de <i>contains</i> ao invés de <i>equals</i>
 	 * @return Identificador de arquivo encontrado
 	 */
-	public static void searchRecursiveAddingDirs(List<File> storageList, File metadataFoldersCandidate, String searchName, int depthToStore, boolean useContains) {
+	public static List<File> searchRecursiveAddingDirs(File metadataFoldersCandidate, final String searchName, int depthToStore, boolean useContains) {
 		
-		for(File metadataContainerCandidate : metadataFoldersCandidate.listFiles())
+		List<File> listStoredValues = new ArrayList<File>();
+		Collection<File> foundFiles = null;
+		if(useContains)
 		{
-			if(metadataContainerCandidate.isDirectory())
+			org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, new IOFileFilter() {
+				
+				@Override
+				public boolean accept(File dir, String name) {
+					// TODO Auto-generated method stub
+					return true;
+				}
+				
+				@Override
+				public boolean accept(File file) {
+					// TODO Auto-generated method stub
+					return file.getName().contains("folderimport");
+				}
+			}, FileFilterUtils.directoryFileFilter());
+		}
+		else
+		{
+			foundFiles = org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, FileFilterUtils.nameFileFilter(useContains ? "*" + searchName + "*" : searchName, IOCase.SENSITIVE), FileFilterUtils.directoryFileFilter());
+		}
+		
+		for(File foundFile : foundFiles)
+		{
+			if(depthToStore > 0)
 			{
-				searchRecursiveAddingDirs(storageList, metadataContainerCandidate, searchName, depthToStore, useContains);
+				File parentFile = null;
+				for(int i = 0; i < depthToStore; i++)
+				{
+					parentFile = (parentFile == null) ? foundFile.getParentFile() : parentFile.getParentFile();
+				}
+				if(!listStoredValues.contains(parentFile))
+				{
+					listStoredValues.add(parentFile);
+				}
 			}
 			else
 			{
-				if(!useContains ? metadataContainerCandidate.getName().equals(searchName) : metadataContainerCandidate.getName().contains(searchName))
+				if(!listStoredValues.contains(foundFile))
 				{
-					if(depthToStore > 0)
-					{
-						File parentFile = null;
-						for(int i = 0; i < depthToStore; i++)
-						{
-							parentFile = (parentFile == null) ? metadataContainerCandidate.getParentFile() : parentFile.getParentFile();
-						}
-						if(!storageList.contains(parentFile))
-						{
-							storageList.add(parentFile);
-						}
-					}
-					else
-					{
-						if(!storageList.contains(metadataContainerCandidate))
-						{
-							storageList.add(metadataContainerCandidate);
-						}
-					}
+					listStoredValues.add(foundFile);
 				}
 			}
 		}
+		
+		return listStoredValues;
+	
 	}
 	
 }

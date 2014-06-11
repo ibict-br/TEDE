@@ -57,10 +57,10 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		FolderReader folderReader = new FolderReader(root);
 		
 		FolderAnalyseResult listAvailableExport = folderReader.listAvailableExport(UIUtil.getSessionLocale(request), INTERMEDIATE_FOLDER);
-		if(listAvailableExport.getUserReadble() != null && !listAvailableExport.getUserReadble().isEmpty())
+		if(listAvailableExport != null && listAvailableExport.getUserReadble() != null && !listAvailableExport.getUserReadble().isEmpty())
 		{
 			session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT, listAvailableExport.getUserReadble());
-			session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT, listAvailableExport.getServerReadble());
+			session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT,listAvailableExport.getServerReadble());
 			
 			if(listAvailableExport.getUserReadble().size() > 1)
 			{
@@ -70,7 +70,7 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 			{
 				/** Segue para próxima página **/
 				response.sendRedirect(response.encodeRedirectURL(request
-	                    .getContextPath() + "/dspace-admin/foldermetadataimport?submit_selection"));
+	                    .getContextPath() + "/dspace-admin/foldermetadataimport?submit_selection&selectedFolder=" + getRootFolderId(listAvailableExport)));
 			}
 		}
 		else
@@ -80,6 +80,16 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 			JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataselection.jsp");
 		}
 		
+	}
+
+	private Long getRootFolderId(FolderAnalyseResult listAvailableExport) {
+		
+		for(Long rootFolderId : listAvailableExport.getServerReadble().keySet())
+		{
+			return rootFolderId;
+		}
+		
+		return null;
 	}
 
 	/**

@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,7 +81,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			SQLException, AuthorizeException 
 	{
 		
-		if(request.getParameter("submit_selection") != null)
+		if(request.getParameter("submit_selection") != null && request.getParameter("submit_import") == null)
 		{
 			/** Usuário solicitou apresentação desta página **/
 			preparePage(context, request, response);
@@ -97,21 +96,23 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			@SuppressWarnings("unchecked")
 			Map<Long, String> availableFolders = (Map<Long, String>) request.getSession().getAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY);
 			
+			/** Efetua validação no que tange o preenchimento dos campos **/
 			if(((availableFolders.size() > 0 && selectedFolders != null) || availableFolders.size() == 0) && importTypeStr != null && collectionsStr != null)
 			{
+				/** Dados inseridos em tela **/
 				List<String> folderStringList = selectedFolders != null ? Arrays.asList(selectedFolders) : null;
-				
 				Integer idImportType = NumberUtils.isNumber(importTypeStr) ? NumberUtils.createInteger(importTypeStr) : null;
 				ImportType importType = ImportType.getById(idImportType);
 				Collection[] selectedCollections = buildCollectionsArray(context, collectionsStr);
 				
+				/** Recupera mapeamento de pastas "pai" **/
 				Object parentFolderMappingCandidate = request.getSession().getAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING);
 				List<Long> filesToExport = null;
 				if(folderStringList != null)
 				{
 					@SuppressWarnings("unchecked")
 					Map<Long, Long> parentMapping = parentFolderMappingCandidate != null ? (Map<Long, Long>) parentFolderMappingCandidate : null;
-					identifiesImportableFolders(folderStringList, parentMapping);
+					filesToExport = identifiesImportableFolders(folderStringList, parentMapping);
 				}
 				
 				try 
@@ -182,8 +183,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			{
 				try
 				{
-					List<File> storageList = new ArrayList<File>();
-					FileUtils.searchRecursiveAddingDirs(storageList, serverFolderData.get(selectedFolder), "dublin_core.xml", 2, false);
+					List<File> storageList = FileUtils.searchRecursiveAddingDirs(serverFolderData.get(selectedFolder), "dublin_core.xml", 2, false);
 					
 					for(File suitableDirectory : storageList)
 					{
@@ -329,7 +329,6 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		Map<Long, File> serverMappingRoot = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT);
 		return serverMappingRoot.get(Long.valueOf(rootBaseFolderSelected));
 	}
-	
 
 	
 	/**

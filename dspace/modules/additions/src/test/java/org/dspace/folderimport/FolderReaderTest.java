@@ -21,6 +21,7 @@ public class FolderReaderTest {
 	
 	/**
 	 * Efetua teste do método {@link FolderReader#listAvailableExport()}
+	 * @throws EmptyFolderException 
 	 */
 	@Test
 	public void testListAvailableExport()
