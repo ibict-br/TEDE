@@ -29,7 +29,6 @@ import org.dspace.app.bulkedit.MetadataImportException;
 import org.dspace.app.webui.util.JSPManager;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Collection;
-import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.file.utils.FileUtils;
 import org.dspace.folderimport.FolderMetadataProcessor;
@@ -269,9 +268,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	private String getMappingFileLocation() {
 		
 		StringBuilder mappingBuilder = new StringBuilder();
-		mappingBuilder.append(ConfigurationManager.getProperty("dspace.dir"));
-		mappingBuilder.append(File.separator);
-		mappingBuilder.append("imports");
+		mappingBuilder.append(FileUtils.getImportFolderName());
 		mappingBuilder.append(File.separator);
 		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
 		mappingBuilder.append(new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()));

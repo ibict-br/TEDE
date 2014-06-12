@@ -11,9 +11,10 @@ import java.util.List;
 
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.dspace.core.ConfigurationManager;
 
 /**
- * Dispõe de funcionalidades utilitárias para manuseio de arquivos.
+ * Dispõe de funcionalidades utilitárias para manuseio de arquivos e diretórios.
  * @author Márcio Ribeiro Gurgel do Amaral
  *
  */
@@ -56,16 +57,29 @@ public class FileUtils {
 		return result;
 	}
 	
+	/**
+	 * Constrói string representativa da localização do diretório de importações
+	 * @return String representativa, conforme supracitado
+	 */
+	public static String getImportFolderName() {
+		StringBuilder mappingImportFolder = new StringBuilder();
+		mappingImportFolder.append(ConfigurationManager.getProperty("dspace.dir"));
+		mappingImportFolder.append(File.separator);
+		mappingImportFolder.append("imports");
+		return mappingImportFolder.toString();
+	}
+	
 	
 	/**
-	 * 
-	 * @param file
-	 * @param linesToRead
-	 * @return
+	 * Efetua leitura de arquivo de <b>texto</b>, respeitando quantidade de linhas a serem lidas
+	 * @param file Arquivo a ser lido
+	 * @param linesToRead Número representativo de linhas a serem lidas
+	 * @return Resgistros presentes no arquivo recebido
 	 * @throws IOException 
 	 */
 	public static List<String> readFile(File file, int linesToRead) throws IOException
 	{
+		/** Deve ser arquivo **/
 		if(!file.isDirectory())
 		{
 			List<String> foundLines = new ArrayList<String>();
@@ -102,21 +116,23 @@ public class FileUtils {
 	/**
 	 * Efetua busca recursiva em cima de diretório a fim de identificar existência de arquivo <b>searchName</b> nas subpastas do diretório recebido via parâmetro.<br>
 	 * As ocorrências encontradas serão registradas em lista
-	 * @param metadataFoldersCandidate Diretório a ser verificado
-	 * @param searchName Critério de busca
-	 * @return Identificador de arquivo encontrado
+	 * @param initialFolder Diretório base para a busca
+	 * @param searchName Nome a ser utilizado para a busca
+	 * @param numberOfParentsToReach Quantidade de diretórios 
+	 * @return
 	 */
-	public static List<File> searchRecursiveAddingDirs(File metadataFoldersCandidate, final String searchName, int depthToStore) {
+	public static List<File> searchRecursiveAddingDirs(File initialFolder, final String searchName, int numberOfParentsToReach) {
 		
 		List<File> listStoredValues = new ArrayList<File>();
-		Collection<File> foundFiles = org.apache.commons.io.FileUtils.listFiles(metadataFoldersCandidate, FileFilterUtils.nameFileFilter(searchName, IOCase.SENSITIVE), FileFilterUtils.directoryFileFilter());
+		Collection<File> foundFiles = org.apache.commons.io.FileUtils.listFiles(initialFolder, FileFilterUtils.nameFileFilter(searchName, IOCase.SENSITIVE), FileFilterUtils.directoryFileFilter());
 		
 		for(File foundFile : foundFiles)
 		{
-			if(depthToStore > 0)
+			/** Usuário da API informou profundidade de diretórios **/
+			if(numberOfParentsToReach > 0)
 			{
 				File parentFile = null;
-				for(int i = 0; i < depthToStore; i++)
+				for(int i = 0; i < numberOfParentsToReach; i++)
 				{
 					parentFile = (parentFile == null) ? foundFile.getParentFile() : parentFile.getParentFile();
 				}

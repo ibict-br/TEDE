@@ -28,12 +28,16 @@ import org.dspace.folderimport.dto.FolderAnalyseResult;
 
 
 /**
+ * Servlet voltada para o tratamento de requisições iniciais a funcionalidade de importação de itens via diretórios. <br>
+ * Em casos onde exista somente um diretório de exportação, a servlet irá atuar como <i>bypass</i>, redirecionando para a próxima
+ * servlet ({@link FolderMetadataImportServlet#doDSGet(Context, HttpServletRequest, HttpServletResponse)})
  * @author Márcio Ribeiro Gurgel do Amaral
  *
  */
 public class FolderMetadataSelectionServlet extends DSpaceServlet
 {
 
+	private static final int BASE_NUMBER_MORE_THAN_ONE_EXPORT = 1;
 	private static final String INTERMEDIATE_FOLDER = "exportados";
 	private static final long serialVersionUID = 1L;
 
@@ -57,18 +61,21 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		FolderReader folderReader = new FolderReader(root);
 		
 		FolderAnalyseResult listAvailableExport = folderReader.listAvailableExport(UIUtil.getSessionLocale(request), INTERMEDIATE_FOLDER);
+		
+		/** Certificação da existência de diretórios e importação **/
 		if(listAvailableExport != null && listAvailableExport.getUserReadble() != null && !listAvailableExport.getUserReadble().isEmpty())
 		{
 			session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT, listAvailableExport.getUserReadble());
 			session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT,listAvailableExport.getServerReadble());
 			
-			if(listAvailableExport.getUserReadble().size() > 1)
+			/** Existe mais de um diretório para importação, solicita ao usuário que informe qual diretório será importado **/
+			if(listAvailableExport.getUserReadble().size() > BASE_NUMBER_MORE_THAN_ONE_EXPORT)
 			{
 		    	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataselection.jsp");
 			}
 			else
 			{
-				/** Segue para próxima página **/
+				/** Em caso de existência de somente um diretório de exportação, prossegue para a próxima página **/
 				response.sendRedirect(response.encodeRedirectURL(request
 	                    .getContextPath() + "/dspace-admin/foldermetadataimport?submit_selection&selectedFolder=" + getRootFolderId(listAvailableExport)));
 			}
@@ -82,6 +89,11 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		
 	}
 
+	/**
+	 * Método a ser acionado em situações onde exista somente <b>uma</b> ocorrência de diretório de exportação.
+	 * @param listAvailableExport Mapa de diretórios disponíveis o qual deverá possuir somente uma ocorrência de registro de diretório
+	 * @return Identificador dado ao diretório de exportação
+	 */
 	private Long getRootFolderId(FolderAnalyseResult listAvailableExport) {
 		
 		for(Long rootFolderId : listAvailableExport.getServerReadble().keySet())
@@ -99,7 +111,7 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 	protected void doDSPost(Context context, HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException,
 			SQLException, AuthorizeException {
-		// TODO Auto-generated method stub
+		
 		super.doDSPost(context, request, response);
 	}
 

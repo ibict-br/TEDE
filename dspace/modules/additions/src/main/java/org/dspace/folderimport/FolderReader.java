@@ -17,7 +17,6 @@ import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.log4j.Logger;
-import org.dspace.core.ConfigurationManager;
 import org.dspace.file.utils.FileUtils;
 import org.dspace.folderimport.constants.FolderMetadataImportConstants;
 import org.dspace.folderimport.dto.FolderAnalyseResult;
@@ -88,20 +87,35 @@ public class FolderReader {
 		return folderAnalyseResult;
     }
 
+
+    /**
+     * Remove dos mapas diretórios os quais já foram importados.
+	 * @param userReadble Mapa de dados legíveis ao usuário
+	 * @param serverReadble Mapa de dados restritos do servidor
+	 * @param reverseServerReadble Inverso de <code>serverReadble</code>
+	 * @param mappingParent Mapa de controle de arquivos pais/filhos
+     * @return Booleano indicativo da existência de diretórios remanescentes para importação
+     * @throws IOException
+     */
 	private boolean removeImportedFolders(Map<Long, String> userReadble, Map<Long, File> serverReadble, 
 			Map<File, Long> reverseServerReadble, Map<Long, Long> mappingParent) throws IOException {
+		
 		List<File> listPreviousImport = listPreviousImport();
 		
 		Map<Long, Long> mappingParentCopy = new HashMap<Long, Long>(mappingParent);
 		boolean hasInitialContent = !serverReadble.isEmpty();
 		
+		/** Existem diretórios já importados **/
 		if(listPreviousImport != null && !listPreviousImport.isEmpty())
 		{
+			
+			/** Remove diretório dos mapas de controle **/
 			for(File importedDir : listPreviousImport)
 			{
 				clearMaps(userReadble, serverReadble, reverseServerReadble, mappingParent, reverseServerReadble.get(importedDir));
 			}
 			
+			/** Itera cópia de "mappingParent" a fim de verificar se algum diretório pai teve todos seus filhos importados  **/
 			for(Map.Entry<Long, Long> parentCandidate : mappingParentCopy.entrySet())
 			{
 				
@@ -121,6 +135,7 @@ public class FolderReader {
 						}
 					}
 					
+					/** Todos os diretórios foram importados, logo o diretório pai não deve ser listado para importação **/
 					if(allChildrenIsImported)
 					{
 						clearMaps(userReadble, serverReadble, reverseServerReadble, mappingParent, parentCandidate.getKey());
@@ -133,11 +148,17 @@ public class FolderReader {
 		return hasInitialContent && serverReadble.isEmpty();
 	}
 
-	private void clearMaps(Map<Long, String> userReadble,
-			Map<Long, File> serverReadble,
+	/**
+	 * Efetua limpeza de registro em mapas a fim de permitir novo preenchimento.
+	 * @param userReadble Mapa de dados legíveis ao usuário
+	 * @param serverReadble Mapa de dados restritos do servidor
+	 * @param reverseServerReadble Inverso de <code>serverReadble</code>
+	 * @param mappingParent Mapa de controle de arquivos pais/filhos
+	 * @param idToRemove Identificador de diretório a ser desassociado dos mapas
+	 */
+	private void clearMaps(Map<Long, String> userReadble, Map<Long, File> serverReadble,
 			Map<File, Long> reverseServerReadble,
 			Map<Long, Long> mappingParent, Long idToRemove) {
-		
 		
 		reverseServerReadble.remove(serverReadble.get(idToRemove));
 		userReadble.remove(idToRemove);
@@ -145,16 +166,26 @@ public class FolderReader {
 		mappingParent.remove(idToRemove);
 	}
 	
-	private List<File> listPreviousImport()
-			throws IOException {
-		List<File> folderWithImport = null;
-    	/** Identifica diretórios já carregados **/
-		StringBuilder mappingBuilder = new StringBuilder();
-		mappingBuilder.append(ConfigurationManager.getProperty("dspace.dir"));
-		mappingBuilder.append(File.separator);
-		mappingBuilder.append("imports");
+	
+	/**
+	 * Lista diretórios os quais já receberam processo de importação. <br>
+	 * Esse processo de dá por meio de leitura dos arquivos registrados em <code>[dspace.dir]/imports/folderimport-*</code>, onde
+	 * a primeira linha dos referidos arquivos, representa o diretório que originou a importação.
+	 * @return Diretórios já importados (ou nulo caso não existam ocorrências de diretórios).
+	 * @throws IOException
+	 */
+	private List<File> listPreviousImport() throws IOException {
 		
-		List<File> foundImportMappings = FileUtils.searchFileNoDepthListReturn(new File(mappingBuilder.toString()), FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
+		List<File> folderWithImport = null;
+    	
+		/** Identifica diretórios já carregados **/
+		File importFolder = new File(FileUtils.getImportFolderName());
+		if(!importFolder.exists())
+		{
+			importFolder.mkdirs();
+		}
+		
+		List<File> foundImportMappings = FileUtils.searchFileNoDepthListReturn(importFolder, FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
 
 		
 		if(!foundImportMappings.isEmpty())
@@ -188,7 +219,7 @@ public class FolderReader {
 		
 		return folderWithImport;
 	}
-    
+
     
     /**
      * Identifica diretórios aptos a serem marcados para importação
