@@ -9,6 +9,7 @@ public class FolderMetadataImportConstants {
 
 	
 	public static final String FOLDERIMPORT_MAPPING_FILE_PREFIX = "folderimport-";
+	public static final String FOLDERIMPORT_ERROR_MAPPING_FILE_PREFIX = "_error";
 	public static String USER_DATA_READBLE_KEY_ROOT = "userDataSelectionRoot";
 	public static String SERVER_DATA_READBLE_KEY_ROOT = "serverReadbleRoot";
 	public static String USER_DATA_READBLE_KEY = "userDataSelection";

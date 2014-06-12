@@ -10,7 +10,6 @@ package org.dspace.app.webui.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -200,7 +199,8 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 					/** Itera sob os diretórios passíveis de importação, para então, enviar a API de importação **/
 					for(File suitableDirectory : storageList)
 					{
-						myloader.addItems(context, selectedCollections, suitableDirectory.getCanonicalPath(), getMappingFileLocation(), false, 
+						Date currentDate = new Date();
+						myloader.addItems(context, selectedCollections, suitableDirectory.getCanonicalPath(), FileUtils.getMappingFileLocation(currentDate), FileUtils.getErrorFolderLocation(currentDate), false, 
 								importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
 					}
 				}
@@ -213,7 +213,8 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		}
 		else
 		{
-			myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getRootSelectedFolderId(request)).getCanonicalPath(), getMappingFileLocation(), false, 
+			Date currentDate = new Date();
+			myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getRootSelectedFolderId(request)).getCanonicalPath(),  FileUtils.getMappingFileLocation(currentDate), FileUtils.getErrorFolderLocation(currentDate), false, 
 					importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
 
 		}
@@ -261,20 +262,6 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		return filesToExport;
 	}
 
-	/**
-	 * Constrói localização de arquivo de mapeamento
-	 * @return String contendo padrão para criação de arquivo de mapeamento (mapping file)
-	 */
-	private String getMappingFileLocation() {
-		
-		StringBuilder mappingBuilder = new StringBuilder();
-		mappingBuilder.append(FileUtils.getImportFolderName());
-		mappingBuilder.append(File.separator);
-		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
-		mappingBuilder.append(new SimpleDateFormat("yyyyMMddhhmmss").format(new Date()));
-		
-		return mappingBuilder.toString();
-	}
 
 	/**
 	 * Efetua ações necessárias para renderização da página.

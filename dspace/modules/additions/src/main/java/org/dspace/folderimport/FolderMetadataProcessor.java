@@ -84,6 +84,8 @@ public class FolderMetadataProcessor
     private boolean isQuiet = false;
 
     private PrintWriter mapOut = null;
+    
+    private PrintWriter errorOut = null;
 
     // File listing filter to look for metadata files
     private static FilenameFilter metadataFileFilter = new FilenameFilter()
@@ -106,7 +108,7 @@ public class FolderMetadataProcessor
 
 
     public void addItems(Context c, Collection[] mycollections,
-            String sourceDir, String mapFile, boolean template, boolean isTestParam, boolean isResume, boolean useWorkflowSendEmailParam, boolean useWorkflowParam) throws Exception
+            String sourceDir, String mapFile, String errorFile, boolean template, boolean isTestParam, boolean isResume, boolean useWorkflowSendEmailParam, boolean useWorkflowParam) throws Exception
     {
     	this.isTest = isTestParam;
     	this.useWorkflow = useWorkflowParam;
@@ -159,15 +161,29 @@ public class FolderMetadataProcessor
 
         for (int i = 0; i < dircontents.length; i++)
         {
-            if (skipItems.containsKey(dircontents[i]))
+            String dirContent = dircontents[i];
+			if (skipItems.containsKey(dirContent))
             {
-                log.info("Skipping import of " + dircontents[i]);
+                log.info("Skipping import of " + dirContent);
             }
             else
             {
-                addItem(c, mycollections, sourceDir, dircontents[i], mapOut, template);
-                log.info(i + " " + dircontents[i]);
-                c.clearCache();
+            	try
+            	{
+            		addItem(c, mycollections, sourceDir, dirContent, mapOut, template);
+            		log.info(i + " " + dirContent);
+            		c.clearCache();
+            	}
+            	catch(Exception e)
+            	{
+            		/** Não se faz necessário registro em arquivo de log **/
+            		if(errorOut == null)
+            		{
+            			errorOut = new PrintWriter(new FileWriter(new File(errorFile), false));
+            		}
+            		
+            		errorOut.append(sourceDir + File.separator + dirContent + "\n");
+            	}
             }
         }
         
@@ -175,6 +191,12 @@ public class FolderMetadataProcessor
         {
         	mapOut.flush();
         	mapOut.close();
+        }
+        
+        if(errorOut != null)
+        {
+        	errorOut.flush();
+        	errorOut.close();
         }
     }
 

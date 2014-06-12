@@ -5,13 +5,16 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.dspace.core.ConfigurationManager;
+import org.dspace.folderimport.constants.FolderMetadataImportConstants;
 
 /**
  * Dispõe de funcionalidades utilitárias para manuseio de arquivos e diretórios.
@@ -67,6 +70,40 @@ public class FileUtils {
 		mappingImportFolder.append(File.separator);
 		mappingImportFolder.append("imports");
 		return mappingImportFolder.toString();
+	}
+	
+	
+	/**
+	 * Constrói localização de arquivo de mapeamento
+	 * @param date Data a ser utilizada para nomeação do arquivo
+	 * @return String contendo padrão para criação de arquivo de mapeamento (mapping file)
+	 */
+	public static String getMappingFileLocation(Date date) {
+		
+		StringBuilder mappingBuilder = new StringBuilder();
+		mappingBuilder.append(FileUtils.getImportFolderName());
+		mappingBuilder.append(File.separator);
+		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
+		mappingBuilder.append(new SimpleDateFormat("yyyyMMddhhmmssSSSZ").format(date));
+		
+		return mappingBuilder.toString();
+	}
+	
+	/**
+	 * Constrói localização de arquivo de registro de erros
+	 * @param date Data a ser utilizada para nomeação do arquivo
+	 * @return String contendo padrão para criação de arquivo de mapeamento (mapping file)
+	 */
+	public static String getErrorFolderLocation(Date date) {
+		
+		StringBuilder mappingBuilder = new StringBuilder();
+		mappingBuilder.append(FileUtils.getImportFolderName());
+		mappingBuilder.append(File.separator);
+		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
+		mappingBuilder.append(new SimpleDateFormat("yyyyMMddhhmmssSSSZ").format(date));
+		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_ERROR_MAPPING_FILE_PREFIX);
+		
+		return mappingBuilder.toString();
 	}
 	
 	
