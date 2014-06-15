@@ -1187,7 +1187,7 @@ public class FolderMetadataProcessor
      * @param node
      * @return
      */
-    private String getStringValue(Node node)
+    public static String getStringValue(Node node)
     {
         String value = node.getNodeValue();
 
@@ -1212,7 +1212,7 @@ public class FolderMetadataProcessor
      * 
      * @return the DOM representation of the XML file
      */
-    private static Document loadXML(String filename) throws IOException,
+    public static Document loadXML(String filename) throws IOException,
             ParserConfigurationException, SAXException
     {
         DocumentBuilder builder = DocumentBuilderFactory.newInstance()

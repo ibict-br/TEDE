@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
 import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.FileFilterUtils;
@@ -43,14 +45,14 @@ public class FileUtils {
 	}
 	/**
 	 * Efetua busca em diretório, considerando a penas o diretório corrente.
-	 * @param metadataFoldersCandidate Arquivo base para busca
+	 * @param file Arquivo base para busca
 	 * @param searchName Critério de busca
 	 * @return Listagem contendo arquivos encontrados com intermédio do operador "contains"
 	 */
-	public static List<File> searchFileNoDepthListReturn(File metadataFoldersCandidate, String searchName) {
+	public static List<File> searchFileNoDepthListReturn(File file, String searchName) {
 		
 		List<File> result = new ArrayList<File>();
-		for(File metadataContainerCandidate : metadataFoldersCandidate.listFiles())
+		for(File metadataContainerCandidate : file.listFiles())
 		{
 			if(metadataContainerCandidate.getName().contains(searchName))
 			{
@@ -101,7 +103,7 @@ public class FileUtils {
 		mappingBuilder.append(File.separator);
 		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_MAPPING_FILE_PREFIX);
 		mappingBuilder.append(new SimpleDateFormat("yyyyMMddhhmmssSSSZ").format(date));
-		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_ERROR_MAPPING_FILE_PREFIX);
+		mappingBuilder.append(FolderMetadataImportConstants.FOLDERIMPORT_ERROR_MAPPING_FILE_SUFFIX);
 		
 		return mappingBuilder.toString();
 	}
@@ -189,6 +191,23 @@ public class FileUtils {
 		
 		return listStoredValues;
 	
+	}
+	
+	/**
+	 * Garante unicidade na obtenção de de números randômicos únicos
+	 * @param keyControl Controle de chaves
+	 * @return Chave única
+	 */
+	public static long garanteeUnusedKey(Set<Long> keyControl) {
+		
+		long keyAssotiation = new Random().nextLong();
+		if(keyControl.contains(keyAssotiation))
+		{
+			return garanteeUnusedKey(keyControl);
+		}
+		
+		keyControl.add(keyAssotiation);
+		return keyAssotiation;
 	}
 	
 }
