@@ -306,6 +306,11 @@
     <servlet-name>foldermetadataimport</servlet-name>
     <servlet-class>org.dspace.app.webui.servlet.FolderMetadataImportServlet</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>foldermetadataerror</servlet-name>
+    <servlet-class>org.dspace.app.webui.servlet.FolderMetadataErrorServlet</servlet-class>
+  </servlet>
 
   <servlet>
     <servlet-name>batchmetadataimport</servlet-name>
@@ -656,6 +661,11 @@
   <servlet-mapping>
     <servlet-name>foldermetadataimport</servlet-name>
     <url-pattern>/dspace-admin/foldermetadataimport</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>foldermetadataerror</servlet-name>
+    <url-pattern>/dspace-admin/foldermetadataerror</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

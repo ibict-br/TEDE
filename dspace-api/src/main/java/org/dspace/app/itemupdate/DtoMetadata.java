@@ -22,7 +22,7 @@ import org.dspace.content.Item;
  * 
  *
  */
-class DtoMetadata 
+public class DtoMetadata 
 {
 	final String schema;   
 	final String element;

@@ -12,7 +12,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -240,7 +239,7 @@ public class FolderReader {
     			boolean metadataFound = FileUtils.searchRecursive(folder, DUBLIN_CORE_XML_FILE_NAME);
     			if(metadataFound)
     			{
-    				long garanteeUnsedKey = garanteeUnusedKey(keyControl);
+    				long garanteeUnsedKey = FileUtils.garanteeUnusedKey(keyControl);
 					userReadble.put(garanteeUnsedKey, formatFolderName(folder, locale));
 					try {
 						serverReadble.put(garanteeUnsedKey, folderToAdd != null ? new File(folder.getCanonicalPath() + File.separatorChar + folderToAdd) : folder);
@@ -294,7 +293,7 @@ public class FolderReader {
 		{
 			if(!fileBase.equals(root))
 			{
-				long keyAssotiation = garanteeUnusedKey(keyControl);
+				long keyAssotiation = FileUtils.garanteeUnusedKey(keyControl);
 				boolean isParentFolder = fileBase.getParentFile() != null && !fileBase.getParentFile().equals(root);
 				serverReadble.put(keyAssotiation, fileBase);
 				reverseServerReadble.put(fileBase, keyAssotiation);
@@ -309,21 +308,5 @@ public class FolderReader {
 		}
 	}
 
-	/**
-	 * Garante unicidade na obtenção de de números randômicos únicos
-	 * @param keyControl Controle de chaves
-	 * @return Chave única
-	 */
-	private long garanteeUnusedKey(Set<Long> keyControl) {
-		
-		long keyAssotiation = new Random().nextLong();
-		if(keyControl.contains(keyAssotiation))
-		{
-			return garanteeUnusedKey(keyControl);
-		}
-		
-		keyControl.add(keyAssotiation);
-		return keyAssotiation;
-	}
     
 }
