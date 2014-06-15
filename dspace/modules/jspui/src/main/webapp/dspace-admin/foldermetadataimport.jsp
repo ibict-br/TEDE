@@ -101,10 +101,13 @@
 				<%
 					for (Map.Entry<Long, String> typeEntry : userDataSelection.entrySet()) {
 				%>
-				<div class="input-group">
+				<div class="input-group" style="<%= parentFolderMapping.get(typeEntry.getKey()) != null ? "padding-left: 40px;" : "" %>">
 					<span class="input-group-addon"> 
 					
-					<input type="checkbox" type="checkbox" id="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>" name="selected_folders" value="<%= typeEntry.getKey() %>" />
+					<input type="checkbox" type="checkbox" 
+						id="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>" 
+						name="selected_folders" value="<%= typeEntry.getKey() %>" 
+						/>
 					</span> 
 						<label class="form-control" for="folder_<%=typeEntry.getKey() + (parentFolderMapping.get(typeEntry.getKey()) != null ? "_parent_" + parentFolderMapping.get(typeEntry.getKey()) : "")%>"><%=typeEntry.getValue()%>
 					</label>
