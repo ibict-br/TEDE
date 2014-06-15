@@ -51,44 +51,47 @@
 	
 	<% if(parentFolderMapping != null && !parentFolderMapping.isEmpty())  {%>
 	
-		 <table class="table" summary="Items not imported">
-		 	
-		 	 <tr>
-	              <th class="oddRowOddCol">
-	                	<fmt:message key="jsp.dspace-admin.foldermetadataerror.table.item" /> 
-	              </th>
-	              <th class="oddRowOddCol">
-	                	<fmt:message key="jsp.dspace-admin.foldermetadataerror.table.files" /> 
-	              </th>
-	         </tr>
-	         
+		<div class="row" style="margin-top: 40px;">
+			
+			<div class="panel panel-primary">
+				<div class="panel-heading text-center">
+                	
+                	<fmt:message key="jsp.dspace-admin.foldermetadataerror.table.item" /> 
+					<span class="pull-right">
+		            	<fmt:message key="jsp.dspace-admin.foldermetadataerror.table.files" /> 
+					</span>
+					   	
+	         </div>
+	         <ul class="list-group">
 	         <% for(Map.Entry<Long, ErrorImportRegistry> currentError :  parentFolderMapping.entrySet())  
 	         { 
 	         	ErrorImportRegistry currentValue = currentError.getValue();
 	         %>
 	         	
-       	      	<tr>
-         			<td>
-         				<%= currentValue.getTitle() %>
-         			</td>
-         			<td>
-         				<% 	int i = 0;
-         					for(Map.Entry<Long, File> currentFile :  currentValue.getItemFiles().entrySet())  { %>
-         				
-         					<span>
-         						<% i++; %>
-         						<a href="<%= request.getContextPath() + "/dspace-admin/foldermetadataerror?item=" + currentError.getKey() + "&file=" + currentFile.getKey() %>"><%= currentFile.getValue().getName() %></a>
-         						<% if(i < currentValue.getItemFiles().size())  { %>
-         							<br/>
-       							<% } %>
-         					</span>
-         				
-         				<% } %>
-         			</td>
-				</tr>
+       	      	<li class="list-group-item">
+       	      		<table style="width: 100%">
+       	      			<tr>
+       	      				<td>
+		         				<%= currentValue.getTitle() %>
+       	      				</td>
+       	      				<td style="text-align: right;">
+		         				<% 	int i = 0;
+		         					for(Map.Entry<Long, File> currentFile :  currentValue.getItemFiles().entrySet())  { %>
+		         				
+		        						<% i++; %>
+		        						<a href="<%= request.getContextPath() + "/dspace-admin/foldermetadataerror?item=" + currentError.getKey() + "&file=" + currentFile.getKey() %>"><%= currentFile.getValue().getName() %></a>
+		        						<% if(i < currentValue.getItemFiles().size())  { %>
+		        							<br/>
+		      							<% } %>
+		         				
+		         				<% } %>
+       	      				</td>
+       	      			</tr>
+       	      		</table>
+				</li>
 	         
 		 	<% } %>
-		 </table>
+		 </ul>
 		 
 	<% } %>
 
