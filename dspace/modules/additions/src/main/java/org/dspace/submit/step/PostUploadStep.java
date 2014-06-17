@@ -2,6 +2,8 @@ package org.dspace.submit.step;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,59 +19,63 @@ import org.dspace.core.Context;
 import org.dspace.submit.AbstractProcessingStep;
 
 /**
- * 
+ * Efetua rotinas necessárias "pós upload". <br>
+ * Dentre as principais funcionalidades:
+ * <ul>
+ * 	<li>Registro de <i>mimeTypes</i> no metadado <i>dc.format</i></li>
+ * 	<li>Registro do metadado <i>dc.rights</i> de acordo com embargo</li>
+ * </ul>
  * @author Márcio Ribeiro Gurgel do Amaral (marcio.rga@gmail.com)
- *
+ * 
  */
 public class PostUploadStep extends AbstractProcessingStep {
 
-	private static final int NO_PRIMARY_BISTREAM = -1;
 	private static final int NO_ITEM_OR_PAGES = 0;
 
 	/**
-	 * @see AbstractProcessingStep#doProcessing(Context, HttpServletRequest, HttpServletResponse, SubmissionInfo)
+	 * @see AbstractProcessingStep#doProcessing(Context, HttpServletRequest,
+	 *      HttpServletResponse, SubmissionInfo)
 	 */
 	@Override
 	public int doProcessing(Context context, HttpServletRequest request,
 			HttpServletResponse response, SubmissionInfo subInfo)
 			throws ServletException, IOException, SQLException,
 			AuthorizeException {
+
+		Item item = subInfo.getSubmissionItem().getItem();
+
+		item.clearMetadata("dc", "format", null, Item.ANY);
+		Set<String> uniqueFormats = new HashSet<String>();
+
+		Bundle[] originalBundles = item.getBundles("ORIGINAL");
 		
-		 Item item = subInfo.getSubmissionItem().getItem();
-		 
-		 int primaryBitstreamId = NO_PRIMARY_BISTREAM;
-		 
-	     for(Bundle bundle : item.getBundles("ORIGINAL"))
-         {
-	    	 /** Garante que verificação não será feita a toda iteração de bundles **/
-	    	 if(primaryBitstreamId == NO_PRIMARY_BISTREAM && bundle.getPrimaryBitstreamID() != NO_PRIMARY_BISTREAM)
-	    	 {
-	    		primaryBitstreamId = bundle.getPrimaryBitstreamID();
-	    	 }
-         	
-	    	 for(Bitstream bitstream : bundle.getBitstreams())
-     		 {
-         		if((bitstream.getID() == primaryBitstreamId) || 
-         				/** Caso bitstream seja igual a zero, significa que não houve seleção de bistream primário, logo o formato do primeiro bundle é selecionado **/
-         				(primaryBitstreamId == NO_PRIMARY_BISTREAM))
-         		{
-         			BitstreamFormat format = bitstream.getFormat();
-         			if(format != null)
-         			{
-         				item.clearMetadata("dc", "format", null, Item.ANY);
-         				item.addMetadata("dc", "format", null, Item.ANY, format.getMIMEType());
-         				item.update();
-         			}
-         			break;
-         		}
-         	}
-         }
+		/** Itera sob bundles a fim de identificar unicidade de formatos **/
+		for (Bundle bundle : originalBundles) 
+		{
+			for (Bitstream bitstream : bundle.getBitstreams())
+			{
+				BitstreamFormat format = bitstream.getFormat();
+				if (format != null) 
+				{
+					uniqueFormats.add(format.getMIMEType());
+				}
+			}
+		}
+
+		/** Itera sob os formatos encontrados **/
+		for (String uniqueFormat : uniqueFormats) 
+		{
+			item.addMetadata("dc", "format", null, Item.ANY, uniqueFormat);
+		}
 		
+		item.update();
+
 		return NO_ITEM_OR_PAGES;
 	}
 
 	/**
-	 * @see AbstractProcessingStep#getNumberOfPages(HttpServletRequest, SubmissionInfo)
+	 * @see AbstractProcessingStep#getNumberOfPages(HttpServletRequest,
+	 *      SubmissionInfo)
 	 */
 	@Override
 	public int getNumberOfPages(HttpServletRequest request,
