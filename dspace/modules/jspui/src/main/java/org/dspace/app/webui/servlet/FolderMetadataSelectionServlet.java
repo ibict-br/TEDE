@@ -37,6 +37,7 @@ import org.dspace.folderimport.dto.FolderAnalyseResult;
 public class FolderMetadataSelectionServlet extends DSpaceServlet
 {
 
+	private static final String DSPACE_ADMIN_FOLDERMETADATASELECTION_JSP = "/dspace-admin/foldermetadataselection.jsp";
 	private static final int BASE_NUMBER_MORE_THAN_ONE_EXPORT = 1;
 	private static final String INTERMEDIATE_FOLDER = "exportados";
 	private static final long serialVersionUID = 1L;
@@ -66,12 +67,12 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		if(listAvailableExport != null && listAvailableExport.getUserReadble() != null && !listAvailableExport.getUserReadble().isEmpty())
 		{
 			session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT, listAvailableExport.getUserReadble());
-			session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT,listAvailableExport.getServerReadble());
+			session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT, listAvailableExport.getServerReadble());
 			
 			/** Existe mais de um diretório para importação, solicita ao usuário que informe qual diretório será importado **/
 			if(listAvailableExport.getUserReadble().size() > BASE_NUMBER_MORE_THAN_ONE_EXPORT)
 			{
-		    	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataselection.jsp");
+		    	JSPManager.showJSP(request, response, DSPACE_ADMIN_FOLDERMETADATASELECTION_JSP);
 			}
 			else
 			{
@@ -84,7 +85,7 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		{
 			request.setAttribute("has-error", Boolean.TRUE);
 			request.setAttribute("message", FolderMetadataImportConstants.KEY_MESSAGE_NO_FOLDER_EXISTS);
-			JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataselection.jsp");
+			JSPManager.showJSP(request, response, DSPACE_ADMIN_FOLDERMETADATASELECTION_JSP);
 		}
 		
 	}

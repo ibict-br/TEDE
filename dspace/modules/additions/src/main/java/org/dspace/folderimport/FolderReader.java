@@ -6,6 +6,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.log4j.Logger;
@@ -231,7 +234,15 @@ public class FolderReader {
     	Map<Long, String> userReadble = new LinkedHashMap<Long, String>();
     	Map<Long, File> serverReadble = new LinkedHashMap<Long, File>();
     	Set<Long> keyControl = new HashSet<Long>();
+    	Map<Date, File> userReadbleOder = new TreeMap<Date, File>(new Comparator<Date>() {
 
+			@Override
+			public int compare(Date o1, Date o2) {
+				return o2.compareTo(o1);
+			}
+		});
+
+    	/** Itera visando ordenação do mapa **/
     	for(File folder : root.listFiles())
     	{
     		if(folder.isDirectory())
@@ -239,15 +250,30 @@ public class FolderReader {
     			boolean metadataFound = FileUtils.searchRecursive(folder, DUBLIN_CORE_XML_FILE_NAME);
     			if(metadataFound)
     			{
-    				long garanteeUnsedKey = FileUtils.garanteeUnusedKey(keyControl);
-					userReadble.put(garanteeUnsedKey, formatFolderName(folder, locale));
-					try {
-						serverReadble.put(garanteeUnsedKey, folderToAdd != null ? new File(folder.getCanonicalPath() + File.separatorChar + folderToAdd) : folder);
-					} catch (IOException e) {
-						logger.error(e.getMessage(), e);
-					}
+    				/** Todos diretórios precisam ser compostos de números que presentam data no padrão yyyyMMddhhmmss **/
+    				Date dateIntoFolder = getDateIntoFolder(folder, locale);
+    				if(dateIntoFolder != null)
+    				{
+    					userReadbleOder.put(dateIntoFolder, folder);
+    				}
     			}
     		}
+    	}
+    	
+    	/** Registra os valores nos mapas relacionados **/
+    	for(Map.Entry<Date, File> serverReadbleEntry : userReadbleOder.entrySet())
+    	{
+    		long garanteeUnsedKey = FileUtils.garanteeUnusedKey(keyControl);
+			File folder = serverReadbleEntry.getValue();
+			userReadble.put(garanteeUnsedKey, formatFolderName(serverReadbleEntry.getKey(), locale));
+			try 
+			{
+				serverReadble.put(garanteeUnsedKey, folderToAdd != null ? new File(folder.getCanonicalPath() + File.separatorChar + folderToAdd) : folder);
+			} 
+			catch (IOException e) 
+			{
+				logger.error(e.getMessage(), e);
+			}
     	}
     	
     	return new FolderAnalyseResult(userReadble, serverReadble, null);
@@ -261,21 +287,34 @@ public class FolderReader {
      * @param locale Indicativo de local do usuário logado na aplicação
      * @return Caso o padrão de data seja válido, data formatada, caso contrário o nome da pasta
      */
-	private String formatFolderName(File folder, Locale locale) 
+    private String formatFolderName(Date date, Locale locale) 
+    {
+		return DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.DEFAULT, locale).format(date);
+    }
+    
+    /**
+     * 
+     * @param folder
+     * @param locale
+     * @return
+     */
+	private Date getDateIntoFolder(File folder, Locale locale) 
 	{
 		if(NumberUtils.isNumber(folder.getName()) && folder.getName().length() >= LENGTH_BASE_TO_IDENTIFY_DATE_PATTERN)
 		{
 			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddhhmmss");
-			String exportDateTime = null;
-			try{
-				exportDateTime = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.DEFAULT, locale).format(simpleDateFormat.parse(folder.getName()));
-			} catch (ParseException e) {
+			
+			try 
+			{
+				return simpleDateFormat.parse(folder.getName());
+			} 
+			catch (ParseException e) 
+			{
 				logger.error(e.getMessage(), e);
 			}
-			
-			return exportDateTime;
 		}
-		return folder.getName();
+		
+		return null;
 	}
 
     
