@@ -30,6 +30,7 @@ import org.dspace.submit.AbstractProcessingStep;
  */
 public class PostUploadStep extends AbstractProcessingStep {
 
+	
 	private static final int NO_ITEM_OR_PAGES = 0;
 
 	/**
