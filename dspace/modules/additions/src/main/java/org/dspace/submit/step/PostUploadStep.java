@@ -30,7 +30,6 @@ import org.dspace.submit.AbstractProcessingStep;
  */
 public class PostUploadStep extends AbstractProcessingStep {
 
-	
 	private static final int NO_ITEM_OR_PAGES = 0;
 
 	/**
@@ -45,6 +44,16 @@ public class PostUploadStep extends AbstractProcessingStep {
 
 		Item item = subInfo.getSubmissionItem().getItem();
 
+		/** Preenche "dc.format" **/
+		fillFormat(item);
+		
+		
+		item.update();
+
+		return NO_ITEM_OR_PAGES;
+	}
+
+	private void fillFormat(Item item) throws SQLException {
 		item.clearMetadata("dc", "format", null, Item.ANY);
 		Set<String> uniqueFormats = new HashSet<String>();
 
@@ -68,10 +77,6 @@ public class PostUploadStep extends AbstractProcessingStep {
 		{
 			item.addMetadata("dc", "format", null, Item.ANY, uniqueFormat);
 		}
-		
-		item.update();
-
-		return NO_ITEM_OR_PAGES;
 	}
 
 	/**
