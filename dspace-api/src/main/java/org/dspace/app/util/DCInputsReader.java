@@ -376,7 +376,7 @@ public class DCInputsReader
                         if (tagName.equals("input-type"))
                         {
                     if (value.equals("dropdown")
-                            || value.equals("qualdrop_value")
+                            || value.equals("qualdrop_value") || value.equals("qualdrop_language") 
                             || value.equals("list"))
                                 {
                                         String pairTypeName = getAttribute(nd, PAIR_TYPE_NAME);
@@ -419,7 +419,7 @@ public class DCInputsReader
                 throw new SAXException(msg);
         }
         String type = field.get("input-type");
-        if (type.equals("twobox") || type.equals("qualdrop_value"))
+        if (type.equals("twobox") || type.equals("qualdrop_value") || type.equals("qualdrop_language"))
         {
                 String rpt = field.get("repeatable");
                 if ((rpt == null) ||
@@ -593,7 +593,7 @@ public class DCInputsReader
                                 // verify reference in certain input types
                                 String type = fld.get("input-type");
                     if (type.equals("dropdown")
-                            || type.equals("qualdrop_value")
+                    		|| type.equals("qualdrop_value") || type.equals("qualdrop_language")
                             || type.equals("list"))
                                 {
                                         String pairsName = fld.get(PAIR_TYPE_NAME);
