@@ -412,6 +412,10 @@ public class ItemTag extends TagSupport
             boolean isNoBreakLine = false;
             boolean isDisplay = false;
 
+// Included to create a special presentation for the CV Lattes ULR 
+
+			boolean isLattes = false;
+
             String style = null;
             Matcher fieldStyleMatcher = fieldStylePatter.matcher(field);
             if (fieldStyleMatcher.matches()){
@@ -438,6 +442,11 @@ public class ItemTag extends TagSupport
 				isNoBreakLine = style.contains("nobreakline");
 				isDisplay = style.equals("inputform");
                 isResolver = style.contains("resolver") || urn2baseurl.keySet().contains(style);
+
+// Identifying the "lattes" style
+
+				isLattes = style.contains("lattes");
+				
                 field = field.replaceAll("\\("+style+"\\)", "");
             } 
 
@@ -467,7 +476,10 @@ public class ItemTag extends TagSupport
             
             if (values.length > 0)
             {
-                out.print("<tr><td class=\"metadataFieldLabel\">");
+
+// Including a label for futher style customizations 
+
+                out.print("<tr><td  id=\"label." + field + "\" class=\"metadataFieldLabel\">");
 
                 String label = null;
                 try
@@ -509,7 +521,7 @@ public class ItemTag extends TagSupport
                 for (int j = 0; j < values.length; j++)
                 {
                     if (values[j] != null && values[j].value != null)
-                    {
+                    {						
                         if (j > 0)
                         {
                             if (isNoBreakLine)
@@ -532,6 +544,16 @@ public class ItemTag extends TagSupport
                         {
                             out.print("<a href=\"" + values[j].value + "\">"
                                     + Utils.addEntities(values[j].value) + "</a>");
+                        }
+
+// Defining a "lattes" presentation
+
+						else if (isLattes)
+                        {
+						    out.print("<span id=\"" + values[j].qualifier + "\">"); 
+                            out.print("<a href=\"" + values[j].value + "\" target=\"_blank\" >"
+                                    + "<img src=\"" + request.getContextPath() + "/image/logolattes.gif\"></a>");
+							out.print("</span>");
                         }
                         else if (isDate)
                         {
@@ -925,8 +947,10 @@ public class ItemTag extends TagSupport
                                 // Work out what the bitstream link should be
                                 // (persistent
                                 // ID if item has Handle)
-                                String bsLink = "target=\"_blank\" href=\""
-                                        + request.getContextPath();
+
+// Contructing the link for the document reveiew 
+
+                                String bsLink = request.getContextPath();
 
                                 if ((handle != null)
                                         && (bitstreams[k].getSequenceID() > 0))
@@ -944,12 +968,11 @@ public class ItemTag extends TagSupport
                                 bsLink = bsLink
                                         + UIUtil.encodeBitstreamName(bitstreams[k]
                                             .getName(),
-                                            Constants.DEFAULT_ENCODING) + "\">";
+                                            Constants.DEFAULT_ENCODING);
 
             					out
                                     .print("<tr><td headers=\"t1\" class=\"standard\">");
-                                out.print("<a ");
-            					out.print(bsLink);
+                                out.print("<a target=\"_blank\" href=\"" + bsLink + "\">");
             					out.print(bitstreams[k].getName());
                                 out.print("</a>");
                                 
@@ -990,22 +1013,37 @@ public class ItemTag extends TagSupport
                                             			.getName(),
                                             			Constants.DEFAULT_ENCODING);
 
-            							out.print("<a ");
-            							out.print(bsLink);
+            							out.print("<a target=\"_blank\" href=\"" + bsLink + "\">");
             							out.print("<img src=\"" + myPath + "\" ");
             							out.print("alt=\"" + tAltText
             									+ "\" /></a><br />");
             						}
             					}
 
-            					out.print("<a class=\"btn btn-primary\" ");
+// Inserting the link and the code for the document preview
+
+            					out.print("<a class=\"btn btn-success\" ");
             					out
-                                    .print(bsLink
+                                    .print("target=\"_blank\" href=\"" + bsLink + "\">"
                                             + LocaleSupport
                                                     .getLocalizedMessage(
                                                             pageContext,
                                                             "org.dspace.app.webui.jsptag.ItemTag.view")
                                             + "</a>");
+											
+								out.print("<a href=\"#\" class=\"btn btn-primary big-link\" data-reveal-id=\"myModal\" data-animation=\"fade\">");
+            					out
+                                    .print(LocaleSupport
+                                                    .getLocalizedMessage(
+                                                            pageContext,
+                                                            "org.dspace.app.webui.jsptag.ItemTag.preview")
+                                            + "</a>");
+											
+								String dspaceUrl = ConfigurationManager.getProperty("dspace.baseUrl");								
+								
+								out.print("<div id=\"myModal\" class=\"reveal-modal\"><iframe src=\"http://docs.google.com/viewer?url=");
+								out.print(dspaceUrl + bsLink
+											+ "&embedded=true\" width=\"800\" height=\"600\" style=\"border: none;\"></iframe></div>");
             					
 								try {
 									if (showRequestCopy && !AuthorizeManager
