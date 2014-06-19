@@ -27,6 +27,11 @@
 			<Format refid="qdc" />
 			<Format refid="marc" />
 			<Format refid="uketd_dc" />
+			<!--  -->
+			<Format refid="mtd3-br" /> 
+			<Set refid="bdtdSet" />
+			<Set refid="oasisSet" />
+			<!--  -->
 		</Context> 
 		
 		<!--
@@ -87,6 +92,14 @@
 	
 	
 	<Formats>
+		<!--  -->
+		<Format id="mtd3-br">
+			<Prefix>mtd3-br</Prefix>
+			<XSLT>metadataFormats/mtd3-br.xsl</XSLT>
+			<Namespace>http://ibict.br/mtd3br/ </Namespace>
+			<SchemaLocation>http://ibict.br/mtd3br/mtd3-br.xsd</SchemaLocation>
+		</Format>
+		<!--  -->
 		<Format id="oaidc">
 			<Prefix>oai_dc</Prefix>
 			<XSLT>metadataFormats/oai_dc.xsl</XSLT>
@@ -159,7 +172,6 @@
 			<XSLT>metadataFormats/uketd_dc.xsl</XSLT>
 			<Namespace>http://naca.central.cranfield.ac.uk/ethos-oai/2.0/</Namespace>
 			<SchemaLocation>http://naca.central.cranfield.ac.uk/ethos-oai/2.0/uketd_dc.xsd</SchemaLocation>
-			<Filter refid="thesisFilter" />
 		</Format>
 	</Formats>
 	
@@ -240,10 +252,13 @@
 				<Value>starts_with</Value>
 			</Parameter>
 			<Parameter key="value">
-				<Value>info:eu-repo/grantAgreement/EC/FP</Value>
+				<Value>info:eurepo/grantAgreement/EC/FP</Value>
 			</Parameter>
 		</Filter>
-		<Filter id="thesisFilter">
+		
+		<!--  -->
+		
+		<Filter id="bdtdFilter">
 			<Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
 			<Parameter key="field">
 				<Value>dc.type</Value>
@@ -253,8 +268,37 @@
 			</Parameter>
 			<Parameter key="value">
 				<Value>Thesis</Value>
+				<Value>Doutor</Value>
+				<Value>Mestre</Value>
+				<Value>Mestra</Value>
+				<Value>Tese</Value>
+				<Value>Dissertação</Value>
 			</Parameter>
 		</Filter>
+		
+	    <Filter id="oasisFilter">
+			<Class>org.dspace.xoai.filter.DSpaceAtLeastOneMetadataFilter</Class>
+			<Parameter key="field">
+				<Value>dc.type</Value>
+			</Parameter>
+			<Parameter key="operator">
+				<Value>contains</Value>
+			</Parameter>
+			<Parameter key="value">
+				<Value>article</Value>
+				<Value>book</Value>
+				<Value>bookPart</Value>
+				<Value>conferenceObject</Value>
+				<Value>report</Value>
+				<Value>artigo</Value>
+				<Value>livro</Value>
+				<Value>anais</Value>
+				<Value>relatório</Value>
+			</Parameter>
+		</Filter>
+		
+		<!--  -->
+		
 	</Filters>
 	
 	<Sets>
@@ -268,5 +312,22 @@
 			<Name>EC_fundedresources set</Name>
 			<!-- Just an alias -->
 		</Set>
+		
+		<!--  -->
+		
+		<Set id="bdtdSet">
+			<Pattern>bdtd</Pattern>
+			<Name>bdtd</Name>
+			<Filter refid="bdtdFilter" />
+		</Set>
+		<Set id="oasisSet">
+			<Pattern>oasis</Pattern>
+			<Name>oasis</Name>
+			<Filter refid="oasisFilter" />
+		</Set>
+		
+		<!--  -->
+		
+		
 	</Sets>
 </Configuration>
