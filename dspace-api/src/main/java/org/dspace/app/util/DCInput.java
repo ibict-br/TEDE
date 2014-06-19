@@ -106,7 +106,7 @@ public class DCInput
         label = fieldMap.get("label");
         inputType = fieldMap.get("input-type");
         // these types are list-controlled
-        if ("dropdown".equals(inputType) || "qualdrop_value".equals(inputType) || "qualdrop_language".equals(inputType)
+        if ("dropdown".equals(inputType) || "qualdrop_value".equals(inputType) || "qualdrop_language".equals(inputType) || "qualdrop_textarea_language".equals(inputType)
                 || "list".equals(inputType))
         {
             valueListName = fieldMap.get("value-pairs-name");

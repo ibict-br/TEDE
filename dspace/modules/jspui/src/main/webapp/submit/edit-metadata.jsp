@@ -881,10 +881,10 @@
 
     void doQualdropValue(javax.servlet.jsp.JspWriter out, Item item,
       String fieldName, String schema, String element, String recievedQualifier, DCInputSet inputs, boolean repeatable, boolean required,
-      boolean readonly, int fieldCountIncr, List qualMap, String label, PageContext pageContext, boolean isLanguage)
+      boolean readonly, int fieldCountIncr, List qualMap, String label, PageContext pageContext, boolean isLanguage, boolean isTextArea)
       throws java.io.IOException
     {
-      DCValue[] unfiltered = item.getMetadata(schema, element, Item.ANY, Item.ANY);
+      DCValue[] unfiltered = item.getMetadata(schema, element, (recievedQualifier != null && !recievedQualifier.isEmpty()) ? recievedQualifier : Item.ANY, Item.ANY);
       // filter out both unqualified and qualified values occurring elsewhere in inputs
       List<DCValue> filtered = new ArrayList<DCValue>();
       for (int i = 0; i < unfiltered.length; i++)
@@ -893,7 +893,7 @@
           if(unfiltered[i].qualifier != null && unfiltered[i].qualifier.length()>0)
               unfilteredFieldName += "." + unfiltered[i].qualifier;
               
-              if ( ! inputs.isFieldPresent(unfilteredFieldName) )
+              if ( ! inputs.isFieldPresent(unfilteredFieldName) || isLanguage)
               {
                       filtered.add( unfiltered[i] );
               }
@@ -902,7 +902,8 @@
 
       int fieldCount = defaults.length + fieldCountIncr;
       StringBuffer sb = new StringBuffer();
-      String   q, v, currentQual, currentVal;
+      String  q, v, currentQual, currentVal;
+      String currentLanguage = null;
 
       if (fieldCount == 0)
          fieldCount = 1;
@@ -919,6 +920,7 @@
             currentQual = defaults[j].qualifier;
             if(currentQual==null) currentQual="";
             currentVal = defaults[j].value;
+            currentLanguage = defaults[j].language;
          }
          else
          {
@@ -941,8 +943,20 @@
          {
            q = (String)qualMap.get(i);
            v = (String)qualMap.get(i+1);
-           sb.append("<option")
-             .append((v.equals(currentQual) ? " selected=\"selected\" ": "" ))
+           sb.append("<option");
+           
+           boolean equals = false;
+           
+           if(isLanguage)
+           {
+        		equals = !v.equals("") && v.equals(currentLanguage);
+           }
+           else
+           {
+        	   equals = v.equals(currentQual);
+           }
+           
+           sb.append(equals ? " selected=\"selected\" ": "")
              .append(" value=\"")
              .append(v)
              .append("\">")
@@ -951,18 +965,40 @@
          }
       
          // do the input box
-         sb.append("</select></span><input class=\"form-control\" type=\"text\" name=\"")
-           .append(fieldName)
-           .append("_value");
-         if (repeatable && j!= fieldCount-1)
-           sb.append("_").append(j+1);
-         if (readonly)
+         sb.append("</select></span>");
+         
+         if(isTextArea)
          {
-             sb.append("\" disabled=\"disabled");
+			sb.append("<textarea cols=\"45\" rows=\"4\"  class=\"form-control\" ").append("name=\"").append(fieldName).append("_value");
+			if (repeatable && j!= fieldCount-1)
+			{
+	           sb.append("_").append(j+1);
+			}
+			sb.append("\"");
+			if (readonly)
+			{
+			    sb.append("\" disabled=\"disabled");
+			}
+			sb.append(">");
+			sb.append(currentVal.replaceAll("\"", "&quot;"));
+			sb.append("</textarea></span>\n");
          }
-         sb.append("\" size=\"34\" value=\"")
-           .append(currentVal.replaceAll("\"", "&quot;"))
-           .append("\"/></span>\n");
+         else
+         {
+	         sb.append("<input ");
+	         sb.append("class=\"form-control\" type=\"text\" name=\"")
+	           .append(fieldName)
+	           .append("_value");
+	         if (repeatable && j!= fieldCount-1)
+	           sb.append("_").append(j+1);
+	         if (readonly)
+	         {
+	             sb.append("\" disabled=\"disabled");
+	         }
+	         sb.append("\" size=\"34\" value=\"")
+	           .append(currentVal.replaceAll("\"", "&quot;"))
+	           .append("\"/></span>\n");
+         }
 
          if (repeatable && !readonly && j < defaults.length)
          {
@@ -988,6 +1024,8 @@
 
          // put a blank if nothing else
        	 sb.append("</div>");
+         
+       	currentLanguage = null;
       }
       sb.append("</div></div><br/>");
       out.write(sb.toString());
@@ -1364,12 +1402,17 @@
        else if (inputType.equals("qualdrop_value"))
        {
            doQualdropValue(out, item, fieldName, dcSchema, dcElement, dcQualifier, inputSet, repeatable, required,
-                                   readonly, fieldCountIncr, inputs[z].getPairs(), label, pageContext, false);
+                                   readonly, fieldCountIncr, inputs[z].getPairs(), label, pageContext, false, false);
        }
        else if (inputType.equals("qualdrop_language"))
        {
            doQualdropValue(out, item, fieldName, dcSchema, dcElement, dcQualifier, inputSet, repeatable, required,
-                                   readonly, fieldCountIncr, inputs[z].getPairs(), label, pageContext, true);
+                                   readonly, fieldCountIncr, inputs[z].getPairs(), label, pageContext, true, false);
+       }
+       else if (inputType.equals("qualdrop_textarea_language"))
+       {
+           doQualdropValue(out, item, fieldName, dcSchema, dcElement, dcQualifier, inputSet, repeatable, required,
+                                   readonly, fieldCountIncr, inputs[z].getPairs(), label, pageContext, true, true);
        }
        else if (inputType.equals("textarea"))
        {

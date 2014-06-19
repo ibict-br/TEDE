@@ -265,13 +265,14 @@ public class DescribeStep extends AbstractProcessingStep
                     }
                 }
             }
-            else if (inputType.equals("qualdrop_language"))
+            else if (inputType.equals("qualdrop_language") ||  inputType.equals("qualdrop_textarea_language"))
             {
             	boolean hasQualifier = qualifier != null && !qualifier.isEmpty();
+				String elementPlusQualifier = element + (hasQualifier ? ("_" + qualifier) : "");
 				List<String> quals = getRepeatedParameter(request, schema + "_"
-            			+ element, schema + "_" + element + (hasQualifier ? ("_" + qualifier) : "") + "_language");
+            			+ element, schema + "_" + elementPlusQualifier + "_language");
             	List<String> vals = getRepeatedParameter(request, schema + "_"
-            			+ element, schema + "_" + element + (hasQualifier ? ("_" + qualifier) : "") + "_value");
+            			+ element, schema + "_" + elementPlusQualifier + "_value");
             	for (int z = 0; z < vals.size(); z++)
             	{
             		String thisQual = quals.get(z);
@@ -281,7 +282,7 @@ public class DescribeStep extends AbstractProcessingStep
             		}
             		String thisVal = vals.get(z);
             		if (!buttonPressed.equals("submit_" + schema + "_"
-            				+ element + "_remove_" + z)
+            				+ elementPlusQualifier + "_remove_" + z)
             				&& !thisVal.equals(""))
             		{
             			item.addMetadata(schema, element, hasQualifier ? qualifier : null, thisQual,
