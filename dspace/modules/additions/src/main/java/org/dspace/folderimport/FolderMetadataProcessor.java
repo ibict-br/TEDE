@@ -176,7 +176,7 @@ public class FolderMetadataProcessor
             	}
             	catch(Exception e)
             	{
-            		/** Não se faz necessário registro em arquivo de log **/
+            		log.error(e.getMessage(), e);
             		if(errorOut == null)
             		{
             			errorOut = new PrintWriter(new FileWriter(new File(errorFile), false));

@@ -613,6 +613,15 @@
 	esteja em outro formato, a depender da área do conhecimento.</scope_note>
   </dc-type>
   <!-- -->
+
+  <!-- -->
+  <dc-type>
+	<schema>dc</schema>
+    <element>thumbnail</element>
+    <qualifier>url</qualifier>
+    <scope_note>URL associada ao Thumbnail gerado para determinado bitstream</scope_note>
+  </dc-type>
+  <!-- -->
   
   
   <!-- Used by system: do not remove -->

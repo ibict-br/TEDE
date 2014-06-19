@@ -1,10 +1,18 @@
 package org.dspace.folderimport.dto;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Map;
 
 
-public class ErrorImportRegistry {
+/**
+ * DTO para registro de erros de importação
+ * @author Márcio Ribeiro Gurgel do Amaral (marcio.rga@gmail.com)
+ *
+ */
+public class ErrorImportRegistry implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	private String title;
 	private Map<Long, File> itemFiles;

@@ -47,7 +47,6 @@ public class PostUploadStep extends AbstractProcessingStep {
 		/** Preenche "dc.format" **/
 		fillFormat(item);
 		
-		
 		item.update();
 
 		return NO_ITEM_OR_PAGES;

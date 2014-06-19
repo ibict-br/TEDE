@@ -674,7 +674,7 @@
          <required></required>
        </field>
 	   
-	   <field>
+	   <!-- <field>
          <dc-schema>dc</dc-schema>
          <dc-element>format</dc-element>
          <dc-qualifier></dc-qualifier>
@@ -683,7 +683,7 @@
          <input-type>onebox</input-type>
          <hint>Indique o formato do arquivo da tese ou dissertação.</hint>
          <required></required>
-       </field>
+       </field> -->
 
     </page>
 	   

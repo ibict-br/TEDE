@@ -12,8 +12,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -23,8 +23,8 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.OptionBuilder;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.PosixParser;
-
 import org.apache.commons.lang.ArrayUtils;
+import org.dspace.app.util.Util;
 import org.dspace.authorize.AuthorizeManager;
 import org.dspace.content.Bitstream;
 import org.dspace.content.BitstreamFormat;
@@ -791,6 +791,17 @@ public class MediaFilterManager
 
         //do post-processing of the generated bitstream
         formatFilter.postProcessBitstream(c, item, b);
+
+        /** Registra metadado para bitstream **/
+        if(targetBundle.getName().equals("THUMBNAIL"))
+        {
+        	StringBuilder bundleURL = new StringBuilder(ConfigurationManager.getProperty("dspace.url"));
+			bundleURL.append("/retrieve/");
+			bundleURL.append(b.getID());
+			bundleURL.append("/");
+			bundleURL.append(Util.encodeBitstreamName(b.getName(), Constants.DEFAULT_ENCODING));
+        	item.addMetadata("dc", "thumbnail", "url", Item.ANY, bundleURL.toString());
+        }
         
         return true;
     }
