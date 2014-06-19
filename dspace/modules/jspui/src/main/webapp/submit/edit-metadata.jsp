@@ -1246,7 +1246,7 @@
 
 
 
-  <form action="<%= request.getContextPath() %>/submit#<%= si.getJumpToField()%>" method="post" name="edit_metadata" id="edit_metadata" onkeydown="return disableEnterKey(event);">
+  <form action="<%= request.getContextPath() %>/submit#<%= si.getJumpToField()%>" method="post" name="edit_metadata" id="edit_metadata">
 
         <jsp:include page="/submit/progressbar.jsp"></jsp:include>
 
