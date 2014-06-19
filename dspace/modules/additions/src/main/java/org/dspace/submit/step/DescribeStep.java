@@ -470,7 +470,7 @@ public class DescribeStep extends AbstractProcessingStep
     public static String getDefaultLanguageQualifier()
     {
        String language = "";
-       language = ConfigurationManager.getProperty("default.language");
+       language = ConfigurationManager.getProperty("defatult.language.iso6392");
        if (StringUtils.isEmpty(language))
        {
            language = "en";
