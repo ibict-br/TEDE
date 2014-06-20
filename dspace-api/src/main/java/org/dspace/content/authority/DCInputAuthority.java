@@ -7,14 +7,13 @@
  */
 package org.dspace.content.authority;
 
-import java.util.Iterator;
-import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
-
 import org.dspace.app.util.DCInputsReader;
 import org.dspace.app.util.DCInputsReaderException;
 import org.dspace.core.SelfNamedPlugin;
@@ -122,16 +121,19 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
         init();
 
         int dflt = -1;
-        Choice v[] = new Choice[values.length];
+        
+        List<Choice> choices = new ArrayList<Choice>();
+
         for (int i = 0; i < values.length; ++i)
         {
-            v[i] = new Choice(values[i], values[i], labels[i]);
-            if (values[i].equalsIgnoreCase(query))
+            if (values[i].toLowerCase().contains(query.toLowerCase()))
             {
+            	choices.add(new Choice(values[i], values[i], labels[i]));
                 dflt = i;
             }
         }
-        return new Choices(v, 0, v.length, Choices.CF_AMBIGUOUS, false, dflt);
+        Choice[] choicesArray = new Choice[choices.size()];
+		return new Choices(choices.toArray(choicesArray), 0, choices.size(), Choices.CF_AMBIGUOUS, false, dflt);
     }
 
     public Choices getBestMatch(String field, String text, int collection, String locale)
