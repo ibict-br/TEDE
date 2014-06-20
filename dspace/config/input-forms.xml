@@ -595,7 +595,7 @@
          <dc-schema>dc</dc-schema>
          <dc-element>description</dc-element>
          <dc-qualifier>abstract</dc-qualifier>
-         <repeatable>false</repeatable>
+         <repeatable>true</repeatable>
          <label>Abstract:</label>
          <input-type value-pairs-name="common_iso_languages">qualdrop_textarea_language</input-type>
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Abstract do documento. Preencha com o resumo em língua estrangeira.</hint>
