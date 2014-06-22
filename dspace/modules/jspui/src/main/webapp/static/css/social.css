@@ -1,0 +1,41 @@
+
+.social-pointer{
+	cursor: pointer;
+	float: left;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.esp-socialnetwork{
+	width: 163px;
+} 
+.border-socialnetwork{
+	border-top: 1px solid #d2d0d0;
+	border-bottom: 1px solid #d2d0d0;
+}
+.border-socialnetwork td {
+	background-color: #f6f3f3;	
+}
+
+.social-label {
+	width: 20%;
+	padding-left: 8px;
+} 
+
+.g-plusone {
+	float: left;
+	padding-left: 5px;
+}
+
+.iconsBar {
+	padding-top: 9px;
+	padding-bottom: 4px;
+}
+
+#google-plus-container {
+	padding-left: 6px;
+}
+
+.social-label span {
+	font-weight: bold;
+}

@@ -35,17 +35,17 @@
 <%@ page import="org.dspace.core.ConfigurationManager" %>
 <%@ page import="org.dspace.handle.HandleManager" %>
 <%@ page import="org.dspace.license.CreativeCommons" %>
-<%@page import="javax.servlet.jsp.jstl.fmt.LocaleSupport"%>
-<%@page import="org.dspace.versioning.Version"%>
-<%@page import="org.dspace.core.Context"%>
-<%@page import="org.dspace.app.webui.util.VersionUtil"%>
-<%@page import="org.dspace.app.webui.util.UIUtil"%>
-<%@page import="org.dspace.authorize.AuthorizeManager"%>
-<%@page import="java.util.List"%>
-<%@page import="org.dspace.core.Constants"%>
-<%@page import="org.dspace.eperson.EPerson"%>
-<%@page import="org.dspace.versioning.VersionHistory"%>
-<%@page import="org.elasticsearch.common.trove.strategy.HashingStrategy"%>
+<%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport"%>
+<%@ page import="org.dspace.versioning.Version"%>
+<%@ page import="org.dspace.core.Context"%>
+<%@ page import="org.dspace.app.webui.util.VersionUtil"%>
+<%@ page import="org.dspace.app.webui.util.UIUtil"%>
+<%@ page import="org.dspace.authorize.AuthorizeManager"%>
+<%@ page import="java.util.List"%>
+<%@ page import="org.dspace.core.Constants"%>
+<%@ page import="org.dspace.eperson.EPerson"%>
+<%@ page import="org.dspace.versioning.VersionHistory"%>
+<%@ page import="org.elasticsearch.common.trove.strategy.HashingStrategy"%>
 <%
     // Attributes
     Boolean displayAllBoolean = (Boolean) request.getAttribute("display.all");
@@ -106,11 +106,39 @@
 %>
 
 <%@page import="org.dspace.app.webui.servlet.MyDSpaceServlet"%>
+
+<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/social.css" type="text/css" />
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/social.js"></script>
+
+
 <dspace:layout title="<%= title %>">
 <%
     if (handle != null)
     {
 %>
+			<!-- Barra de compartilhamento em rede social -->
+	    	<table class="border-socialnetwork" width="100%"> 
+	    	<tbody>
+		    	<tr> 
+		    		<td class="social-label">
+		    			<span><fmt:message key="jsp.display-item.social.title"></fmt:message></span>
+		    		</td>
+		    		<td class="iconsBar">
+		    			<img class="social-pointer" title="<fmt:message key="jsp.display-item.social.share.twitter"></fmt:message>" src="<%= request.getContextPath() + "/image/social/ico_twitter.gif" %>"
+		    				onclick="shareItem('twitter')">
+			    		</img>
+		    			<img class="social-pointer" style="padding-right: 14px;" title="<fmt:message key="jsp.display-item.social.share.facebook"></fmt:message>" src="<%= request.getContextPath() + "/image/social/ico_facebook.gif" %>"
+		    				onclick="shareItem('facebook')">
+			    		</img>
+			    		
+			    		<div id="google-plus-container">
+							<div class="g-plusone" style="padding-left: 6px;" data-annotation="inline" data-width="300"></div>
+			    		</div>
+		    		</td>
+		    	</tr>
+	    	</tbody>
+	    </table>
+	   	<br/>
 
 		<%		
 		if (newVersionAvailable)
