@@ -10,7 +10,9 @@ package org.dspace.content.authority;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.log4j.Logger;
@@ -42,6 +44,8 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
 {
     private static Logger log = Logger.getLogger(DCInputAuthority.class);
 
+    private Map<String, String> valueAndLabel;
+    
     private String values[] = null;
     private String labels[] = null;
 
@@ -93,18 +97,18 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
     // once-only load of values and labels
     private void init()
     {
-        if (values == null)
+        if (valueAndLabel == null)
         {
+        	valueAndLabel = new LinkedHashMap<String, String>();
+        	
             String pname = this.getPluginInstanceName();
             List<String> pairs = dci.getPairs(pname);
             if (pairs != null)
             {
-                values = new String[pairs.size()/2];
-                labels = new String[pairs.size()/2];
                 for (int i = 0; i < pairs.size(); i += 2)
                 {
-                    labels[i/2] = pairs.get(i);
-                    values[i/2] = pairs.get(i+1);
+                	/** Map key (value) **/
+                	valueAndLabel.put(pairs.get(i+1), pairs.get(i));
                 }
                 log.debug("Found pairs for name="+pname);
             }
@@ -123,14 +127,15 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
         int dflt = -1;
         
         List<Choice> choices = new ArrayList<Choice>();
-
-        for (int i = 0; i < values.length; ++i)
+        
+        int i = 0;
+        for(Map.Entry<String, String> currentValue : valueAndLabel.entrySet())
         {
-            if (values[i].toLowerCase().contains(query.toLowerCase()))
-            {
-            	choices.add(new Choice(values[i], values[i], labels[i]));
-                dflt = i;
-            }
+        	if (currentValue.getValue().toLowerCase().contains(query.toLowerCase()))
+        	{
+        		choices.add(new Choice(currentValue.getKey(), currentValue.getValue(), currentValue.getValue()));
+        		dflt = i++;
+        	}
         }
         Choice[] choicesArray = new Choice[choices.size()];
 		return new Choices(choices.toArray(choicesArray), 0, choices.size(), Choices.CF_AMBIGUOUS, false, dflt);
@@ -154,6 +159,6 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
     public String getLabel(String field, String key, String locale)
     {
         init();
-        return labels[Integer.parseInt(key)];
+        return valueAndLabel.get(key);
     }
 }
