@@ -72,9 +72,9 @@ public class FolderMetadataErrorServlet extends DSpaceServlet {
 				request.getSession().setAttribute(FolderMetadataImportConstants.ITEMS_WITH_ERROR_ON_IMPORT_KEY, listErrorsImport);
 			}
 			
+			JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataerror.jsp");
 		}
 				
-    	JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataerror.jsp");
 	}
 
 	/**
