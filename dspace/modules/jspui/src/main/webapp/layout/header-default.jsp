@@ -156,7 +156,7 @@
 		<h1><fmt:message key="jsp.layout.header-default.brand.heading" /></h1>
         <fmt:message key="jsp.layout.header-default.brand.description" /> 
         </div>
-        <div class="col-md-3"><img class="pull-right" src="<%= request.getContextPath() %>/image/logo_tede_final.png">
+        <div class="col-md-3"><img class="pull-right" src="<%= request.getContextPath() %>/image/proposta-logo01.jpg">
         </div>
 	</div>
 </div>	
