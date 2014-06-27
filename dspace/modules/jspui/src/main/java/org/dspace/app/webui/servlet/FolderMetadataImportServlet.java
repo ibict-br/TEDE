@@ -28,6 +28,7 @@ import org.dspace.app.bulkedit.MetadataImportException;
 import org.dspace.app.webui.util.JSPManager;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Collection;
+import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.file.utils.FileUtils;
 import org.dspace.folderimport.FolderMetadataProcessor;
@@ -46,6 +47,7 @@ import org.dspace.folderimport.dto.FolderAnalyseResult;
 public class FolderMetadataImportServlet extends DSpaceServlet
 {
 
+	private static final String FALSE_VALUE = "false";
 	private static final long serialVersionUID = 1L;
     private static Logger logger = Logger.getLogger(MetadataImportServlet.class);
     
@@ -60,6 +62,18 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		put(ImportType.IMPORT.getId(), ImportType.IMPORT.getKey());
 	}};
 	
+	/**
+	 * Register properties from DSpace.cfg to be overwritten
+	 */
+	private static Map<String, String> overwrittenProperties = new LinkedHashMap<String, String>(){
+		private static final long serialVersionUID = 1L;
+		{
+			put("authority.required.dc.subject.cnpq", FALSE_VALUE);
+			put("authority.required.dc.publisher.program", FALSE_VALUE);
+			put("authority.required.dc.publisher.department", FALSE_VALUE);
+			put("authority.required.dc.description.sponsorship", FALSE_VALUE);
+		}};
+		
 
 	/**
 	 * Requisições "GET" serão tratadas no método {@link #doPost(HttpServletRequest, HttpServletResponse)}
@@ -185,10 +199,18 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		FolderMetadataProcessor myloader = new FolderMetadataProcessor();
 		@SuppressWarnings("unchecked")
 		Map<Long, File> serverFolderData = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE);
-
+		
+		
 		/** Somente prossegue caso existam ids de diretórios disponívies **/
 		if(idsFromFilesToImport != null)
 		{
+			
+			/** Disables authority control **/
+			for(Map.Entry<String, String> overrite : overwrittenProperties.entrySet())
+			{
+				ConfigurationManager.overwrite(overrite.getKey(), overrite.getValue());
+			}
+			
 			for(Long selectedFolder : idsFromFilesToImport)
 			{
 				try
@@ -206,8 +228,13 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 				}
 				catch (MetadataImportException mie)
 				{
+					ConfigurationManager.undoOverrite();
 					logger.error(mie.getMessage(), mie);
 					handlePageReturnAfterAction(context, request, response, mie.getMessage(), true);
+				}
+				finally
+				{
+					ConfigurationManager.undoOverrite();
 				}
 			} 
 		}
