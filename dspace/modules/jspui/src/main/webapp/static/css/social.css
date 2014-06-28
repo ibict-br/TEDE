@@ -39,3 +39,15 @@
 .social-label span {
 	font-weight: bold;
 }
+
+.ui-widget-overlay{
+    position:fixed !important;
+}
+
+.ui-dialog-titlebar-close {
+display: none !important;
+}
+
+.navbar-bottom {
+	z-index: 0;
+}

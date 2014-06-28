@@ -9,27 +9,23 @@ window.___gcfg = {lang: 'pt-BR'};
 *		A rede social na qual será compartilhado o item.
 **/
 
-function shareItem( socialNetwork ){
-	//initialize
+function shareItem (socialNetwork, title, titlePopUp){
+
 	var	sharedURL 	=	encodeURIComponent(window.location.href);
-	var	title 		= 	getMetaValue("DC.title");
-	var paramsPopUp = 	'width=640, height=480, toolbar=no, scrollbars=yes, status=yes';
+	var paramsPopUp = 	'width=640, height=340, toolbar=no, scrollbars=yes, status=yes';
 	var mainURL 	=	"";
 	var titlePopUp  = 	"";
 	
 	switch( socialNetwork ) {
 		case 'twitter':
-			titlePopUp 	= "Compartilhar no Twitter";
 			mainURL 	= "http://twitter.com/home?status=" + title + " - " + sharedURL;
-		break;
+			break;
 		
 		case 'facebook':
-			titlePopUp 	= "Compartilhar no Facebook";
-			mainURL 	= "http://www.facebook.com/sharer.php?" +  "u=" + sharedURL;
-		break;
+			mainURL 	= "https://www.facebook.com/sharer/sharer.php?u" +  "u=" + sharedURL;
+			break;
 		
 		case 'google':
-			titlePopUp 	= "Compartilhar no Google+";
 			mainURL 	= "https://plus.google.com/?" +  "u=" + sharedURL;
 			break;
 	}
@@ -40,24 +36,6 @@ function shareItem( socialNetwork ){
 	
 	window.open(mainURL, titlePopUp , paramsPopUp);
 }
-
-
-
-/**
- * Recupera informações contidas na tag "META" do XHTML renderizado
- * @param name Nome do atributo presente na tag
- */
-function getMetaValue (name){
-	var metaArrays = document.getElementsByTagName("META");
-	var i = 0;
-	for (i = 0; i < metaArrays.length; i++){
-		if (metaArrays[i].name == name){
-			return metaArrays[i].content;
-		}
-	}
-	return null;
-}
-
 
 /**
  * Função do google+
@@ -81,3 +59,4 @@ function getMetaValue (name){
 	  js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
+

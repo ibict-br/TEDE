@@ -382,6 +382,11 @@
   </servlet>
   
   <servlet>
+    <servlet-name>share-email-search</servlet-name>
+    <servlet-class>org.dspace.app.webui.servlet.ShareEmailSearchServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
     <servlet-name>sitemap</servlet-name>
     <servlet-class>org.dspace.app.webui.servlet.SitemapServlet</servlet-class>
     <init-param>
@@ -731,6 +736,11 @@
   <servlet-mapping>
     <servlet-name>simple-search</servlet-name>
     <url-pattern>/simple-search</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>share-email-search</servlet-name>
+    <url-pattern>/search/shareviaemail</url-pattern>
   </servlet-mapping>
   
   <servlet-mapping>

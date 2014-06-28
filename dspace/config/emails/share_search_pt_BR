@@ -1,0 +1,19 @@
+# E-mail sent with the information filled out share form
+#
+# Parameters: {0} sender name
+#             {1} Search URL
+#             {2} sender message 
+
+Subject: TEDE | Você recebeu um compartilhamento de resultado de busca
+
+Olá,
+
+{0} nos solicitou o compartilhamento de um resultado de busca, segue abaixo link para acesso:
+
+URL: {1}
+
+Mensagem enviada: {2}
+
+
+Atenciosamente,
+Equipe do Repositório de Teses e Dissertações
