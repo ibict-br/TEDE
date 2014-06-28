@@ -55,7 +55,6 @@
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/reveal/reveal.css">	
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>
 	    <script type="text/javascript" src="<%= request.getContextPath() %>/reveal/jquery.reveal.js"></script>
 
 
