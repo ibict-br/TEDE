@@ -859,7 +859,7 @@ public class WorkflowManager
                 + rejection_message + " on " + now + " (GMT) ";
 
         // Add to item as a DC field
-        myitem.addDC("description", "provenance", "en", provDescription);
+        myitem.addDC("description", "provenance", "eng", provDescription);
         myitem.update();
 
         // convert into personal workspace
@@ -1132,7 +1132,7 @@ public class WorkflowManager
         provDescription += InstallItem.getBitstreamProvenanceMessage(item);
 
         // Add to item as a DC field
-        item.addDC("description", "provenance", "en", provDescription);
+        item.addDC("description", "provenance", "eng", provDescription);
         item.update();
     }
 
@@ -1163,7 +1163,7 @@ public class WorkflowManager
         provmessage += InstallItem.getBitstreamProvenanceMessage(myitem);
 
         // Add message to the DC
-        myitem.addDC("description", "provenance", "en", provmessage);
+        myitem.addDC("description", "provenance", "eng", provmessage);
         myitem.update();
     }
 }

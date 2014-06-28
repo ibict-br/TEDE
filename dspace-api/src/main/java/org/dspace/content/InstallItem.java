@@ -144,7 +144,7 @@ public class InstallItem
         
         // Record that the item was restored
         String provDescription = "Restored into DSpace on "+ now + " (GMT).";
-        item.addDC("description", "provenance", "en", provDescription);
+        item.addDC("description", "provenance", "eng", provDescription);
 
         return finishItem(c, item, is);
     }
@@ -202,7 +202,7 @@ public class InstallItem
         }
 
         // Add provenance description
-        item.addDC("description", "provenance", "en", provDescription);
+        item.addDC("description", "provenance", "eng", provDescription);
     }
 
     // final housekeeping when adding new Item to archive

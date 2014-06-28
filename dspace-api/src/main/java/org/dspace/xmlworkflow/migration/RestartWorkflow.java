@@ -127,7 +127,7 @@ public class RestartWorkflow {
 
                 // Add to item as a DC field
                 if(provenance != null){
-                    myitem.addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "en", provenance);
+                    myitem.addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "eng", provenance);
                 }
                 myitem.update();
 

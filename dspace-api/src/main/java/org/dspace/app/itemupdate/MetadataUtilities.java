@@ -251,7 +251,7 @@ public class MetadataUtilities {
 	        // a goofy default, but consistent with DSpace treatment elsewhere  
 	        if (language == null)
 	        {
-	            language = "en";
+	            language = "eng";
 	        }
 	        else if ("".equals(language))
 	        {
@@ -297,7 +297,7 @@ public class MetadataUtilities {
  
         	if (StringUtils.isEmpty(dtom.language))
         	{
-        		mel.setAttribute("language", "en");
+        		mel.setAttribute("language", "eng");
         	}
         	else
         	{

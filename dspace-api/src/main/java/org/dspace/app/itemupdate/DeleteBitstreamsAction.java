@@ -89,7 +89,7 @@ public class DeleteBitstreamsAction extends UpdateBitstreamsAction
 			    		
 				            if (alterProvenance)
 				            {
-				            	DtoMetadata dtom = DtoMetadata.create("dc.description.provenance", "en", "");
+				            	DtoMetadata dtom = DtoMetadata.create("dc.description.provenance", "eng", "");
 				            	
 				            	String append = "Bitstream " + bs.getName() + " deleted on " + DCDate.getCurrent() + "; ";
 				            	Item item = bundles[0].getItems()[0];

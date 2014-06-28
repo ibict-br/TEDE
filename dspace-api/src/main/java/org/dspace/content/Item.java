@@ -1897,7 +1897,7 @@ public class Item extends DSpaceObject
 
         prov.append(InstallItem.getBitstreamProvenanceMessage(this));
 
-        addDC("description", "provenance", "en", prov.toString());
+        addDC("description", "provenance", "eng", prov.toString());
 
         // Update item in DB
         update();
@@ -1954,7 +1954,7 @@ public class Item extends DSpaceObject
         // bitstream checksums
         prov.append(InstallItem.getBitstreamProvenanceMessage(this));
 
-        addDC("description", "provenance", "en", prov.toString());
+        addDC("description", "provenance", "eng", prov.toString());
 
         // Update item in DB
         update();

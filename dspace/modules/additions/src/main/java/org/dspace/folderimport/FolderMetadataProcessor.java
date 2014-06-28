@@ -469,7 +469,7 @@ public class FolderMetadataProcessor
         // a goofy default, but there it is
         if (language == null)
         {
-            language = "en";
+            language = "eng";
         }
 
         if (!isTest)

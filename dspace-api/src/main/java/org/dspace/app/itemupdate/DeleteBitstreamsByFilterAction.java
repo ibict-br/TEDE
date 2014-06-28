@@ -116,7 +116,7 @@ public class DeleteBitstreamsByFilterAction extends UpdateBitstreamsAction {
             	sb.append(s).append(", ");
     		}
     		        	
-        	DtoMetadata dtom = DtoMetadata.create("dc.description.provenance", "en", "");
+        	DtoMetadata dtom = DtoMetadata.create("dc.description.provenance", "eng", "");
         	
     		ItemUpdate.pr("Append provenance with: " + sb.toString());
     		

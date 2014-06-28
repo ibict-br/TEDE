@@ -107,7 +107,7 @@ public class AcceptEditRejectAction extends ProcessingAction {
                 + usersName + " on " + now + " (GMT) ";
 
         // Add to item as a DC field
-        wfi.getItem().addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "en", provDescription);
+        wfi.getItem().addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "eng", provDescription);
         wfi.getItem().update();
     }
 }

@@ -127,6 +127,6 @@ public class BitstreamsIntoMetadata extends AbstractCurationTask
         if (bitstream.getDescription() != null) {
             value += bitstream.getDescription();
         }
-        item.addMetadata("dc", "format", type, "en", value);
+        item.addMetadata("dc", "format", type, "eng", value);
     }
 }

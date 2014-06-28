@@ -334,7 +334,7 @@ public class PDFPackager
             {
                 log.debug("PDF Info dict title=\"" + title + "\"");
             }
-            item.addDC("title", null, "en", title);
+            item.addDC("title", null, "eng", title);
             String value = docinfo.getAuthor();
             if (value != null)
             {
@@ -348,14 +348,14 @@ public class PDFPackager
             value = docinfo.getCreator();
             if (value != null)
             {
-                item.addDC("description", "provenance", "en",
+                item.addDC("description", "provenance", "eng",
                         "Application that created the original document: " + value);
             }
 
             value = docinfo.getProducer();
             if (value != null)
             {
-                item.addDC("description", "provenance", "en",
+                item.addDC("description", "provenance", "eng",
                         "Original document converted to PDF by: " + value);
             }
 

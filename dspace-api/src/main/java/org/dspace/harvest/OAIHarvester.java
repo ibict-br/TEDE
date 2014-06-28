@@ -581,7 +581,7 @@ public class OAIHarvester {
                 String provenanceMsg = "Item created via OAI harvest from source: "
                                         + this.harvestRow.getOaiSource() + " on " +  new DCDate(hi.getHarvestDate())
                                         + " (GMT).  Item's OAI Record identifier: " + hi.getOaiID();
-                item.addMetadata("dc", "description", "provenance", "en", provenanceMsg);
+                item.addMetadata("dc", "description", "provenance", "eng", provenanceMsg);
 
 		item.update();
 		hi.update();

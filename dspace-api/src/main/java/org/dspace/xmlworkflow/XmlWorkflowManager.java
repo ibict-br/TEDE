@@ -696,7 +696,7 @@ public class XmlWorkflowManager {
                 + rejection_message + " on " + now + " (GMT) ";
 
         // Add to item as a DC field
-        myitem.addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "en", provDescription);
+        myitem.addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "eng", provDescription);
 
         //Clear any workflow schema related metadata
         myitem.clearMetadata(WorkflowRequirementsManager.WORKFLOW_SCHEMA, Item.ANY, Item.ANY, Item.ANY);
@@ -838,7 +838,7 @@ public class XmlWorkflowManager {
         provmessage += InstallItem.getBitstreamProvenanceMessage(myitem);
 
         // Add message to the DC
-        myitem.addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "en", provmessage);
+        myitem.addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "eng", provmessage);
         myitem.update();
     }
 

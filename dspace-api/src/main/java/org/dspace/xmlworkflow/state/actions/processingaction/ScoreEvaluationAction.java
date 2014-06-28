@@ -60,7 +60,7 @@ public class ScoreEvaluationAction extends ProcessingAction{
             wfi.getItem().clearMetadata(WorkflowRequirementsManager.WORKFLOW_SCHEMA, "score", null, Item.ANY);
 
             String provDescription = getProvenanceStartId() + " Approved for entry into archive with a score of: " + scoreMean;
-            wfi.getItem().addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "en", provDescription);
+            wfi.getItem().addMetadata(MetadataSchema.DC_SCHEMA, "description", "provenance", "eng", provDescription);
             wfi.getItem().update();
         }
         if(hasPassed){
