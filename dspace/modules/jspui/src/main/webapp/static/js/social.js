@@ -9,12 +9,17 @@ window.___gcfg = {lang: 'pt-BR'};
 *		A rede social na qual será compartilhado o item.
 **/
 
-function shareItem (socialNetwork, title, titlePopUp){
-
+function shareItem(socialNetwork, title, titlePopUp) {
+	
 	var	sharedURL 	=	encodeURIComponent(window.location.href);
 	var paramsPopUp = 	'width=640, height=340, toolbar=no, scrollbars=yes, status=yes';
 	var mainURL 	=	"";
 	var titlePopUp  = 	"";
+	
+	if(title == '')
+	{
+		title = getMetaValue("DC.title");
+	}
 	
 	switch( socialNetwork ) {
 		case 'twitter':
@@ -36,6 +41,23 @@ function shareItem (socialNetwork, title, titlePopUp){
 	
 	window.open(mainURL, titlePopUp , paramsPopUp);
 }
+
+
+/**
+ * Recupera informações contidas na tag "META" do XHTML renderizado
+ * @param name Nome do atributo presente na tag
+ */
+function getMetaValue (name){
+	var metaArrays = document.getElementsByTagName("META");
+	var i = 0;
+	for (i = 0; i < metaArrays.length; i++){
+		if (metaArrays[i].name == name){
+			return metaArrays[i].content;
+		}
+	}
+	return null;
+}
+
 
 /**
  * Função do google+
