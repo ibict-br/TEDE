@@ -97,7 +97,7 @@ public class ImportErrorsReader {
 								
 								for(File itemContent : folderItemContainer.listFiles())
 								{
-									if(itemContent.isFile() && !itemContent.getName().equals("contents"))
+									if(itemContent.isFile())
 									{
 										long unusedKey = FileUtils.garanteeUnusedKey(identifiersForFiles);
 										itemRegistry.put(unusedKey, itemContent);
