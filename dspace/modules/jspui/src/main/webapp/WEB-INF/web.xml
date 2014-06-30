@@ -311,6 +311,11 @@
     <servlet-name>foldermetadataerror</servlet-name>
     <servlet-class>org.dspace.app.webui.servlet.FolderMetadataErrorServlet</servlet-class>
   </servlet>
+  
+  <servlet>
+    <servlet-name>item-download-formats</servlet-name>
+    <servlet-class>org.dspace.app.webui.servlet.DownloadItemExportServlet</servlet-class>
+  </servlet>
 
   <servlet>
     <servlet-name>batchmetadataimport</servlet-name>
@@ -691,6 +696,11 @@
   <servlet-mapping>
     <servlet-name>mydspace</servlet-name>
     <url-pattern>/mydspace</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>item-download-formats</servlet-name>
+    <url-pattern>/item-export-formats</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

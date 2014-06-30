@@ -126,10 +126,10 @@
 		    		</td>
 		    		<td class="iconsBar">
 		    			<img class="social-pointer" title="<fmt:message key="jsp.display-item.social.share.twitter"></fmt:message>" src="<%= request.getContextPath() + "/image/social/ico_twitter.gif" %>"
-		    				onclick="shareItem('twitter', '<%= title %>', '<%= I18nUtil.getMessage("jsp.display-item.social.share.twitter") %>')">
+		    				onclick="shareItem('twitter', '', '<%= I18nUtil.getMessage("jsp.display-item.social.share.twitter") %>')">
 			    		</img>
 		    			<img class="social-pointer" style="padding-right: 14px;" title="<fmt:message key="jsp.display-item.social.share.facebook"></fmt:message>" src="<%= request.getContextPath() + "/image/social/ico_facebook.gif" %>"
-		    				onclick="shareItem('facebook', '<%= title %>', '<%= I18nUtil.getMessage("jsp.display-item.social.share.facebook") %>')">
+		    				onclick="shareItem('facebook', '', '<%= I18nUtil.getMessage("jsp.display-item.social.share.facebook") %>')">
 			    		</img>
 			    		
 			    		<div id="google-plus-container">
@@ -140,6 +140,25 @@
 		    	</tr>
 	    	</tbody>
 	    </table>
+	   	
+	   	<!-- 
+	   		Item user export
+	   	 -->
+	   	<div>
+	   	
+		   	<span style="font-weight: bold; padding-left: 6px;">
+		   		<fmt:message key="item.export.label"/>
+		   	</span>
+		   	
+		   	<span>
+				<a href="<%= request.getContextPath() + "/item-export-formats?itemId=" + item.getID() + "&format=ENDNOTE" %>"><fmt:message key="item.export.type.endnote" /></a>
+		   	</span>
+		   	<span>
+				<a href="<%= request.getContextPath() + "/item-export-formats?itemId=" + item.getID() + "&format=BIBTEX" %>"><fmt:message key="item.export.type.bibtex" /></a>
+		   	</span>
+		   	
+	   	</div>
+
 	   	<br/>
 
 		<%		

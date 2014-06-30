@@ -1,0 +1,5 @@
+Formato endnote, aguardando template
+
+#foreach($metadata in $itemMetadata.entrySet())
+	$metadata.key = "$metadata.value"
+#end
