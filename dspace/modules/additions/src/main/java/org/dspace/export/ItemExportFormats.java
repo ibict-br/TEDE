@@ -31,6 +31,10 @@ import org.dspace.export.domain.ExportType;
 public class ItemExportFormats 
 {
 	
+	private static final int ZERO_CHARACTER = 0;
+	private static final int YEAR_LENGTH = 4;
+	private static final int YEARH_LENGTH_COMPARATOR = 3;
+
 	/**
 	 * Convert instance of {@link Item} on a representative String
 	 * @param item Item to be exported
@@ -50,7 +54,19 @@ public class ItemExportFormats
 		
 		for(DCValue currentMetadata : item.getMetadata("dc", Item.ANY, Item.ANY, Item.ANY))
 		{
-			itemMetadata.put(currentMetadata.getField(), currentMetadata.value);
+			String value = null;
+			
+			/** BibTex requires only "year" for date.issued **/
+			if(currentMetadata.getField().equals("dc.date.issued") && exportType.equals(ExportType.BIBTEX))
+			{
+				value = currentMetadata.value != null && currentMetadata.value.length() > 
+					YEARH_LENGTH_COMPARATOR ? currentMetadata.value.substring(ZERO_CHARACTER, YEAR_LENGTH) : "";
+			}
+			else
+			{
+				value = currentMetadata.value != null ? currentMetadata.value.replaceAll("\n", " ") : "";
+			}
+			itemMetadata.put(currentMetadata.getField(), value);
 		}
 		
 		context.put("itemMetadata", itemMetadata);

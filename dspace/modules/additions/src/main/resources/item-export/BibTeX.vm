@@ -1,8 +1,14 @@
-@article {
-	patashnik-bibtexing,
-	
-	#foreach($metadata in $itemMetadata.entrySet())
-    	$metadata.key = "$metadata.value"
-  	#end
-
+@article{ $itemMetadata.get("dc.contributor.author"),
+	title = $itemMetadata.get("dc.title"),
+	journal = ?,
+	volume = ?,
+	number = ?,
+	pages = ?,
+	year = $itemMetadata.get("dc.date.issued"),
+	note = ?,
+	issn = ?,
+	doi = $itemMetadata.get("dc.identifier.doi"),
+	url = $itemMetadata.get("dc.identifier.uri"),
+	author = $itemMetadata.get("dc.contributor.author"),
+	abstract = $itemMetadata.get("dc.description.abstract") 
 }

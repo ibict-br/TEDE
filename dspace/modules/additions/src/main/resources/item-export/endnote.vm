@@ -1,5 +1,16 @@
-Formato endnote, aguardando template
+TY  - ?
+T1  - $itemMetadata.get("dc.title")
+JO  - ?
+VL  - ?
+IS  - ?
+SP  - ?
+EP  - ?
+PY  - $itemMetadata.get("dc.date.issued")
+T2  - $itemMetadata.get("dc.title.alternative")
+AU  - $itemMetadata.get("dc.contributor.author")
+SN  - ?
+DO  - $itemMetadata.get("dc.identifier.doi")
+UR  - $itemMetadata.get("dc.identifier.uri")
+AB  - $itemMetadata.get("dc.description.abstract") 
+ER  - 
 
-#foreach($metadata in $itemMetadata.entrySet())
-	$metadata.key = "$metadata.value"
-#end
