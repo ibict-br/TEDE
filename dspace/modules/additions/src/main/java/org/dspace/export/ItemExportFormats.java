@@ -1,9 +1,13 @@
 package org.dspace.export;
 
 import java.io.StringWriter;
+import java.nio.ByteBuffer;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
@@ -31,17 +35,38 @@ import org.dspace.export.domain.ExportType;
 public class ItemExportFormats 
 {
 	
+    private static Logger log = Logger.getLogger(ItemExportFormats.class);
 	private static final int ZERO_CHARACTER = 0;
 	private static final int YEAR_LENGTH = 4;
 	private static final int YEARH_LENGTH_COMPARATOR = 3;
+    private MessageDigest messageDigest;
+	
+    /**
+     * Initializes {@link #messageDigest}, using <i>MD5</i> hash
+     */
+	private void initMessageDigest() {
+		try 
+        {
+        	messageDigest = MessageDigest.getInstance("MD5");
+        } 
+        catch (NoSuchAlgorithmException e) 
+        {
+        	log.error(e.getMessage(), e);
+        }
+	}
 
 	/**
 	 * Convert instance of {@link Item} on a representative String
 	 * @param item Item to be exported
 	 * @param exportType Type or export (endnote, bibtext, etc...)
 	 */
-	public String process(Item item, ExportType exportType)
+	public ItemExportDTO process(Item item, ExportType exportType)
 	{
+		if(messageDigest == null)
+		{
+			initMessageDigest();
+		}
+		
 		VelocityEngine velocityEngine = new VelocityEngine();
 		velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
 		velocityEngine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
@@ -56,8 +81,8 @@ public class ItemExportFormats
 		{
 			String value = null;
 			
-			/** BibTex requires only "year" for date.issued **/
-			if(currentMetadata.getField().equals("dc.date.issued") && exportType.equals(ExportType.BIBTEX))
+			/** Must have only "year" for date.issued **/
+			if(currentMetadata.getField().equals("dc.date.issued"))
 			{
 				value = currentMetadata.value != null && currentMetadata.value.length() > 
 					YEARH_LENGTH_COMPARATOR ? currentMetadata.value.substring(ZERO_CHARACTER, YEAR_LENGTH) : "";
@@ -70,11 +95,70 @@ public class ItemExportFormats
 		}
 		
 		context.put("itemMetadata", itemMetadata);
+		String generatedIdentifier = generateIdentifier(itemMetadata);
+		context.put("generatedId", generatedIdentifier);
 		
 		StringWriter stringWriter = new StringWriter();
 		template.merge(context, stringWriter);
 		
-		return stringWriter.toString();
+		return new ItemExportDTO(stringWriter.toString(), generatedIdentifier);
+	}
+	
+	
+	/**
+	 * Generates a identifer for a given item, using the following pattern:
+	 * <code>
+	 * 	LASTNAME:YEAR:(HASH FROM TITLE)
+	 * </code>
+	 * @param itemMetadata Metadata from item
+	 * @return Generated hash
+	 */
+    private String generateIdentifier(Map<String, String> itemMetadata) 
+    {
+    	StringBuilder identifierBuilder = new StringBuilder();
+    	String author = itemMetadata.get("dc.contributor.author");
+    	String separator = "";
+    	
+    	if(author != null)
+    	{
+    		String[] authorSplited = author.split(",");
+			if(authorSplited.length > 0)
+    		{
+    			identifierBuilder.append(authorSplited[0]);
+    			separator = ":";
+    		}
+    	}
+    	
+    	String yearIssued = itemMetadata.get("dc.date.issued");
+    	if(yearIssued != null && !yearIssued.isEmpty())
+    	{
+    		identifierBuilder.append(separator);
+    		identifierBuilder.append(yearIssued);
+    		separator = ":";
+    	}
+    	
+    	String title = itemMetadata.get("dc.title");
+    	if(title != null && !title.isEmpty())
+    	{
+    		identifierBuilder.append(separator);
+    		identifierBuilder.append(generateHashFromString(title));
+    		separator = ":";
+    	}
+    	
+		return identifierBuilder.toString();
+	}
+
+	/**
+     * Generate a {@link Long} using {@link #messageDigest} plus a String value
+     * @param value
+     * @return Long value (converted to String)
+     */
+    private Integer generateHashFromString(String value) 
+	{
+		ByteBuffer byteBuffer = ByteBuffer.wrap(messageDigest.digest(value.getBytes()));
+		int generatedValue = byteBuffer.getInt();
+		/** Positive numbers **/
+		return generatedValue < 0 ? (generatedValue * -1) : generatedValue;
 	}
 	
 }

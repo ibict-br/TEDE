@@ -2,6 +2,8 @@ package org.dspace.export;
 
 import java.sql.SQLException;
 
+import junit.framework.Assert;
+
 import org.dspace.content.Item;
 import org.dspace.core.Context;
 import org.dspace.export.domain.ExportType;
@@ -24,7 +26,9 @@ public class ItemExportFormatsTest {
 	{
 		Item testItem = Item.find(new Context(), 3598);
 		ItemExportFormats itemExportFormats = new ItemExportFormats();
-		itemExportFormats.process(testItem, ExportType.BIBTEX);
+		ItemExportDTO process = itemExportFormats.process(testItem, ExportType.ENDNOTE);
+		
+		Assert.assertNotNull(process);
 		
 	}
 	
