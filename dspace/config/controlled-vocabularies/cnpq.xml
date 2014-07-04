@@ -1422,415 +1422,682 @@
 		</node>
 		<node label="CIENCIAS SOCIAIS APLICADAS" id="600000000007"> 
 		<isComposedBy>
-			<node label="DIREITO" id="600100000001"> </node>
-			<node label="TEORIA DO DIREITO" id="600100100008"> </node>
-			<node label="TEORIA GERAL DO DIREITO" id="600100100106"> </node>
-			<node label="TEORIA GERAL DO PROCESSO" id="600100100204"> </node>
-			<node label="TEORIA DO ESTADO" id="600100100302"> </node>
-			<node label="HISTORIA DO DIREITO" id="600100100400"> </node>
-			<node label="FILOSOFIA DO DIREITO" id="600100100509"> </node>
-			<node label="LOGICA JURIDICA" id="600100100607"> </node>
-			<node label="SOCIOLOGIA JURIDICA" id="600100100705"> </node>
-			<node label="ANTROPOLOGIA JURIDICA" id="600100100803"> </node>
-			<node label="DIREITO PUBLICO" id="600100200004"> </node>
-			<node label="DIREITO TRIBUTARIO" id="600100200102"> </node>
-			<node label="DIREITO PENAL" id="600100200200"> </node>
-			<node label="DIREITO PROCESSUAL PENAL" id="600100200309"> </node>
-			<node label="DIREITO PROCESSUAL CIVIL" id="600100200407"> </node>
-			<node label="DIREITO CONSTITUCIONAL" id="600100200505"> </node>
-			<node label="DIREITO ADMINISTRATIVO" id="600100200603"> </node>
-			<node label="DIREITO INTERNACIONAL PUBLICO" id="600100200701"> </node>
-			<node label="DIREITO PRIVADO" id="600100300000"> </node>
-			<node label="DIREITO CIVIL" id="600100300109"> </node>
-			<node label="DIREITO COMERCIAL" id="600100300207"> </node>
-			<node label="DIREITO DO TRABALHO" id="600100300305"> </node>
-			<node label="DIREITO INTERNACIONAL PRIVADO" id="600100300403"> </node>
-			<node label="DIREITOS ESPECIAIS" id="600100400007"> </node>
-			<node label="ADMINISTRACAO" id="600200000006"> </node>
-			<node label="ADMINISTRACAO DE EMPRESAS" id="600200100002"> </node>
-			<node label="ADMINISTRACAO DA PRODUCAO" id="600200100100"> </node>
-			<node label="ADMINISTRACAO FINANCEIRA" id="600200100209"> </node>
-			<node label="MERCADOLOGIA" id="600200100307"> </node>
-			<node label="NEGOCIOS INTERNACIONAIS" id="600200100405"> </node>
-			<node label="ADMINISTRACAO DE RECURSOS HUMANOS" id="600200100503"> </node>
-			<node label="ADMINISTRACAO PUBLICA" id="600200200009"> </node>
-			<node label="CONTABILIDADE E FINANCAS PUBLICAS" id="600200200107"> </node>
-			<node label="ORGANIZACOES PUBLICAS" id="600200200205"> </node>
-			<node label="POLITICA E PLANEJAMENTO GOVERNAMENTAIS" id="600200200303"> </node>
-			<node label="ADMINISTRACAO DE PESSOAL" id="600200200401"> </node>
-			<node label="ADMINISTRACAO DE SETORES ESPECIFICOS" id="600200300005"> </node>
-			<node label="CIENCIAS CONTABEIS" id="600200400001"> </node>
-			<node label="ECONOMIA" id="600300000000"> </node>
-			<node label="TEORIA ECONOMICA" id="600300100007"> </node>
-			<node label="ECONOMIA GERAL" id="600300100105"> </node>
-			<node label="TEORIA GERAL DA ECONOMIA" id="600300100203"> </node>
-			<node label="HISTORIA DO PENSAMENTO ECONOMICO" id="600300100301"> </node>
-			<node label="HISTORIA ECONOMICA" id="600300100400"> </node>
-			<node label="SISTEMAS ECONOMICOS" id="600300100508"> </node>
-			<node label="METODOS QUANTITATIVOS EM ECONOMIA" id="600300200003"> </node>
-			<node label="METODOS E MODELOS MATEMATICOS, ECONOMETRICOS E ESTATISTICOS" id="600300200101"> </node>
-			<node label="ESTATISTICA SOCIO-ECONOMICA" id="600300200200"> </node>
-			<node label="CONTABILIDADE NACIONAL" id="600300200308"> </node>
-			<node label="ECONOMIA MATEMATICA" id="600300200406"> </node>
-			<node label="ECONOMIA MONETARIA E FISCAL" id="600300300000"> </node>
-			<node label="TEORIA MONETARIA E FINANCEIRA" id="600300300108"> </node>
-			<node label="INSTITUICOES MONETARIAS E FINANCEIRAS DO BRASIL" id="600300300206"> </node>
-			<node label="FINANCAS PUBLICAS INTERNAS" id="600300300304"> </node>
-			<node label="POLITICA FISCAL DO BRASIL" id="600300300402"> </node>
-			<node label="CRESCIMENTO, FLUTUACOES E PLANEJAMENTO ECONOMICO" id="600300400006"> </node>
-			<node label="CRESCIMENTO E DESENVOLVIMENTO ECONOMICO" id="600300400104"> </node>
-			<node label="TEORIA E POLITICA DE PLANEJAMENTO ECONOMICO" id="600300400202"> </node>
-			<node label="FLUTUACOES CICLICAS E PROJECOES ECONOMICAS" id="600300400300"> </node>
-			<node label="INFLACAO" id="600300400409"> </node>
-			<node label="ECONOMIA INTERNACIONAL" id="600300500002"> </node>
-			<node label="TEORIA DO COMERCIO INTERNACIONAL" id="600300500100"> </node>
-			<node label="RELACOES DO COMERCIO POLITICA COMERCIAL INTEGRACAO ECONOMICA" id="600300500209"> </node>
-			<node label="BALANCO DE PAGAMENTOS FINANCAS INTERNACIONAIS" id="600300500307"> </node>
-			<node label="INVESTIMENTOS INTERNACIONAIS E AJUDA EXTERNA" id="600300500405"> </node>
-			<node label="ECONOMIA DOS RECURSOS HUMANOS" id="600300600009"> </node>
-			<node label="TREINAMENTO E ALOCACAO DE MAO-DE-OBRA OFERTA DE MAO-DE-OBRA E FORCA DE TRABALHO" id="600300600107"> </node>
-			<node label="MERCADO DE TRABALHO POLITICA DO GOVERNO" id="600300600205"> </node>
-			<node label="SINDICATOS, DISSIDIOS COLETIVOS, RELACOES DE EMPREGO (EMPREGADOR/EMPREGADO)" id="600300600303"> </node>
-			<node label="CAPITAL HUMANO" id="600300600401"> </node>
-			<node label="DEMOGRAFIA ECONOMICA" id="600300600500"> </node>
-			<node label="ECONOMIA INDUSTRIAL" id="600300700005"> </node>
-			<node label="ORGANIZACAO INDUSTRIAL E ESTUDOS INDUSTRIAIS" id="600300700103"> </node>
-			<node label="MUDANCA TECNOLOGICA" id="600300700201"> </node>
-			<node label="ECONOMIA DO BEM-ESTAR SOCIAL" id="600300800001"> </node>
-			<node label="ECONOMIA DOS PROGRAMAS DE BEM-ESTAR SOCIAL" id="600300800100"> </node>
-			<node label="ECONOMIA DO CONSUMIDOR" id="600300800208"> </node>
-			<node label="ECONOMIA REGIONAL E URBANA" id="600300900008"> </node>
-			<node label="ECONOMIA REGIONAL" id="600300900106"> </node>
-			<node label="ECONOMIA URBANA" id="600300900204"> </node>
-			<node label="RENDA E TRIBUTACAO" id="600300900302"> </node>
-			<node label="ECONOMIAS AGRARIA E DOS RECURSOS NATURAIS" id="600301000006"> </node>
-			<node label="ECONOMIA AGRARIA" id="600301000104"> </node>
-			<node label="ECONOMIA DOS RECURSOS NATURAIS" id="600301000202"> </node>
-			<node label="ARQUITETURA E URBANISMO" id="600400000005"> </node>
-			<node label="FUNDAMENTOS DE ARQUITETURA E URBANISMO" id="600400100001"> </node>
-			<node label="HISTORIA DA ARQUITETURA E URBANISMO" id="600400100100"> </node>
-			<node label="TEORIA DA ARQUITETURA" id="600400100208"> </node>
-			<node label="HISTORIA DO URBANISMO" id="600400100306"> </node>
-			<node label="TEORIA DO URBANISMO" id="600400100404"> </node>
-			<node label="PROJETO DE ARQUITETUTA E URBANISMO" id="600400200008"> </node>
-			<node label="PLANEJAMENTO E PROJETOS DA EDIFICACAO" id="600400200106"> </node>
-			<node label="PLANEJAMENTO E PROJETO DO ESPACO URBANO" id="600400200204"> </node>
-			<node label="PLANEJAMENTO E PROJETO DO EQUIPAMENTO" id="600400200302"> </node>
-			<node label="TECNOLOGIA DE ARQUITETURA E URBANISMO" id="600400300004"> </node>
-			<node label="ADEQUACAO AMBIENTAL" id="600400300102"> </node>
-			<node label="PAISAGISMO" id="600400400000"> </node>
-			<node label="DESENVOLVIMENTO HISTORICO DO PAISAGISMO" id="600400400109"> </node>
-			<node label="CONCEITUACAO DE PAISAGISMO E METODOLOGIA DO PAISAGISMO" id="600400400207"> </node>
-			<node label="ESTUDOS DE ORGANIZACAO DO ESPACO EXTERIOR" id="600400400305"> </node>
-			<node label="PROJETOS DE ESPACOS LIVRES URBANOS" id="600400400403"> </node>
-			<node label="PLANEJAMENTO URBANO E REGIONAL" id="600500000000"> </node>
-			<node label="FUNDAMENTOS DO PLANEJAMENTO URBANO E REGIONAL" id="600500100006"> </node>
-			<node label="TEORIA DO PLANEJAMENTO URBANO E REGIONAL" id="600500100104"> </node>
-			<node label="TEORIA DA URBANIZACAO" id="600500100202"> </node>
-			<node label="POLITICA URBANA" id="600500100300"> </node>
-			<node label="HISTORIA URBANA" id="600500100409"> </node>
-			<node label="METODOS E TECNICAS DO PLANEJAMENTO URBANO E REGIONAL" id="600500200002"> </node>
-			<node label="INFORMACAO, CADASTRO E MAPEAMENTO" id="600500200100"> </node>
-			<node label="TECNICA DE PREVISAO URBANA E REGIONAL" id="600500200209"> </node>
-			<node label="TECNICAS DE ANALISE E AVALIACAO URBANA E REGIONAL" id="600500200307"> </node>
-			<node label="TECNICAS DE PLANEJAMENTO E PROJETO URBANOS E REGIONAIS" id="600500200405"> </node>
-			<node label="SERVICOS URBANOS E REGIONAIS" id="600500300009"> </node>
-			<node label="ADMINISTRACAO MUNICIPAL E URBANA" id="600500300107"> </node>
-			<node label="ESTUDOS DA HABITACAO" id="600500300205"> </node>
-			<node label="ASPECTOS SOCIAIS DO PLANEJAMENTO URBANO E REGIONAL" id="600500300303"> </node>
-			<node label="ASPECTOS ECONOMICOS DO PLANEJAMENTO URBANO E REGIONAL" id="600500300401"> </node>
-			<node label="ASPECTOS FISICO-AMBIENTAIS DO PLANEJAMENTO URBANO E REGIONAL" id="600500300500"> </node>
-			<node label="SERVICOS COMUNITARIOS" id="600500300608"> </node>
-			<node label="INFRA-ESTRUTURAS URBANAS E REGIONAIS" id="600500300706"> </node>
-			<node label="TRANSPORTE E TRAFEGO URBANO E REGIONAL" id="600500300804"> </node>
-			<node label="LEGISLACAO URBANA E REGIONAL" id="600500300902"> </node>
-			<node label="DEMOGRAFIA" id="600600000004"> </node>
-			<node label="DISTRIBUICAO ESPACIAL" id="600600100000"> </node>
-			<node label="DISTRIBUICAO ESPACIAL GERAL" id="600600100109"> </node>
-			<node label="DISTRIBUICAO ESPACIAL URBANA" id="600600100207"> </node>
-			<node label="DISTRIBUICAO ESPACIAL RURAL" id="600600100305"> </node>
-			<node label="TENDENCIA POPULACIONAL" id="600600200007"> </node>
-			<node label="TENDENCIAS PASSADAS" id="600600200105"> </node>
-			<node label="TAXAS E ESTIMATIVAS CORRENTES" id="600600200203"> </node>
-			<node label="PROJECOES" id="600600200301"> </node>
-			<node label="COMPONENTES DA DINAMICA DEMOGRAFICA" id="600600300003"> </node>
-			<node label="FECUNDIDADE" id="600600300101"> </node>
-			<node label="MORTALIDADE" id="600600300200"> </node>
-			<node label="MIGRACAO" id="600600300308"> </node>
-			<node label="NUPCIALIDADE E FAMILIA" id="600600400000"> </node>
-			<node label="CASAMENTO E DIVORCIO" id="600600400108"> </node>
-			<node label="FAMILIA E REPRODUCAO" id="600600400206"> </node>
-			<node label="DEMOGRAFIA HISTORICA" id="600600500006"> </node>
-			<node label="DISTRIBUICAO ESPACIAL" id="600600500104"> </node>
-			<node label="NATALIDADE, MORTALIDADE, MIGRACAO" id="600600500202"> </node>
-			<node label="NUPCIALIDADE E FAMILIA" id="600600500300"> </node>
-			<node label="METODOS E TECNICAS DE DEMOGRAFIA HISTORICA" id="600600500409"> </node>
-			<node label="POLITICA PUBLICA E POPULACAO" id="600600600002"> </node>
-			<node label="POLITICA POPULACIONAL" id="600600600100"> </node>
-			<node label="POLITICAS DE REDISTRIBUICAO DE POPULACAO" id="600600600209"> </node>
-			<node label="POLITICAS DE PLANEJAMENTO FAMILIAR" id="600600600307"> </node>
-			<node label="FONTES DE DADOS DEMOGRAFICOS" id="600600700009"> </node>
-			<node label="CIENCIA DA INFORMACAO" id="600700000009"> </node>
-			<node label="TEORIA DA INFORMACAO" id="600700100005"> </node>
-			<node label="TEORIA GERAL DA INFORMACAO" id="600700100103"> </node>
-			<node label="PROCESSOS DA COMUNICACAO" id="600700100201"> </node>
-			<node label="REPRESENTACAO DA INFORMACAO" id="600700100300"> </node>
-			<node label="BIBLIOTECONOMIA" id="600700200001"> </node>
-			<node label="TEORIA DA CLASSIFICACAO" id="600700200100"> </node>
-			<node label="METODOS QUANTITATIVOS. BIBLIOMETRIA" id="600700200208"> </node>
-			<node label="TECNICAS DE RECUPERACAO DE INFORMACAO" id="600700200306"> </node>
-			<node label="PROCESSOS DE DISSEMINACAO DA INFORMACAO" id="600700200404"> </node>
-			<node label="ARQUIVOLOGIA" id="600700300008"> </node>
-			<node label="ORGANIZACAO DE ARQUIVOS" id="600700300106"> </node>
+			<node label="DIREITO" id="600100000001"> 
+				<isComposedBy>
+				<node label="TEORIA DO DIREITO" id="600100100008"> 
+					<isComposedBy>
+					<node label="TEORIA GERAL DO DIREITO" id="600100100106"> </node>
+					<node label="TEORIA GERAL DO PROCESSO" id="600100100204"> </node>
+					<node label="TEORIA DO ESTADO" id="600100100302"> </node>
+					<node label="HISTORIA DO DIREITO" id="600100100400"> </node>
+					<node label="FILOSOFIA DO DIREITO" id="600100100509"> </node>
+					<node label="LOGICA JURIDICA" id="600100100607"> </node>
+					<node label="SOCIOLOGIA JURIDICA" id="600100100705"> </node>
+					<node label="ANTROPOLOGIA JURIDICA" id="600100100803"> </node>
+					</isComposedBy>
+				</node>
+				<node label="DIREITO PUBLICO" id="600100200004"> 
+					<isComposedBy>
+					<node label="DIREITO TRIBUTARIO" id="600100200102"> </node>
+					<node label="DIREITO PENAL" id="600100200200"> </node>
+					<node label="DIREITO PROCESSUAL PENAL" id="600100200309"> </node>
+					<node label="DIREITO PROCESSUAL CIVIL" id="600100200407"> </node>
+					<node label="DIREITO CONSTITUCIONAL" id="600100200505"> </node>
+					<node label="DIREITO ADMINISTRATIVO" id="600100200603"> </node>
+					<node label="DIREITO INTERNACIONAL PUBLICO" id="600100200701"> </node>
+					</isComposedBy>
+				</node>
+				<node label="DIREITO PRIVADO" id="600100300000"> 
+					<isComposedBy>
+					<node label="DIREITO CIVIL" id="600100300109"> </node>
+					<node label="DIREITO COMERCIAL" id="600100300207"> </node>
+					<node label="DIREITO DO TRABALHO" id="600100300305"> </node>
+					<node label="DIREITO INTERNACIONAL PRIVADO" id="600100300403"> </node>
+					</isComposedBy>
+				</node>
+				<node label="DIREITOS ESPECIAIS" id="600100400007"> </node>
+				</isComposedBy>
+			</node>
+			<node label="ADMINISTRACAO" id="600200000006"> 
+				<isComposedBy>
+				<node label="ADMINISTRACAO DE EMPRESAS" id="600200100002"> 
+					<isComposedBy>
+					<node label="ADMINISTRACAO DA PRODUCAO" id="600200100100"> </node>
+					<node label="ADMINISTRACAO FINANCEIRA" id="600200100209"> </node>
+					<node label="MERCADOLOGIA" id="600200100307"> </node>
+					<node label="NEGOCIOS INTERNACIONAIS" id="600200100405"> </node>
+					<node label="ADMINISTRACAO DE RECURSOS HUMANOS" id="600200100503"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ADMINISTRACAO PUBLICA" id="600200200009"> 
+					<isComposedBy>
+					<node label="CONTABILIDADE E FINANCAS PUBLICAS" id="600200200107"> </node>
+					<node label="ORGANIZACOES PUBLICAS" id="600200200205"> </node>
+					<node label="POLITICA E PLANEJAMENTO GOVERNAMENTAIS" id="600200200303"> </node>
+					<node label="ADMINISTRACAO DE PESSOAL" id="600200200401"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ADMINISTRACAO DE SETORES ESPECIFICOS" id="600200300005"> </node>
+				<node label="CIENCIAS CONTABEIS" id="600200400001"> </node>
+				</isComposedBy>
+			</node>
+			<node label="ECONOMIA" id="600300000000"> 
+				<isComposedBy>
+				<node label="TEORIA ECONOMICA" id="600300100007"> 
+					<isComposedBy>
+					<node label="ECONOMIA GERAL" id="600300100105"> </node>
+					<node label="TEORIA GERAL DA ECONOMIA" id="600300100203"> </node>
+					<node label="HISTORIA DO PENSAMENTO ECONOMICO" id="600300100301"> </node>
+					<node label="HISTORIA ECONOMICA" id="600300100400"> </node>
+					<node label="SISTEMAS ECONOMICOS" id="600300100508"> </node>
+					</isComposedBy>
+				</node>
+				<node label="METODOS QUANTITATIVOS EM ECONOMIA" id="600300200003"> 
+					<isComposedBy>
+					<node label="METODOS E MODELOS MATEMATICOS, ECONOMETRICOS E ESTATISTICOS" id="600300200101"> </node>
+					<node label="ESTATISTICA SOCIO-ECONOMICA" id="600300200200"> </node>
+					<node label="CONTABILIDADE NACIONAL" id="600300200308"> </node>
+					<node label="ECONOMIA MATEMATICA" id="600300200406"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIA MONETARIA E FISCAL" id="600300300000"> 
+					<isComposedBy>
+					<node label="TEORIA MONETARIA E FINANCEIRA" id="600300300108"> </node>
+					<node label="INSTITUICOES MONETARIAS E FINANCEIRAS DO BRASIL" id="600300300206"> </node>
+					<node label="FINANCAS PUBLICAS INTERNAS" id="600300300304"> </node>
+					<node label="POLITICA FISCAL DO BRASIL" id="600300300402"> </node>
+					</isComposedBy>
+				</node>
+				<node label="CRESCIMENTO, FLUTUACOES E PLANEJAMENTO ECONOMICO" id="600300400006"> 
+					<isComposedBy>
+					<node label="CRESCIMENTO E DESENVOLVIMENTO ECONOMICO" id="600300400104"> </node>
+					<node label="TEORIA E POLITICA DE PLANEJAMENTO ECONOMICO" id="600300400202"> </node>
+					<node label="FLUTUACOES CICLICAS E PROJECOES ECONOMICAS" id="600300400300"> </node>
+					<node label="INFLACAO" id="600300400409"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIA INTERNACIONAL" id="600300500002"> 
+					<isComposedBy>
+					<node label="TEORIA DO COMERCIO INTERNACIONAL" id="600300500100"> </node>
+					<node label="RELACOES DO COMERCIO POLITICA COMERCIAL INTEGRACAO ECONOMICA" id="600300500209"> </node>
+					<node label="BALANCO DE PAGAMENTOS FINANCAS INTERNACIONAIS" id="600300500307"> </node>
+					<node label="INVESTIMENTOS INTERNACIONAIS E AJUDA EXTERNA" id="600300500405"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIA DOS RECURSOS HUMANOS" id="600300600009"> 
+					<isComposedBy>
+					<node label="TREINAMENTO E ALOCACAO DE MAO-DE-OBRA OFERTA DE MAO-DE-OBRA E FORCA DE TRABALHO" id="600300600107"> </node>
+					<node label="MERCADO DE TRABALHO POLITICA DO GOVERNO" id="600300600205"> </node>
+					<node label="SINDICATOS, DISSIDIOS COLETIVOS, RELACOES DE EMPREGO (EMPREGADOR/EMPREGADO)" id="600300600303"> </node>
+					<node label="CAPITAL HUMANO" id="600300600401"> </node>
+					<node label="DEMOGRAFIA ECONOMICA" id="600300600500"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIA INDUSTRIAL" id="600300700005"> 
+					<isComposedBy>
+					<node label="ORGANIZACAO INDUSTRIAL E ESTUDOS INDUSTRIAIS" id="600300700103"> </node>
+					<node label="MUDANCA TECNOLOGICA" id="600300700201"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIA DO BEM-ESTAR SOCIAL" id="600300800001"> 
+					<isComposedBy>
+					<node label="ECONOMIA DOS PROGRAMAS DE BEM-ESTAR SOCIAL" id="600300800100"> </node>
+					<node label="ECONOMIA DO CONSUMIDOR" id="600300800208"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIA REGIONAL E URBANA" id="600300900008"> 
+					<isComposedBy>
+					<node label="ECONOMIA REGIONAL" id="600300900106"> </node>
+					<node label="ECONOMIA URBANA" id="600300900204"> </node>
+					<node label="RENDA E TRIBUTACAO" id="600300900302"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ECONOMIAS AGRARIA E DOS RECURSOS NATURAIS" id="600301000006"> 
+					<isComposedBy>
+					<node label="ECONOMIA AGRARIA" id="600301000104"> </node>
+					<node label="ECONOMIA DOS RECURSOS NATURAIS" id="600301000202"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="ARQUITETURA E URBANISMO" id="600400000005"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS DE ARQUITETURA E URBANISMO" id="600400100001"> 
+					<isComposedBy>
+					<node label="HISTORIA DA ARQUITETURA E URBANISMO" id="600400100100"> </node>
+					<node label="TEORIA DA ARQUITETURA" id="600400100208"> </node>
+					<node label="HISTORIA DO URBANISMO" id="600400100306"> </node>
+					<node label="TEORIA DO URBANISMO" id="600400100404"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PROJETO DE ARQUITETUTA E URBANISMO" id="600400200008"> 
+					<isComposedBy>
+					<node label="PLANEJAMENTO E PROJETOS DA EDIFICACAO" id="600400200106"> </node>
+					<node label="PLANEJAMENTO E PROJETO DO ESPACO URBANO" id="600400200204"> </node>
+					<node label="PLANEJAMENTO E PROJETO DO EQUIPAMENTO" id="600400200302"> </node>
+					</isComposedBy>
+				</node>
+				<node label="TECNOLOGIA DE ARQUITETURA E URBANISMO" id="600400300004"> 
+					<isComposedBy>
+					<node label="ADEQUACAO AMBIENTAL" id="600400300102"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PAISAGISMO" id="600400400000"> 
+					<isComposedBy>
+					<node label="DESENVOLVIMENTO HISTORICO DO PAISAGISMO" id="600400400109"> </node>
+					<node label="CONCEITUACAO DE PAISAGISMO E METODOLOGIA DO PAISAGISMO" id="600400400207"> </node>
+					<node label="ESTUDOS DE ORGANIZACAO DO ESPACO EXTERIOR" id="600400400305"> </node>
+					<node label="PROJETOS DE ESPACOS LIVRES URBANOS" id="600400400403"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="PLANEJAMENTO URBANO E REGIONAL" id="600500000000"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS DO PLANEJAMENTO URBANO E REGIONAL" id="600500100006"> 
+					<isComposedBy>
+					<node label="TEORIA DO PLANEJAMENTO URBANO E REGIONAL" id="600500100104"> </node>
+					<node label="TEORIA DA URBANIZACAO" id="600500100202"> </node>
+					<node label="POLITICA URBANA" id="600500100300"> </node>
+					<node label="HISTORIA URBANA" id="600500100409"> </node>
+					</isComposedBy>
+				</node>
+				<node label="METODOS E TECNICAS DO PLANEJAMENTO URBANO E REGIONAL" id="600500200002"> 
+					<isComposedBy>
+					<node label="INFORMACAO, CADASTRO E MAPEAMENTO" id="600500200100"> </node>
+					<node label="TECNICA DE PREVISAO URBANA E REGIONAL" id="600500200209"> </node>
+					<node label="TECNICAS DE ANALISE E AVALIACAO URBANA E REGIONAL" id="600500200307"> </node>
+					<node label="TECNICAS DE PLANEJAMENTO E PROJETO URBANOS E REGIONAIS" id="600500200405"> </node>
+					</isComposedBy>
+				</node>
+				<node label="SERVICOS URBANOS E REGIONAIS" id="600500300009"> 
+					<isComposedBy>
+					<node label="ADMINISTRACAO MUNICIPAL E URBANA" id="600500300107"> </node>
+					<node label="ESTUDOS DA HABITACAO" id="600500300205"> </node>
+					<node label="ASPECTOS SOCIAIS DO PLANEJAMENTO URBANO E REGIONAL" id="600500300303"> </node>
+					<node label="ASPECTOS ECONOMICOS DO PLANEJAMENTO URBANO E REGIONAL" id="600500300401"> </node>
+					<node label="ASPECTOS FISICO-AMBIENTAIS DO PLANEJAMENTO URBANO E REGIONAL" id="600500300500"> </node>
+					<node label="SERVICOS COMUNITARIOS" id="600500300608"> </node>
+					<node label="INFRA-ESTRUTURAS URBANAS E REGIONAIS" id="600500300706"> </node>
+					<node label="TRANSPORTE E TRAFEGO URBANO E REGIONAL" id="600500300804"> </node>
+					<node label="LEGISLACAO URBANA E REGIONAL" id="600500300902"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="DEMOGRAFIA" id="600600000004"> 
+				<isComposedBy>
+				<node label="DISTRIBUICAO ESPACIAL" id="600600100000"> 
+					<isComposedBy>
+					<node label="DISTRIBUICAO ESPACIAL GERAL" id="600600100109"> </node>
+					<node label="DISTRIBUICAO ESPACIAL URBANA" id="600600100207"> </node>
+					<node label="DISTRIBUICAO ESPACIAL RURAL" id="600600100305"> </node>
+					</isComposedBy>
+				</node>
+				<node label="TENDENCIA POPULACIONAL" id="600600200007"> 
+					<isComposedBy>
+					<node label="TENDENCIAS PASSADAS" id="600600200105"> </node>
+					<node label="TAXAS E ESTIMATIVAS CORRENTES" id="600600200203"> </node>
+					<node label="PROJECOES" id="600600200301"> </node>
+					</isComposedBy>
+				</node>
+				<node label="COMPONENTES DA DINAMICA DEMOGRAFICA" id="600600300003"> 
+					<isComposedBy>
+					<node label="FECUNDIDADE" id="600600300101"> </node>
+					<node label="MORTALIDADE" id="600600300200"> </node>
+					<node label="MIGRACAO" id="600600300308"> </node>
+					</isComposedBy>
+				</node>
+				<node label="NUPCIALIDADE E FAMILIA" id="600600400000"> 
+					<isComposedBy>
+					<node label="CASAMENTO E DIVORCIO" id="600600400108"> </node>
+					<node label="FAMILIA E REPRODUCAO" id="600600400206"> </node>
+					</isComposedBy>
+				</node>
+				<node label="DEMOGRAFIA HISTORICA" id="600600500006"> 
+					<isComposedBy>
+					<node label="DISTRIBUICAO ESPACIAL" id="600600500104"> </node>
+					<node label="NATALIDADE, MORTALIDADE, MIGRACAO" id="600600500202"> </node>
+					<node label="NUPCIALIDADE E FAMILIA" id="600600500300"> </node>
+					<node label="METODOS E TECNICAS DE DEMOGRAFIA HISTORICA" id="600600500409"> </node>
+					</isComposedBy>
+				</node>
+				<node label="POLITICA PUBLICA E POPULACAO" id="600600600002"> 
+					<isComposedBy>
+					<node label="POLITICA POPULACIONAL" id="600600600100"> </node>
+					<node label="POLITICAS DE REDISTRIBUICAO DE POPULACAO" id="600600600209"> </node>
+					<node label="POLITICAS DE PLANEJAMENTO FAMILIAR" id="600600600307"> </node>
+					</isComposedBy>
+				</node>
+				<node label="FONTES DE DADOS DEMOGRAFICOS" id="600600700009"> </node>
+				</isComposedBy>
+			</node>
+			<node label="CIENCIA DA INFORMACAO" id="600700000009"> 
+				<isComposedBy>
+				<node label="TEORIA DA INFORMACAO" id="600700100005"> 
+					<isComposedBy>
+					<node label="TEORIA GERAL DA INFORMACAO" id="600700100103"> </node>
+					<node label="PROCESSOS DA COMUNICACAO" id="600700100201"> </node>
+					<node label="REPRESENTACAO DA INFORMACAO" id="600700100300"> </node>
+					</isComposedBy>
+				</node>
+				<node label="BIBLIOTECONOMIA" id="600700200001"> 
+					<isComposedBy>
+					<node label="TEORIA DA CLASSIFICACAO" id="600700200100"> </node>
+					<node label="METODOS QUANTITATIVOS. BIBLIOMETRIA" id="600700200208"> </node>
+					<node label="TECNICAS DE RECUPERACAO DE INFORMACAO" id="600700200306"> </node>
+					<node label="PROCESSOS DE DISSEMINACAO DA INFORMACAO" id="600700200404"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ARQUIVOLOGIA" id="600700300008"> 
+					<isComposedBy>
+					<node label="ORGANIZACAO DE ARQUIVOS" id="600700300106"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
 			<node label="MUSEOLOGIA" id="600800000003"> </node>
-			<node label="COMUNICACAO" id="600900000008"> </node>
-			<node label="TEORIA DA COMUNICACAO" id="600900100004"> </node>
-			<node label="JORNALISMO E EDITORACAO" id="600900200000"> </node>
-			<node label="TEORIA E ETICA DO JORNALISMO" id="600900200109"> </node>
-			<node label="ORGANIZACAO EDITORIAL DE JORNAIS" id="600900200207"> </node>
-			<node label="ORGANIZACAO COMERCIAL DE JORNAIS" id="600900200305"> </node>
-			<node label="JORNALISMO ESPECIALIZADO (COMUNITARIO, RURAL, EMPRESARIAL, CIENTIFICO)" id="600900200403"> </node>
-			<node label="RADIO E TELEVISAO" id="600900300007"> </node>
-			<node label="RADIODIFUSAO" id="600900300105"> </node>
-			<node label="VIDEODIFUSAO" id="600900300203"> </node>
-			<node label="RELACOES PUBLICAS E PROPAGANDA" id="600900400003"> </node>
-			<node label="COMUNICACAO VISUAL" id="600900500000"> </node>
-			<node label="SERVICO SOCIAL" id="601000000000"> </node>
-			<node label="FUNDAMENTOS DO SERVICO SOCIAL" id="601000100007"> </node>
-			<node label="SERVICO SOCIAL APLICADO" id="601000200003"> </node>
-			<node label="SERVICO SOCIAL DO TRABALHO" id="601000200101"> </node>
-			<node label="SERVICO SOCIAL DA EDUCACAO" id="601000200200"> </node>
-			<node label="SERVICO SOCIAL DO MENOR" id="601000200308"> </node>
-			<node label="SERVICO SOCIAL DA SAUDE" id="601000200406"> </node>
-			<node label="SERVICO SOCIAL DA HABITACAO" id="601000200504"> </node>
+			<node label="COMUNICACAO" id="600900000008"> 
+				<isComposedBy>
+				<node label="TEORIA DA COMUNICACAO" id="600900100004"> </node>
+				<node label="JORNALISMO E EDITORACAO" id="600900200000"> 
+					<isComposedBy>
+					<node label="TEORIA E ETICA DO JORNALISMO" id="600900200109"> </node>
+					<node label="ORGANIZACAO EDITORIAL DE JORNAIS" id="600900200207"> </node>
+					<node label="ORGANIZACAO COMERCIAL DE JORNAIS" id="600900200305"> </node>
+					<node label="JORNALISMO ESPECIALIZADO (COMUNITARIO, RURAL, EMPRESARIAL, CIENTIFICO)" id="600900200403"> </node>
+					</isComposedBy>
+				</node>
+				<node label="RADIO E TELEVISAO" id="600900300007"> 
+					<isComposedBy>
+					<node label="RADIODIFUSAO" id="600900300105"> </node>
+					<node label="VIDEODIFUSAO" id="600900300203"> </node>
+					</isComposedBy>
+				</node>
+				<node label="RELACOES PUBLICAS E PROPAGANDA" id="600900400003"> </node>
+				<node label="COMUNICACAO VISUAL" id="600900500000"> </node>
+				</isComposedBy>
+			</node>
+			<node label="SERVICO SOCIAL" id="601000000000"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS DO SERVICO SOCIAL" id="601000100007"> </node>
+				<node label="SERVICO SOCIAL APLICADO" id="601000200003"> 
+					<isComposedBy>
+					<node label="SERVICO SOCIAL DO TRABALHO" id="601000200101"> </node>
+					<node label="SERVICO SOCIAL DA EDUCACAO" id="601000200200"> </node>
+					<node label="SERVICO SOCIAL DO MENOR" id="601000200308"> </node>
+					<node label="SERVICO SOCIAL DA SAUDE" id="601000200406"> </node>
+					<node label="SERVICO SOCIAL DA HABITACAO" id="601000200504"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
 			<node label="ECONOMIA DOMESTICA" id="601100000005"> </node>
-			<node label="DESENHO INDUSTRIAL" id="601200000000"> </node>
-			<node label="PROGRAMACAO VISUAL" id="601200100006"> </node>
-			<node label="DESENHO DE PRODUTO" id="601200200002"> </node>
+			<node label="DESENHO INDUSTRIAL" id="601200000000"> 
+				<isComposedBy>
+				<node label="PROGRAMACAO VISUAL" id="601200100006"> </node>
+				<node label="DESENHO DE PRODUTO" id="601200200002"> </node>
+				</isComposedBy>
+			</node>
 			<node label="TURISMO" id="601300000004"> </node>
 		</isComposedBy>
 		</node>
 		<node label="CIENCIAS HUMANAS" id="700000000000"> 
-		<isComposedBy>
-			<node label="FILOSOFIA" id="700100000004"> </node>
-			<node label="HISTORIA DA FILOSOFIA" id="700100100000"> </node>
-			<node label="METAFISICA" id="700100200007"> </node>
-			<node label="LOGICA" id="700100300003"> </node>
-			<node label="ETICA" id="700100400000"> </node>
-			<node label="EPISTEMOLOGIA" id="700100500006"> </node>
-			<node label="FILOSOFIA BRASILEIRA" id="700100600002"> </node>
-			<node label="SOCIOLOGIA" id="700200000009"> </node>
-			<node label="FUNDAMENTOS DA SOCIOLOGIA" id="700200100005"> </node>
-			<node label="TEORIA SOCIOLOGICA" id="700200100103"> </node>
-			<node label="HISTORIA DA SOCIOLOGIA" id="700200100201"> </node>
-			<node label="SOCIOLOGIA DO CONHECIMENTO" id="700200200001"> </node>
-			<node label="SOCIOLOGIA DO DESENVOLVIMENTO" id="700200300008"> </node>
-			<node label="SOCIOLOGIA URBANA" id="700200400004"> </node>
-			<node label="SOCIOLOGIA RURAL" id="700200500000"> </node>
-			<node label="SOCIOLOGIA DA SAUDE" id="700200600007"> </node>
-			<node label="OUTRAS SOCIOLOGIAS ESPECIFICAS" id="700200700003"> </node>
-			<node label="ANTROPOLOGIA" id="700300000003"> </node>
-			<node label="TEORIA ANTROPOLOGICA" id="700300100000"> </node>
-			<node label="ETNOLOGIA INDIGENA" id="700300200006"> </node>
-			<node label="ANTROPOLOGIA URBANA" id="700300300002"> </node>
-			<node label="ANTROPOLOGIA RURAL" id="700300400009"> </node>
-			<node label="ANTROPOLOGIA DAS POPULACOES AFRO-BRASILEIRAS" id="700300500005"> </node>
-			<node label="ARQUEOLOGIA" id="700400000008"> </node>
-			<node label="TEORIA E METODO EM ARQUEOLOGIA" id="700400100004"> </node>
-			<node label="ARQUEOLOGIA PRE-HISTORICA" id="700400200000"> </node>
-			<node label="ARQUEOLOGIA HISTORICA" id="700400300007"> </node>
-			<node label="HISTORIA" id="700500000002"> </node>
-			<node label="TEORIA E FILOSOFIA DA HISTORIA" id="700500100009"> </node>
-			<node label="HISTORIA ANTIGA E MEDIEVAL" id="700500200005"> </node>
-			<node label="HISTORIA MODERNA E CONTEMPORANEA" id="700500300001"> </node>
-			<node label="HISTORIA DA AMERICA" id="700500400008"> </node>
-			<node label="HISTORIA DOS ESTADOS UNIDOS" id="700500400106"> </node>
-			<node label="HISTORIA LATINO-AMERICANA" id="700500400204"> </node>
-			<node label="HISTORIA DO BRASIL" id="700500500004"> </node>
-			<node label="HISTORIA DO BRASIL COLONIA" id="700500500102"> </node>
-			<node label="HISTORIA DO BRASIL IMPERIO" id="700500500200"> </node>
-			<node label="HISTORIA DO BRASIL REPUBLICA" id="700500500309"> </node>
-			<node label="HISTORIA REGIONAL DO BRASIL" id="700500500407"> </node>
-			<node label="HISTORIA DAS CIENCIAS" id="700500600000"> </node>
-			<node label="GEOGRAFIA" id="700600000007"> </node>
-			<node label="GEOGRAFIA HUMANA" id="700600100003"> </node>
-			<node label="GEOGRAFIA DA POPULACAO" id="700600100101"> </node>
-			<node label="GEOGRAFIA AGRARIA" id="700600100200"> </node>
-			<node label="GEOGRAFIA URBANA" id="700600100308"> </node>
-			<node label="GEOGRAFIA ECONOMICA" id="700600100406"> </node>
-			<node label="GEOGRAFIA POLITICA" id="700600100504"> </node>
-			<node label="GEOGRAFIA REGIONAL" id="700600200000"> </node>
-			<node label="TEORIA DO DESENVOLVIMENTO REGIONAL" id="700600200108"> </node>
-			<node label="REGIONALIZACAO" id="700600200206"> </node>
-			<node label="ANALISE REGIONAL" id="700600200304"> </node>
-			<node label="PSICOLOGIA" id="700700000001"> </node>
-			<node label="FUNDAMENTOS E MEDIDAS DA PSICOLOGIA" id="700700100008"> </node>
-			<node label="HISTORIA, TEORIAS E SISTEMAS EM PSICOLOGIA" id="700700100106"> </node>
-			<node label="METODOLOGIA, INSTRUMENTACAO E EQUIPAMENTO EM PSICOLOGIA" id="700700100204"> </node>
-			<node label="CONSTRUCAO E VALIDADE DE TESTES, ESCALAS E OUTRAS MEDIDAS PSICOLOGICAS" id="700700100302"> </node>
-			<node label="TECNICAS DE PROCESSAMENTO ESTATISTICO, MATEMATICO E COMPUTACIONAL EM PSICOLOGIA" id="700700100400"> </node>
-			<node label="PSICOLOGIA EXPERIMENTAL" id="700700200004"> </node>
-			<node label="PROCESSOS PERCEPTUAIS E MOTORES" id="700700200102"> </node>
-			<node label="PROCESSOS DE APRENDIZAGEM, MEMORIA E MOTIVACAO" id="700700200200"> </node>
-			<node label="PROCESSOS COGNITIVOS E ATENCIONAIS" id="700700200309"> </node>
-			<node label="ESTADOS SUBJETIVOS E EMOCAO" id="700700200407"> </node>
-			<node label="PSICOLOGIA FISIOLOGICA" id="700700300000"> </node>
-			<node label="NEUROLOGIA, ELETROFISIOLOGIA E COMPORTAMENTO" id="700700300109"> </node>
-			<node label="PROCESSOS PSICO-FISIOLOGICOS" id="700700300207"> </node>
-			<node label="ESTIMULACAO ELETRICA E COM DROGAS COMPORTAMENTO" id="700700300305"> </node>
-			<node label="PSICOBIOLOGIA" id="700700300403"> </node>
-			<node label="PSICOLOGIA COMPARATIVA" id="700700400007"> </node>
-			<node label="ESTUDOS NATURALISTICOS DO COMPORTAMENTO ANIMAL" id="700700400105"> </node>
-			<node label="MECANISMOS INSTINTIVOS E PROCESSOS SOCIAIS EM ANIMAIS" id="700700400203"> </node>
-			<node label="PSICOLOGIA SOCIAL" id="700700500003"> </node>
-			<node label="RELACOES INTERPESSOAIS" id="700700500101"> </node>
-			<node label="PROCESSOS GRUPAIS E DE COMUNICACAO" id="700700500200"> </node>
-			<node label="PAPEIS E ESTRUTURAS SOCIAIS INDIVIDUO" id="700700500308"> </node>
-			<node label="PSICOLOGIA COGNITIVA" id="700700600000"> </node>
-			<node label="PSICOLOGIA DO DESENVOLVIMENTO HUMANO" id="700700700006"> </node>
-			<node label="PROCESSOS PERCEPTUAIS E COGNITIVOS DESENVOLVIMENTO" id="700700700104"> </node>
-			<node label="DESENVOLVIMENTO SOCIAL E DA PERSONALIDADE" id="700700700202"> </node>
-			<node label="PSICOLOGIA DO ENSINO E DA APRENDIZAGEM" id="700700800002"> </node>
-			<node label="PLANEJAMENTO INSTITUCIONAL" id="700700800100"> </node>
-			<node label="PROGRAMACAO DE CONDICOES DE ENSINO" id="700700800209"> </node>
-			<node label="TREINAMENTO DE PESSOAL" id="700700800307"> </node>
-			<node label="APRENDIZAGEM E DESEMPENHO ACADEMICOS" id="700700800405"> </node>
-			<node label="ENSINO E APRENDIZAGEM NA SALA DE AULA" id="700700800503"> </node>
-			<node label="PSICOLOGIA DO TRABALHO E ORGANIZACIONAL" id="700700900009"> </node>
-			<node label="ANALISE INSTITUCIONAL" id="700700900107"> </node>
-			<node label="RECRUTAMENTO E SELECAO DE PESSOAL" id="700700900205"> </node>
-			<node label="TREINAMENTO E AVALIACAO" id="700700900303"> </node>
-			<node label="FATORES HUMANOS NO TRABALHO" id="700700900401"> </node>
-			<node label="PLANEJAMENTO AMBIENTAL E COMPORTAMENTO HUMANO" id="700700900500"> </node>
-			<node label="TRATAMENTO E PREVENCAO PSICOLOGICA" id="700701000007"> </node>
-			<node label="INTERVENCAO TERAPEUTICA" id="700701000105"> </node>
-			<node label="PROGRAMAS DE ATENDIMENTO COMUNITARIO" id="700701000203"> </node>
-			<node label="TREINAMENTO E REABILITACAO" id="700701000301"> </node>
-			<node label="DESVIOS DA CONDUTA" id="700701000400"> </node>
-			<node label="DISTURBIOS DA LINGUAGEM" id="700701000508"> </node>
-			<node label="DISTURBIOS PSICOSSOMATICOS" id="700701000606"> </node>
-			<node label="EDUCACAO" id="700800000006"> </node>
-			<node label="FUNDAMENTOS DA EDUCACAO" id="700800100002"> </node>
-			<node label="FILOSOFIA DA EDUCACAO" id="700800100100"> </node>
-			<node label="HISTORIA DA EDUCACAO" id="700800100209"> </node>
-			<node label="SOCIOLOGIA DA EDUCACAO" id="700800100307"> </node>
-			<node label="ANTROPOLOGIA EDUCACIONAL" id="700800100405"> </node>
-			<node label="ECONOMIA DA EDUCACAO" id="700800100503"> </node>
-			<node label="PSICOLOGIA EDUCACIONAL" id="700800100601"> </node>
-			<node label="ADMINISTRACAO EDUCACIONAL" id="700800200009"> </node>
-			<node label="ADMINISTRACAO DE SISTEMAS EDUCACIONAIS" id="700800200107"> </node>
-			<node label="ADMINISTRACAO DE UNIDADES EDUCATIVAS" id="700800200205"> </node>
-			<node label="PLANEJAMENTO E AVALIACAO EDUCACIONAL" id="700800300005"> </node>
-			<node label="POLITICA EDUCACIONAL" id="700800300103"> </node>
-			<node label="PLANEJAMENTO EDUCACIONAL" id="700800300201"> </node>
-			<node label="AVALIACAO DE SISTEMAS, INSTITUICOES, PLANOS E PROGRAMAS EDUCACIONAIS" id="700800300300"> </node>
-			<node label="ENSINO-APRENDIZAGEM" id="700800400001"> </node>
-			<node label="TEORIAS DA INSTRUCAO" id="700800400100"> </node>
-			<node label="METODOS E TECNICAS DE ENSINO" id="700800400208"> </node>
-			<node label="TECNOLOGIA EDUCACIONAL" id="700800400306"> </node>
-			<node label="AVALIACAO DA APRENDIZAGEM" id="700800400404"> </node>
-			<node label="CURRICULO" id="700800500008"> </node>
-			<node label="TEORIA GERAL DE PLANEJAMENTO E DESENVOLVIMENTO CURRICULAR" id="700800500106"> </node>
-			<node label="CURRICULOS ESPECIFICOS PARA NIVEIS E TIPOS DE EDUCACAO" id="700800500204"> </node>
-			<node label="ORIENTACAO E ACONSELHAMENTO" id="700800600004"> </node>
-			<node label="ORIENTACAO EDUCACIONAL" id="700800600102"> </node>
-			<node label="ORIENTACAO VOCACIONAL" id="700800600200"> </node>
-			<node label="TOPICOS ESPECIFICOS DE EDUCACAO" id="700800700000"> </node>
-			<node label="EDUCACAO DE ADULTOS" id="700800700109"> </node>
-			<node label="EDUCACAO PERMANENTE" id="700800700207"> </node>
-			<node label="EDUCACAO RURAL" id="700800700305"> </node>
-			<node label="EDUCACAO EM PERIFERIAS URBANAS" id="700800700403"> </node>
-			<node label="EDUCACAO ESPECIAL" id="700800700501"> </node>
-			<node label="EDUCACAO PRE-ESCOLAR" id="700800700600"> </node>
-			<node label="ENSINO PROFISSIONALIZANTE" id="700800700708"> </node>
-			<node label="CIENCIA POLITICA" id="700900000000"> </node>
-			<node label="TEORIA POLITICA" id="700900100007"> </node>
-			<node label="TEORIA POLITICA CLASSICA" id="700900100105"> </node>
-			<node label="TEORIA POLITICA MEDIEVAL" id="700900100203"> </node>
-			<node label="TEORIA POLITICA MODERNA" id="700900100301"> </node>
-			<node label="TEORIA POLITICA CONTEMPORANEA" id="700900100400"> </node>
-			<node label="ESTADO E GOVERNO" id="700900200003"> </node>
-			<node label="ESTRUTURA E TRANSFORMACAO DO ESTADO" id="700900200101"> </node>
-			<node label="SISTEMAS GOVERNAMENTAIS COMPARADOS" id="700900200200"> </node>
-			<node label="RELACOES INTERGOVERNAMENTAIS" id="700900200308"> </node>
-			<node label="ESTUDOS DO PODER LOCAL" id="700900200406"> </node>
-			<node label="INSTITUICOES GOVERNAMENTAIS ESPECIFICAS" id="700900200504"> </node>
-			<node label="COMPORTAMENTO POLITICO" id="700900300000"> </node>
-			<node label="ESTUDOS ELEITORAIS E PARTIDOS POLITICOS" id="700900300108"> </node>
-			<node label="ATITUDE E IDEOLOGIAS POLITICAS" id="700900300206"> </node>
-			<node label="CONFLITOS E COALIZOES POLITICAS" id="700900300304"> </node>
-			<node label="COMPORTAMENTO LEGISLATIVO" id="700900300402"> </node>
-			<node label="CLASSES SOCIAIS E GRUPOS DE INTERESSE" id="700900300500"> </node>
-			<node label="POLITICAS PUBLICAS" id="700900400006"> </node>
-			<node label="ANALISE DO PROCESSO DECISORIO" id="700900400104"> </node>
-			<node label="ANALISE INSTITUCIONAL" id="700900400202"> </node>
-			<node label="TECNICAS DE ANTECIPACAO" id="700900400300"> </node>
-			<node label="POLITICA INTERNACIONAL" id="700900500002"> </node>
-			<node label="POLITICA EXTERNA DO BRASIL" id="700900500100"> </node>
-			<node label="ORGANIZACOES INTERNACIONAIS" id="700900500209"> </node>
-			<node label="INTEGRACAO INTERNACIONAL, CONFLITO, GUERRA E PAZ" id="700900500307"> </node>
-			<node label="RELACOES INTERNACIONAIS, BILATERAIS E MULTILATERAIS" id="700900500405"> </node>
-			<node label="TEOLOGIA" id="701000000003"> </node>
-			<node label="HISTORIA DA TEOLOGIA" id="701000100000"> </node>
-			<node label="TEOLOGIA MORAL" id="701000200006"> </node>
-			<node label="TEOLOGIA SISTEMATICA" id="701000300002"> </node>
-			<node label="TEOLOGIA PASTORAL" id="701000400009"> </node>
-		</isComposedBy>
+			<isComposedBy>
+			<node label="FILOSOFIA" id="700100000004"> 
+				<isComposedBy>
+				<node label="HISTORIA DA FILOSOFIA" id="700100100000"> </node>
+				<node label="METAFISICA" id="700100200007"> </node>
+				<node label="LOGICA" id="700100300003"> </node>
+				<node label="ETICA" id="700100400000"> </node>
+				<node label="EPISTEMOLOGIA" id="700100500006"> </node>
+				<node label="FILOSOFIA BRASILEIRA" id="700100600002"> </node>
+				</isComposedBy>
+			</node>
+			<node label="SOCIOLOGIA" id="700200000009"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS DA SOCIOLOGIA" id="700200100005"> 
+					<isComposedBy>
+					<node label="TEORIA SOCIOLOGICA" id="700200100103"> </node>
+					<node label="HISTORIA DA SOCIOLOGIA" id="700200100201"> </node>
+					</isComposedBy>
+				</node>
+				<node label="SOCIOLOGIA DO CONHECIMENTO" id="700200200001"> </node>
+				<node label="SOCIOLOGIA DO DESENVOLVIMENTO" id="700200300008"> </node>
+				<node label="SOCIOLOGIA URBANA" id="700200400004"> </node>
+				<node label="SOCIOLOGIA RURAL" id="700200500000"> </node>
+				<node label="SOCIOLOGIA DA SAUDE" id="700200600007"> </node>
+				<node label="OUTRAS SOCIOLOGIAS ESPECIFICAS" id="700200700003"> </node>
+				</isComposedBy>
+			</node>
+			<node label="ANTROPOLOGIA" id="700300000003"> 
+				<isComposedBy>
+				<node label="TEORIA ANTROPOLOGICA" id="700300100000"> </node>
+				<node label="ETNOLOGIA INDIGENA" id="700300200006"> </node>
+				<node label="ANTROPOLOGIA URBANA" id="700300300002"> </node>
+				<node label="ANTROPOLOGIA RURAL" id="700300400009"> </node>
+				<node label="ANTROPOLOGIA DAS POPULACOES AFRO-BRASILEIRAS" id="700300500005"> </node>
+				</isComposedBy>
+			</node>
+			<node label="ARQUEOLOGIA" id="700400000008"> 
+				<isComposedBy>
+				<node label="TEORIA E METODO EM ARQUEOLOGIA" id="700400100004"> </node>
+				<node label="ARQUEOLOGIA PRE-HISTORICA" id="700400200000"> </node>
+				<node label="ARQUEOLOGIA HISTORICA" id="700400300007"> </node>
+				</isComposedBy>
+			</node>
+			<node label="HISTORIA" id="700500000002"> 
+				<isComposedBy>
+				<node label="TEORIA E FILOSOFIA DA HISTORIA" id="700500100009"> </node>
+				<node label="HISTORIA ANTIGA E MEDIEVAL" id="700500200005"> </node>
+				<node label="HISTORIA MODERNA E CONTEMPORANEA" id="700500300001"> </node>
+				<node label="HISTORIA DA AMERICA" id="700500400008"> 
+					<isComposedBy>
+					<node label="HISTORIA DOS ESTADOS UNIDOS" id="700500400106"> </node>
+					<node label="HISTORIA LATINO-AMERICANA" id="700500400204"> </node>
+					</isComposedBy>
+				</node>
+				<node label="HISTORIA DO BRASIL" id="700500500004"> 
+					<isComposedBy>
+					<node label="HISTORIA DO BRASIL COLONIA" id="700500500102"> </node>
+					<node label="HISTORIA DO BRASIL IMPERIO" id="700500500200"> </node>
+					<node label="HISTORIA DO BRASIL REPUBLICA" id="700500500309"> </node>
+					<node label="HISTORIA REGIONAL DO BRASIL" id="700500500407"> </node>
+					</isComposedBy>
+				</node>
+				<node label="HISTORIA DAS CIENCIAS" id="700500600000"> </node>
+				</isComposedBy>
+			</node>
+			<node label="GEOGRAFIA" id="700600000007"> 
+				<isComposedBy>
+				<node label="GEOGRAFIA HUMANA" id="700600100003"> 
+					<isComposedBy>
+					<node label="GEOGRAFIA DA POPULACAO" id="700600100101"> </node>
+					<node label="GEOGRAFIA AGRARIA" id="700600100200"> </node>
+					<node label="GEOGRAFIA URBANA" id="700600100308"> </node>
+					<node label="GEOGRAFIA ECONOMICA" id="700600100406"> </node>
+					<node label="GEOGRAFIA POLITICA" id="700600100504"> </node>
+					</isComposedBy>
+				</node>
+				<node label="GEOGRAFIA REGIONAL" id="700600200000"> 
+					<isComposedBy>
+					<node label="TEORIA DO DESENVOLVIMENTO REGIONAL" id="700600200108"> </node>
+					<node label="REGIONALIZACAO" id="700600200206"> </node>
+					<node label="ANALISE REGIONAL" id="700600200304"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="PSICOLOGIA" id="700700000001"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS E MEDIDAS DA PSICOLOGIA" id="700700100008"> 
+					<isComposedBy>
+					<node label="HISTORIA, TEORIAS E SISTEMAS EM PSICOLOGIA" id="700700100106"> </node>
+					<node label="METODOLOGIA, INSTRUMENTACAO E EQUIPAMENTO EM PSICOLOGIA" id="700700100204"> </node>
+					<node label="CONSTRUCAO E VALIDADE DE TESTES, ESCALAS E OUTRAS MEDIDAS PSICOLOGICAS" id="700700100302"> </node>
+					<node label="TECNICAS DE PROCESSAMENTO ESTATISTICO, MATEMATICO E COMPUTACIONAL EM PSICOLOGIA" id="700700100400"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA EXPERIMENTAL" id="700700200004"> 
+					<isComposedBy>
+					<node label="PROCESSOS PERCEPTUAIS E MOTORES" id="700700200102"> </node>
+					<node label="PROCESSOS DE APRENDIZAGEM, MEMORIA E MOTIVACAO" id="700700200200"> </node>
+					<node label="PROCESSOS COGNITIVOS E ATENCIONAIS" id="700700200309"> </node>
+					<node label="ESTADOS SUBJETIVOS E EMOCAO" id="700700200407"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA FISIOLOGICA" id="700700300000"> 
+					<isComposedBy>
+					<node label="NEUROLOGIA, ELETROFISIOLOGIA E COMPORTAMENTO" id="700700300109"> </node>
+					<node label="PROCESSOS PSICO-FISIOLOGICOS" id="700700300207"> </node>
+					<node label="ESTIMULACAO ELETRICA E COM DROGAS COMPORTAMENTO" id="700700300305"> </node>
+					<node label="PSICOBIOLOGIA" id="700700300403"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA COMPARATIVA" id="700700400007"> 
+					<isComposedBy>
+					<node label="ESTUDOS NATURALISTICOS DO COMPORTAMENTO ANIMAL" id="700700400105"> </node>
+					<node label="MECANISMOS INSTINTIVOS E PROCESSOS SOCIAIS EM ANIMAIS" id="700700400203"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA SOCIAL" id="700700500003"> 
+					<isComposedBy>
+					<node label="RELACOES INTERPESSOAIS" id="700700500101"> </node>
+					<node label="PROCESSOS GRUPAIS E DE COMUNICACAO" id="700700500200"> </node>
+					<node label="PAPEIS E ESTRUTURAS SOCIAIS INDIVIDUO" id="700700500308"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA COGNITIVA" id="700700600000"> </node>
+				<node label="PSICOLOGIA DO DESENVOLVIMENTO HUMANO" id="700700700006"> 
+					<isComposedBy>
+					<node label="PROCESSOS PERCEPTUAIS E COGNITIVOS DESENVOLVIMENTO" id="700700700104"> </node>
+					<node label="DESENVOLVIMENTO SOCIAL E DA PERSONALIDADE" id="700700700202"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA DO ENSINO E DA APRENDIZAGEM" id="700700800002"> 
+					<isComposedBy>
+					<node label="PLANEJAMENTO INSTITUCIONAL" id="700700800100"> </node>
+					<node label="PROGRAMACAO DE CONDICOES DE ENSINO" id="700700800209"> </node>
+					<node label="TREINAMENTO DE PESSOAL" id="700700800307"> </node>
+					<node label="APRENDIZAGEM E DESEMPENHO ACADEMICOS" id="700700800405"> </node>
+					<node label="ENSINO E APRENDIZAGEM NA SALA DE AULA" id="700700800503"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PSICOLOGIA DO TRABALHO E ORGANIZACIONAL" id="700700900009"> 
+					<isComposedBy>
+					<node label="ANALISE INSTITUCIONAL" id="700700900107"> </node>
+					<node label="RECRUTAMENTO E SELECAO DE PESSOAL" id="700700900205"> </node>
+					<node label="TREINAMENTO E AVALIACAO" id="700700900303"> </node>
+					<node label="FATORES HUMANOS NO TRABALHO" id="700700900401"> </node>
+					<node label="PLANEJAMENTO AMBIENTAL E COMPORTAMENTO HUMANO" id="700700900500"> </node>
+					</isComposedBy>
+				</node>
+				<node label="TRATAMENTO E PREVENCAO PSICOLOGICA" id="700701000007"> 
+					<isComposedBy>
+					<node label="INTERVENCAO TERAPEUTICA" id="700701000105"> </node>
+					<node label="PROGRAMAS DE ATENDIMENTO COMUNITARIO" id="700701000203"> </node>
+					<node label="TREINAMENTO E REABILITACAO" id="700701000301"> </node>
+					<node label="DESVIOS DA CONDUTA" id="700701000400"> </node>
+					<node label="DISTURBIOS DA LINGUAGEM" id="700701000508"> </node>
+					<node label="DISTURBIOS PSICOSSOMATICOS" id="700701000606"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="EDUCACAO" id="700800000006"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS DA EDUCACAO" id="700800100002"> 
+					<isComposedBy>
+					<node label="FILOSOFIA DA EDUCACAO" id="700800100100"> </node>
+					<node label="HISTORIA DA EDUCACAO" id="700800100209"> </node>
+					<node label="SOCIOLOGIA DA EDUCACAO" id="700800100307"> </node>
+					<node label="ANTROPOLOGIA EDUCACIONAL" id="700800100405"> </node>
+					<node label="ECONOMIA DA EDUCACAO" id="700800100503"> </node>
+					<node label="PSICOLOGIA EDUCACIONAL" id="700800100601"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ADMINISTRACAO EDUCACIONAL" id="700800200009"> 
+					<isComposedBy>
+					<node label="ADMINISTRACAO DE SISTEMAS EDUCACIONAIS" id="700800200107"> </node>
+					<node label="ADMINISTRACAO DE UNIDADES EDUCATIVAS" id="700800200205"> </node>
+					</isComposedBy>
+				</node>
+				<node label="PLANEJAMENTO E AVALIACAO EDUCACIONAL" id="700800300005"> 
+					<isComposedBy>
+					<node label="POLITICA EDUCACIONAL" id="700800300103"> </node>
+					<node label="PLANEJAMENTO EDUCACIONAL" id="700800300201"> </node>
+					<node label="AVALIACAO DE SISTEMAS, INSTITUICOES, PLANOS E PROGRAMAS EDUCACIONAIS" id="700800300300"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ENSINO-APRENDIZAGEM" id="700800400001"> 
+					<isComposedBy>
+					<node label="TEORIAS DA INSTRUCAO" id="700800400100"> </node>
+					<node label="METODOS E TECNICAS DE ENSINO" id="700800400208"> </node>
+					<node label="TECNOLOGIA EDUCACIONAL" id="700800400306"> </node>
+					<node label="AVALIACAO DA APRENDIZAGEM" id="700800400404"> </node>
+					</isComposedBy>
+				</node>
+				<node label="CURRICULO" id="700800500008"> 
+					<isComposedBy>
+					<node label="TEORIA GERAL DE PLANEJAMENTO E DESENVOLVIMENTO CURRICULAR" id="700800500106"> </node>
+					<node label="CURRICULOS ESPECIFICOS PARA NIVEIS E TIPOS DE EDUCACAO" id="700800500204"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ORIENTACAO E ACONSELHAMENTO" id="700800600004"> 
+					<isComposedBy>
+					<node label="ORIENTACAO EDUCACIONAL" id="700800600102"> </node>
+					<node label="ORIENTACAO VOCACIONAL" id="700800600200"> </node>
+					</isComposedBy>
+				</node>
+				<node label="TOPICOS ESPECIFICOS DE EDUCACAO" id="700800700000"> 
+					<isComposedBy>
+					<node label="EDUCACAO DE ADULTOS" id="700800700109"> </node>
+					<node label="EDUCACAO PERMANENTE" id="700800700207"> </node>
+					<node label="EDUCACAO RURAL" id="700800700305"> </node>
+					<node label="EDUCACAO EM PERIFERIAS URBANAS" id="700800700403"> </node>
+					<node label="EDUCACAO ESPECIAL" id="700800700501"> </node>
+					<node label="EDUCACAO PRE-ESCOLAR" id="700800700600"> </node>
+					<node label="ENSINO PROFISSIONALIZANTE" id="700800700708"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="CIENCIA POLITICA" id="700900000000"> 
+				<isComposedBy>
+				<node label="TEORIA POLITICA" id="700900100007"> 
+					<isComposedBy>
+					<node label="TEORIA POLITICA CLASSICA" id="700900100105"> </node>
+					<node label="TEORIA POLITICA MEDIEVAL" id="700900100203"> </node>
+					<node label="TEORIA POLITICA MODERNA" id="700900100301"> </node>
+					<node label="TEORIA POLITICA CONTEMPORANEA" id="700900100400"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ESTADO E GOVERNO" id="700900200003"> 
+					<isComposedBy>
+					<node label="ESTRUTURA E TRANSFORMACAO DO ESTADO" id="700900200101"> </node>
+					<node label="SISTEMAS GOVERNAMENTAIS COMPARADOS" id="700900200200"> </node>
+					<node label="RELACOES INTERGOVERNAMENTAIS" id="700900200308"> </node>
+					<node label="ESTUDOS DO PODER LOCAL" id="700900200406"> </node>
+					<node label="INSTITUICOES GOVERNAMENTAIS ESPECIFICAS" id="700900200504"> </node>
+					</isComposedBy>
+				</node>
+				<node label="COMPORTAMENTO POLITICO" id="700900300000"> 
+					<isComposedBy>
+					<node label="ESTUDOS ELEITORAIS E PARTIDOS POLITICOS" id="700900300108"> </node>
+					<node label="ATITUDE E IDEOLOGIAS POLITICAS" id="700900300206"> </node>
+					<node label="CONFLITOS E COALIZOES POLITICAS" id="700900300304"> </node>
+					<node label="COMPORTAMENTO LEGISLATIVO" id="700900300402"> </node>
+					<node label="CLASSES SOCIAIS E GRUPOS DE INTERESSE" id="700900300500"> </node>
+					</isComposedBy>
+				</node>
+				<node label="POLITICAS PUBLICAS" id="700900400006"> 
+					<isComposedBy>
+					<node label="ANALISE DO PROCESSO DECISORIO" id="700900400104"> </node>
+					<node label="ANALISE INSTITUCIONAL" id="700900400202"> </node>
+					<node label="TECNICAS DE ANTECIPACAO" id="700900400300"> </node>
+					</isComposedBy>
+				</node>
+				<node label="POLITICA INTERNACIONAL" id="700900500002"> 
+					<isComposedBy>
+					<node label="POLITICA EXTERNA DO BRASIL" id="700900500100"> </node>
+					<node label="ORGANIZACOES INTERNACIONAIS" id="700900500209"> </node>
+					<node label="INTEGRACAO INTERNACIONAL, CONFLITO, GUERRA E PAZ" id="700900500307"> </node>
+					<node label="RELACOES INTERNACIONAIS, BILATERAIS E MULTILATERAIS" id="700900500405"> </node>
+					</isComposedBy>
+				</node>
+				</isComposedBy>
+			</node>
+			<node label="TEOLOGIA" id="701000000003"> 
+				<isComposedBy>
+				<node label="HISTORIA DA TEOLOGIA" id="701000100000"> </node>
+				<node label="TEOLOGIA MORAL" id="701000200006"> </node>
+				<node label="TEOLOGIA SISTEMATICA" id="701000300002"> </node>
+				<node label="TEOLOGIA PASTORAL" id="701000400009"> </node>
+				</isComposedBy>
+			</node>
+			</isComposedBy>
 		</node>
 		<node label="LINGUISTICA, LETRAS E ARTES" id="800000000002"> 
-		<isComposedBy>
-			<node label="LINGUISTICA" id="800100000007"> </node>
-			<node label="TEORIA E ANALISE LINGUISTICA" id="800100100003"> </node>
-			<node label="FISIOLOGIA DA LINGUAGEM" id="800100200000"> </node>
-			<node label="LINGUISTICA HISTORICA" id="800100300006"> </node>
-			<node label="SOCIOLINGUISTICA E DIALETOLOGIA" id="800100400002"> </node>
-			<node label="PSICOLINGUISTICA" id="800100500009"> </node>
-			<node label="LINGUISTICA APLICADA" id="800100600005"> </node>
-			<node label="LETRAS" id="800200000001"> </node>
-			<node label="LINGUA PORTUGUESA" id="800200100008"> </node>
-			<node label="LINGUAS ESTRANGEIRAS MODERNAS" id="800200200004"> </node>
-			<node label="LINGUAS CLASSICAS" id="800200300000"> </node>
-			<node label="LINGUAS INDIGENAS" id="800200400007"> </node>
-			<node label="TEORIA LITERARIA" id="800200500003"> </node>
-			<node label="LITERATURA BRASILEIRA" id="800200600000"> </node>
-			<node label="OUTRAS LITERATURAS VERNACULAS" id="800200700006"> </node>
-			<node label="LITERATURAS ESTRANGEIRAS MODERNAS" id="800200800002"> </node>
-			<node label="LITERATURAS CLASSICAS" id="800200900009"> </node>
-			<node label="LITERATURA COMPARADA" id="800201000007"> </node>
-			<node label="ARTES" id="800300000006"> </node>
-			<node label="FUNDAMENTOS E CRITICA DAS ARTES" id="800300100002"> </node>
-			<node label="TEORIA DA ARTE" id="800300100100"> </node>
-			<node label="HISTORIA DA ARTE" id="800300100209"> </node>
-			<node label="CRITICA DA ARTE" id="800300100307"> </node>
-			<node label="ARTES PLASTICAS" id="800300200009"> </node>
-			<node label="PINTURA" id="800300200107"> </node>
-			<node label="DESENHO" id="800300200205"> </node>
-			<node label="GRAVURA" id="800300200303"> </node>
-			<node label="ESCULTURA" id="800300200401"> </node>
-			<node label="CERAMICA" id="800300200500"> </node>
-			<node label="TECELAGEM" id="800300200608"> </node>
-			<node label="MUSICA" id="800300300005"> </node>
-			<node label="REGENCIA" id="800300300103"> </node>
-			<node label="INSTRUMENTACAO MUSICAL" id="800300300201"> </node>
-			<node label="COMPOSICAO MUSICAL" id="800300300300"> </node>
-			<node label="CANTO" id="800300300408"> </node>
-			<node label="DANCA" id="800300400001"> </node>
-			<node label="EXECUCAO DA DANCA" id="800300400100"> </node>
-			<node label="COREOGRAFIA" id="800300400208"> </node>
-			<node label="TEATRO" id="800300500008"> </node>
-			<node label="DRAMATURGIA" id="800300500106"> </node>
-			<node label="DIRECAO TEATRAL" id="800300500204"> </node>
-			<node label="CENOGRAFIA" id="800300500302"> </node>
-			<node label="INTERPRETACAO TEATRAL" id="800300500400"> </node>
-			<node label="OPERA" id="800300600004"> </node>
-			<node label="FOTOGRAFIA" id="800300700000"> </node>
-			<node label="CINEMA" id="800300800007"> </node>
-			<node label="ADMINISTRACAO E PRODUCAO DE FILMES" id="800300800105"> </node>
-			<node label="ROTEIRO E DIRECAO CINEMATOGRAFICOS" id="800300800203"> </node>
-			<node label="TECNICAS DE REGISTRO E PROCESSAMENTO DE FILMES" id="800300800301"> </node>
-			<node label="INTERPRETACAO CINEMATOGRAFICA" id="800300800400"> </node>
-			<node label="ARTES DO VIDEO" id="800300900003"> </node>
-			<node label="EDUCACAO ARTISTICA" id="800301000001"> </node>
+			<isComposedBy>
+			<node label="LINGUISTICA" id="800100000007"> 
+				<isComposedBy>
+				<node label="TEORIA E ANALISE LINGUISTICA" id="800100100003"> </node>
+				<node label="FISIOLOGIA DA LINGUAGEM" id="800100200000"> </node>
+				<node label="LINGUISTICA HISTORICA" id="800100300006"> </node>
+				<node label="SOCIOLINGUISTICA E DIALETOLOGIA" id="800100400002"> </node>
+				<node label="PSICOLINGUISTICA" id="800100500009"> </node>
+				<node label="LINGUISTICA APLICADA" id="800100600005"> </node>
+				</isComposedBy>
+			</node>
+			<node label="LETRAS" id="800200000001"> 
+				<isComposedBy>
+				<node label="LINGUA PORTUGUESA" id="800200100008"> </node>
+				<node label="LINGUAS ESTRANGEIRAS MODERNAS" id="800200200004"> </node>
+				<node label="LINGUAS CLASSICAS" id="800200300000"> </node>
+				<node label="LINGUAS INDIGENAS" id="800200400007"> </node>
+				<node label="TEORIA LITERARIA" id="800200500003"> </node>
+				<node label="LITERATURA BRASILEIRA" id="800200600000"> </node>
+				<node label="OUTRAS LITERATURAS VERNACULAS" id="800200700006"> </node>
+				<node label="LITERATURAS ESTRANGEIRAS MODERNAS" id="800200800002"> </node>
+				<node label="LITERATURAS CLASSICAS" id="800200900009"> </node>
+				<node label="LITERATURA COMPARADA" id="800201000007"> </node>
+				</isComposedBy>
+			</node>
+			<node label="ARTES" id="800300000006"> 
+				<isComposedBy>
+				<node label="FUNDAMENTOS E CRITICA DAS ARTES" id="800300100002"> 
+					<isComposedBy>
+					<node label="TEORIA DA ARTE" id="800300100100"> </node>
+					<node label="HISTORIA DA ARTE" id="800300100209"> </node>
+					<node label="CRITICA DA ARTE" id="800300100307"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ARTES PLASTICAS" id="800300200009"> 
+					<isComposedBy>
+					<node label="PINTURA" id="800300200107"> </node>
+					<node label="DESENHO" id="800300200205"> </node>
+					<node label="GRAVURA" id="800300200303"> </node>
+					<node label="ESCULTURA" id="800300200401"> </node>
+					<node label="CERAMICA" id="800300200500"> </node>
+					<node label="TECELAGEM" id="800300200608"> </node>
+					</isComposedBy>
+				</node>
+				<node label="MUSICA" id="800300300005"> 
+					<isComposedBy>
+					<node label="REGENCIA" id="800300300103"> </node>
+					<node label="INSTRUMENTACAO MUSICAL" id="800300300201"> </node>
+					<node label="COMPOSICAO MUSICAL" id="800300300300"> </node>
+					<node label="CANTO" id="800300300408"> </node>
+					</isComposedBy>
+				</node>
+				<node label="DANCA" id="800300400001"> 
+					<isComposedBy>
+					<node label="EXECUCAO DA DANCA" id="800300400100"> </node>
+					<node label="COREOGRAFIA" id="800300400208"> </node>
+					</isComposedBy>
+				</node>
+				<node label="TEATRO" id="800300500008"> 
+					<isComposedBy>
+					<node label="DRAMATURGIA" id="800300500106"> </node>
+					<node label="DIRECAO TEATRAL" id="800300500204"> </node>
+					<node label="CENOGRAFIA" id="800300500302"> </node>
+					<node label="INTERPRETACAO TEATRAL" id="800300500400"> </node>
+					</isComposedBy>
+				</node>
+				<node label="OPERA" id="800300600004"> </node>
+				<node label="FOTOGRAFIA" id="800300700000"> </node>
+				<node label="CINEMA" id="800300800007"> 
+					<isComposedBy>
+					<node label="ADMINISTRACAO E PRODUCAO DE FILMES" id="800300800105"> </node>
+					<node label="ROTEIRO E DIRECAO CINEMATOGRAFICOS" id="800300800203"> </node>
+					<node label="TECNICAS DE REGISTRO E PROCESSAMENTO DE FILMES" id="800300800301"> </node>
+					<node label="INTERPRETACAO CINEMATOGRAFICA" id="800300800400"> </node>
+					</isComposedBy>
+				</node>
+				<node label="ARTES DO VIDEO" id="800300900003"> </node>
+				<node label="EDUCACAO ARTISTICA" id="800301000001"> </node>
+				</isComposedBy>
+			</node>
 			</isComposedBy>
 		</node>
 		<node label="OUTROS" id="900000000005"> 
