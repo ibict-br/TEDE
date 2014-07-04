@@ -31,7 +31,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.xpath.XPathAPI;
 import org.dspace.app.itemimport.ItemImport;
@@ -444,6 +443,7 @@ public class FolderMetadataProcessor
         // //getElementData(n,
         // "qualifier");
         String language = getAttributeValue(n, "language");
+        
         if (language != null)
         {
             language = language.trim();
@@ -460,21 +460,9 @@ public class FolderMetadataProcessor
             qualifier = null;
         }
 
-        // if language isn't set, use the system's default value
-        if (StringUtils.isEmpty(language))
-        {
-            language = ConfigurationManager.getProperty("default.language");
-        }
-
-        // a goofy default, but there it is
-        if (language == null)
-        {
-            language = "eng";
-        }
-
         if (!isTest)
         {
-            i.addMetadata(schema, element, qualifier, language, value);
+            i.addMetadata(schema, element, qualifier, language != null && language.isEmpty() ? null : language, value);
         }
         else
         {
