@@ -89,6 +89,13 @@ public class ShareEmailSearchServlet extends DSpaceServlet
 				JSPManager.showJSP(request, response, "/search/share-search-result.jsp");
 			}
 		}
+		else
+		{
+			logger.warn("Foi identificada tentativa de uso da ferramenta de envio de e-mails para spam");
+			request.setAttribute("has-error", true);
+			request.setAttribute("message", "share.search.email.send.spam");
+			JSPManager.showJSP(request, response, "/search/share-search-result.jsp");
+		}
 	}
 
 

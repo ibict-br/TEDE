@@ -1,5 +1,4 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-
 <!-- Modal to handle e-mail writting -->
 <div style="display:none;z-index: 9999;" id="emailDialog" title="<fmt:message key="share.search.email.title" />">
 

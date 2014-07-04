@@ -1,34 +1,45 @@
+
+jQuery.noConflict();
+
 /**
  * Handle e-mail dialog form
  */
-jQuery(document).ready(function($){
+jQuery(document).ready(function(){
 	
 	/** User requests sharing **/
-	$("#sendEmail").click(function(){
-		$("#actionResult").hide();
-		$("#emailDialog").dialog("open");
+	jQuery("#sendEmail").click(function(){
+		jQuery("#actionResult").hide();
+		jQuery("#submitSend").removeAttr("disabled");
+		jQuery("#emailDialog").dialog("open");
 		
 	});
 
-	$("#closeModal").click(function(){
+	jQuery("#closeModal").click(function(){
 		
-		$("#sendEmailForm")[0].reset();
-		$("#emailDialog").dialog("close");
+		jQuery("#sendEmailForm")[0].reset();
+		jQuery("#emailDialog").dialog("close");
 		
 	});
 	
 	/** User requests email sending **/
-	$("#submitSend").click(function(){
-		$("#urlToShare").val(window.location.href);
-		$.post("search/shareviaemail", $("#sendEmailForm").serialize())
-		.done(function(data) {
-			$("#actionResult").show();
-			$("#actionResult").html(data);
-			
-		}).fail(function() {
+	jQuery("#submitSend").click(function(){
+		jQuery(this).attr("disabled", "disabled");
+		jQuery("#urlToShare").val(window.location.href);
+		
+		jQuery.ajax({
+			type: "POST",
+			url: "search/shareviaemail",
+			data: jQuery("#sendEmailForm").serialize(),
+			success: function(data) {
+				jQuery("#actionResult").show();
+				jQuery("#actionResult").html(data);
+				jQuery("#sendEmailForm")[0].reset();
+				jQuery("#submitSend").removeAttr("disabled");
+			}
 		});
+		
 	});
 	
-	$("#emailDialog").dialog({modal: false, autoOpen: false, width: 600, closeOnEscape: true, draggable: false, resizable: false});
+	jQuery("#emailDialog").dialog({modal: false, autoOpen: false, width: 600, closeOnEscape: true, draggable: false, resizable: false});
 	
 });
