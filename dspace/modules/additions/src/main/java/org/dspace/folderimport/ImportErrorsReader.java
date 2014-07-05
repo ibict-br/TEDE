@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -17,10 +18,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.apache.log4j.Logger;
 import org.dspace.app.itemupdate.DtoMetadata;
 import org.dspace.app.itemupdate.MetadataUtilities;
+import org.dspace.core.I18nUtil;
 import org.dspace.file.utils.FileUtils;
 import org.dspace.folderimport.constants.FolderMetadataImportConstants;
 import org.dspace.folderimport.domain.ImportErrorType;
 import org.dspace.folderimport.dto.ErrorImportRegistry;
+
+import com.ibm.icu.text.MessageFormat;
 
 /**
  * Utilidade que visam tornar visíveis itens que por motivo de erro não foram importados na funcionalidade <b>FolderMetadataImport</b>
@@ -29,6 +33,8 @@ import org.dspace.folderimport.dto.ErrorImportRegistry;
  */
 public class ImportErrorsReader {
 
+	private static final int IMPORT_INDEX_FOLDER_LOCATION = 0;
+	private static final int IMPORT_INDEX_ERROR_DESCRIPTION = 1;
 	private static final int POSITION_WITH_MESSAGE = 1;
 	private static final int EXPECTED_LOG_LENGTH_AFTER_SPLIT = 1;
 	private static final String LOG_ERROR_DELIMITER = "@";
@@ -53,7 +59,7 @@ public class ImportErrorsReader {
 		if(exportErrorFolder.exists())
 		{
 			List<File> searchRecursiveAddingDirs = FileUtils.searchRecursiveAddingDirs(exportErrorFolder, "logfile", NUMBER_OF_PARENT_DIR_TO_REACH);
-			fillItemData(analisysResult, searchRecursiveAddingDirs, ImportErrorType.EXPORT);
+			fillItemData(analisysResult, searchRecursiveAddingDirs, ImportErrorType.EXPORT, null);
 		}
 		
 		searchImportErrors(currentRootExportFolder, analisysResult);
@@ -85,6 +91,7 @@ public class ImportErrorsReader {
 		if(!foundFiles.isEmpty())
 		{
 			List<File> foldersContainingErrorItems = new ArrayList<File>();
+			Map<File, String> folderToException = new HashMap<File, String>();
 			
 			/** Cada arquivo "fundFiles" contém referências as pastas contenedoras de itens com problema de importação **/
 			for(File foundFile : foundFiles)
@@ -96,7 +103,14 @@ public class ImportErrorsReader {
 					/** Only adds the line if its contents (file location) belongs to currentRootExportFolder **/
 					if(folderCandidate.startsWith(currentRootExportFolder.getCanonicalPath()))
 					{
-						foldersContainingErrorItems.add(new File(folderCandidate));
+						String[] splitedErrorDescription = folderCandidate.split(LOG_ERROR_DELIMITER);
+						if(splitedErrorDescription.length > EXPECTED_LOG_LENGTH_AFTER_SPLIT)
+						{
+							String folderName = splitedErrorDescription[IMPORT_INDEX_FOLDER_LOCATION];
+							File folderFile = new File(folderName);
+							foldersContainingErrorItems.add(folderFile);
+							folderToException.put(folderFile, splitedErrorDescription[IMPORT_INDEX_ERROR_DESCRIPTION]);
+						}
 					}
 				}
 			}
@@ -104,14 +118,21 @@ public class ImportErrorsReader {
 			/** Devem existir registros nos arquivos **/
 			if(!foldersContainingErrorItems.isEmpty())
 			{
-				fillItemData(analisysResult, foldersContainingErrorItems, ImportErrorType.IMPORT);
+				fillItemData(analisysResult, foldersContainingErrorItems, ImportErrorType.IMPORT, folderToException);
 			}
 		
 		}
 	}
 
 
-	private static void fillItemData(Map<Long, ErrorImportRegistry> analisysResult, List<File> foldersContainingErrorItems, ImportErrorType errorType) {
+	/**
+	 * Common method to be used by: import error or export error.
+	 * @param analisysResult Map to register values
+	 * @param foldersContainingErrorItems Folders wich has items with error
+	 * @param errorType Type of error (import/export)
+	 * @param folderToException Used only for "error import": for a given folder location (key "file") there's a error description (value "error description")
+	 */
+	private static void fillItemData(Map<Long, ErrorImportRegistry> analisysResult, List<File> foldersContainingErrorItems, ImportErrorType errorType, Map<File, String> folderToException) {
 		Set<Long> identifiersForFolders = new HashSet<Long>();
 		
 		for(File folderItemContainer : foldersContainingErrorItems)
@@ -123,49 +144,57 @@ public class ImportErrorsReader {
 				{
 					/** Recupera título **/
 					File dublinCoreXmlFile = new File(folderItemContainer, FolderMetadataImportConstants.DUBLIN_CORE_XML);
-					List<DtoMetadata> loadDublinCore = MetadataUtilities.loadDublinCore(getDocumentBuilder(), new FileInputStream(dublinCoreXmlFile));
-					String title = searchMetadata(loadDublinCore, "dc.title");
 					
-					if(title != null)
+					String title = readTitleFromXML(dublinCoreXmlFile);
+					
+					ErrorImportRegistry errorImportRegistry = new ErrorImportRegistry();
+					errorImportRegistry.setImportErrorType(errorType);
+					errorImportRegistry.setTitle(title);
+					
+					ArrayList<String> errorsDescription = new ArrayList<String>();
+					if(errorType.equals(ImportErrorType.IMPORT) && folderToException != null && folderToException.containsKey(folderItemContainer))
 					{
-						ErrorImportRegistry errorImportRegistry = new ErrorImportRegistry();
-						errorImportRegistry.setImportErrorType(errorType);
-						errorImportRegistry.setTitle(title);
-						
-						LinkedHashMap<Long, File> itemRegistry = new LinkedHashMap<Long, File>();
-						
-						Set<Long> identifiersForFiles = new HashSet<Long>();
+						errorImportRegistry.setErrorsDescription(errorsDescription);
+						errorsDescription.add(folderToException.get(folderItemContainer));
+					}
+					
+					LinkedHashMap<Long, File> itemRegistry = new LinkedHashMap<Long, File>();
+					
+					Set<Long> identifiersForFiles = new HashSet<Long>();
 
-						
-						for(File itemContent : folderItemContainer.listFiles())
+					
+					for(File itemContent : folderItemContainer.listFiles())
+					{
+						if(itemContent.isFile())
 						{
-							if(itemContent.isFile())
+							if(!itemContent.getName().equals("logfile"))
 							{
-								if(!itemContent.getName().equals("logfile"))
+								long unusedKey = FileUtils.garanteeUnusedKey(identifiersForFiles);
+								itemRegistry.put(unusedKey, itemContent);
+							}
+							else
+							{
+								/** Read content file, to get info about the error **/
+								List<String> readFile = FileUtils.readFile(itemContent, Integer.MAX_VALUE);
+								for(String fileContent : readFile)
 								{
-									long unusedKey = FileUtils.garanteeUnusedKey(identifiersForFiles);
-									itemRegistry.put(unusedKey, itemContent);
-								}
-								else
-								{
-									/** Read content file, to get info about the error **/
-									List<String> readFile = FileUtils.readFile(itemContent, Integer.MAX_VALUE);
-									for(String fileContent : readFile)
+									if(fileContent != null && !fileContent.isEmpty())
 									{
-										if(fileContent != null && !fileContent.isEmpty())
+										String[] splitedLog = fileContent.split(LOG_ERROR_DELIMITER);
+										
+										if(splitedLog.length > EXPECTED_LOG_LENGTH_AFTER_SPLIT)
 										{
-											String[] splitedLog = fileContent.split(LOG_ERROR_DELIMITER);
-											
-											if(splitedLog.length > EXPECTED_LOG_LENGTH_AFTER_SPLIT)
+											/** Lazy init **/
+											if(errorImportRegistry.getErrorsDescription() == null)
 											{
-												/** Lazy init **/
-												if(errorImportRegistry.getErrorsDescription() == null)
-												{
-													errorImportRegistry.setErrorsDescription(new ArrayList<String>());
-												}
-												
-												errorImportRegistry.getErrorsDescription().add(splitedLog[POSITION_WITH_MESSAGE]);
+												errorImportRegistry.setErrorsDescription(errorsDescription);
 											}
+											
+											errorImportRegistry.getErrorsDescription().add(splitedLog[POSITION_WITH_MESSAGE]);
+										}
+										else
+										{
+											logger.warn(MessageFormat.format("O arquivo {0} possui registro fora do padrão: {1}", itemContent.getCanonicalPath(), fileContent));
 										}
 									}
 								}
@@ -184,6 +213,32 @@ public class ImportErrorsReader {
 				
 			}
 		}
+	}
+
+
+	/**
+	 * Recovers title from <b>input-forms.xml</b>
+	 * @param dublinCoreXmlFile File to be readed
+	 * @param loadDublinCore 
+	 * @return
+	 * @throws IOException
+	 */
+	private static String readTitleFromXML(File dublinCoreXmlFile) throws IOException {
+		
+		String title = null;
+		
+		try
+		{
+			List<DtoMetadata> loadDublinCore = MetadataUtilities.loadDublinCore(getDocumentBuilder(), new FileInputStream(dublinCoreXmlFile));
+			title = searchMetadata(loadDublinCore, "dc.title");
+		}
+		catch(Exception e)
+		{
+			title = I18nUtil.getMessage("jsp.dspace-admin.foldermetadataerror.notitle");
+			logger.error(MessageFormat.format("Ocorreu um erro no ato de processamento do arquivo \"{0}\".", dublinCoreXmlFile.getCanonicalPath()), e);
+		}
+		
+		return title;
 	}
 	
 	

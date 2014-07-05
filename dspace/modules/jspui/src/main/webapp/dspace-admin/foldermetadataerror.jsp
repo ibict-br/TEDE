@@ -88,7 +88,7 @@
 		         					for(Map.Entry<Long, File> currentFile :  currentValue.getItemFiles().entrySet())  { %>
 		         						<em>
 			        						<% i++; %>
-			        						<a href="<%= request.getContextPath() + "/dspace-admin/foldermetadataerror?item=" + currentValue.getInternalIdentifer() + "&file=" + currentFile.getKey() %>"><%= currentFile.getValue().getName() %></a>
+			        						<a style="color: #428bca" href="<%= request.getContextPath() + "/dspace-admin/foldermetadataerror?item=" + currentValue.getInternalIdentifer() + "&file=" + currentFile.getKey() %>"><%= currentFile.getValue().getName() %></a>
 			        						<% if(i < currentValue.getItemFiles().size())  { %>
 			        							<br/>
 			      							<% } %>

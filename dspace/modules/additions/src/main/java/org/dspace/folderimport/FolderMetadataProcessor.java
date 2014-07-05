@@ -181,7 +181,7 @@ public class FolderMetadataProcessor
             			errorOut = new PrintWriter(new FileWriter(new File(errorFile), false));
             		}
             		
-            		errorOut.append(sourceDir + File.separator + dirContent + "\n");
+            		errorOut.append(sourceDir + File.separator + dirContent + "@" + e.getMessage() + "\n");
             	}
             }
         }
