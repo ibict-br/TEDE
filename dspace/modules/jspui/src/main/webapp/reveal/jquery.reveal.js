@@ -5,9 +5,9 @@
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
 */
+jQuery.noConflict();
 
-
-(function($) {
+(function(jQuery) {
 
 /*---------------------------
  Defaults for Reveal
@@ -17,17 +17,17 @@
  Listener for data-reveal-id attributes
 ----------------------------*/
 
-	$('a[data-reveal-id]').live('click', function(e) {
+	jQuery('a[data-reveal-id]').live('click', function(e) {
 		e.preventDefault();
-		var modalLocation = $(this).attr('data-reveal-id');
-		$('#'+modalLocation).reveal($(this).data());
+		var modalLocation = jQuery(this).attr('data-reveal-id');
+		jQuery('#'+modalLocation).reveal(jQuery(this).data());
 	});
 
 /*---------------------------
  Extend and Execute
 ----------------------------*/
 
-    $.fn.reveal = function(options) {
+    jQuery.fn.reveal = function(options) {
         
         
         var defaults = {  
@@ -38,24 +38,24 @@
     	}; 
     	
         //Extend dem' options
-        var options = $.extend({}, defaults, options); 
+        var options = jQuery.extend({}, defaults, options); 
 	
         return this.each(function() {
         
 /*---------------------------
  Global Variables
 ----------------------------*/
-        	var modal = $(this),
+        	var modal = jQuery(this),
         		topMeasure  = parseInt(modal.css('top')),
 				topOffset = modal.height() + topMeasure,
           		locked = false,
-				modalBG = $('.reveal-modal-bg');
+				modalBG = jQuery('.reveal-modal-bg');
 
 /*---------------------------
  Create Modal BG
 ----------------------------*/
 			if(modalBG.length == 0) {
-				modalBG = $('<div class="reveal-modal-bg" />').insertAfter(modal);
+				modalBG = jQuery('<div class="reveal-modal-bg" />').insertAfter(modal);
 			}		    
      
 /*---------------------------
@@ -64,26 +64,26 @@
 			//Entrance Animations
 			modal.bind('reveal:open', function () {
 			  modalBG.unbind('click.modalEvent');
-				$('.' + options.dismissmodalclass).unbind('click.modalEvent');
+				jQuery('.' + options.dismissmodalclass).unbind('click.modalEvent');
 				if(!locked) {
 					lockModal();
 					if(options.animation == "fadeAndPop") {
-						modal.css({'top': $(document).scrollTop()-topOffset, 'opacity' : 0, 'visibility' : 'visible'});
+						modal.css({'top': jQuery(document).scrollTop()-topOffset, 'opacity' : 0, 'visibility' : 'visible'});
 						modalBG.fadeIn(options.animationspeed/2);
 						modal.delay(options.animationspeed/2).animate({
-							"top": $(document).scrollTop()+topMeasure + 'px',
+							"top": jQuery(document).scrollTop()+topMeasure + 'px',
 							"opacity" : 1
 						}, options.animationspeed,unlockModal());					
 					}
 					if(options.animation == "fade") {
-						modal.css({'opacity' : 0, 'visibility' : 'visible', 'top': $(document).scrollTop()+topMeasure});
+						modal.css({'opacity' : 0, 'visibility' : 'visible', 'top': jQuery(document).scrollTop()+topMeasure});
 						modalBG.fadeIn(options.animationspeed/2);
 						modal.delay(options.animationspeed/2).animate({
 							"opacity" : 1
 						}, options.animationspeed,unlockModal());					
 					} 
 					if(options.animation == "none") {
-						modal.css({'visibility' : 'visible', 'top':$(document).scrollTop()+topMeasure});
+						modal.css({'visibility' : 'visible', 'top':jQuery(document).scrollTop()+topMeasure});
 						modalBG.css({"display":"block"});	
 						unlockModal()				
 					}
@@ -98,7 +98,7 @@
 					if(options.animation == "fadeAndPop") {
 						modalBG.delay(options.animationspeed).fadeOut(options.animationspeed);
 						modal.animate({
-							"top":  $(document).scrollTop()-topOffset + 'px',
+							"top":  jQuery(document).scrollTop()-topOffset + 'px',
 							"opacity" : 0
 						}, options.animationspeed/2, function() {
 							modal.css({'top':topMeasure, 'opacity' : 1, 'visibility' : 'hidden'});
@@ -129,7 +129,7 @@
     	modal.trigger('reveal:open')
 			
 			//Close Modal Listeners
-			var closeButton = $('.' + options.dismissmodalclass).bind('click.modalEvent', function () {
+			var closeButton = jQuery('.' + options.dismissmodalclass).bind('click.modalEvent', function () {
 			  modal.trigger('reveal:close')
 			});
 			
@@ -139,7 +139,7 @@
 				  modal.trigger('reveal:close')
 				});
 			}
-			$('body').keyup(function(e) {
+			jQuery('body').keyup(function(e) {
         		if(e.which===27){ modal.trigger('reveal:close'); } // 27 is the keycode for the Escape key
 			});
 			

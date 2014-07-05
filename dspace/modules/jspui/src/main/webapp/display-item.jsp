@@ -111,7 +111,6 @@
 <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/social.css" type="text/css" />
 <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/social.js"></script>
 
-
 <dspace:layout title="<%= title %>">
 <%
     if (handle != null)
@@ -393,4 +392,6 @@
 <%
     } 
 %>    
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/item-view.js"></script>
+
 </dspace:layout>

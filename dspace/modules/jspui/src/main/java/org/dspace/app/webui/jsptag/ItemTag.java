@@ -1027,7 +1027,7 @@ public class ItemTag extends TagSupport
                                                             "org.dspace.app.webui.jsptag.ItemTag.view")
                                             + "</a>");
 											
-								out.print("<a href=\"#\" class=\"btn btn-primary big-link\" data-reveal-id=\"myModal\" data-animation=\"fade\">");
+								out.print("&nbsp;<a href=\"#preview-link\" id=\"preview-link\" class=\"btn btn-primary big-link reveal-link\" data-reveal-id=\"myModal\">");
             					out
                                     .print(LocaleSupport
                                                     .getLocalizedMessage(
@@ -1037,9 +1037,9 @@ public class ItemTag extends TagSupport
 											
 								String dspaceUrl = ConfigurationManager.getProperty("dspace.baseUrl");								
 								
-								out.print("<div id=\"myModal\" class=\"reveal-modal\"><iframe src=\"http://docs.google.com/viewer?url=");
+								out.print("<div id=\"myModal\" class=\"reveal-modal\" data-reveal><iframe src=\"http://docs.google.com/viewer?url=");
 								out.print(dspaceUrl + bsLink
-											+ "&embedded=true\" width=\"800\" height=\"600\" style=\"border: none;\"></iframe></div>");
+											+ "&embedded=true\" width=\"800\" height=\"600\" style=\"border: none;\"></iframe><a id=\"close-reveal-modal\" class=\"close-reveal-modal\">&#215;</a></div>");
             					
 								try {
 									if (showRequestCopy && !AuthorizeManager
