@@ -102,12 +102,12 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			SQLException, AuthorizeException 
 	{
 		
-		if(request.getParameter("submit_selection") != null && request.getParameter("submit_import") == null)
+		if(request.getParameter("submit_return") == null && request.getParameter("submit_selection") != null && request.getParameter("submit_import") == null)
 		{
 			/** Usuário solicitou apresentação desta página **/
 			preparePage(context, request, response);
 		}
-		else if(request.getParameter("submit_import") != null)
+		else if(request.getParameter("submit_return") == null && request.getParameter("submit_import") != null)
 		{
 			/** Usuário solicitou importação **/
 			String[] selectedFolders = request.getParameterValues("selected_folders");
@@ -241,7 +241,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		else
 		{
 			Date currentDate = new Date();
-			myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getRootSelectedFolderId(request)).getCanonicalPath(),  FileUtils.getMappingFileLocation(currentDate), FileUtils.getErrorFolderLocation(currentDate), false, 
+			myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getAndRegisterRootSelectedFolderId(request)).getCanonicalPath(),  FileUtils.getMappingFileLocation(currentDate), FileUtils.getErrorFolderLocation(currentDate), false, 
 					importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
 
 		}
@@ -304,7 +304,7 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 			ServletException, IOException {
 		
     	HttpSession session = request.getSession();
-		Long rootBaseFolderSelected = getRootSelectedFolderId(request);
+		Long rootBaseFolderSelected = getAndRegisterRootSelectedFolderId(request);
 		
 		if(rootBaseFolderSelected != null)
 		{
@@ -359,14 +359,19 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 	 * @param request Requisição HTTP
 	 * @return Número identificador da pasta "root"
 	 */
-	private Long getRootSelectedFolderId(HttpServletRequest request)
+	private Long getAndRegisterRootSelectedFolderId(HttpServletRequest request)
 	{
     	String baseFolderNumber = request.getParameter("selectedFolder");
-    	return NumberUtils.isNumber(baseFolderNumber) ? Long.valueOf(baseFolderNumber) : null;
+    	Long idSelectedFolder = NumberUtils.isNumber(baseFolderNumber) ? Long.valueOf(baseFolderNumber) : null;
+    	
+    	/** Register this value into session, so it can be recovered to idenfity the list of errors **/
+    	request.getSession().setAttribute(FolderMetadataImportConstants.ID_OF_SELECTED_EXPORT, idSelectedFolder);
+    	
+		return idSelectedFolder;
 	}
 	
 	/**
-	 * Recupera instância de {@link File} para o identificador obtido no método {@link #getRootSelectedFolderId(HttpServletRequest)}
+	 * Recupera instância de {@link File} para o identificador obtido no método {@link #getAndRegisterRootSelectedFolderId(HttpServletRequest)}
 	 * @param request Resquisição HTTP
 	 * @param rootBaseFolderSelected Identificador da pasta root
 	 * @return Arquivo encontrado

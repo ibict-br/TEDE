@@ -24,6 +24,7 @@ public class FolderMetadataImportConstants {
 	public static String ITEMS_WITH_ERROR_ON_IMPORT_ITEM_KEY = "item";
 	public static String ITEMS_WITH_ERROR_ON_IMPORT_FILE_KEY = "file";
 	public static final String NO_ITEMS_WITH_ERROR_ON_IMPORT_FOUND_KEY = "jsp.dspace-admin.foldermetadataerror.noerrors";
+	public static final String ID_OF_SELECTED_EXPORT = "selectedExport";
 
 	
 }

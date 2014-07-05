@@ -6,6 +6,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -55,24 +60,53 @@ public class FolderMetadataErrorServlet extends DSpaceServlet {
 				{
 					doDownload(response, fileKey, errorImportRegistry);
 				}
-				
 			}
 		}
 		else
 		{
 			/** Usuário requisitou abertura da página **/
-			Map<Long, ErrorImportRegistry> listErrorsImport = ImportErrorsReader.listErrorsImport();
-			
-			if(listErrorsImport == null || listErrorsImport.isEmpty())
+			@SuppressWarnings("unchecked")
+			Map<Long, File> serverMappingRoot = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT);
+			Long selectedRootFolder = (Long) request.getSession().getAttribute(FolderMetadataImportConstants.ID_OF_SELECTED_EXPORT);
+			if(serverMappingRoot != null && serverMappingRoot.containsKey(selectedRootFolder))
 			{
-				request.setAttribute("message", FolderMetadataImportConstants.NO_ITEMS_WITH_ERROR_ON_IMPORT_FOUND_KEY);
+				/** Map must have only occurrence **/
+				Map<Long, ErrorImportRegistry> listErrorsImport = ImportErrorsReader.listErrorsImport(serverMappingRoot.get(selectedRootFolder));
+				
+				if(listErrorsImport == null || listErrorsImport.isEmpty())
+				{
+					request.setAttribute("message", FolderMetadataImportConstants.NO_ITEMS_WITH_ERROR_ON_IMPORT_FOUND_KEY);
+				}
+				else
+				{
+					request.getSession().setAttribute(FolderMetadataImportConstants.ITEMS_WITH_ERROR_ON_IMPORT_KEY, listErrorsImport);
+					Collection<ErrorImportRegistry> valuesCollection = listErrorsImport.values();
+					List<ErrorImportRegistry> valuesList = new ArrayList<ErrorImportRegistry>(valuesCollection);
+					
+					Collections.sort(valuesList, new Comparator<ErrorImportRegistry>() {
+
+						@Override
+						public int compare(ErrorImportRegistry o1,
+								ErrorImportRegistry o2) {
+							
+							if(o1.getTitle() != null && o2.getTitle() != null)
+							{
+								return o1.getTitle().compareTo(o2.getTitle());
+							}
+							return 0;
+						}
+					});
+					
+					request.setAttribute(FolderMetadataImportConstants.ITEMS_WITH_ERROR_ON_IMPORT_KEY, valuesList);
+				}
+				
+				JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataerror.jsp");
 			}
 			else
 			{
-				request.getSession().setAttribute(FolderMetadataImportConstants.ITEMS_WITH_ERROR_ON_IMPORT_KEY, listErrorsImport);
+				request.setAttribute("message", FolderMetadataImportConstants.NO_ITEMS_WITH_ERROR_ON_IMPORT_FOUND_KEY);
+				JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataerror.jsp");
 			}
-			
-			JSPManager.showJSP(request, response, "/dspace-admin/foldermetadataerror.jsp");
 		}
 				
 	}

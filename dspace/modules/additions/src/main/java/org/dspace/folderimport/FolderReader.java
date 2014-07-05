@@ -337,7 +337,7 @@ public class FolderReader {
 				serverReadble.put(keyAssotiation, fileBase);
 				reverseServerReadble.put(fileBase, keyAssotiation);
 				mappingParent.put(keyAssotiation, reverseServerReadble.get(fileBase.getParentFile()));
-				userReadble.put(keyAssotiation, (isParentFolder ? fileBase.getParentFile().getName() + "/" : "") + fileBase.getName());
+				userReadble.put(keyAssotiation, (isParentFolder ? clearString(fileBase.getParentFile().getName()) + "/" : "") + clearString(fileBase.getName()));
 			}
 			
 			for(File currentFile : fileBase.listFiles())
@@ -345,6 +345,21 @@ public class FolderReader {
 				innerBuild(currentFile, userReadble, serverReadble, keyControl, reverseServerReadble, mappingParent);
 			}
 		}
+	}
+
+	/**
+	 * Clear strings, removing "unreadble" characters
+	 * @param valueString Value string
+	 * @return
+	 */
+	private String clearString(String valueString) 
+	{
+		if(valueString != null && valueString.length() > 0)
+		{
+			return Character.toUpperCase(valueString.charAt(0)) + valueString.substring(1).replaceAll("_", " ");
+		}
+		
+		return null;
 	}
 
     

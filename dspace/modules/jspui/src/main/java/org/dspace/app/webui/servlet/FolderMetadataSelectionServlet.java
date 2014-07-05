@@ -52,11 +52,7 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		
 		HttpSession session = request.getSession();
 		
-		session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY, null);
-		session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE, null);
-		session.setAttribute(FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING, null);
-		session.setAttribute(FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT, null);
-		session.setAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT, null);
+		clearSessionVariables(session);
 
 		File root = new File(ConfigurationManager.getProperty("org.dspace.app.itemexport.work.dir"));
 		FolderReader folderReader = new FolderReader(root);
@@ -86,6 +82,25 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 			request.setAttribute("has-error", Boolean.TRUE);
 			request.setAttribute("message", FolderMetadataImportConstants.KEY_MESSAGE_NO_FOLDER_EXISTS);
 			JSPManager.showJSP(request, response, DSPACE_ADMIN_FOLDERMETADATASELECTION_JSP);
+		}
+		
+	}
+
+	/**
+	 * Clear all data that can be filled.
+	 * @param session Http session
+	 */
+	private void clearSessionVariables(HttpSession session) {
+		
+		String[] attributesToRemove = new String[]{FolderMetadataImportConstants.USER_DATA_READBLE_KEY, 
+				FolderMetadataImportConstants.SERVER_DATA_READBLE, FolderMetadataImportConstants.PARENT_FOLDER_MAPPPING,
+				FolderMetadataImportConstants.USER_DATA_READBLE_KEY_ROOT, 
+				FolderMetadataImportConstants.SERVER_DATA_READBLE_KEY_ROOT,
+				FolderMetadataImportConstants.ID_OF_SELECTED_EXPORT, FolderMetadataImportConstants.ITEMS_WITH_ERROR_ON_IMPORT_KEY};
+		
+		for(String attribute : attributesToRemove)
+		{
+			session.removeAttribute(attribute);
 		}
 		
 	}

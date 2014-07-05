@@ -1,10 +1,11 @@
+jQuery.noConflict();
 
 	/**
 	 * Registra listener para componentes de checkbox
 	 */
-	$(document).ready(function(){
+	jQuery(document).ready(function(){
 	
-		$("input[id^='folder_']").click(function(){
+		jQuery("input[id^='folder_']").click(function(){
 	
 		
 		if(this.id.search('parent') != -1)
@@ -29,9 +30,9 @@
 	 */
 	function handleChildSelection(childObject)
 	{	
-		$("input[id='folder_" + childObject.id.split("_parent_")[1] + "']").prop('checked', 
+		jQuery("input[id='folder_" + childObject.id.split("_parent_")[1] + "']").prop('checked', 
 				/** true caso todos os filhos estejam selecionados **/
-				$("input[id*='parent_" + childObject.id.split("_parent_")[1] + "']:checked").length == $("input[id*='parent_" + childObject.id.split("_parent_")[1] + "']").length);
+				jQuery("input[id*='parent_" + childObject.id.split("_parent_")[1] + "']:checked").length == jQuery("input[id*='parent_" + childObject.id.split("_parent_")[1] + "']").length);
 	}
 
 	/**
@@ -40,5 +41,5 @@
 	 */
 	function handleParentSelection(parentObject)
 	{
-		$("input[id*='parent_" + parentObject.id.split("_")[1] + "']").prop('checked', parentObject.checked);
+		jQuery("input[id*='parent_" + parentObject.id.split("_")[1] + "']").prop('checked', parentObject.checked);
 	}
