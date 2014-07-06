@@ -16,6 +16,7 @@ import org.dspace.content.BitstreamFormat;
 import org.dspace.content.Bundle;
 import org.dspace.content.Item;
 import org.dspace.core.Context;
+import org.dspace.license.CreativeCommons;
 import org.dspace.submit.AbstractProcessingStep;
 
 /**
@@ -47,9 +48,22 @@ public class PostUploadStep extends AbstractProcessingStep {
 		/** Preenche "dc.format" **/
 		fillFormat(item);
 		
+		fillLicenseURL(item);
+		
 		item.update();
 
 		return NO_ITEM_OR_PAGES;
+	}
+
+	
+	private void fillLicenseURL(Item item) throws SQLException, IOException,
+			AuthorizeException {
+		String licenseURL = CreativeCommons.getLicenseURL(item);
+		if(licenseURL != null)
+		{
+			item.clearMetadata("dc", "rights", "uri", Item.ANY);
+			item.addMetadata("dc", "rights", "uri", null, licenseURL);
+		}
 	}
 
 	private void fillFormat(Item item) throws SQLException {
