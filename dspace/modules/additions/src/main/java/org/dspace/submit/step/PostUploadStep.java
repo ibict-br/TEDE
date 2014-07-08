@@ -45,9 +45,10 @@ public class PostUploadStep extends AbstractProcessingStep {
 
 		Item item = subInfo.getSubmissionItem().getItem();
 
-		/** Preenche "dc.format" **/
+		/** Fill "dc.format" **/
 		fillFormat(item);
 		
+		/** Fill "dc.rights.uri" **/
 		fillLicenseURL(item);
 		
 		item.update();
@@ -55,7 +56,13 @@ public class PostUploadStep extends AbstractProcessingStep {
 		return NO_ITEM_OR_PAGES;
 	}
 
-	
+	/**
+	 * Clear and fill <i>dc.rights.uri</i> with the URL of the license {@link CreativeCommons#getLicenseURL(Item)}
+	 * @param item Item beeing submited
+	 * @throws SQLException
+	 * @throws IOException
+	 * @throws AuthorizeException
+	 */
 	private void fillLicenseURL(Item item) throws SQLException, IOException,
 			AuthorizeException {
 		String licenseURL = CreativeCommons.getLicenseURL(item);
