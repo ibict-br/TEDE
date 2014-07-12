@@ -36,6 +36,7 @@ import org.dspace.content.authority.Choices;
 import org.dspace.content.authority.MetadataAuthorityManager;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
+import org.dspace.core.I18nUtil;
 import org.dspace.submit.AbstractProcessingStep;
 
 /**
@@ -352,6 +353,18 @@ public class DescribeStep extends AbstractProcessingStep
                     // since this field is missing add to list of error fields
                     addErrorField(request, getFieldName(inputs[i]));
                 }
+                
+                /** Checks if dc.identifier.citation variables **/
+                else if(inputs[i].getElement() != null && inputs[i].getElement().equals("identifier") && inputs[i].getQualifier() != null 
+                		&& inputs[i].getQualifier().equals("citation") && values.length == 1 && inputs[i].isVisible(subInfo.isInWorkflow() ? DCInput.WORKFLOW_SCOPE : DCInput.SUBMISSION_SCOPE))
+            	{
+                	String currentMetadataValue = values[0].value;
+            		if(currentMetadataValue.contains(I18nUtil.getMessage("jsp.submit.dc.identifier.citation.variable.pagenumber")) 
+            				|| currentMetadataValue.contains(I18nUtil.getMessage("jsp.submit.dc.identifier.citation.variable.place")))
+            		{ 
+            			addErrorField(request, getFieldName(inputs[i]));
+            		}
+            	}
             }
         }
 
@@ -764,9 +777,10 @@ public class DescribeStep extends AbstractProcessingStep
         for (int i = 0; i < vals.size(); i++)
         {
             // Add to the database if non-empty
-            String s = vals.get(i);
-            if ((s != null) && !s.equals(""))
+            String currentMetadataValue = vals.get(i);
+            if ((currentMetadataValue != null) && !currentMetadataValue.equals(""))
             {
+            	
                 if (isAuthorityControlled)
                 {
                     String authKey = auths.size() > i ? auths.get(i) : null;
@@ -779,14 +793,14 @@ public class DescribeStep extends AbstractProcessingStep
                     }
                     else
                     {
-                        item.addMetadata(schema, element, qualifier, lang, s,
+                        item.addMetadata(schema, element, qualifier, lang, currentMetadataValue,
                                 authKey, (sconf != null && sconf.length() > 0) ?
                                         Choices.getConfidenceValue(sconf) : Choices.CF_ACCEPTED);
                     }
                 }
                 else
                 {
-                    item.addMetadata(schema, element, qualifier, lang, s);
+                    item.addMetadata(schema, element, qualifier, lang, currentMetadataValue);
                 }
             }
         }

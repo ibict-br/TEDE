@@ -8,7 +8,9 @@ package org.dspace.export.domain;
 public enum ExportType 
 {
 
-	BIBTEX("item-export/BibTeX.vm", ""), ENDNOTE("/item-export/endnote.vm", "enw");
+	BIBTEX("item-export/BibTeX.vm", ""), 
+	ENDNOTE("/item-export/endnote.vm", "enw"),
+	CITATION("/item-export/input-forms-citation.vm", "");
 
 	
 	private String fileLocation;

@@ -15,6 +15,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.dspace.content.DCValue;
 import org.dspace.content.Item;
+import org.dspace.core.I18nUtil;
 import org.dspace.export.domain.ExportType;
 
 /**
@@ -82,7 +83,7 @@ public class ItemExportFormats
 			String value = null;
 			
 			/** Must have only "year" for date.issued **/
-			if(currentMetadata.getField().equals("dc.date.issued"))
+			if(currentMetadata.getField().contains("dc.date"))
 			{
 				value = currentMetadata.value != null && currentMetadata.value.length() > 
 					YEARH_LENGTH_COMPARATOR ? currentMetadata.value.substring(ZERO_CHARACTER, YEAR_LENGTH) : "";
@@ -97,6 +98,13 @@ public class ItemExportFormats
 		context.put("itemMetadata", itemMetadata);
 		String generatedIdentifier = generateIdentifier(itemMetadata);
 		context.put("generatedId", generatedIdentifier);
+		
+		/** Citation has specific values **/
+		if(exportType.equals(ExportType.CITATION))
+		{
+			context.put("pageNumber", I18nUtil.getMessage("jsp.submit.dc.identifier.citation.variable.pagenumber"));
+			context.put("place", I18nUtil.getMessage("jsp.submit.dc.identifier.citation.variable.place"));
+		}
 		
 		StringWriter stringWriter = new StringWriter();
 		template.merge(context, stringWriter);

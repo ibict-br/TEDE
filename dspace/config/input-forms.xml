@@ -656,6 +656,8 @@
          <required></required>
       </field>
 	   
+	   <!-- 
+	   	Retirado dado que esta informação é preenchida automaticamente.
 	   	  <field>
 		 <dc-schema>dc</dc-schema>
          <dc-element>rights</dc-element>
@@ -666,6 +668,8 @@
          <hint>Informe o link para as permissoes de uso. Pode-se incluir o link da licença Creative Commons. </hint>
          <required></required>
        </field>	
+       
+	    -->
 	   
 	   	<field>
          <dc-schema>dc</dc-schema>
@@ -675,7 +679,7 @@
          <label>Citação:</label>
          <input-type>textarea</input-type>
          <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Referência bibliográfica do documento. Use as normas de acordo com a área, por exemplo: ABNT, APA, Vancouver.</hint>
-         <required></required>
+         <required>O campo não deve ser vazio e também deve ter as variáveis "[quantidade de folhas]" e "[local da defesa]" preenchidas.</required>
        </field>
 	   
 	   <!-- <field>

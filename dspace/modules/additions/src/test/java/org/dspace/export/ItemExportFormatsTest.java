@@ -26,8 +26,8 @@ public class ItemExportFormatsTest {
 	{
 		Item testItem = Item.find(new Context(), 3598);
 		ItemExportFormats itemExportFormats = new ItemExportFormats();
-		ItemExportDTO process = itemExportFormats.process(testItem, ExportType.ENDNOTE);
-		
+		ItemExportDTO process = itemExportFormats.process(testItem, ExportType.CITATION);
+
 		Assert.assertNotNull(process);
 		
 	}

@@ -16,6 +16,9 @@
   -    submission.page   - the step in submission
   --%>
 
+<%@page import="org.dspace.export.ItemExportDTO"%>
+<%@page import="org.dspace.export.domain.ExportType"%>
+<%@page import="org.dspace.export.ItemExportFormats"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ page import="java.util.ArrayList" %>
@@ -77,22 +80,22 @@
         
         if (enabled && useWithCurrentField && !readonly)
         {
-                        // Deal with the issue of _0 being removed from fieldnames in the configurable submission system
-                        if (fieldName.endsWith("_0"))
-                        {
-                                fieldName = fieldName.substring(0, fieldName.length() - 2);
-                        }
-                        link = 
-                        "<a href='javascript:void(null);' onclick='javascript:popUp(\"" +
-                                contextPath + "/controlledvocabulary/controlledvocabulary.jsp?ID=" +
-                                fieldName + "&amp;vocabulary=" + vocabulary + "\")'>" +
-                                        "<span class='controlledVocabularyLink'>" +
-                                                LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.controlledvocabulary") +
-                                        "</span>" +
-                        "</a>";
-                }
+	          // Deal with the issue of _0 being removed from fieldnames in the configurable submission system
+	          if (fieldName.endsWith("_0"))
+	          {
+	                  fieldName = fieldName.substring(0, fieldName.length() - 2);
+	          }
+	          link = 
+	          "<a href='javascript:void(null);' onclick='javascript:popUp(\"" +
+	                  contextPath + "/controlledvocabulary/controlledvocabulary.jsp?ID=" +
+	                  fieldName + "&amp;vocabulary=" + vocabulary + "\")'>" +
+	                          "<span class='controlledVocabularyLink'>" +
+	                                  LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.edit-metadata.controlledvocabulary") +
+	                          "</span>" +
+	          "</a>";
+          }
 
-                return link;
+   		return link;
     }
 
     boolean hasVocabulary(String vocabulary)
@@ -588,13 +591,22 @@
       {
          if (i < defaults.length)
          {
-           val = defaults[i].value;
-              auth = defaults[i].authority;
-              conf = defaults[i].confidence;
+			val = defaults[i].value;
+			auth = defaults[i].authority;
+			conf = defaults[i].confidence;
          }
          else
          {
-           val = "";
+           	val = "";
+        	 /** Build automatically citation text **/
+       		if(element != null && element.equals("identifier") && qualifier != null && qualifier.equals("citation"))
+         	{
+       			ItemExportDTO dto = new ItemExportFormats().process(item, ExportType.CITATION);
+       			if(dto != null && dto.getFileContent() != null)
+       			{
+ 	        		val = dto.getFileContent();
+       			}
+         	}
             auth = "";
          }
          sb.append("<div class=\"row col-md-12\">\n");
