@@ -73,7 +73,7 @@
          <repeatable>true</repeatable>
          <label>Título(s) alternativo(s):</label>
          <input-type value-pairs-name="common_languages">qualdrop_language</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt;Informe o título alternativo. Recomenda-se preencher com 
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt;Informe o título alternativo. Recomenda-se preencher com 
 		 a tradução do título da tese ou dissertação para o inglês, para maior visibilidade do documento.</hint>
          <required></required>
        </field>   
@@ -120,7 +120,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do autor:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do autor.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do autor.</hint>
          <required></required>
        </field>
 	   
@@ -131,7 +131,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do autor:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do autor (CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do autor (CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	   
@@ -159,7 +159,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do orientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do orientador.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do orientador.</hint>
          <required></required>
        </field>
 	   
@@ -170,7 +170,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do orientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 		
@@ -189,7 +189,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;PRIMEIRO CO-ORIENTADOR&lt;/strong&gt;
 		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
 	           &lt;/div&gt;
-           	   &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro co-orientador, conforme o formato de citação.</hint>
+           	   &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro co-orientador, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -200,7 +200,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do primeiro co-orientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro co-orientador.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro co-orientador.</hint>
          <required></required>
        </field>
 	   
@@ -211,7 +211,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do primeiro co-orientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro co-orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro co-orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	   
@@ -228,7 +228,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;SEGUNDO CO-ORIENTADOR&lt;/strong&gt;
 		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
                &lt;/div&gt;
-		       &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo co-orientador, conforme o formato de citação.</hint>
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo co-orientador, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -239,7 +239,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do segundo co-orientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do segundo co-orientador.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do segundo co-orientador.</hint>
          <required></required>
        </field>
 	   
@@ -250,7 +250,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do segundo co-orientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do segundo co-orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do segundo co-orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	
@@ -271,7 +271,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Descrição do &lt;strong&gt;PRIMEIRO MEMBRO DA BANCA&lt;/strong&gt;
 			   &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
                &lt;/div&gt;
-		       &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro membro da banca, conforme o formato de citação.</hint>
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro membro da banca, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -282,7 +282,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do primeiro membro da banca:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro membro da banca.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro membro da banca.</hint>
          <required></required>
        </field>
 	   
@@ -293,7 +293,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do primeiro membro da banca</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	   
@@ -310,7 +310,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;SEGUNDO MEMBRO DA BANCA&lt;/strong&gt;
 		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
-		       &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo membro da banca, conforme o formato de citação.
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo membro da banca, conforme o formato de citação.
 			   </hint>
          <required></required>
        </field>
@@ -322,7 +322,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do segundo membro da banca:</label>
          <input-type>onebox</input-type>
-         <hint> &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do segundo membro da banca.</hint>
+         <hint> &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do segundo membro da banca.</hint>
          <required></required>
        </field>
 	   
@@ -333,7 +333,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do segundo membro da banca</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do segundo membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do segundo membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	   
@@ -349,7 +349,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;TERCEIRO MEMBRO DA BANCA&lt;/strong&gt;
 		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
-		       &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo membro da banca, conforme o formato de citação.</hint>
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo membro da banca, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -360,7 +360,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do terceiro membro da banca:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do terceiro membro da banca.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do terceiro membro da banca.</hint>
          <required></required>
        </field>
 	   
@@ -371,7 +371,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do terceiro membro da banca</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do terceiro membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do terceiro membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>
 	   
@@ -387,7 +387,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;QUARTO MEMBRO DA BANCA&lt;/strong&gt;
 		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
-		       &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do quarto membro da banca, conforme o formato de citação.</hint>
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do quarto membro da banca, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -398,7 +398,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do quarto membro da banca:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do quarto membro da banca.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do quarto membro da banca.</hint>
          <required></required>
        </field>	   
 	   
@@ -409,7 +409,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do quarto quarto da banca</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do quarto membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do quarto membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>
 	   
@@ -425,7 +425,7 @@
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;QUINTO MEMBRO DA BANCA&lt;/strong&gt;
 		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
-		       &lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do quinto membro da banca, conforme o formato de citação.</hint>
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do quinto membro da banca, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -436,7 +436,7 @@
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do quinto  membro da banca:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do quinto  membro da banca.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do quinto  membro da banca.</hint>
          <required></required>
        </field>
 
@@ -447,7 +447,7 @@
          <repeatable>true</repeatable>
          <label>Identificador único do quinto quarto da banca</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do quinto membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do quinto membro da banca(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>
 
@@ -535,7 +535,7 @@
          <repeatable>false</repeatable>
          <label>Referências:</label>
          <input-type>textarea</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informes as referências citadas no documento. </hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informes as referências citadas no documento. </hint>
          <required></required>
        </field>
 	   	   
@@ -548,7 +548,7 @@
          <repeatable>false</repeatable>
          <label>Identificador persistente:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Preencha com as informações do identificador persistente utilizado.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Preencha com as informações do identificador persistente utilizado.</hint>
          <required></required>
        </field>
 	 
@@ -626,7 +626,7 @@
          <repeatable>true</repeatable>
          <label>Realação:</label>
          <input-type>textarea</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Outros recursos utilizados para elaboração deste documento. </hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Outros recursos utilizados para elaboração deste documento. </hint>
          <required></required>
        </field>
 	</page>
@@ -678,7 +678,7 @@
          <repeatable>false</repeatable>
          <label>Citação:</label>
          <input-type>textarea</input-type>
-         <hint>&lt;font color="#3a87ad"&gt;CAMPO OPCIONAL: &lt;/font&gt; Referência bibliográfica do documento. Use as normas de acordo com a área, por exemplo: ABNT, APA, Vancouver.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Referência bibliográfica do documento. Use as normas de acordo com a área, por exemplo: ABNT, APA, Vancouver.</hint>
          <required>O campo não deve ser vazio e também deve ter as variáveis "[quantidade de folhas]" e "[local da defesa]" preenchidas.</required>
        </field>
 	   

@@ -88,112 +88,23 @@ for (int i = supportedLocales.length-1; i >= 0; i--)
 }
 %>
 	<div class="jumbotron">
+		<h1><fmt:message key="jsp.home.about"></fmt:message></h1>
        <%= topNews %>
+       <p><a href="bdtd.jsp"><button class="btn btn-primary">Sobre a BDTD</button></a></p>
 	</div>
 
-<div class="row">
-<%
-if (submissions != null && submissions.count() > 0)
-{
-%>
-        <div class="col-md-8">
-        <div class="panel panel-primary">        
-        <div id="recent-submissions-carousel" class="panel-heading carousel slide">
-          <h3><fmt:message key="jsp.collection-home.recentsub"/>
-              <%
-    if(feedEnabled)
-    {
-	    	String[] fmts = feedData.substring(feedData.indexOf(':')+1).split(",");
-	    	String icon = null;
-	    	int width = 0;
-	    	for (int j = 0; j < fmts.length; j++)
-	    	{
-	    		if ("rss_1.0".equals(fmts[j]))
-	    		{
-	    		   icon = "rss1.gif";
-	    		   width = 80;
-	    		}
-	    		else if ("rss_2.0".equals(fmts[j]))
-	    		{
-	    		   icon = "rss2.gif";
-	    		   width = 80;
-	    		}
-	    		else
-	    	    {
-	    	       icon = "rss.gif";
-	    	       width = 36;
-	    	    }
-	%>
-	    <a href="<%= request.getContextPath() %>/feed/<%= fmts[j] %>/site"><img src="<%= request.getContextPath() %>/image/<%= icon %>" alt="RSS Feed" width="<%= width %>" height="15" vspace="3" border="0" /></a>
-	<%
-	    	}
-	    }
-	%>
-          </h3>
-          
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner">
-<%
-		    boolean first = true;
-		    for (Item item : submissions.getRecentSubmissions())
-		    {
-		        DCValue[] dcv = item.getMetadata("dc", "title", null, Item.ANY);
-		        String displayTitle = "Untitled";
-		        if (dcv != null & dcv.length > 0)
-		        {
-		            displayTitle = dcv[0].value;
-		        }
-		        dcv = item.getMetadata("dc", "description", "resumo", Item.ANY);
-		        String displayAbstract = "";
-		        if (dcv != null & dcv.length > 0)
-		        {
-		            displayAbstract = dcv[0].value;
-		        }
-				else
-				{
-					dcv = item.getMetadata("dc", "description", "abstract", Item.ANY);
-					if (dcv != null & dcv.length > 0)
-					{
-						displayAbstract = dcv[0].value;
-					}
-				}
-		%>
-		    <div style="padding-bottom: 50px; min-height: 200px;" class="item <%= first?"active":""%>">
-		      <div style="padding-left: 80px; padding-right: 80px; display: inline-block;"><h4><%= StringUtils.abbreviate(displayTitle, 400) %> 
-		      	<a href="<%= request.getContextPath() %>/handle/<%=item.getHandle() %>"> 
-		      		<button class="btn btn-success" type="button"><fmt:message key="jsp.collection-home.see"/></button>
-		      		</a></h4>
-                        <p><%= StringUtils.abbreviate(displayAbstract, 500) %></p>
-		      </div>
-		    </div>
-		<%
-				first = false;
-		     }
-		%>
-		  </div>
 
-		  <!-- Controls -->
-		  <a class="left carousel-control" href="#recent-submissions-carousel" data-slide="prev">
-		    <span class="icon-prev"></span>
-		  </a>
-		  <a class="right carousel-control" href="#recent-submissions-carousel" data-slide="next">
-		    <span class="icon-next"></span>
-		  </a>
 
-          <ol class="carousel-indicators">
-		    <li data-target="#recent-submissions-carousel" data-slide-to="0" class="active"></li>
-		    <% for (int i = 1; i < submissions.count(); i++){ %>
-		    <li data-target="#recent-submissions-carousel" data-slide-to="<%= i %>"></li>
-		    <% } %>
-	      </ol>
-     </div></div></div>
-<%
-}
-%>
-<div class="col-md-4">
-    <%= sideNews %>
-</div>
-</div>
+	<form method="get" action="<%= request.getContextPath() %>/simple-search" class="form-horizontal" scope="search" role="form">
+	      	<div class="form-group form-group-lg">
+	      		<div class="col-sm-10">
+		          <input type="text" class="form-control" placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
+	      		</div>
+		        <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span></button>
+	        </div>
+		</form>
+
+
 <div class="container row">
 <%
 if (communities != null && communities.length != 0)

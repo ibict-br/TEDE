@@ -27,8 +27,6 @@
 <%
     String title = (String) request.getAttribute("dspace.layout.title");
     String navbar = (String) request.getAttribute("dspace.layout.navbar");
-    boolean locbar = ((Boolean) request.getAttribute("dspace.layout.locbar")).booleanValue();
-
     String siteName = ConfigurationManager.getProperty("dspace.name");
     String feedRef = (String)request.getAttribute("dspace.layout.feedref");
     boolean osLink = ConfigurationManager.getBooleanProperty("websvc.opensearch.autolink");
@@ -50,7 +48,7 @@
         <meta name="Generator" content="<%= generator %>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="<%= request.getContextPath() %>/favicon.ico" type="image/x-icon"/>
-	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.10.3.custom/redmond/jquery-ui-1.10.3.custom.css" type="text/css" />
+	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jquery-ui-1.11.0.custom/jquery-ui.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/bootstrap-theme.min.css" type="text/css" />
 	    <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/bootstrap/dspace-theme.css" type="text/css" />
@@ -161,18 +159,6 @@
 	</div>
 </div>	
 <br/>
-                <%-- Location bar --%>
-<%
-    if (locbar)
-    {
-%>
-<div class="container">
-                <dspace:include page="/layout/location-bar.jsp" />
-</div>                
-<%
-    }
-%>
-
 
         <%-- Page contents --%>
 <div class="container">
