@@ -679,7 +679,7 @@
          <label>Citação:</label>
          <input-type>textarea</input-type>
          <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Referência bibliográfica do documento. Use as normas de acordo com a área, por exemplo: ABNT, APA, Vancouver.</hint>
-         <required>O campo não deve ser vazio e também deve ter as variáveis "[quantidade de folhas]" e "[local da defesa]" preenchidas.</required>
+         <required></required>
        </field>
 	   
 	   <!-- <field>

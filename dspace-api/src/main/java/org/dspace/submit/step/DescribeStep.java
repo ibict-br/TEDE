@@ -362,6 +362,7 @@ public class DescribeStep extends AbstractProcessingStep
             		if(currentMetadataValue.contains(I18nUtil.getMessage("jsp.submit.dc.identifier.citation.variable.pagenumber")) 
             				|| currentMetadataValue.contains(I18nUtil.getMessage("jsp.submit.dc.identifier.citation.variable.place")))
             		{ 
+            			addErrorMessage(request, getFieldName(inputs[i]), I18nUtil.getMessage("jsp.submit.dc.identifier.citation.error"));
             			addErrorField(request, getFieldName(inputs[i]));
             		}
             	}

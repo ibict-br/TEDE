@@ -11,13 +11,13 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-
 import org.dspace.app.util.DCInputsReaderException;
 import org.dspace.app.util.SubmissionInfo;
 import org.dspace.app.webui.submit.JSPStep;
@@ -176,9 +176,16 @@ public class JSPDescribeStep extends JSPStep
                 subInfo.setJumpToField(missingFields.get(0));
                 subInfo.setMissingFields(missingFields);
 
+                Map<String, String> errorMessages = DescribeStep.getErrorMessages(request);
+                if(errorMessages != null && !errorMessages.isEmpty())
+                {
+                	subInfo.setMissingFieldToMessage(errorMessages);
+                }
+
                 // reload this same JSP to display missing fields info
                 showEditMetadata(context, request, response, subInfo);
             }
+            
         }
     }
 

@@ -1346,15 +1346,25 @@
 
        if ((si.getMissingFields() != null) && (si.getMissingFields().contains(fieldName)))
        {
-           if(inputs[z].getWarning() != null)
+           if(inputs[z].getWarning() != null || (si.getMissingFieldToMessage() != null && si.getMissingFieldToMessage().containsKey(fieldName)))
            {
                    if(si.getJumpToField()==null || si.getJumpToField().length()==0)
                                 si.setJumpToField(fieldName);
-
-                   String req = "<div class=\"alert alert-warning\">" +
-                                                        inputs[z].getWarning() +
-                                                        "<a name=\""+fieldName+"\"></a></div>";
-                   out.write(req);
+					
+                   if(inputs[z].getWarning() != null)
+                   {
+	                   String req = "<div class=\"alert alert-warning\">" +
+	                                                        inputs[z].getWarning() +
+	                                                        "<a name=\""+fieldName+"\"></a></div>";
+	                   out.write(req);
+                   }
+                   else if((si.getMissingFieldToMessage() != null && si.getMissingFieldToMessage().containsKey(fieldName)))
+                   {
+	                   String req = "<div class=\"alert alert-warning\">" +
+	                		  				 si.getMissingFieldToMessage().get(fieldName) +
+	                                                        "<a name=\""+fieldName+"\"></a></div>";
+	                   out.write(req);
+                   }
            }
        }
        else

@@ -235,7 +235,7 @@ public class DCInput
     {
         return warning;
     }
-
+    
     /**
      * Is there a required string for this form row?
      * 
