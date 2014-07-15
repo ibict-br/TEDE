@@ -49,8 +49,8 @@
          <!-- An input-type of qualdrop_value MUST be marked as repeatable -->
          <repeatable>false</repeatable>
          <label>Tipo de documento:</label>
-		 <input-type>onebox</input-type>
-      <!--   <input-type value-pairs-name="common_types">dropdown</input-type> -->
+	  <!-- 	 <input-type>onebox</input-type> -->
+         <input-type value-pairs-name="common_types">dropdown</input-type>
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Selecione o tipo de documento.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Selecione o tipo de documento. &lt;/font&gt;</required>
        </field>
@@ -510,8 +510,8 @@
          <dc-qualifier>country</dc-qualifier>
          <repeatable>false</repeatable>
          <label>País:</label>
-		 <input-type>onebox</input-type>
-         <!-- <input-type value-pairs-name="common_publisher_country">dropdown</input-type> -->
+		 <!-- <input-type>onebox</input-type> -->
+          <input-type value-pairs-name="common_publisher_country">dropdown</input-type> -->
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; País de defesa da tese ou dissertação.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; País de defesa da tese ou dissertação.&lt;/font&gt;</required>
        </field>
@@ -522,8 +522,8 @@
          <dc-qualifier></dc-qualifier>
          <repeatable>false</repeatable>
          <label>Idioma:</label>
-		 <input-type>onebox</input-type>
-         <!-- <input-type value-pairs-name="common_languages">dropdown</input-type> -->
+		 <!-- <input-type>onebox</input-type> -->
+         <input-type value-pairs-name="common_languages">dropdown</input-type> 
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Informe o idioma em que o documento está escrito.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Informe o idioma em que o documento está escrito.&lt;/font&gt;</required>
        </field>
@@ -575,10 +575,9 @@
          <dc-qualifier>cnpq</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Áreas de conhecimento de acordo com tabela do CNPq:</label>
-		 <!-- <input-type>textarea</input-type> -->
-         <!-- closed="true" -->
-		 <!-- <vocabulary>cnpq</vocabulary> -->
-		  <input-type>onebox</input-type>
+		 <input-type>textarea</input-type> 
+		 <vocabulary closed="true">cnpq</vocabulary>
+		 <!-- <input-type>onebox</input-type> -->
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt;Selecione a(s) área(s) de conhecimento correspondente(s), de acordo com tabela do CNPq.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Selecione a(s) área(s) de conhecimento correspondente(s), de acordo com tabela do CNPq. &lt;/font&gt;</required>
        </field>
