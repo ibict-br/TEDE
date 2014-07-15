@@ -150,10 +150,14 @@
 		   	</span>
 		   	
 		   	<span>
-				<a href="<%= request.getContextPath() + "/item-export-formats?itemId=" + item.getID() + "&format=ENDNOTE" %>"><fmt:message key="item.export.type.endnote" /></a>
+				<a style="text-decoration: none;" href="<%= request.getContextPath() + "/item-export-formats?itemId=" + item.getID() + "&format=ENDNOTE" %>">
+					<img alt="<fmt:message key="item.export.type.endnote" />" title="<fmt:message key="item.export.type.endnote" />" src="<%= request.getContextPath() + "/image/endnote.png" %>">
+				</a>
 		   	</span>
 		   	<span>
-				<a href="<%= request.getContextPath() + "/item-export-formats?itemId=" + item.getID() + "&format=BIBTEX" %>"><fmt:message key="item.export.type.bibtex" /></a>
+				<a style="text-decoration: none;" href="<%= request.getContextPath() + "/item-export-formats?itemId=" + item.getID() + "&format=BIBTEX" %>">
+					<img alt="<fmt:message key="item.export.type.bibtex" />" title="<fmt:message key="item.export.type.bibtex" />" src="<%= request.getContextPath() + "/image/bibtex.png" %>">
+				</a>
 		   	</span>
 		   	
 	   	</div>

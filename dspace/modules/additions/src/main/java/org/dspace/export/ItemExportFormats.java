@@ -71,6 +71,7 @@ public class ItemExportFormats
 		VelocityEngine velocityEngine = new VelocityEngine();
 		velocityEngine.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
 		velocityEngine.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		velocityEngine.setProperty("runtime.log.logsystem.class", "org.apache.velocity.runtime.log.NullLogChute");
 		velocityEngine.init();
 		
 		Template template = velocityEngine.getTemplate(exportType.getFileLocation());

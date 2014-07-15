@@ -1,7 +1,7 @@
 #set( $tab = "	" ) 
 #set( $newLine = "
 " ) 
-@#if($itemMetadata.get("dc.type").equals("Tese"))MASTERSTHESIS#else}PHDTHESIS#end{ "$generatedId",
+@#if($itemMetadata.get("dc.type").equals("Tese"))PHDTHESIS#{else}MASTERSTHESIS#end{ "$generatedId",
 #if($itemMetadata.get("dc.contributor.author")) ${tab}author = {$itemMetadata.get("dc.contributor.author")},${newLine}#end
 #if($itemMetadata.get("dc.contributor.advisor")) ${tab}advisor = {$itemMetadata.get("dc.contributor.advisor")},${newLine}#end
 #if($itemMetadata.get("dc.title")) ${tab}title = {$itemMetadata.get("dc.title")},${newLine}#end

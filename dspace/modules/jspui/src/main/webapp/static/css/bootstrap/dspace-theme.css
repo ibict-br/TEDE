@@ -229,3 +229,9 @@ a:hover, a:focus {
 .navbar-brand {
 	padding:  8px 15px 0px 15px;
 }
+
+/** Correção visando evitar que navbar estenda quando há ocorrência de usuário logado **/
+.logged-user {
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+}
