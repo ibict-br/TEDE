@@ -201,11 +201,11 @@ public class ImportErrorsReader {
 							}
 						}
 						
-						errorImportRegistry.setItemFiles(itemRegistry);
-						long garanteeUnusedKey = FileUtils.garanteeUnusedKey(identifiersForFolders);
-						errorImportRegistry.setInternalIdentifer(garanteeUnusedKey);
-						analisysResult.put(garanteeUnusedKey, errorImportRegistry);
 					}
+					errorImportRegistry.setItemFiles(itemRegistry);
+					long garanteeUnusedKey = FileUtils.garanteeUnusedKey(identifiersForFolders);
+					errorImportRegistry.setInternalIdentifer(garanteeUnusedKey);
+					analisysResult.put(garanteeUnusedKey, errorImportRegistry);
 					
 				} catch (Exception e) {
 					logger.error(e.getMessage(), e);
