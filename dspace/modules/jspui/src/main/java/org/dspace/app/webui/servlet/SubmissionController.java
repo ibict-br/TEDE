@@ -418,7 +418,10 @@ public class SubmissionController extends DSpaceServlet
             else
             {
                 //commit & close context
-                context.complete();
+            	if(context.isValid())
+            	{
+            		context.complete();
+            	}
             }
         }
         catch (Exception e)
