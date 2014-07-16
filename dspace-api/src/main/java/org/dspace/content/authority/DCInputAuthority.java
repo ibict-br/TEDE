@@ -161,7 +161,7 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
         {
         	if (currentValue.getValue().toLowerCase().contains(query.toLowerCase()))
         	{
-        		choices.add(new Choice(String.valueOf(valueAndHash.get(currentValue.getValue())), currentValue.getValue(), currentValue.getValue()));
+        		choices.add(new Choice(String.valueOf(valueAndHash.get(currentValue.getKey())), currentValue.getValue(), currentValue.getValue()));
         		dflt = i++;
         	}
         }
@@ -180,7 +180,7 @@ public class DCInputAuthority extends SelfNamedPlugin implements ChoiceAuthority
         	if (text.equalsIgnoreCase(currentValue.getValue()))
         	{
         		Choice v[] = new Choice[1];
-        		v[0] = new Choice(String.valueOf(valueAndHash.get(currentValue.getValue())), currentValue.getValue(), currentValue.getValue());
+        		v[0] = new Choice(String.valueOf(valueAndHash.get(currentValue.getKey())), currentValue.getValue(), currentValue.getValue());
         		return new Choices(v, 0, v.length, Choices.CF_UNCERTAIN, false, 0);
         	}
         	
