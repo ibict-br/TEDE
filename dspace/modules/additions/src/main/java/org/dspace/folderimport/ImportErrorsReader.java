@@ -18,6 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.apache.log4j.Logger;
 import org.dspace.app.itemupdate.DtoMetadata;
 import org.dspace.app.itemupdate.MetadataUtilities;
+import org.dspace.core.ConfigurationManager;
 import org.dspace.core.I18nUtil;
 import org.dspace.file.utils.FileUtils;
 import org.dspace.folderimport.constants.FolderMetadataImportConstants;
@@ -41,9 +42,6 @@ public class ImportErrorsReader {
 	private static final int NUMBER_OF_PARENT_DIR_TO_REACH = 1;
 	private static Logger logger = Logger.getLogger(ImportErrorsReader.class);
 	private static DocumentBuilder builder;
-	// TODO: In a near future this must be in dspace.cfg
-	private static String EXPORT_ERROR_DIRNAME = "_erro_itens_triagem";
-	
 	
 	/**
 	 * Constrói DTO representativo de itens (e seus arquivos) que sofreram erro no processo de importação.
@@ -55,7 +53,7 @@ public class ImportErrorsReader {
 	{
 		Map<Long, ErrorImportRegistry> analisysResult = new LinkedHashMap<Long, ErrorImportRegistry>();
 		
-		File exportErrorFolder = new File(currentRootExportFolder.getParent(), EXPORT_ERROR_DIRNAME);
+		File exportErrorFolder = new File(currentRootExportFolder.getParent(), ConfigurationManager.getProperty("foldermetadataimport.directory.error"));
 		if(exportErrorFolder.exists())
 		{
 			List<File> searchRecursiveAddingDirs = FileUtils.searchRecursiveAddingDirs(exportErrorFolder, "logfile", NUMBER_OF_PARENT_DIR_TO_REACH);

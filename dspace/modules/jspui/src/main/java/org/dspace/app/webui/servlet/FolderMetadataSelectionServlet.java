@@ -39,7 +39,6 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 
 	private static final String DSPACE_ADMIN_FOLDERMETADATASELECTION_JSP = "/dspace-admin/foldermetadataselection.jsp";
 	private static final int BASE_NUMBER_MORE_THAN_ONE_EXPORT = 1;
-	private static final String INTERMEDIATE_FOLDER = "exportados";
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -57,7 +56,7 @@ public class FolderMetadataSelectionServlet extends DSpaceServlet
 		File root = new File(ConfigurationManager.getProperty("org.dspace.app.itemexport.work.dir"));
 		FolderReader folderReader = new FolderReader(root);
 		
-		FolderAnalyseResult listAvailableExport = folderReader.listAvailableExport(UIUtil.getSessionLocale(request), INTERMEDIATE_FOLDER);
+		FolderAnalyseResult listAvailableExport = folderReader.listAvailableExport(UIUtil.getSessionLocale(request), ConfigurationManager.getProperty("foldermetadataimport.directory.success"));
 		
 		/** Certificação da existência de diretórios e importação **/
 		if(listAvailableExport != null && listAvailableExport.getUserReadble() != null && !listAvailableExport.getUserReadble().isEmpty())
