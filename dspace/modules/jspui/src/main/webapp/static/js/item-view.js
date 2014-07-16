@@ -2,14 +2,14 @@ jQuery.noConflict();
 
 jQuery(document).ready(function(){
 	
-	jQuery("#preview-link").click(function(){
+	jQuery(".reveal-link").click(function(){
 		
-		jQuery('#myModal').show();
+		jQuery('#modal-' + this.id).show();
 		jQuery('.reveal-modal-bg').show();
 		
-		jQuery('#myModal').foundation('reveal', 'open', {
+		jQuery('#modal-' + this.id).foundation('reveal', 'open', {
 			animation: 'fadeAndPop',
-			animation_speed: 500,
+			animation_speed: 250,
 			close_on_background_click: true,
 			close_on_esc: true,
 			close_on_background_click: true,
@@ -19,14 +19,11 @@ jQuery(document).ready(function(){
 		});
 		
 		
-		
 	});
 	
-	jQuery("#close-reveal-modal").click(function(){
-		
-		jQuery('#myModal').hide();
+	jQuery(".close-reveal-modal").click(function(){
+		jQuery('.reveal-modal').hide();
 		jQuery('.reveal-modal-bg').hide();
-		
 	});
 	
 });
