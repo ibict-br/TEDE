@@ -10,6 +10,7 @@ package org.dspace.app.webui.jsptag;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -1027,7 +1028,7 @@ public class ItemTag extends TagSupport
                                                             "org.dspace.app.webui.jsptag.ItemTag.view")
                                             + "</a>");
 											
-								out.print("&nbsp;<a href=\"#preview-link\" id=\"preview-link\" class=\"btn btn-primary big-link reveal-link\" data-reveal-id=\"myModal\">");
+								out.print(MessageFormat.format("&nbsp;<a href=\"#preview-link{0}\" id=\"preview-link{0}\" class=\"btn btn-primary big-link reveal-link\" data-reveal-id=\"myModal\">", k));
             					out
                                     .print(LocaleSupport
                                                     .getLocalizedMessage(
@@ -1037,9 +1038,9 @@ public class ItemTag extends TagSupport
 											
 								String dspaceUrl = ConfigurationManager.getProperty("dspace.baseUrl");								
 								
-								out.print("<div id=\"myModal\" class=\"reveal-modal\" data-reveal><iframe src=\"http://docs.google.com/viewer?url=");
+								out.print(MessageFormat.format("<div id=\"modal-preview-link{0}\" class=\"reveal-modal\" data-reveal><iframe src=\"http://docs.google.com/viewer?url=", k));
 								out.print(dspaceUrl + bsLink
-											+ "&embedded=true\" width=\"800\" height=\"600\" style=\"border: none;\"></iframe><a id=\"close-reveal-modal\" class=\"close-reveal-modal\">&#215;</a></div>");
+											+ "&embedded=true\" width=\"800\" height=\"600\" style=\"border: none;\"></iframe><a class=\"close-reveal-modal\">&#215;</a></div>");
             					
 								try {
 									if (showRequestCopy && !AuthorizeManager

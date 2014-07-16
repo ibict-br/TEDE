@@ -277,7 +277,7 @@
         if (workspace_id != null)
         {
 %>
-    <form class="col-md-2" method="post" action="<%= request.getContextPath() %>/view-workspaceitem">
+    <form class="col-md-3" method="post" action="<%= request.getContextPath() %>/view-workspaceitem">
         <input type="hidden" name="workspace_id" value="<%= workspace_id.intValue() %>" />
         <input class="btn btn-default" type="submit" name="submit_full" value="<fmt:message key="jsp.display-item.text2"/>" />
     </form>

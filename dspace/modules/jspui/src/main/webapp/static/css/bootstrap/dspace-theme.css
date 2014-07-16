@@ -184,24 +184,24 @@ a {
 }
 
 /** Barra de submissão **/
-.btn-info {
+/* .btn-info {
     background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
     background-repeat: repeat-x;
     border-color: #7aa97a;
 }
-
+ */
 /** Fundo da barra de submissão **/
-.btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
+/* .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
     background-color: #449d44;
     border-color: #449d44;
-}
+} */
 
 /** Barra de submissão: cor do botão de passo confirmado **/
-.btn-primary {
+/* .btn-primary {
     background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
     background-repeat: repeat-x;
     border-color: #449d44;
-}
+} */
 
 .alert a {
 	color: #fff;
