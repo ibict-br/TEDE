@@ -10,6 +10,7 @@ package org.dspace.app.webui.servlet;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -200,21 +201,21 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 		@SuppressWarnings("unchecked")
 		Map<Long, File> serverFolderData = (Map<Long, File>) request.getSession().getAttribute(FolderMetadataImportConstants.SERVER_DATA_READBLE);
 		
-		
-		/** Somente prossegue caso existam ids de diretórios disponívies **/
-		if(idsFromFilesToImport != null)
+		/** Disables authority control **/
+		for(Map.Entry<String, String> overrite : overwrittenProperties.entrySet())
 		{
-			
-			/** Disables authority control **/
-			for(Map.Entry<String, String> overrite : overwrittenProperties.entrySet())
+			logger.info(MessageFormat.format("Sobrescrevendo propriedade \"{0}\" com o valor \"{1}\"", overrite.getKey(), overrite.getValue()));
+			ConfigurationManager.overwrite(overrite.getKey(), overrite.getValue());
+		}
+		
+		try
+		{
+			/** Somente prossegue caso existam ids de diretórios disponívies **/
+			if(idsFromFilesToImport != null)
 			{
-				ConfigurationManager.overwrite(overrite.getKey(), overrite.getValue());
-			}
-			
-			for(Long selectedFolder : idsFromFilesToImport)
-			{
-				try
+				for(Long selectedFolder : idsFromFilesToImport)
 				{
+					
 					/** Recupera diretórios dois níveis acima do arquivo "dublin_core.xml" **/
 					List<File> storageList = FileUtils.searchRecursiveAddingDirs(serverFolderData.get(selectedFolder), "dublin_core.xml", 2);
 					
@@ -226,24 +227,23 @@ public class FolderMetadataImportServlet extends DSpaceServlet
 								importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
 					}
 				}
-				catch (MetadataImportException mie)
-				{
-					ConfigurationManager.undoOverrite();
-					logger.error(mie.getMessage(), mie);
-					handlePageReturnAfterAction(context, request, response, mie.getMessage(), true);
-				}
-				finally
-				{
-					ConfigurationManager.undoOverrite();
-				}
-			} 
+			}
+			else
+			{
+				Date currentDate = new Date();
+				myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getAndRegisterRootSelectedFolderId(request)).getCanonicalPath(),  FileUtils.getMappingFileLocation(currentDate), FileUtils.getErrorFolderLocation(currentDate), false, 
+						importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
+			}
 		}
-		else
+		catch (MetadataImportException mie)
 		{
-			Date currentDate = new Date();
-			myloader.addItems(context, selectedCollections, getRootSelectedFolder(request, getAndRegisterRootSelectedFolderId(request)).getCanonicalPath(),  FileUtils.getMappingFileLocation(currentDate), FileUtils.getErrorFolderLocation(currentDate), false, 
-					importType.equals(ImportType.TEST), false, false, importType.equals(ImportType.WORKFLOW));
-
+			ConfigurationManager.undoOverrite();
+			logger.error(mie.getMessage(), mie);
+			handlePageReturnAfterAction(context, request, response, mie.getMessage(), true);
+		}
+		finally
+		{
+			ConfigurationManager.undoOverrite();
 		}
 	}
 
