@@ -78,7 +78,7 @@
            <span class="icon-bar"></span>
            <span class="icon-bar"></span>
          </button>
-         <a class="navbar-brand" href="<%= request.getContextPath() %>/"><img height="35px" src="<%= request.getContextPath() %>/image/logo_header.png" /></a>
+         <a class="navbar-brand" href="<%= request.getContextPath() %>/"><img src="<%= request.getContextPath() %>/image/logo_header.png" /></a>
        </div>
        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
          <ul class="nav navbar-nav">

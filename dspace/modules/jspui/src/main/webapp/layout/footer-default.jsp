@@ -11,47 +11,66 @@
   - Footer for home page
   --%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@page import="org.dspace.core.ConfigurationManager"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 
-<%@ page import="java.net.URLEncoder" %>
-<%@ page import="org.dspace.app.webui.util.UIUtil" %>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="org.dspace.app.webui.util.UIUtil"%>
 
 <%
-    String sidebar = (String) request.getAttribute("dspace.layout.sidebar");
+	String sidebar = (String) request
+			.getAttribute("dspace.layout.sidebar");
 %>
 
-            <%-- Right-hand side bar if appropriate --%>
+<%-- Right-hand side bar if appropriate --%>
 <%
-    if (sidebar != null)
-    {
+	if (sidebar != null) {
 %>
-	</div>
-	<div class="col-md-3">
-                    <%= sidebar %>
-    </div>
-    </div>       
+</div>
+<div class="col-md-3">
+	<%=sidebar%>
+</div>
+</div>
 <%
-    }
+	}
 %>
 </div>
 </main>
-            <%-- Page footer --%>
-             <footer class="navbar navbar-inverse navbar-bottom">
-             <div id="designedby" class="container text-muted">
-             <fmt:message key="jsp.layout.footer-default.theme-by"/> <a href="http://www.cineca.it"><img
-                                    src="<%= request.getContextPath() %>/image/logo-cineca-small.png"
-                                    alt="Logo CINECA" /></a>
-			<div id="footer_feedback" class="pull-right">                                    
-                                <p class="text-muted"><fmt:message key="jsp.layout.footer-default.text"/>&nbsp;-
-                                <a target="_blank" href="<%= request.getContextPath() %>/feedback"><fmt:message key="jsp.layout.footer-default.feedback"/></a>
-                                <a href="<%= request.getContextPath() %>/htmlmap"></a></p>
-                                </div>
-			</div>
+<%-- Page footer --%>
+<footer class="navbar navbar-inverse navbar-bottom">
+
+	<div id="tede-footer" class="container text-muted" style="padding-left: 0px;">
+		
+		<div class="text-center col-md-12">
+		
+       		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-bdtd-rodape.png">
+       		<img class="footer-logo pull-left" src="<%= request.getContextPath() %>/image/logo-ibict.png">
+       		
+       		
+       		<div class="footer-logo pull-left">
+	       		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-instituicao-rodape.png">
+	       		<div class="pull-left" style="padding-left: 5px;">
+		       		<div class="footer-institution-data" style="font-weight: bold;">
+		       			<%= ConfigurationManager.getProperty("dspace.institution.heading1") %>
+		       		</div>
+		       		<div class="footer-institution-data">
+		       			<%= ConfigurationManager.getProperty("dspace.institution.phone") %>
+		       		</div>
+		       		<div class="footer-institution-data">
+		       			<%= ConfigurationManager.getProperty("dspace.institution.email") %>
+		       		</div>
+	       		</div>
+       			
+       		</div>
 			
 			
 			
-    </footer>
-    </body>
+		</div>
+		
+	</div>
+
+</footer>
+</body>
 </html>

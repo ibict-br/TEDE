@@ -150,12 +150,18 @@
 <main id="content" role="main">
 <div class="container banner">
 	<div class="row">
-		<div class="col-md-9 brand">
-		<h1><fmt:message key="jsp.layout.header-default.brand.heading" /></h1>
-        <fmt:message key="jsp.layout.header-default.brand.description" /> 
+		<div class="col-md-10">
+			<div>
+        		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-instituicao.png">
+			</div>
+        	<div class="repo-description">
+				<h1><%= ConfigurationManager.getProperty("dspace.institution.heading1") %></h1>
+	        	<h4><%= ConfigurationManager.getProperty("dspace.institution.heading2") %></h4>
+        	</div>
         </div>
-        <div class="col-md-3"><img class="pull-right" src="<%= request.getContextPath() %>/image/proposta-logo01.jpg">
-        </div>
+        <div class="col-md-2">
+        	<img class="pull-right" src="<%= request.getContextPath() %>/image/logo-tede.png">
+       	</div>
 	</div>
 </div>	
 <br/>

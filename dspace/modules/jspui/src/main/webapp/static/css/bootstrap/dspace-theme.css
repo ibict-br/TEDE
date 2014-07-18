@@ -5,7 +5,7 @@
  *
  * http://www.dspace.org/license/
  */
-.banner img {background-color: #FFFFFF;padding:15px;margin:20px;}
+.banner img {background-color: #FFFFFF;}
 .brand {padding-top: 30px;}
 .brand h4 {color: #999999}
 ol.breadcrumb li {color: white; font-style: italic;}
@@ -68,10 +68,37 @@ input.ds-authority-lock.is-unlocked
 
 
 /** Modificações para o TEDE **/
-.navbar-inverse {
+
+
+/** Topo **/
+.navbar-fixed-top {
 	background-color: #003300;
 	background-image: none;
 }
+
+/** Rodapé **/
+.navbar-bottom {
+	
+	background-color: #fff;
+	background-image: none;
+	border-radius: 0;
+	border-top: 4px solid;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    padding-top: 3px;
+}
+
+.footer-logo {
+	padding-left: 10px;
+}
+
+.footer-institution-data {
+	clear: both;
+	font-size: 10px;
+	text-align: left;
+}
+
 
 .navbar-inverse .navbar-nav > .active > a {
 	background-color: #006633;	
@@ -234,4 +261,12 @@ a:hover, a:focus {
 .logged-user {
 	padding-top: 5px !important;
 	padding-bottom: 5px !important;
+}
+
+
+
+/** Div container da descrição do repositório **/
+.repo-description {
+	margin-left: 15px;
+	float: left;
 }
