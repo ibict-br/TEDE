@@ -56,7 +56,7 @@
 
 
        <div class="navbar-header">
-         <a class="navbar-brand" href="<%= request.getContextPath() %>/"><img height="25px" src="<%= request.getContextPath() %>/image/dspace-logo-only.png" /></a>
+         <a class="navbar-brand" href="<%= request.getContextPath() %>/"><img src="<%= request.getContextPath() %>/image/logo_header.png" /></a>
 		 <ul class="nav navbar-nav navbar-right">
 		     <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.help"/></dspace:popup></li>
 		 </ul>
