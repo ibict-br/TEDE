@@ -40,7 +40,6 @@
 <%
     Community[] communities = (Community[]) request.getAttribute("communities");
 
-    Locale[] supportedLocales = I18nUtil.getSupportedLocales();
     Locale sessionLocale = UIUtil.getSessionLocale(request);
     Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
     String topNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
@@ -58,51 +57,29 @@
     RecentSubmissions submissions = (RecentSubmissions) request.getAttribute("recent.submissions");
 %>
 
+
 <dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
+	
+	
+	      	<div class="container">
+					<form method="get" action="<%= request.getContextPath() %>/simple-search" class="form-horizontal col-md-12 form-group form-group-lg" scope="search" role="form">
+						<div class="col-md-11">
+			          		<input type="text" class="form-control" placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
+						</div>
+						
+						<div class="col-md-1">
+					        <button type="submit" class="btn btn-primary btn-lg pull-right"><span class="glyphicon glyphicon-search"></span></button>
+						</div>
+					</form>
+			</div>
+			
+			<br/>
 
-<% if (supportedLocales != null && supportedLocales.length > 1)
-{
-%>
-        <form method="get" name="repost" action="">
-          <input type ="hidden" name ="locale"/>
-        </form>
-<%
-for (int i = supportedLocales.length-1; i >= 0; i--)
-{
-%>
-
-        <a class ="langChangeOn"
-                  onclick="javascript:document.repost.locale.value='<%=supportedLocales[i].toString()%>';
-                  document.repost.submit();">
-                  <%
-                 	String language = supportedLocales[i].getDisplayLanguage(supportedLocales[i]);
-                  %>
-                 <%= 
-                 	/** Inibe possibilidade de retorno de linguagem com "lower case" **/
-                 	String.valueOf(language.charAt(0)).toUpperCase() 
-                 		+ language.subSequence(1, language.length())
-                 %></a> &nbsp;
-
-<%
-}
-}
-%>
 	<div class="jumbotron">
 		<h1><fmt:message key="jsp.home.about"></fmt:message></h1>
        <%= topNews %>
        <p><a href="bdtd.jsp"><button class="btn btn-primary">Sobre a BDTD</button></a></p>
 	</div>
-
-
-
-	<form method="get" action="<%= request.getContextPath() %>/simple-search" class="form-horizontal" scope="search" role="form">
-	      	<div class="form-group form-group-lg">
-	      		<div class="col-sm-10">
-		          <input type="text" class="form-control" placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
-	      		</div>
-		        <button type="submit" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-search"></span></button>
-	        </div>
-		</form>
 
 
 <div class="container row">

@@ -11,6 +11,8 @@
   - HTML header for main home page
   --%>
 
+<%@page import="java.util.Locale"%>
+<%@page import="org.dspace.core.I18nUtil"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
@@ -25,6 +27,7 @@
 <%@ page import="javax.servlet.jsp.jstl.fmt.*" %>
 
 <%
+	Locale[] supportedLocales = I18nUtil.getSupportedLocales();
     String title = (String) request.getAttribute("dspace.layout.title");
     String navbar = (String) request.getAttribute("dspace.layout.navbar");
     String siteName = ConfigurationManager.getProperty("dspace.name");
@@ -126,7 +129,10 @@
     <%-- HACK: marginwidth, marginheight: for non-CSS compliant Netscape browser --%>
     <body class="undernavigation">
 <a class="sr-only" href="#content">Skip navigation</a>
+
 <header class="navbar navbar-inverse navbar-fixed-top">    
+
+
     <%
     if (!navbar.equals("off"))
     {
@@ -149,6 +155,36 @@
 
 <main id="content" role="main">
 <div class="container banner">
+	<div class="pull-right">
+<% if (supportedLocales != null && supportedLocales.length > 1)
+{
+%>
+        <form method="get" name="repost" action="">
+          <input type ="hidden" name ="locale"/>
+        </form>
+<%
+for (int i = supportedLocales.length-1; i >= 0; i--)
+{
+%>
+
+        <a class ="langChangeOn"
+                  onclick="javascript:document.repost.locale.value='<%=supportedLocales[i].toString()%>';
+                  document.repost.submit();">
+                  <%
+                 	String language = supportedLocales[i].getDisplayLanguage(supportedLocales[i]);
+                  %>
+                 <%= 
+                 	/** Inibe possibilidade de retorno de linguagem com "lower case" **/
+                 	String.valueOf(language.charAt(0)).toUpperCase() 
+                 		+ language.subSequence(1, language.length())
+                 %></a> &nbsp;
+
+<%
+}
+}
+%>
+</div>
+
 	<div class="row">
 		<div class="col-md-10">
 			<div>
@@ -164,6 +200,7 @@
        	</div>
 	</div>
 </div>	
+
 <br/>
 
         <%-- Page contents --%>
