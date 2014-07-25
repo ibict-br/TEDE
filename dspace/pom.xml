@@ -10,12 +10,12 @@
     </description>
     <!--
        A Parent POM that Maven inherits DSpace Default
-       POM attributes from
+       POM attributes from.
     -->
     <parent>
         <groupId>org.dspace</groupId>
         <artifactId>dspace-parent</artifactId>
-        <version>4.2-SNAPSHOT</version>
+        <version>4.2</version>
         <relativePath>..</relativePath>
     </parent>
 
