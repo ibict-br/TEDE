@@ -53,10 +53,18 @@
     void showCommunity(Community c, JspWriter out, HttpServletRequest request, ItemCounter ic,
     		Map collectionMap, Map subcommunityMap) throws ItemCountException, IOException, SQLException
     {
-        out.println( "<li class=\"\">" );
+		
+        out.println( "<li class=\"\" " );
+        
+        if(c.getParentCommunity() == null)
+        {
+        	out.println("data-jstree='{\"opened\":true}'");	
+        }
+        out.println(">");
 
         out.println( "<a href=\"" + request.getContextPath() + "/handle/" 
-        	+ c.getHandle() + "\">" + c.getMetadata("name") + "</a>");
+        	+ c.getHandle() + "\">" + c.getMetadata("name") + " [" + ic.getCount(c) + "]</a>");
+        
 		
         if (StringUtils.isNotBlank(c.getMetadata("short_description")))
 		{
@@ -71,7 +79,8 @@
             {
                 out.println("<li class=\"\">");
                 
-                out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">" + cols[j].getMetadata("name") +"</a>");
+                out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">" + cols[j].getMetadata("name") + " [" + ic.getCount(c) + "]</a>");
+                    out.println(ic.getCount(c));
                 out.println("</li>");
             }
             out.println("</ul>");
@@ -147,17 +156,26 @@
 <script type="text/javascript">
 
 	jQuery.noConflict();
-	jQuery.jstree.defaults.core.themes.variant = "large";
 	jQuery(document).ready(function(){
 
 		jQuery('#community-tree').jstree({
+			  "core" : {
+				    "themes" : {
+		    		  responsive : true,
+		    		  variant: "large"
+				    }
+			  },
 
 			  "types" : {
 		            "max_depth" : -2,
 		            "max_children" : -2
-				  }
+
+				  },
+				  "plugins" : [ "wholerow", "checkbox" ]
 			
-		});
+		}).on("select_node.jstree", function (e, data) {
+	           document.location = data.instance.get_node(data.node, true).children('a').attr('href');
+	    });
 		
 	});
 

@@ -69,10 +69,20 @@ input.ds-authority-lock.is-unlocked
 
 /** Modificações para o TEDE **/
 
+/**
+
+ Cor padrão do topo: #088a29
+ Cor para itens selecionados e fundo de topo de paineis: #449d44
+ Fundo claro: #f1ffee
+ Cor da borda: #7aa97a
+ Verde escuro: #006633
+
+**/
+
 
 /** Topo **/
 .navbar-fixed-top {
-	background-color: #003300;
+	background-color: #088A29;
 	background-image: none;
 }
 
@@ -82,7 +92,7 @@ input.ds-authority-lock.is-unlocked
 	background-color: #fff;
 	background-image: none;
 	border-radius: 0;
-	border-top: 4px solid;
+	border-top: 4px solid #449d44;
     border-left: none;
     border-right: none;
     border-bottom: none;
@@ -114,7 +124,7 @@ input.ds-authority-lock.is-unlocked
 }
 
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-    background-color: #075007;
+    background-color: #449d44;
 }
 
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
@@ -131,16 +141,22 @@ input.ds-authority-lock.is-unlocked
 
 
 .panel-primary > .panel-heading {
-    background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
+    background-image: none;
+    background-color: #449d44;
     background-repeat: repeat-x;
+    border-bottom: none;
+}
+
+.panel-info > .panel-heading  {
+	    background-image: none;
+    background-color: #449d44;
+    background-repeat: repeat-x;
+    border-bottom: none;
+    color: white;
+	
 }
 
 .panel-primary {
-    border-color: #7aa97a;
-}
-
-.panel-primary > .panel-heading {
-    background-color: #7aa97a;
     border-color: #7aa97a;
 }
 
@@ -178,24 +194,19 @@ a {
 
 /** Modifica cor de fundo de caixas de alerta **/
 .alert-info {
-    background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
+    background-image: none;
+    background-color: #449d44;
     background-repeat: repeat-x;
     border-color: #7aa97a;
-}
-
-/** Cor do texto de alerta **/
-.alert-info {
 	color: #fff;	
 }
-
-
-.panel-info > .panel-heading {
-    background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
-    background-repeat: repeat-x;
 }
 
-.panel-info > .panel-heading {
-    background-color: #7aa97a;
+
+.panel-heading {
+    background-image: none;
+    background-color: #449d44;
+    background-repeat: repeat-x;
     border-color: #7aa97a;
     color: #fff;
 }
@@ -210,25 +221,8 @@ a {
     border-color: #7aa97a;
 }
 
-/** Barra de submissão **/
-/* .btn-info {
-    background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
-    background-repeat: repeat-x;
-    border-color: #7aa97a;
-}
- */
-/** Fundo da barra de submissão **/
-/* .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active {
-    background-color: #449d44;
-    border-color: #449d44;
-} */
 
-/** Barra de submissão: cor do botão de passo confirmado **/
-/* .btn-primary {
-    background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
-    background-repeat: repeat-x;
-    border-color: #449d44;
-} */
+
 
 .alert a {
 	color: #fff;
@@ -236,12 +230,12 @@ a {
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
     background-color: #449d44;
-    border-color: #003300;
+    border-color: #088A29;
 }
 
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
-    background-color: #449d44;
-    border-color: #449d44;
+    background-color: #31B404;
+    border-color: #31B404;
 }
 
 a:hover, a:focus {
@@ -269,4 +263,21 @@ a:hover, a:focus {
 .repo-description {
 	margin-left: 15px;
 	float: left;
+}
+
+
+/** Cor de fundo do "jumbotron" **/
+.jumbotron {
+	
+	background-color: #f1ffee;
+}
+
+
+/** Cor do botão de busca **/
+.navbar-form  button
+{
+	background-image: none;
+	border: #7aa97a;
+	background-color: #449d44;
+    border-color: #088a29;
 }
