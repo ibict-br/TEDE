@@ -163,7 +163,7 @@
           <input type ="hidden" name ="locale"/>
         </form>
 <%
-for (int i = supportedLocales.length-1; i >= 0; i--)
+for (int i = 0; i < supportedLocales.length; i++)
 {
 %>
 

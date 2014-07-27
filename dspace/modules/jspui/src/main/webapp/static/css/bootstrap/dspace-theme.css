@@ -277,10 +277,18 @@ a:hover, a:focus {
 
 /** Cor de fundo do "jumbotron" **/
 .jumbotron {
-	
 	background-color: #f1ffee;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.5;
+    margin-bottom: 5px;
+    padding: 10px;
 }
 
+.jumbotron h1 {
+	font-size: 20px;
+	font-weight: bold;
+}
 
 /** Cor do botão de busca **/
 .navbar-form  button, .search-button
@@ -303,3 +311,26 @@ a:hover, a:focus {
 	border-color: #7aa97a;
 }
 
+.top-search-container {
+	padding-top: 25px;
+	padding-bottom: 40px;
+}
+
+/** Modifica cor dos links da busca facetada **/
+.list-group-item a .pull-right {
+	color: #0174DF;
+}
+
+/** Modifica estilo dos títulos da busca facetada **/
+h3, .h3 {
+	font-size: 16px;
+	font-weight: bold;	
+}
+
+.about-bdtd {
+	padding-top: 10px;
+}
+
+.facetName {
+	font-weight: bold;
+}

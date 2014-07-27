@@ -76,7 +76,7 @@
 <dspace:layout locbar="commLink" title="<%= name %>" feedData="<%= feedData %>">
 <div class="well">
 <div class="row">
-	<div class="col-md-8">
+	<div class="col-md-12">
         <h2><%= name %>
         <%
             if(ConfigurationManager.getBooleanProperty("webui.strengths.show"))
