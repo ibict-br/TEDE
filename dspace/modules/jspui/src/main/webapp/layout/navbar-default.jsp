@@ -155,7 +155,7 @@
           
 	<%-- Search Box --%>
 	<%
-		if(!request.getServletPath().equals("/home.jsp"))
+		if(!request.getServletPath().equals("/home.jsp") && !request.getServletPath().equals("/search/discovery.jsp"))
 		{
 	%>
 		<form method="get" action="<%= request.getContextPath() %>/simple-search" class="navbar-form navbar-right" scope="search">

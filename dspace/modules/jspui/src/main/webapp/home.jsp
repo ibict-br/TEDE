@@ -64,11 +64,11 @@
 	      	<div class="container">
 					<form method="get" action="<%= request.getContextPath() %>/simple-search" class="form-horizontal col-md-12 form-group form-group-lg" scope="search" role="form">
 						<div class="col-md-11">
-			          		<input type="text" class="form-control" placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
+			          		<input type="text" class="form-control " placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>
 						</div>
 						
 						<div class="col-md-1">
-					        <button type="submit" class="btn btn-primary btn-lg pull-right"><span class="glyphicon glyphicon-search"></span></button>
+					        <button type="submit" class="btn btn-primary btn-lg pull-right search-button"><span class="glyphicon glyphicon-search"></span></button>
 						</div>
 					</form>
 			</div>

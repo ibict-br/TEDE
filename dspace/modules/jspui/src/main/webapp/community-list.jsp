@@ -131,24 +131,23 @@
 	<h1><fmt:message key="jsp.community-list.title"/></h1>
 	<p><fmt:message key="jsp.community-list.text1"/></p>
 
-
-<div id="community-tree">
-
-	<% if (communities.length != 0)
-	{
-	%>
-	    <ul class="media-list">
-	<%
-	        for (int i = 0; i < communities.length; i++)
-	        {
-	            showCommunity(communities[i], out, request, ic, collectionMap, subcommunityMap);
-	        }
-	%>
-	    </ul>
-	 
-	<% }
-	%>
-</div>
+	<div id="community-tree">
+	
+		<% if (communities.length != 0)
+		{
+		%>
+		    <ul class="media-list">
+		<%
+		        for (int i = 0; i < communities.length; i++)
+		        {
+		            showCommunity(communities[i], out, request, ic, collectionMap, subcommunityMap);
+		        }
+		%>
+		    </ul>
+		 
+		<% }
+		%>
+	</div>
 
 
 </dspace:layout>
@@ -162,7 +161,8 @@
 			  "core" : {
 				    "themes" : {
 		    		  responsive : true,
-		    		  variant: "large"
+		    		  variant: "large",
+		    		  icons: false
 				    }
 			  },
 

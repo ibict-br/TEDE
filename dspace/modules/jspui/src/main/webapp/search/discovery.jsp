@@ -157,6 +157,9 @@
 </script>		
 </c:set>
 
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/discovery-search-tabs.js"></script>
+
+
 <dspace:layout titlekey="jsp.search.title">
 
     <%-- <h1>Search Results</h1> --%>
@@ -164,8 +167,10 @@
 <h2><fmt:message key="jsp.search.title"/></h2>
 
 <div class="discovery-search-form panel panel-default">
-    <%-- Controls for a repeat search --%>
-	<div class="discovery-query panel-heading">
+
+
+		<%-- Controls for a repeat search --%>
+	<div class="discovery-query panel-heading container form-group">
     <form action="simple-search" method="get">
          <label for="tlocation">
          	<fmt:message key="jsp.search.results.searchin"/>
@@ -193,9 +198,17 @@
 <%
     }
 %>                                </select><br/>
-                                <label for="query"><fmt:message key="jsp.search.results.searchfor"/></label>
-                                <input type="text" size="50" id="query" name="query" value="<%= (query==null ? "" : StringEscapeUtils.escapeHtml(query)) %>"/>
-                                <input type="submit" id="main-query-submit" class="btn btn-primary" value="<fmt:message key="jsp.general.go"/>" />
+
+								<div class="input-group">
+                               		<span class="input-group-addon" for="query"><fmt:message key="jsp.search.results.searchfor"/></span>
+                  					
+                  						<input type="text" class="form-control input-lg"  size="50" id="query" name="query" value="<%= (query==null ? "" : StringEscapeUtils.escapeHtml(query)) %>"/> 
+                  							
+                  							<span class="input-group-btn">
+												<button class="btn btn-primary btn-lg pull-right search-button" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                               				 </span>
+                              	</div>
+                                
 <% if (StringUtils.isNotBlank(spellCheckQuery)) {%>
 	<p class="lead"><fmt:message key="jsp.search.didyoumean"><fmt:param><a id="spellCheckQuery" data-spell="<%= StringEscapeUtils.escapeHtml(spellCheckQuery) %>" href="#"><%= spellCheckQuery %></a></fmt:param></fmt:message></p>
 <% } %>                  
@@ -249,12 +262,9 @@
 		%>
 		</div>
 <% } %>
-<a class="btn btn-default" href="<%= request.getContextPath()+"/simple-search" %>"><fmt:message key="jsp.search.general.new-search" /></a>	
 		</form>
-		</div>
 <% if (availableFilters.size() > 0) { %>
-		<div class="discovery-search-filters panel-body">
-		<h5><fmt:message key="jsp.search.filter.heading" /></h5>
+		<h5><strong><fmt:message key="jsp.search.filter.heading" /></strong></h5>
 		<p class="discovery-search-filters-hint"><fmt:message key="jsp.search.filter.hint" /></p>
 		<form action="simple-search" method="get">
 		<input type="hidden" value="<%= StringEscapeUtils.escapeHtml(searchScope) %>" name="location" />
@@ -296,7 +306,7 @@
         <input type="hidden" value="<%= order %>" name="order" />
 		<input class="btn btn-default" type="submit" value="<fmt:message key="jsp.search.filter.add"/>" />
 		</form>
-		</div>        
+	</div>
 <% } %>
         <%-- Include a component for modifying sort by, order, results per page, and et-al limit --%>
    <div class="discovery-pagination-controls panel-footer">

@@ -92,11 +92,20 @@ input.ds-authority-lock.is-unlocked
 	background-color: #fff;
 	background-image: none;
 	border-radius: 0;
-	border-top: 4px solid #449d44;
+	border-top: 2px solid #006633;
     border-left: none;
     border-right: none;
     border-bottom: none;
     padding-top: 3px;
+}
+
+.panel-default > .panel-heading {
+    background-image: none;
+    background-color: #dcffd4;
+}
+
+.panel-footer {
+    background-color: #dcffd4;
 }
 
 .footer-logo {
@@ -274,10 +283,23 @@ a:hover, a:focus {
 
 
 /** Cor do botão de busca **/
-.navbar-form  button
+.navbar-form  button, .search-button
 {
 	background-image: none;
 	border: #7aa97a;
 	background-color: #449d44;
     border-color: #088a29;
 }
+
+.input-group-addon {
+	border: #7aa97a;
+	background-color: #449d44;
+    border-color: #088a29;
+	color: white;	
+}
+
+.form-control
+{
+	border-color: #7aa97a;
+}
+
