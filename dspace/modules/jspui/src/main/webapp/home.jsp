@@ -83,6 +83,8 @@
 
 <div class="container row">
 
+	<%@ include file="discovery/cloud-tag.jsp" %>
+	
 	<%@ include file="discovery/static-sidebar-facet.jsp" %>
 </div>
 </dspace:layout>

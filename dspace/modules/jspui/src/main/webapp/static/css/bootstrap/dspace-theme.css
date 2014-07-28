@@ -334,3 +334,82 @@ h3, .h3 {
 .facetName {
 	font-weight: bold;
 }
+
+.cloudtag-1 {
+	
+	font-size: 14px;	
+	
+}
+
+.cloudtag-2 {
+	
+	font-size: 18px;	
+
+}
+.cloudtag-3 {
+	
+	font-size: 22px;	
+	
+}
+.cloudtag-4 {
+	
+	font-size: 26px;	
+	
+}
+
+/*  Cor padrão do topo: #088a29
+ Cor para itens selecionados e fundo de topo de paineis: #449d44 */
+#cloud a
+{
+	color: white;
+} 
+ 
+#cloud {
+	width: 90%;
+	background: #088a29/* #f2f9fe */;
+	background: linear-gradient(top, #449d44 5%, #088a29 100%);
+	background: -webkit-linear-gradient(top, #449d44 5%, #088a29 100%);
+	background: -moz-linear-gradient(top, #449d44 5%, #088a29 100%);
+	background: -ms-linear-gradient(top, #449d44 5%, #088a29 100%);
+	background: -o-linear-gradient(top, #449d44 5%, #088a29 100%);
+	
+	border-radius: 100px;
+	-webkit-border-radius: 100px;
+	-moz-border-radius: 100px;
+	
+	position: relative;
+	margin: 40px auto 40px;
+}
+
+#cloud:after, #cloud:before {
+	content: '';
+	position: absolute;
+	background: #449d44;
+	z-index: -1;
+}
+
+.shadow {
+	width: 90%;
+	position: absolute; bottom: -1px; 
+	background: #000;
+	z-index: -1;
+	
+	box-shadow: 0 0 25px 8px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 0 25px 8px rgba(0, 0, 0, 0.4);
+	-webkit-box-shadow: 0 0 25px 8px rgba(0, 0, 0, 0.4);
+	
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+
+#cloud-text {
+	text-align: center;
+	margin: 0px 25px 0px 25px;
+}
+
+#cloud-text span {
+	
+	padding-right: 10px;
+	
+}
