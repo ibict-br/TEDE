@@ -326,7 +326,6 @@
         </property>
         <property name="type" value="date"/>
         <property name="sortOrder" value="VALUE"/>
-		<property name="facetLimit" value="5"/>
     </bean>
 
     <bean id="searchFilterPublisher" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
