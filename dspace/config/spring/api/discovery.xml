@@ -168,15 +168,15 @@
                             <property name="snippets" value="5"/>
                         </bean>
 						<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
-                            <property name="field" value="dc.dc.publisher"/>
+                            <property name="field" value="dc.publisher"/>
                             <property name="snippets" value="5"/>
                         </bean>
 					    <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
-                            <property name="field" value="dc.dc.publisher.program"/>
+                            <property name="field" value="dc.publisher.program"/>
                             <property name="snippets" value="5"/>
                         </bean>
 					    <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
-                            <property name="field" value="dc.dc.publisher.department"/>
+                            <property name="field" value="dc.publisher.department"/>
                             <property name="snippets" value="5"/>
                         </bean>
                         <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
@@ -236,12 +236,15 @@
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
         <property name="searchFilters">
             <list>
+                <ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterAdvisor" />
                 <ref bean="searchFilterSubject" />
 				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterProgram" />
+				<ref bean="searchFilterDepartment" />
                 <ref bean="searchFilterType" />
-				<ref bean="searchFilterIssued" />
+                <ref bean="searchFilterIssued" />
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
