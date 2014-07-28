@@ -347,7 +347,7 @@
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
-	<bean id="searchFilterDepartment class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+	<bean id="searchFilterDepartment" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="department"/>
         <property name="metadataFields">
             <list>
