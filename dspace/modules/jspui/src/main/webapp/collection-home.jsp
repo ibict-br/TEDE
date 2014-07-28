@@ -383,10 +383,10 @@
 <%      } %>
 
     <%= sidebar %>
-    <%
+    <%--
     	int discovery_panel_cols = 12;
     	int discovery_facet_cols = 12;
-    %>
+    --%>
     <%@ include file="discovery/static-sidebar-facet.jsp" %>
   </dspace:sidebar>
 

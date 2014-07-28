@@ -250,10 +250,10 @@
 
 <div class="row">
 
-    <%
+    <%--
     	int discovery_panel_cols = 12;
     	int discovery_facet_cols = 4;
-    %>
+    --%>
 	<%@ include file="discovery/static-sidebar-facet.jsp" %>
 </div>
 <div class="row">
