@@ -96,7 +96,8 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAdvisor" />
-            <!--    <ref bean="searchFilterSubject" /> -->
+                <ref bean="searchFilterSubject" /> 
+				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
@@ -111,6 +112,7 @@
 				<ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterAdvisor" />
                 <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
@@ -226,6 +228,7 @@
             <list>
 				<ref bean="searchFilterAdvisor" />
                 <!-- <ref bean="searchFilterSubject" /> -->
+				<ref bean="searchFilterCNPq" />
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
@@ -240,6 +243,7 @@
 				<ref bean="searchFilterAuthor" />
                 <ref bean="searchFilterAdvisor" />
                 <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterCNPq" />
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
@@ -316,6 +320,18 @@
         <property name="sortOrder" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
+	
+	<bean id="searchFilterCNPq" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+		<property name="indexFieldName" value="cnpq"/>
+		<property name="metadataFields">
+			<list>
+				<value>dc.subject.cnpq</value>
+			</list>
+		</property>
+		<property name="sortOrder" value="COUNT"/>
+		<property name="splitter" value="::"/>
+		<property name="skipFirstNodeLevel" value="false"/>
+	</bean>
 
     <bean id="searchFilterIssued" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="dateIssued"/>
