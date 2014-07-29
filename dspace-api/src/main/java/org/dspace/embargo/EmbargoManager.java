@@ -24,6 +24,7 @@ import org.dspace.core.Constants;
 import org.dspace.core.Context;
 import org.dspace.core.PluginManager;
 import org.dspace.handle.HandleManager;
+import org.dspace.submit.step.domain.EmbargoOption;
 
 /**
  * Public interface to the embargo subsystem.
@@ -183,6 +184,10 @@ public class EmbargoManager
         item.clearMetadata(MetadataSchema.DC_SCHEMA, "date", "available", Item.ANY);
         item.addMetadata(MetadataSchema.DC_SCHEMA, "date", "available", null, DCDate.getCurrent().toString());
 
+        /** Handle dc.rights metadata **/
+        item.clearMetadata(MetadataSchema.DC_SCHEMA, "rights", null, Item.ANY);
+        item.addMetadata(MetadataSchema.DC_SCHEMA, "rights", null, ConfigurationManager.getProperty("defatult.language.iso6392"), EmbargoOption.FREE.getKey());
+        
         log.info("Lifting embargo on Item "+item.getHandle());
         item.update();
     }

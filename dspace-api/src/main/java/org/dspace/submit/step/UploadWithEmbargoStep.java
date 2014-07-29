@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.time.DateUtils;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.log4j.Logger;
 import org.dspace.app.util.SubmissionInfo;
 import org.dspace.app.util.Util;
@@ -29,6 +30,7 @@ import org.dspace.core.Context;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.curate.Curator;
 import org.dspace.handle.HandleManager;
+import org.dspace.submit.step.domain.EmbargoOption;
 
 /**
  * Upload step with the advanced embargo system for DSpace. Processes the actual 
@@ -479,13 +481,57 @@ public class UploadWithEmbargoStep extends UploadStep
         // DEFAULT_ITEM_READ specified.
         if(!isAdvancedFormEnabled){
             Date startDate = null;
+            String embargoUntilDate = request.getParameter("embargo_until_date");
             try {
-                startDate = DateUtils.parseDate(request.getParameter("embargo_until_date"), new String[]{"yyyy-MM-dd", "yyyy-MM", "yyyy"});
+				startDate = DateUtils.parseDate(embargoUntilDate, new String[]{"yyyy-MM-dd", "yyyy-MM", "yyyy"});
             } catch (Exception e) {
                 //Ignore start date already null
             }
+            
             String reason = request.getParameter("reason");
             AuthorizeManager.generateAutomaticPolicies(context, startDate, reason, b, (Collection) HandleManager.resolveToObject(context, subInfo.getCollectionHandle()));
+            
+            Item item = subInfo.getSubmissionItem().getItem();
+            
+            String embargoTypeCandidate = request.getParameter("embargo_type");
+			if(embargoTypeCandidate != null && NumberUtils.isDigits(embargoTypeCandidate))
+			{
+				Integer embargoType = Integer.valueOf(embargoTypeCandidate);
+				
+				/** User requested embargo type **/
+				@SuppressWarnings("deprecation")
+				DCValue[] metadataDcRights = item.getMetadata("dc.rights");
+
+				EmbargoOption embargoOption = EmbargoOption.recoverById(embargoType);
+				if(embargoOption != null)
+				{
+					/** The option been treated has precedence **/
+					if(metadataDcRights != null)
+					{
+						item.clearMetadata("dc", "rights", null, Item.ANY);
+					}
+					
+					/** Fill policy access **/
+					String language = ConfigurationManager.getProperty("defatult.language.iso6392");
+					item.addMetadata("dc", "rights", null, language, embargoOption.getKey());
+					
+					/** If there's some date, a new metadata is registered **/
+					if(embargoUntilDate != null && !embargoUntilDate.isEmpty())
+					{
+						/** Checks of older data **/
+						@SuppressWarnings("deprecation")
+						DCValue[] metadataDateAvailable = item.getMetadata("dc.date.available");
+						if(metadataDateAvailable != null)
+						{
+							item.clearMetadata("dc", "date", "available", Item.ANY);
+						}
+					}
+					
+					item.addMetadata("dc", "date", "available", language, embargoUntilDate);
+					
+					item.update();
+				}
+			}
         }
     }
 

@@ -633,18 +633,6 @@
 	
 	<page number="7">
 
-	   <field>
-		 <dc-schema>dc</dc-schema>
-         <dc-element>rights</dc-element>
-         <dc-qualifier></dc-qualifier>
-         <repeatable>false</repeatable>
-         <label>Permissões de acesso:</label>
-         <input-type value-pairs-name="common_rights">dropdown</input-type>
-         <hint>Selecione os direitos de acesso a obra.</hint>
-         <required></required>
-	   </field> 
-	   
-	      
 	  <field>
 		 <dc-schema>dc</dc-schema>
          <dc-element>date</dc-element>
@@ -656,21 +644,6 @@
          <required></required>
       </field>
 	   
-	   <!-- 
-	   	Retirado dado que esta informação é preenchida automaticamente.
-	   	  <field>
-		 <dc-schema>dc</dc-schema>
-         <dc-element>rights</dc-element>
-         <dc-qualifier>uri</dc-qualifier>
-         <repeatable>false</repeatable>
-         <label>Permissões de uso:</label>
-         <input-type>onebox</input-type>
-         <hint>Informe o link para as permissoes de uso. Pode-se incluir o link da licença Creative Commons. </hint>
-         <required></required>
-       </field>	
-       
-	    -->
-	   
 	   	<field>
          <dc-schema>dc</dc-schema>
          <dc-element>identifier</dc-element>
@@ -681,24 +654,10 @@
          <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Referência bibliográfica do documento. Use as normas de acordo com a área, por exemplo: ABNT, APA, Vancouver.</hint>
          <required></required>
        </field>
-	   
-	   <!-- <field>
-         <dc-schema>dc</dc-schema>
-         <dc-element>format</dc-element>
-         <dc-qualifier></dc-qualifier>
-         <repeatable>false</repeatable>
-         <label>Formato:</label>
-         <input-type>onebox</input-type>
-         <hint>Indique o formato do arquivo da tese ou dissertação.</hint>
-         <required></required>
-       </field> -->
 
     </page>
 	   
    </form>
-
-	
-
 	
  </form-definitions>
 

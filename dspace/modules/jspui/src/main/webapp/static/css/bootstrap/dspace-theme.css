@@ -299,14 +299,14 @@ a:hover, a:focus {
     border-color: #088a29;
 }
 
-.input-group-addon {
+.addongreen {
 	border: #7aa97a;
 	background-color: #449d44;
     border-color: #088a29;
 	color: white;	
 }
 
-.form-control
+.addongreen .form-control
 {
 	border-color: #7aa97a;
 }
@@ -317,7 +317,7 @@ a:hover, a:focus {
 }
 
 /** Modifica cor dos links da busca facetada **/
-.list-group-item a .pull-right {
+.list-group-item a .pull-right, .list-group-item  .pull-left {
 	color: #0174DF;
 }
 
@@ -409,7 +409,9 @@ h3, .h3 {
 }
 
 #cloud-text span {
-	
 	padding-right: 10px;
-	
+}
+
+.date-lenght {
+	width: 10%;
 }
