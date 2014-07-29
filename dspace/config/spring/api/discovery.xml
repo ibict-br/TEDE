@@ -330,7 +330,7 @@
 		</property>
 		<property name="sortOrder" value="COUNT"/>
 		<property name="splitter" value="::"/>
-		<property name="skipFirstNodeLevel" value="false"/>
+		<property name="skipFirstNodeLevel" value="true"/>
 	</bean>
 
     <bean id="searchFilterIssued" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
