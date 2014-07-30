@@ -9,9 +9,9 @@ import java.util.EnumSet;
  */
 public enum EmbargoOption {
 	
-	RESTRICTED(1, "Restrito"),
+	FREE(3, "Acesso aberto"),
 	EMBARGOED(2, "Embargado"),
-	FREE(3, "Acesso aberto");
+	RESTRICTED(1, "Restrito");
 	
 	private Integer id;
 	private String key;

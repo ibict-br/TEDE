@@ -17,15 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-
 import org.dspace.app.util.SubmissionInfo;
 import org.dspace.app.util.Util;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.content.Bitstream;
 import org.dspace.content.BitstreamFormat;
 import org.dspace.content.Bundle;
+import org.dspace.content.DCDate;
 import org.dspace.content.FormatIdentifier;
 import org.dspace.content.Item;
+import org.dspace.content.MetadataSchema;
 import org.dspace.core.Context;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.curate.Curator;
@@ -411,6 +412,11 @@ public class UploadStep extends AbstractProcessingStep
         // remove bundle if it's now empty
         if (bitstreams.length < 1)
         {
+        	/** Clear metadata embargo **/
+            item.clearMetadata(MetadataSchema.DC_SCHEMA, "date", "available", Item.ANY);
+            /** Handle dc.rights metadata **/
+            item.clearMetadata(MetadataSchema.DC_SCHEMA, "rights", null, Item.ANY);
+        	
             item.removeBundle(bundles[0]);
             item.update();
         }

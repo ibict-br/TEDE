@@ -23,7 +23,6 @@ import org.dspace.app.util.SubmissionInfo;
 import org.dspace.app.webui.util.UIUtil;
 import org.dspace.authorize.AuthorizeManager;
 import org.dspace.authorize.ResourcePolicy;
-import org.dspace.content.DCValue;
 import org.dspace.content.DSpaceObject;
 import org.dspace.content.Item;
 import org.dspace.core.ConfigurationManager;
@@ -39,7 +38,6 @@ import com.ibm.icu.text.MessageFormat;
  * @author Keiji Suzuki
  * @version $Revision$
  */
-@SuppressWarnings("deprecation")
 public class AccessSettingTag extends TagSupport
 {
 	private static final long serialVersionUID = 1L;
@@ -191,20 +189,6 @@ public class AccessSettingTag extends TagSupport
             	
             	if(!embargo)
             	{
-            		Item item = subInfo.getSubmissionItem().getItem();
-
-					DCValue[] dcRightsCandidate = item.getMetadata("dc.rights");
-            		String rightsDescription = "";
-            		
-            		if(dcRightsCandidate != null && dcRightsCandidate.length > 0)
-            		{
-						String dcRightsCandidateValue = dcRightsCandidate[0].value;
-						if(dcRightsCandidateValue != null)
-            			{
-            				rightsDescription = dcRightsCandidateValue;
-            			}
-            		}
-            		
             		/** Embargo option **/
             		sb.append("<div class=\"form-group\">");
             		sb.append(	"<label for=\"embargo_type\">");
@@ -214,7 +198,7 @@ public class AccessSettingTag extends TagSupport
             		
             		for(EmbargoOption embargoOption : EmbargoOption.values())
             		{
-            			boolean selected = embargoOption.getKey().equalsIgnoreCase(rightsDescription);
+            			boolean selected = embargoOption.equals(EmbargoOption.EMBARGOED) && startDate != null && !startDate.isEmpty();
             			sb.append(MessageFormat.format("<option value=\"{0}\" {2}>{1}</option>", embargoOption.getId(), embargoOption.getKey(), selected ? "selected=\"selected\"" : ""));
             		}
             		

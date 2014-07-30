@@ -415,3 +415,8 @@ h3, .h3 {
 .date-lenght {
 	width: 10%;
 }
+
+.alert-warning a {
+	
+	color: #006633;
+}

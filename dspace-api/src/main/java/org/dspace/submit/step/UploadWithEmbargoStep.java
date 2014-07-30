@@ -10,6 +10,7 @@ package org.dspace.submit.step;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Enumeration;
 
@@ -480,16 +481,16 @@ public class UploadWithEmbargoStep extends UploadStep
         // if Anonymous does not have right on this collection, create policies for any other groups with
         // DEFAULT_ITEM_READ specified.
         if(!isAdvancedFormEnabled){
-            Date startDate = null;
-            String embargoUntilDate = request.getParameter("embargo_until_date");
+            Date inputEmbargoUntilDate = null;
+            String inputEmbargoUntil = request.getParameter("embargo_until_date");
             try {
-				startDate = DateUtils.parseDate(embargoUntilDate, new String[]{"yyyy-MM-dd", "yyyy-MM", "yyyy"});
+				inputEmbargoUntilDate = DateUtils.parseDate(inputEmbargoUntil, new String[]{"yyyy-MM-dd", "yyyy-MM", "yyyy"});
             } catch (Exception e) {
                 //Ignore start date already null
             }
             
             String reason = request.getParameter("reason");
-            AuthorizeManager.generateAutomaticPolicies(context, startDate, reason, b, (Collection) HandleManager.resolveToObject(context, subInfo.getCollectionHandle()));
+            AuthorizeManager.generateAutomaticPolicies(context, inputEmbargoUntilDate, reason, b, (Collection) HandleManager.resolveToObject(context, subInfo.getCollectionHandle()));
             
             Item item = subInfo.getSubmissionItem().getItem();
             
@@ -515,19 +516,51 @@ public class UploadWithEmbargoStep extends UploadStep
 					String language = ConfigurationManager.getProperty("defatult.language.iso6392");
 					item.addMetadata("dc", "rights", null, language, embargoOption.getKey());
 					
+					boolean createNewDateAvailable = true;
+					
 					/** If there's some date, a new metadata is registered **/
-					if(embargoUntilDate != null && !embargoUntilDate.isEmpty())
+					if(inputEmbargoUntil != null && !inputEmbargoUntil.isEmpty())
 					{
 						/** Checks of older data **/
 						@SuppressWarnings("deprecation")
 						DCValue[] metadataDateAvailable = item.getMetadata("dc.date.available");
-						if(metadataDateAvailable != null)
+						if(metadataDateAvailable != null && metadataDateAvailable.length > 0)
 						{
-							item.clearMetadata("dc", "date", "available", Item.ANY);
+							String persistedDate = metadataDateAvailable[0].value;
+							
+							try 
+							{
+								/** A valid date must be persisted **/
+								if(persistedDate != null)
+								{
+									if(inputEmbargoUntilDate.after(DateUtils.parseDate(persistedDate, new String[]{"yyyy-MM-dd", "yyyy-MM", "yyyy"})))
+									{
+										item.clearMetadata("dc", "date", "available", Item.ANY);
+									}
+									else
+									{
+										/** The new date is not higher then the old one **/
+										createNewDateAvailable = false;
+									}
+								}
+								else
+								{
+									/** If database is inconsistent, clear metadata  **/
+									item.clearMetadata("dc", "date", "available", Item.ANY);
+								}
+							} 
+							catch (ParseException e) 
+							{
+								log.error(e.getMessage(), e);
+							}
+							
 						}
 					}
 					
-					item.addMetadata("dc", "date", "available", language, embargoUntilDate);
+					if(createNewDateAvailable)
+					{
+						item.addMetadata("dc", "date", "available", language, inputEmbargoUntil);
+					}
 					
 					item.update();
 				}
