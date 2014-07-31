@@ -26,29 +26,36 @@
 	List<CloudTagResult> tagResult = (List<CloudTagResult>) request.getAttribute("cloudResult");
 
 %>
-<h3 class="facets"><fmt:message key="jsp.search.cloudtag" /></h3>
-<div id="cloud" class="tag-cloud-container">
-	<span class="shadow"></span>
-	
-	<div id="cloud-text">
-	
-	<%
-		if(tagResult != null && !tagResult.isEmpty())
-		{
-			for(CloudTagResult cloudTag : tagResult)
-			{
-	%>
+
+<%
+	if(tagResult != null && !tagResult.isEmpty())
+	{
+%>
+
+	<h3 class="facets"><fmt:message key="jsp.search.cloudtag" /></h3>
+	<div id="cloud" class="tag-cloud-container">
+		<span class="shadow"></span>
 		
-		<span>
-			<a href="<%= request.getContextPath()
-	                + "/simple-search?filterquery="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8")
-	                + "&amp;filtername="+URLEncoder.encode(cloudTag.getField(),"UTF-8")
-	                + "&amp;filtertype="+URLEncoder.encode("equals","UTF-8") %>" class="cloudtag-<%= cloudTag.getRelevance() %>"><%= cloudTag.getCloudName() %></a>
-		</span>
-	
-	<%
-			}
-		}
-	%>
+		<div id="cloud-text">
+		
+		<%
+				for(CloudTagResult cloudTag : tagResult)
+				{
+		%>
+			
+			<span>
+				<a href="<%= request.getContextPath()
+		                + "/simple-search?filterquery="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8")
+		                + "&amp;filtername="+URLEncoder.encode(cloudTag.getField(),"UTF-8")
+		                + "&amp;filtertype="+URLEncoder.encode("equals","UTF-8") %>" class="cloudtag-<%= cloudTag.getRelevance() %>"><%= cloudTag.getCloudName() %></a>
+			</span>
+		
+		<%
+				}
+			
+		%>
+		</div>
 	</div>
-</div>
+<%
+	}
+%>

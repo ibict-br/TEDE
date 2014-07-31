@@ -19,6 +19,8 @@
   -        Shouldn't be a problem for early adopters.
   --%>
 
+<%@page import="org.dspace.submit.step.domain.EmbargoOption"%>
+<%@page import="java.util.Date"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
@@ -234,10 +236,22 @@
                     	{
                     		
 	                    	for(ResourcePolicy rpolicy : rpolicies) { 
-								if(rpolicy.getStartDate()!=null) {
-								%>
-									<i class="label label-info pull-left"><fmt:message key="jsp.submit.review.policies.embargoed"><fmt:param><%= rpolicy.getStartDate() %></fmt:param></fmt:message></i>				    
-								<%
+	                    		Date policyStartDate = rpolicy.getStartDate();
+	                    		
+	                    		if(policyStartDate != null)
+	                    		{
+	                    			if(policyStartDate.equals(EmbargoOption.RESTRICTED.getAssociatedDate()))
+                   					{
+    								%>
+    									<i class="label label-important pull-left"><fmt:message key="jsp.submit.review.policies.restricted"></fmt:message></i>				    
+    								<%
+    								}
+	                    			else
+	                    			{
+	    								%>
+	    									<i class="label label-info pull-left"><fmt:message key="jsp.submit.review.policies.embargoed"><fmt:param><%= policyStartDate %></fmt:param></fmt:message></i>				    
+	    								<%
+    								}
 								}
 								else { 
 								%>
