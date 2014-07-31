@@ -683,16 +683,16 @@
 
    <value-pairs value-pairs-name="common_rights" dc-term="rights">
      <pair>
-       <displayed-value>Acesso aberto</displayed-value>
-       <stored-value>Acesso aberto</stored-value>
+       <displayed-value>Acesso Aberto</displayed-value>
+       <stored-value>Acesso Aberto</stored-value>
      </pair>
      <pair>
-       <displayed-value>Embargado</displayed-value>
-       <stored-value>Embargado</stored-value>
+       <displayed-value>Acesso Embargado</displayed-value>
+       <stored-value>Acesso Embargado</stored-value>
      </pair>
      <pair>
-       <displayed-value>Restrito</displayed-value>
-       <stored-value>Restrito</stored-value>
+       <displayed-value>Acesso Restrito</displayed-value>
+       <stored-value>Acesso Restrito</stored-value>
      </pair>
    </value-pairs>
 
