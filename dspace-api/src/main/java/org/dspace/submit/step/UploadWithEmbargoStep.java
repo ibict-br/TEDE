@@ -10,7 +10,6 @@ package org.dspace.submit.step;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.Date;
 import java.util.Enumeration;
 
@@ -26,9 +25,14 @@ import org.dspace.app.util.Util;
 import org.dspace.authorize.AuthorizeException;
 import org.dspace.authorize.AuthorizeManager;
 import org.dspace.authorize.ResourcePolicy;
-import org.dspace.content.*;
-import org.dspace.core.Context;
+import org.dspace.content.Bitstream;
+import org.dspace.content.BitstreamFormat;
+import org.dspace.content.Bundle;
+import org.dspace.content.Collection;
+import org.dspace.content.FormatIdentifier;
+import org.dspace.content.Item;
 import org.dspace.core.ConfigurationManager;
+import org.dspace.core.Context;
 import org.dspace.curate.Curator;
 import org.dspace.handle.HandleManager;
 import org.dspace.submit.step.domain.EmbargoOption;
@@ -59,8 +63,8 @@ public class UploadWithEmbargoStep extends UploadStep
 
     public static final int STATUS_EDIT_POLICY_ERROR_SELECT_GROUP = 33;
     public static final int STATUS_EDIT_POLICY_DUPLICATED_POLICY = 34;
-
-
+    
+    
     /** log4j logger */
     private static Logger log = Logger.getLogger(UploadWithEmbargoStep.class);
 
@@ -490,85 +494,27 @@ public class UploadWithEmbargoStep extends UploadStep
             }
             
             String reason = request.getParameter("reason");
-            AuthorizeManager.generateAutomaticPolicies(context, inputEmbargoUntilDate, reason, b, (Collection) HandleManager.resolveToObject(context, subInfo.getCollectionHandle()));
-            
-            Item item = subInfo.getSubmissionItem().getItem();
             
             String embargoTypeCandidate = request.getParameter("embargo_type");
+            EmbargoOption embargoOption = null;
 			if(embargoTypeCandidate != null && NumberUtils.isDigits(embargoTypeCandidate))
 			{
 				Integer embargoType = Integer.valueOf(embargoTypeCandidate);
 				
-				/** User requested embargo type **/
-				@SuppressWarnings("deprecation")
-				DCValue[] metadataDcRights = item.getMetadata("dc.rights");
-
-				EmbargoOption embargoOption = EmbargoOption.recoverById(embargoType);
-				if(embargoOption != null)
-				{
-					/** The option been treated has precedence **/
-					if(metadataDcRights != null)
-					{
-						item.clearMetadata("dc", "rights", null, Item.ANY);
-					}
-					
-					/** Fill policy access **/
-					String language = ConfigurationManager.getProperty("defatult.language.iso6392");
-					item.addMetadata("dc", "rights", null, language, embargoOption.getKey());
-					
-					boolean createNewDateAvailable = true;
-					
-					/** If there's some date, a new metadata is registered **/
-					if(inputEmbargoUntil != null && !inputEmbargoUntil.isEmpty())
-					{
-						/** Checks of older data **/
-						@SuppressWarnings("deprecation")
-						DCValue[] metadataDateAvailable = item.getMetadata("dc.date.available");
-						if(metadataDateAvailable != null && metadataDateAvailable.length > 0)
-						{
-							String persistedDate = metadataDateAvailable[0].value;
-							
-							try 
-							{
-								/** A valid date must be persisted **/
-								if(persistedDate != null)
-								{
-									if(inputEmbargoUntilDate.after(DateUtils.parseDate(persistedDate, new String[]{"yyyy-MM-dd", "yyyy-MM", "yyyy"})))
-									{
-										item.clearMetadata("dc", "date", "available", Item.ANY);
-									}
-									else
-									{
-										/** The new date is not higher then the old one **/
-										createNewDateAvailable = false;
-									}
-								}
-								else
-								{
-									/** If database is inconsistent, clear metadata  **/
-									item.clearMetadata("dc", "date", "available", Item.ANY);
-								}
-							} 
-							catch (ParseException e) 
-							{
-								log.error(e.getMessage(), e);
-							}
-							
-						}
-					}
-					
-					if(createNewDateAvailable)
-					{
-						item.addMetadata("dc", "date", "available", language, inputEmbargoUntil);
-					}
-					
-					item.update();
-				}
+				/** Checks if user has requested embargo type **/
+				embargoOption = EmbargoOption.recoverById(embargoType);
+				
+				AuthorizeManager.generateAutomaticPolicies(context, embargoOption != null && embargoOption.equals(EmbargoOption.RESTRICTED) ? EmbargoOption.RESTRICTED.getAssociatedDate() :
+					inputEmbargoUntilDate, reason, b, (Collection) HandleManager.resolveToObject(context, subInfo.getCollectionHandle()));
 			}
+			else
+			{
+				AuthorizeManager.generateAutomaticPolicies(context, inputEmbargoUntilDate, reason, b, (Collection) HandleManager.resolveToObject(context, subInfo.getCollectionHandle()));
+			}
+			
         }
     }
-
-
+    
     private int editBitstreamPolicies(HttpServletRequest request, Context context, SubmissionInfo subInfo, String buttonPressed)
             throws SQLException, AuthorizeException {
 

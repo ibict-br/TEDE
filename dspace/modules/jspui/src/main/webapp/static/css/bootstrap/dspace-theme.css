@@ -420,3 +420,7 @@ h3, .h3 {
 	
 	color: #006633;
 }
+
+.label-important {
+	background-color: #d9534f;
+}

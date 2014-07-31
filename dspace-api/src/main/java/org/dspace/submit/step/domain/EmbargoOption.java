@@ -1,5 +1,6 @@
 package org.dspace.submit.step.domain;
 
+import java.util.Date;
 import java.util.EnumSet;
 
 /**
@@ -9,9 +10,24 @@ import java.util.EnumSet;
  */
 public enum EmbargoOption {
 	
-	FREE(3, "Acesso aberto"),
+	FREE(3, "Acesso aberto"){
+
+		@Override
+		public Date getAssociatedDate() 
+		{
+			return new Date();
+		}
+	},
 	EMBARGOED(2, "Embargado"),
-	RESTRICTED(1, "Restrito");
+	RESTRICTED(1, "Restrito") {
+
+		@Override
+		public Date getAssociatedDate() 
+		{
+			return Constants.RESTRICT_DATE;
+		}
+		
+	};
 	
 	private Integer id;
 	private String key;
@@ -20,7 +36,6 @@ public enum EmbargoOption {
 		this.id = id;
 		this.key = key;
 	}
-	
 	
 	/**
 	 * Recovers an instance of {@link EmbargoOption} by its ID
@@ -45,5 +60,18 @@ public enum EmbargoOption {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Date getAssociatedDate() {
+		return null;
+	}
+	
+	/**
+	 * Constants for this enum
+	 * @author Márcio Ribeiro Gurgel do Amaral (marcio.rga@gmail.com)
+	 *
+	 */
+	private static class Constants {
+		private static final Date RESTRICT_DATE = new Date(32503687200000l);
 	}
 }

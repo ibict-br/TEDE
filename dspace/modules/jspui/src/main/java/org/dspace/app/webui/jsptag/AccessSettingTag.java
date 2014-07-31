@@ -24,7 +24,6 @@ import org.dspace.app.webui.util.UIUtil;
 import org.dspace.authorize.AuthorizeManager;
 import org.dspace.authorize.ResourcePolicy;
 import org.dspace.content.DSpaceObject;
-import org.dspace.content.Item;
 import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.eperson.Group;
@@ -114,12 +113,14 @@ public class AccessSettingTag extends TagSupport
             String radio0Checked = " checked=\"checked\"";
             String radio1Checked = "";
             String disabled      = " disabled=\"disabled\"";
+            boolean restricted = false;
             if (policies != null && policies.size() > 0)
             {
                 ResourcePolicy rp = policies.get(0);
                 name = (rp.getRpName() == null ? "" : rp.getRpName());
                 group_id = rp.getGroup().getID();
-                startDate = (rp.getStartDate() != null ? DateFormatUtils.format(rp.getStartDate(), "yyyy-MM-dd") : "");
+                restricted = rp.getStartDate() != null && rp.getStartDate().equals(EmbargoOption.RESTRICTED.getAssociatedDate());
+				startDate = (rp.getStartDate() != null && !restricted ? DateFormatUtils.format(rp.getStartDate(), "yyyy-MM-dd") : "");
                 reason = (rp.getRpDescription() == null ? "" : rp.getRpDescription());
                 if (!startDate.equals(""))
                 {
@@ -198,7 +199,11 @@ public class AccessSettingTag extends TagSupport
             		
             		for(EmbargoOption embargoOption : EmbargoOption.values())
             		{
-            			boolean selected = embargoOption.equals(EmbargoOption.EMBARGOED) && startDate != null && !startDate.isEmpty();
+            			boolean selected = 
+            					/** Restricted **/
+            					(restricted && embargoOption.equals(EmbargoOption.RESTRICTED))
+            					/** Embargoed **/
+            					|| (embargoOption.equals(EmbargoOption.EMBARGOED) && startDate != null && !startDate.isEmpty());
             			sb.append(MessageFormat.format("<option value=\"{0}\" {2}>{1}</option>", embargoOption.getId(), embargoOption.getKey(), selected ? "selected=\"selected\"" : ""));
             		}
             		
