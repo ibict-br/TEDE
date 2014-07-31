@@ -193,7 +193,7 @@ public class AccessSettingTag extends TagSupport
             		/** Embargo option **/
             		sb.append("<div class=\"form-group\">");
             		sb.append(	"<label for=\"embargo_type\">");
-            		sb.append(		 LocaleSupport.getLocalizedMessage(pageContext, "org.dspace.app.webui.jsptag.access-setting.label_type"));
+            		sb.append(		"Tipo de acesso");
             		sb.append(	"</label> ");
             		sb.append(	"<select name=\"embargo_type\" id=\"embargo_type\" class=\"form-control\">");
             		
