@@ -44,14 +44,17 @@
 	<div id="tede-footer" class="container text-muted" style="padding-left: 0px;">
 		
 		<div class="text-center col-md-12">
-		
-		    <img class="footer-logo pull-left" src="<%= request.getContextPath() %>/image/logo-ibict.png">
-		
-       		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-bdtd-rodape.png">
+			<a href="http://www.ibict.br/" target="_blank">
+			<img class="footer-logo pull-left" src="<%= request.getContextPath() %>/image/logo-ibict.png"></a>
+       		<a href="http://bdtd.ibict.br/" target="_blank">
+			<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-bdtd-rodape.png"></a>
        		
        		
        		<div class="footer-logo pull-right">
-	       		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-instituicao-rodape.png">
+			
+	       		
+				<a target="_blank" href="<%= request.getContextPath() %>/feedback">
+				<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-instituicao-rodape.png"></a>
 	       		<div class="pull-left" style="padding-left: 5px;">
 		       		<div class="footer-institution-data" style="font-weight: bold;">
 		       			<%= ConfigurationManager.getProperty("dspace.institution.heading1") %>
@@ -63,7 +66,7 @@
 		       			<%= ConfigurationManager.getProperty("dspace.institution.email") %>
 		       		</div>
 	       		</div>
-       			
+			
        		</div>
 			
 			
