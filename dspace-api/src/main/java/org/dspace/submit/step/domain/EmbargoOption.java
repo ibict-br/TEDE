@@ -10,7 +10,7 @@ import java.util.EnumSet;
  */
 public enum EmbargoOption {
 	
-	FREE(3, "Acesso aberto"){
+	FREE(3, "Acesso Aberto"){
 
 		@Override
 		public Date getAssociatedDate() 
@@ -18,8 +18,8 @@ public enum EmbargoOption {
 			return new Date();
 		}
 	},
-	EMBARGOED(2, "Embargado"),
-	RESTRICTED(1, "Restrito") {
+	EMBARGOED(2, "Acesso Embargado"),
+	RESTRICTED(1, "Acesso Restrito") {
 
 		@Override
 		public Date getAssociatedDate() 
