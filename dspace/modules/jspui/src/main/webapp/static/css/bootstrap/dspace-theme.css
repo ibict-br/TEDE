@@ -412,8 +412,8 @@ h3, .h3 {
 	padding-right: 10px;
 }
 
-.date-lenght {
-	width: 10%;
+.date-lenght, .submit-date-field {
+	width: 16%;
 }
 
 .alert-warning a {

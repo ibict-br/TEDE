@@ -9,6 +9,7 @@ package org.dspace.submit.step;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.time.DateUtils;
 import org.apache.log4j.Logger;
 import org.dspace.app.util.DCInput;
 import org.dspace.app.util.DCInputsReader;
@@ -38,6 +40,8 @@ import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.core.I18nUtil;
 import org.dspace.submit.AbstractProcessingStep;
+
+import com.ibm.icu.util.Calendar;
 
 /**
  * Describe step for DSpace submission process. Handles the gathering of
@@ -217,7 +221,7 @@ public class DescribeStep extends AbstractProcessingStep
             }
             else if (inputType.equals("date"))
             {
-                readDate(request, item, schema, element, qualifier);
+                readPickerDate(request, item, schema, element, qualifier);
             }
             // choice-controlled input with "select" presentation type is
             // always rendered as a dropdown menu
@@ -393,7 +397,35 @@ public class DescribeStep extends AbstractProcessingStep
 
     
 
-    /**
+    private void readPickerDate(HttpServletRequest request, Item item,
+			String schema, String element, String qualifier) {
+    	
+    	String metadataField = MetadataField.formKey(schema, element, qualifier);
+    	String dateCandidate = request.getParameter(metadataField);
+    	Date parsedDate = null;
+    	
+        try
+        {
+        	parsedDate = DateUtils.parseDate(dateCandidate, new String[]{"yyyy-MM-dd"});
+        } 
+        catch (Exception e) 
+        {
+        }
+
+        if (parsedDate != null)
+        {
+            // Only put in date if there is one!
+        	java.util.Calendar calendar = java.util.Calendar.getInstance();
+        	calendar.setTime(parsedDate);
+        	DCDate dcDate = new DCDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH), -1, -1, -1);
+            item.addMetadata(schema, element, qualifier, null, dcDate.toString());
+        }
+		
+	}
+
+
+
+	/**
      * Retrieves the number of pages that this "step" extends over. This method
      * is used to build the progress bar.
      * <P>

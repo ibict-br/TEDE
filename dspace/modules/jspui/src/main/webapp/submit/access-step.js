@@ -8,6 +8,7 @@
 (function() {
 	
 	jQuery.noConflict();
+	jQuery.datepicker.setDefaults( jQuery.datepicker.regional[ "pt_BR" ] );
     jQuery(document).ready(function($) {
         $("input[name='open_access_radios']").change(function() {
             if ($("#embargo_until_date").attr("disabled") == undefined) {
@@ -39,25 +40,28 @@ function manageFields()
 	var FREE = 3;
 	
 	var embargoType = jQuery("#embargo_type").val();
-	if(embargoType == RESTRICTED)
+	if(embargoType)
 	{
-		jQuery("#embargo_until_date").attr("disabled", "disabled");
-		jQuery("#embargo_until_date").val("");
-		
-		jQuery("#reason").removeAttr("disabled");
-	}
-	else if(embargoType == EMBARGOED)
-	{
-		jQuery("#embargo_until_date").removeAttr("disabled");
-		jQuery("#reason").removeAttr("disabled");
-	}
-	else if(embargoType == FREE)
-	{
-		jQuery("#embargo_until_date").attr("disabled", "disabled");
-		jQuery("#embargo_until_date").val("");
-		
-		jQuery("#reason").attr("disabled", "disabled");
-		jQuery("#reason").val("");
+		if(embargoType == RESTRICTED)
+		{
+			jQuery("#embargo_until_date").attr("disabled", "disabled");
+			jQuery("#embargo_until_date").val("");
+			
+			jQuery("#reason").removeAttr("disabled");
+		}
+		else if(embargoType == EMBARGOED)
+		{
+			jQuery("#embargo_until_date").removeAttr("disabled");
+			jQuery("#reason").removeAttr("disabled");
+		}
+		else if(embargoType == FREE)
+		{
+			jQuery("#embargo_until_date").attr("disabled", "disabled");
+			jQuery("#embargo_until_date").val("");
+			
+			jQuery("#reason").attr("disabled", "disabled");
+			jQuery("#reason").val("");
+		}
 	}
 }
 

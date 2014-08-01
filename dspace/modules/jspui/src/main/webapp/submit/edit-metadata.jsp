@@ -667,7 +667,7 @@
 
     void doOneBox(javax.servlet.jsp.JspWriter out, Item item,
       String fieldName, String schema, String element, String qualifier, boolean repeatable, boolean required, boolean readonly,
-      int fieldCountIncr, String label, PageContext pageContext, String vocabulary, boolean closedVocabulary, int collectionID)
+      int fieldCountIncr, String label, PageContext pageContext, String vocabulary, boolean closedVocabulary, int collectionID, boolean isDate)
       throws java.io.IOException
     {
       String authorityType = getAuthorityType(pageContext, fieldName, collectionID);
@@ -707,7 +707,8 @@
            {
         	   sb.append("<div class=\"row col-md-10\">");
            }
-           sb.append("<input class=\"form-control\" type=\"text\" name=\"")
+           sb.append("<input class=\"form-control " + (isDate ? "submit-date-field" : ""))
+           	 .append("\" type=\"text\" name=\"")
              .append(fieldNameIdx)
              .append("\" id=\"")
              .append(fieldNameIdx).append("\" size=\"50\" value=\"")
@@ -1417,8 +1418,9 @@
        }
        else if (inputType.equals("date"))
        {
-           doDate(out, item, fieldName, dcSchema, dcElement, dcQualifier,
-                          repeatable, required, readonly, fieldCountIncr, label, pageContext, request);
+    	   doOneBox(out, item, fieldName, dcSchema, dcElement, dcQualifier,
+                   repeatable, required, readonly, fieldCountIncr, label, pageContext, vocabulary,
+                   closedVocabulary, collectionID, true);
        }
        else if (inputType.equals("series"))
        {
@@ -1466,7 +1468,7 @@
        {
                         doOneBox(out, item, fieldName, dcSchema, dcElement, dcQualifier,
                                  repeatable, required, readonly, fieldCountIncr, label, pageContext, vocabulary,
-                                 closedVocabulary, collectionID);
+                                 closedVocabulary, collectionID, false);
        }
        
      } // end of 'for rows'
@@ -1490,5 +1492,7 @@
     		</div><br/>
 </div>    		
     </form>
+    
+    <script type="text/javascript" src="<%= request.getContextPath() %>/submit/describe-item.js"></script>
 
 </dspace:layout>
