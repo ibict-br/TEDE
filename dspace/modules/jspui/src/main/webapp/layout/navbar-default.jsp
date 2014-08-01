@@ -115,7 +115,7 @@
 				<li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.helpstandard"/></dspace:popup></li>
 			</ul>
 		    </li>
-		  <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a></li>
+	   <%--  <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a></li> --%>
        </ul>
        <div class="nav navbar-nav navbar-right">
 		<ul class="nav navbar-nav navbar-right">

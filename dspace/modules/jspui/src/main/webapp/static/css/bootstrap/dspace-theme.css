@@ -313,7 +313,7 @@ a:hover, a:focus {
 
 .top-search-container {
 	padding-top: 25px;
-	padding-bottom: 40px;
+/*	padding-bottom: 40px; */
 }
 
 /** Modifica cor dos links da busca facetada **/

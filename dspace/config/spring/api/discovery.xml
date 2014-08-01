@@ -96,11 +96,9 @@
         <property name="sidebarFacets">
             <list>
                 <ref bean="searchFilterAdvisor" />
-                <ref bean="searchFilterSubject" /> 
+				<ref bean="searchFilterAuthor" />
 				<ref bean="searchFilterCNPq" /> 
-				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterProgram" />
-				<ref bean="searchFilterDepartment" />
                 <ref bean="searchFilterType" />
 				<ref bean="searchFilterIssued" />
             </list>
@@ -227,9 +225,8 @@
         <property name="sidebarFacets">
             <list>
 				<ref bean="searchFilterAdvisor" />
-                <!-- <ref bean="searchFilterSubject" /> -->
+                <ref bean="searchFilterAuthor" />
 				<ref bean="searchFilterCNPq" />
-				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterType" />
@@ -294,7 +291,7 @@
                 <value>dc.creator</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
@@ -305,7 +302,7 @@
                 <value>dc.contributor.advisor</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
@@ -316,7 +313,7 @@
                 <value>dc.subject</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
         <property name="splitter" value="::"/>
     </bean>
@@ -331,6 +328,7 @@
 		<property name="sortOrder" value="COUNT"/>
 		<property name="splitter" value="::"/>
 		<property name="skipFirstNodeLevel" value="true"/>
+		<property name="facetLimit" value="7"/>
 	</bean>
 
     <bean id="searchFilterIssued" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
@@ -351,7 +349,7 @@
                 <value>dc.publisher</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 	
@@ -362,7 +360,7 @@
                 <value>dc.publisher.program</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
@@ -373,7 +371,7 @@
                 <value>dc.publisher.department</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 	
@@ -384,7 +382,7 @@
                 <value>dc.type</value>
             </list>
         </property>
-        <property name="facetLimit" value="10"/>
+        <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 

@@ -64,7 +64,7 @@
 	if (brefine) {
 %>
 <div class="col-md-<%= discovery_panel_cols %>">
-<h3 class="facets"><fmt:message key="jsp.search.facet.refine" /></h3>
+<%-- <h3 class="facets"><fmt:message key="jsp.search.facet.refine" /></h3> --%>
 <div id="facets" class="facetsBox row panel">
 <%
 	for (DiscoverySearchFilterFacet facetConf : facetsConf)
