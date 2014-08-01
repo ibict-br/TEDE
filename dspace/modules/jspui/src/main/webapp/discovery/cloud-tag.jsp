@@ -28,7 +28,7 @@
 %>
 <%-- <h3 class="facets"><fmt:message key="jsp.search.cloudtag" /></h3> --%>
 <div id="cloud" class="tag-cloud-container">
-	<span class="shadow"></span>
+	<%-- <span class="shadow"></span> --%>
 	
 	<div id="cloud-text">
 	
