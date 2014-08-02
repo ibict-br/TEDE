@@ -67,11 +67,46 @@ public class PostUploadStep extends AbstractProcessingStep {
 		return NO_ITEM_OR_PAGES;
 	}
 
+	/**
+	 * Fill metadata to represent the policy registered to the bistreams
+	 * @param context DSpace context
+	 * @param item Current item (in submission)
+	 * @throws SQLException
+	 */
 	private void fillEmbargoMetadata(Context context, Item item) throws SQLException 
 	{
 		item.clearMetadata("dc", "rights", null, Item.ANY);
 		item.clearMetadata("dc", "date", "available", Item.ANY);
 
+		Date greaterPolicyDate = getGreaterPolicyDate(context, item);;
+		
+		String language = ConfigurationManager.getProperty("defatult.language.iso6392");
+			
+		if(greaterPolicyDate != null && greaterPolicyDate.equals(EmbargoOption.RESTRICTED.getAssociatedDate()))
+		{
+			item.addMetadata("dc", "rights", null, language, EmbargoOption.RESTRICTED.getKey());
+		}
+		else if(greaterPolicyDate != null && greaterPolicyDate.after(new Date()))
+		{
+			item.addMetadata("dc", "rights", null, language, EmbargoOption.EMBARGOED.getKey());
+			item.addMetadata("dc", "date", "available", language, new SimpleDateFormat("yyyy-MM-dd").format(greaterPolicyDate));
+		}
+		else
+		{
+			item.addMetadata("dc", "rights", null, language, EmbargoOption.FREE.getKey());
+		}
+		
+	}
+
+	/**
+	 * Gets the higher policy date associated with the bitstreams
+	 * @param context DSpace context
+	 * @param item Current item (in submission)
+	 * @return Higher date (if there's one)
+	 * @throws SQLException
+	 */
+	private Date getGreaterPolicyDate(Context context, Item item) throws SQLException {
+		
 		Date greaterPolicyDate = null;
 		for(ResourcePolicy resourcePolicy : getResourcePolicies(context, item))
 		{
@@ -84,33 +119,16 @@ public class PostUploadStep extends AbstractProcessingStep {
 				}
 			}
 		}
-		
-		String embargoMetadataValue = null;
-		String rightsMetadataValue = null;
-		
-			
-		if(greaterPolicyDate != null && greaterPolicyDate.equals(EmbargoOption.RESTRICTED.getAssociatedDate()))
-		{
-			embargoMetadataValue =  new SimpleDateFormat("yyyy-MM-dd").format(EmbargoOption.RESTRICTED.getAssociatedDate());
-			rightsMetadataValue = EmbargoOption.RESTRICTED.getKey();
-		}
-		else if(greaterPolicyDate != null && greaterPolicyDate.after(new Date()))
-		{
-			embargoMetadataValue =  new SimpleDateFormat("yyyy-MM-dd").format(greaterPolicyDate);
-			rightsMetadataValue = EmbargoOption.EMBARGOED.getKey();
-		}
-		else
-		{
-			embargoMetadataValue =  new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-			rightsMetadataValue = EmbargoOption.FREE.getKey();
-		}
-		
-		
-		String language = ConfigurationManager.getProperty("defatult.language.iso6392");
-		item.addMetadata("dc", "date", "available", language, embargoMetadataValue);
-		item.addMetadata("dc", "rights", null, language, rightsMetadataValue);
+		return greaterPolicyDate;
 	}
 	
+	/**
+	 * Get all resource policies from a item
+	 * @param context DSpace context
+	 * @param item Current item (in submission)
+	 * @return List containing item's policies
+	 * @throws SQLException
+	 */
     private List<ResourcePolicy> getResourcePolicies(Context context, Item item) throws SQLException
     {
 		Bundle[] originalBundles = item.getBundles("ORIGINAL");
