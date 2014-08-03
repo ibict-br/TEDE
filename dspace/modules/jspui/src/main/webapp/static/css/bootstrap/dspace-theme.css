@@ -448,3 +448,7 @@ h3, .h3 {
 .stats-item-title {
 	width: 20%;	
 }
+
+.ui-datepicker {
+	z-index: 2000 !important;	
+}
