@@ -99,12 +99,10 @@ public class InitialQuestionsStep extends AbstractProcessingStep
             AuthorizeException
     {
         // Get the values from the initial questions form
-        boolean multipleTitles = Util.getBoolParameter(request,
-                "multiple_titles");
-        boolean publishedBefore = Util.getBoolParameter(request,
-                "published_before");
-        boolean multipleFiles = Util.getBoolParameter(request,
-                "multiple_files");
+        boolean hasSponsorship = Util.getBoolParameter(request, "has_sponsorship");
+        boolean publishedBefore = true;
+        boolean multipleFiles = true;
+        
         boolean isThesis = ConfigurationManager
                 .getBooleanProperty("webui.submit.blocktheses")
                 && Util.getBoolParameter(request, "is_thesis");
@@ -142,7 +140,7 @@ public class InitialQuestionsStep extends AbstractProcessingStep
         else if (request.getParameter("prune") != null)
         {
             processVerifyPrune(context, request, response, subInfo,
-                    multipleTitles, publishedBefore, multipleFiles);
+                    hasSponsorship, publishedBefore, multipleFiles);
         }
         else
         // otherwise, check if pruning is necessary
@@ -153,7 +151,7 @@ public class InitialQuestionsStep extends AbstractProcessingStep
             if (subInfo.getSubmissionItem() != null)
             {
                 // shouldn't need to check if submission is null, but just in case!
-                if (!multipleTitles)
+                if (!hasSponsorship)
                 {
                     DCValue[] altTitles = subInfo.getSubmissionItem().getItem()
                             .getDC("title", "alternative", Item.ANY);
@@ -205,7 +203,7 @@ public class InitialQuestionsStep extends AbstractProcessingStep
         }
 
         // If step is complete, save the changes
-        subInfo.getSubmissionItem().setMultipleTitles(multipleTitles);
+        subInfo.getSubmissionItem().setMultipleTitles(hasSponsorship);
         subInfo.getSubmissionItem().setPublishedBefore(publishedBefore);
 
         // "Multiple files" irrelevant in workflow mode

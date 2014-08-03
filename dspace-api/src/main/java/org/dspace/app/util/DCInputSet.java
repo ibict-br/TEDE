@@ -136,15 +136,15 @@ public class DCInputSet
     	return false;
     }
 	
-    private static boolean doField(DCInput dcf, boolean addTitleAlternative, 
+    private static boolean doField(DCInput dcf, boolean hasSponsorship, 
 		    					   boolean addPublishedBefore)
     {
     	String rowName = dcf.getElement() + "." + dcf.getQualifier();
-    	if ( rowName.equals("title.alternative") && ! addTitleAlternative )
+    	if ( rowName.equals("description.sponsorship") && ! hasSponsorship )
     	{
     		return false;
     	}
-    	if (rowName.equals("date.issued") && ! addPublishedBefore )
+/*    	if (rowName.equals("date.issued") && ! addPublishedBefore )
     	{
     		return false;
     	}
@@ -155,7 +155,7 @@ public class DCInputSet
     	if (rowName.equals("identifier.citation") && ! addPublishedBefore )
     	{
     		return false;
-    	}
+    	}*/
 
     	return true;
     }
