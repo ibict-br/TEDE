@@ -47,7 +47,7 @@
 </c:when>
 <c:otherwise>
 <c:set var="rowClass" value="oddRowOddCol"/>
-</c:otherwise>
+</c:otherwise>z
 </c:choose>
 <tr class="${rowClass}">
 <td>

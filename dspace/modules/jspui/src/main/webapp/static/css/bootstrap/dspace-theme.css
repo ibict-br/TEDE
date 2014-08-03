@@ -428,3 +428,23 @@ h3, .h3 {
 .label-important {
 	background-color: #d9534f;
 }
+
+
+/**
+ * Statistics customization
+ */
+ .statsTable {
+ 	width: 100%;
+ }
+ 
+ .statsTable td,  .statsTable th  {
+ 	padding-left: 10px;
+ }
+ 
+ .stats-title {
+ 	padding-bottom: 25px;
+ } 
+ 
+.stats-item-title {
+	width: 20%;	
+}
