@@ -41,9 +41,7 @@
 		
 		<span>
 			<a href="<%= request.getContextPath()
-	                + "/simple-search?filterquery="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8")
-	                + "&amp;filtername="+URLEncoder.encode(cloudTag.getField(),"UTF-8")
-	                + "&amp;filtertype="+URLEncoder.encode("equals","UTF-8") %>" class="cloudtag-<%= cloudTag.getRelevance() %>"><%= cloudTag.getCloudName() %></a>
+	                + "/simple-search?query="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8") %>" class="cloudtag-<%= cloudTag.getRelevance() %>"><%= cloudTag.getCloudName() %></a>
 		</span>
 	
 	<%
