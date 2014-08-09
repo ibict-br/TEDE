@@ -45,9 +45,9 @@
 		
 		<div class="text-center col-md-12">
 			<a href="http://www.ibict.br/" target="_blank">
-			<img class="footer-logo pull-left" src="<%= request.getContextPath() %>/image/logo-ibict.png"></a>
+				<img class="footer-logo pull-left" src="<%= request.getContextPath() %>/image/ibict-60.png"></a>
        		<a href="http://bdtd.ibict.br/" target="_blank">
-			<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-bdtd-rodape.png"></a>
+			<img class="pull-left default-padding-left" src="<%= request.getContextPath() %>/image/logo-bdtd-rodape.png"></a>
        		
        		
        		<div class="footer-logo pull-right">

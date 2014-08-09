@@ -109,11 +109,11 @@
         
         <table class="table" align="center" summary="Table dispalying your submitted files">
             <tr>
-				<th id="t1" class="oddRowEvenCol"><fmt:message key="jsp.submit.upload-file-list.tableheading1"/></th>
+				<th id="t1" class="oddRowEvenCol" width="7%"><fmt:message key="jsp.submit.upload-file-list.tableheading1"/></th>
                 <th id="t2" class="oddRowOddCol"><fmt:message key="jsp.submit.upload-file-list.tableheading2"/></th>
-                <th id="t3" class="oddRowEvenCol"><fmt:message key="jsp.submit.upload-file-list.tableheading3"/></th>
+                <th id="t3" class="oddRowEvenCol" width="10%"><fmt:message key="jsp.submit.upload-file-list.tableheading3"/></th>
                 <th id="t4" class="oddRowOddCol"><fmt:message key="jsp.submit.upload-file-list.tableheading4"/></th>
-                <th id="t5" class="oddRowEvenCol"><fmt:message key="jsp.submit.upload-file-list.tableheading5"/></th>
+                <th id="t5" class="oddRowEvenCol" width="15%"><fmt:message key="jsp.submit.upload-file-list.tableheading5"/></th>
 <%
     String headerClass = "oddRowEvenCol";
 
@@ -131,7 +131,7 @@
         // Access Setting
         headerClass = (headerClass == "oddRowEvenCol" ? "oddRowOddCol" : "oddRowEvenCol");
 %>
-                <th id="t7" class="<%= headerClass %>"><fmt:message key="jsp.submit.upload-file-list.tableheading7"/></th>
+                <th id="t7" width="15%" class="<%= headerClass %>"><fmt:message key="jsp.submit.upload-file-list.tableheading7"/></th>
 
 <%
     }
@@ -168,7 +168,7 @@
         // Full param to dspace:popup must be single variable
         String supportLevelLink = LocaleSupport.getLocalizedMessage(pageContext, "help.formats") +"#" + supportLevel;
 %>
-            <tr>
+            <tr class="<%= i % 2 == 0 ? "oddRow" : "evenRow"  %>">
 		<td headers="t1" class="<%= row %>RowEvenCol" align="center">
 		    <input class="form-control" type="radio" name="primary_bitstream_id" value="<%= bitstreams[i].getID() %>"
 			   <% if (bundles[0] != null) {
@@ -183,9 +183,11 @@
 			        if (allowFileEditing)
 			        {
 			%>
-	                    <button class="btn btn-danger pull-right" type="submit" name="submit_remove_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button2"/>">
-	                    <span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button2"/>
+					<div>
+	                    <button class="btn btn-danger pull-left" type="submit" name="submit_remove_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button2"/>">
+	                    	<span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button2"/>
 	                    </button>
+					</div>
 			<%
 			        } %>	
                 </td>
@@ -194,15 +196,20 @@
                     <%= (bitstreams[i].getDescription() == null || bitstreams[i].getDescription().equals("")
                         ? LocaleSupport.getLocalizedMessage(pageContext, "jsp.submit.upload-file-list.empty1")
                         : bitstreams[i].getDescription()) %>
-                    <button type="submit" class="btn btn-default pull-right" name="submit_describe_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button1"/>">
-                    <span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button1"/>
-                    </button>
+                        
+                    <div>
+	                    <button type="submit" class="btn btn-default pull-left" name="submit_describe_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button1"/>">
+	                    	<span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button1"/>
+	                    </button>
+                    </div>
                 </td>
                 <td headers="t5" class="<%= row %>RowEvenCol">
                     <%= description %> <dspace:popup page="<%= supportLevelLink %>">(<%= supportLevel %>)</dspace:popup>
-                    <button type="submit" class="btn btn-default pull-right" name="submit_format_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button1"/>">
-                    	<span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button1"/>
-                    </button>
+                    <div>
+	                    <button type="submit" class="btn btn-default pull-left" name="submit_format_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button1"/>">
+	                    	<span class="glyphicon glyphicon-file"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button1"/>
+	                    </button>
+                    </div>
                   
                 </td>
 <%
@@ -224,11 +231,7 @@
                 <td headers="t6" class="<%= row %>Row<%= column %>Col" style="text-align:center"> 
                     
                     
-                    <button class="btn btn-default pull-left" type="submit" name="submit_editPolicy_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button1"/>">
-                 	   <span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button1"/>
-                    </button>
-					<br/>
-					<br/>
+                  
                     <% 
                     	List<ResourcePolicy> rpolicies = AuthorizeManager.findPoliciesByDSOAndType(context, bitstreams[i], ResourcePolicy.TYPE_CUSTOM); 
                     	
@@ -261,6 +264,10 @@
 							}
                     	}
 					%>
+					<br/>
+					  <button class="btn btn-default pull-left" type="submit" name="submit_editPolicy_<%= bitstreams[i].getID() %>" value="<fmt:message key="jsp.submit.upload-file-list.button1"/>">
+                 	   <span class="glyphicon glyphicon-lock"></span>&nbsp;&nbsp;<fmt:message key="jsp.submit.upload-file-list.button1"/>
+                    </button>
                 </td>
 <%
         }

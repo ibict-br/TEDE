@@ -188,7 +188,9 @@ for (int i = 0; i < supportedLocales.length; i++)
 	<div class="row">
 		<div class="col-md-10">
 			<div>
-        		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-instituicao.png">
+				<a href="<%= request.getContextPath() %>">
+	        		<img class="pull-left" src="<%= request.getContextPath() %>/image/logo-instituicao.png">
+				</a>
 			</div>
         	<div class="repo-description">
 				<h1><%= ConfigurationManager.getProperty("dspace.institution.heading1") %></h1>
@@ -201,9 +203,24 @@ for (int i = 0; i < supportedLocales.length; i++)
 	</div>
 </div>	
 
-<br/>
 
-        <%-- Page contents --%>
+	<%
+	if(!request.getServletPath().equals("/home.jsp") && !request.getServletPath().equals("/search/discovery.jsp") && !request.getServletPath().equals("/login/password.jsp"))
+	{
+	%>
+		<div class="container">
+		     		<dspace:include page="/layout/location-bar.jsp" />
+		</div>        
+	<%
+	}
+	else
+	{
+	%>
+		</br>   
+	<%
+	}
+	%>
+  <%-- Page contents --%>
 <div class="container">
 <% if (request.getAttribute("dspace.layout.sidebar") != null) { %>
 	<div class="row">

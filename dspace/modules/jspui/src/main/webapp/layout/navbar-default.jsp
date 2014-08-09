@@ -82,14 +82,14 @@
        </div>
        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
          <ul class="nav navbar-nav">
-           <li class="<%= currentPage.endsWith("/home.jsp")? "active" : "" %>"><a href="<%= request.getContextPath() %>/"><span class="glyphicon glyphicon-home"></span> <fmt:message key="jsp.layout.navbar-default.home"/></a></li>
+           <li class="<%= currentPage.endsWith("/home.jsp") ? "active" : "" %>"><a href="<%= request.getContextPath() %>/"><span class="glyphicon glyphicon-home"></span> <fmt:message key="jsp.layout.navbar-default.home"/></a></li>
                 
-           <li class="dropdown">
+           <li class="dropdown <%= (currentPage.endsWith("/browse") || currentPage.endsWith("community-list")) ? "active" : "" %>">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="jsp.layout.navbar-default.browse"/> <b class="caret"></b></a>
              <ul class="dropdown-menu">
                <li><a href="<%= request.getContextPath() %>/community-list"><fmt:message key="jsp.layout.navbar-default.communities-collections"/></a></li>
 				<li class="divider"></li>
-				<li class="dropdown-header">Navegar por:</li>
+				<li class="dropdown-header"><fmt:message key="jsp.layout.navbar-default.browse-by"/></li>
 				<%-- Insert the dynamic browse indices here --%>
 				
 				<%
@@ -107,15 +107,17 @@
 
             </ul>
           </li>
-		    <li class="dropdown">
+		    <li class="<%= ((currentPage.endsWith( "harvesting.jsp" ) || currentPage.endsWith( "faq.jsp" ) || currentPage.endsWith( "/help" )) ? "active" : "" ) %>" class="dropdown">
              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key="jsp.layout.navbar-default.help"/> <b class="caret"></b></a>
              <ul class="dropdown-menu">
-				<li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><a href="<%= request.getContextPath() %>/harvesting.jsp"><fmt:message key="jsp.layout.navbar-default.harvesting"/></a></li>
-				<li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><a href="<%= request.getContextPath() %>/faq.jsp"><fmt:message key="jsp.layout.navbar-default.faq"/></a></li>
-				<li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.helpstandard"/></dspace:popup></li>
+				<li><a href="<%= request.getContextPath() %>/static/harvesting.jsp"><fmt:message key="jsp.layout.navbar-default.harvesting"/></a></li>
+				<li><a href="<%= request.getContextPath() %>/static/faq.jsp"><fmt:message key="jsp.layout.navbar-default.faq"/></a></li>
+				<li><dspace:popup page="<%= LocaleSupport.getLocalizedMessage(pageContext, \"help.index\") %>"><fmt:message key="jsp.layout.navbar-default.helpstandard"/></dspace:popup></li>
 			</ul>
 		    </li>
-	   <%--  <li class="<%= ( currentPage.endsWith( "/help" ) ? "active" : "" ) %>"><a href="<%= request.getContextPath() %>/subject-search"><fmt:message key="jsp.layout.navbar-default.subjectsearch"/></a></li> --%>
+		    
+           <li class="<%= currentPage.endsWith("/about-tede.jsp")? "active" : "" %>"><a href="<%= request.getContextPath() %>/static/about-tede.jsp"><span class="glyphicon"></span> <fmt:message key="jsp.home.about"/></a></li>
+		    
        </ul>
        <div class="nav navbar-nav navbar-right">
 		<ul class="nav navbar-nav navbar-right">

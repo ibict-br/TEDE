@@ -42,7 +42,6 @@
 
     Locale sessionLocale = UIUtil.getSessionLocale(request);
     Config.set(request.getSession(), Config.FMT_LOCALE, sessionLocale);
-    String topNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-top.html"));
     String sideNews = NewsManager.readNewsFile(LocaleSupport.getLocalizedMessage(pageContext, "news-side.html"));
 
     boolean feedEnabled = ConfigurationManager.getBooleanProperty("webui.feed.enable");
@@ -61,13 +60,8 @@
 <dspace:layout locbar="nolink" titlekey="jsp.home.title" feedData="<%= feedData %>">
 		
 
-	<div class="jumbotron">
-		<h1><fmt:message key="jsp.home.about"></fmt:message></h1>
-       <%= topNews %>
-       <p class="about-bdtd"><a href="bdtd.jsp"><button class="btn btn-primary"><fmt:message key="jsp.home.about.bdtd"/></button></a></p>
-	</div>
 
-	<div class="container top-search-container">
+	<div class="container top-search-container ">
 		<form method="get" action="<%= request.getContextPath() %>/simple-search" class="form-horizontal col-md-12 form-group form-group-lg" scope="search" role="form">
 		<div class="col-md-11">
 	   		<input type="text" class="form-control " placeholder="<fmt:message key="jsp.layout.navbar-default.search"/>" name="query" id="tequery" size="25"/>

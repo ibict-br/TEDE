@@ -79,8 +79,8 @@
             {
                 out.println("<li class=\"\">");
                 
-                out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">" + cols[j].getMetadata("name") + " [" + ic.getCount(c) + "]</a>");
-                    out.println(ic.getCount(c));
+                out.println("<a href=\"" + request.getContextPath() + "/handle/" + cols[j].getHandle() + "\">" + cols[j].getMetadata("name") + " [" + ic.getCount(cols[j]) + "]</a>");
+                    out.println(ic.getCount(cols[j]));
                 out.println("</li>");
             }
             out.println("</ul>");

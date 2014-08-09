@@ -200,7 +200,7 @@
 %>                                </select><br/>
 
 								<div class="input-group">
-                               		<span class="input-group-addon addongreen" for="query"><fmt:message key="jsp.search.results.searchfor"/></span>
+                               		<label class="input-group-addon addongreen" for="query"><fmt:message key="jsp.search.results.searchfor"/></label>
                   					
                   						<input type="text" class="form-control input-lg"  size="50" id="query" name="query" value="<%= (query==null ? "" : StringEscapeUtils.escapeHtml(query)) %>"/> 
                   							
