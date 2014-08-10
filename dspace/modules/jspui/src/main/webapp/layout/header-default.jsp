@@ -194,7 +194,7 @@ for (int i = 0; i < supportedLocales.length; i++)
 			</div>
         	<div class="repo-description">
 				<h1><%= ConfigurationManager.getProperty("dspace.institution.heading1") %></h1>
-	        	<h4><%= ConfigurationManager.getProperty("dspace.institution.heading2") %></h4>
+	        	<h4><fmt:message key="jsp.home.dspace.heading.type"/> </h4>
         	</div>
         </div>
         <div class="col-md-2">

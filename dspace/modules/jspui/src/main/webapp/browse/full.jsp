@@ -206,7 +206,7 @@
 	{
 %>
 		<span><fmt:message key="browse.nav.date.jump"/></span>
-		<select name="year">
+		<select name="year" class="input-border-no-paddings">
 	        <option selected="selected" value="-1"><fmt:message key="browse.nav.year"/></option>
 <%
 		int thisYear = DCDate.getCurrent().getYear();
@@ -224,7 +224,7 @@
             <option>1960</option>
             <option>1950</option>
         </select>
-        <select name="month">
+        <select name="month" class="input-border-no-paddings">
             <option selected="selected" value="-1"><fmt:message key="browse.nav.month"/></option>
 <%
 		for (int i = 1; i <= 12; i++)
@@ -303,7 +303,7 @@
 	{
 %>
 		<label for="sort_by"><fmt:message key="browse.full.sort-by"/></label>
-		<select name="sort_by">
+		<select name="sort_by" class="input-border-no-paddings">
 <%
 		for (SortOption sortBy : sortOptions)
 		{
@@ -320,13 +320,13 @@
 	}
 %>
 		<label for="order"><fmt:message key="browse.full.order"/></label>
-		<select name="order">
+		<select name="order" class="input-border-no-paddings">
 			<option value="ASC" <%= ascSelected %>><fmt:message key="browse.order.asc" /></option>
 			<option value="DESC" <%= descSelected %>><fmt:message key="browse.order.desc" /></option>
 		</select>
 
 		<label for="rpp"><fmt:message key="browse.full.rpp"/></label>
-		<select name="rpp">
+		<select name="rpp" class="input-border-no-paddings">
 <%
 	for (int i = 5; i <= 100 ; i += 5)
 	{
@@ -339,7 +339,7 @@
 		</select>
 
 		<label for="etal"><fmt:message key="browse.full.etal" /></label>
-		<select name="etal">
+		<select name="etal" class="input-border-no-paddings">
 <%
 	String unlimitedSelect = "";
 	if (bi.getEtAl() == -1)

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.dspace.app.webui.discovery.dto.CloudTagResult;
 import org.dspace.authorize.AuthorizeException;
+import org.dspace.core.ConfigurationManager;
 import org.dspace.core.Context;
 import org.dspace.discovery.DiscoverFacetField;
 import org.dspace.discovery.DiscoverQuery;
@@ -32,8 +33,7 @@ import edu.emory.mathcs.backport.java.util.Collections;
 public class CloudTagProcessor implements SiteHomeProcessor 
 {
 	
-	private static final int NUMBER_OF_RELANCES = 4;
-	private static final int MAX_TAGS = 20;
+	private static final int MAX_TAGS = 30;
 	private static Logger logger = Logger.getLogger(CloudTagProcessor.class);
 	
 	@Override
@@ -44,35 +44,16 @@ public class CloudTagProcessor implements SiteHomeProcessor
 		try 
 		{
 			DiscoverQuery query = new DiscoverQuery();
-			query.addFacetField(new DiscoverFacetField("subject", "text", MAX_TAGS, DiscoveryConfigurationParameters.SORT.COUNT));
+			query.addFacetField(new DiscoverFacetField("subject", "text", ConfigurationManager.getIntProperty("dspace.home.cloudtag.amount", MAX_TAGS), DiscoveryConfigurationParameters.SORT.COUNT));
 			
 			DiscoverResult result = SearchUtils.getSearchService().search(context, query);
-			long maxValue = 0l;
-			
 			List<CloudTagResult> cloudResult = new ArrayList<CloudTagResult>();
 			
-			maxValueLoop:
 			for(Map.Entry<String, List<FacetResult>> foundResults : result.getFacetResults().entrySet())
 			{
 				for(FacetResult facetResult : foundResults.getValue())
 				{
-					if(facetResult.getCount() > maxValue)
-					{
-						maxValue = facetResult.getCount();
-					}
-					/** The first result is aways the greast one for a given metadata **/
-					continue maxValueLoop;
-				}
-			}
-			
-			
-			double factor = maxValue / new Double(String.valueOf(NUMBER_OF_RELANCES));
-			
-			for(Map.Entry<String, List<FacetResult>> foundResults : result.getFacetResults().entrySet())
-			{
-				for(FacetResult facetResult : foundResults.getValue())
-				{
-					cloudResult.add(new CloudTagResult(facetResult.getDisplayedValue().toLowerCase(), foundResults.getKey(), Math.round(facetResult.getCount() / factor)));
+					cloudResult.add(new CloudTagResult(facetResult.getDisplayedValue().toLowerCase().replaceAll("\n", ""), foundResults.getKey(), facetResult.getCount()));
 				}
 			}
 			

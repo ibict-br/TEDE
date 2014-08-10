@@ -21,32 +21,49 @@
 <%@page import="org.dspace.app.webui.discovery.dto.CloudTagResult"%>
 <%@page import="java.util.List"%>
 
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/jQCloud/jqcloud-1.0.3.js"></script>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/jQCloud/jqcloud.css" type="text/css" />
+
 <%
 
 	List<CloudTagResult> tagResult = (List<CloudTagResult>) request.getAttribute("cloudResult");
 
 %>
-<%-- <h3 class="facets"><fmt:message key="jsp.search.cloudtag" /></h3> --%>
-<div id="cloud" class="tag-cloud-container">
-	<%-- <span class="shadow"></span> --%>
-	
-	<div id="cloud-text">
-	
-	<%
+    	<%
 		if(tagResult != null && !tagResult.isEmpty())
 		{
-			for(CloudTagResult cloudTag : tagResult)
-			{
-	%>
-		
-		<span>
-			<a href="<%= request.getContextPath()
-	                + "/simple-search?query="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8") %>" class="cloudtag-<%= cloudTag.getRelevance() %>"><%= cloudTag.getCloudName() %></a>
-		</span>
-	
-	<%
-			}
+		%>
+			<div class="cloud-tag-label">
+				<h3>Nuvem de tags</h3>
+			</div>
+			<div id="cloud2" class="tag-cloud-container"></div>
+		<%
 		}
-	%>
-	</div>
-</div>
+		%>
+
+<script type="text/javascript">
+    	<%
+		if(tagResult != null && !tagResult.isEmpty())
+		{
+		%>
+	     var word_list = [
+			<%
+				int i = 0;
+				for(CloudTagResult cloudTag : tagResult)
+				{
+			%>
+	                {text: "<%= cloudTag.getCloudName() %>", weight: <%= cloudTag.getRelevance() %>, link: "<%= request.getContextPath() + "/simple-search?query="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8") %>"}<%= (++i < tagResult.size()) ? "," : "" %>
+			<%
+				}
+			%>
+			];
+			
+			
+			jQuery(document).ready(function(){
+	         	jQuery("#cloud2").jQCloud(word_list);
+	       });
+		<%
+		}
+		%>
+        
+</script>

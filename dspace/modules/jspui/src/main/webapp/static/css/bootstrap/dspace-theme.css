@@ -80,6 +80,7 @@ input.ds-authority-lock.is-unlocked
 		 Cor da borda: #7aa97a
 		 Cor da borda clara: #bed7be
 		 Verde escuro: #006633
+		 Cinza claro: #f3f3f3
 **/
 
 /** Linhas de tabelas **/
@@ -237,8 +238,8 @@ a {
     border-color: #7aa97a;
 }
 
-
-.alert a {
+/** Modifica cor do link da submissão **/
+.alert a, .alert a:HOVER, .alert a:VISITED, .alert a:FOCUS {
 	color: #fff;
 }
 
@@ -341,6 +342,8 @@ h3, .h3 {
 	font-weight: bold;
 }
 
+
+/*** Nuvem de tags ***/
 .cloudtag-1 {
 	font-size: 14px;	
 }
@@ -355,51 +358,36 @@ h3, .h3 {
 	font-size: 26px;	
 }
 
-/*  Cor padrão do topo: #088a29
- Cor para itens selecionados e fundo de topo de paineis: #449d44 */
+.cloud-tag-label {
+	width: 100%; 
+	text-align: center;
+}
+
+.cloud-tag-label h3 {
+	color: #c4c4c4;
+	font-size: 22px;
+	letter-spacing: 3px;
+}
+ 
 #cloud a
 {
 	color: #8d8f92;
 } 
  
-#cloud {
-	width: 90%;
-	
-	background: #FFFFFF; /* #f2f9fe ; */
-	border-radius: 100px;
-	-webkit-border-radius: 100px;
-	-moz-border-radius: 100px;
-	
+.tag-cloud-container {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width: 100%;
 	position: relative;
-	margin: 40px auto 40px;
+	margin: -10px auto 40px;
+	height: 350px;
+	border: 2px solid #f3f3f3;
 }
 
-#cloud:after, #cloud:before {
-	content: '';
-	position: absolute;
-	/* background: #449d44; */
-	background: #FFFFFF;
-	z-index: -1;
-}
-
-.shadow {
-	width: 90%;
-	position: absolute; bottom: -1px; 
-	background: #000;
-	z-index: -1;
-	
-	box-shadow: 0 0 25px 8px rgba(0, 0, 0, 0.4);
-	-moz-box-shadow: 0 0 25px 8px rgba(0, 0, 0, 0.4);
-	-webkit-box-shadow: 0 0 25px 8px rgba(0, 0, 0, 0.4);
-	
-	border-radius: 50%;
-	-moz-border-radius: 50%;
-	-webkit-border-radius: 50%;
-}
 
 #cloud-text {
 	text-align: center;
-	margin: 0px 25px 0px 25px;
 }
 
 #cloud-text span {
@@ -487,17 +475,29 @@ code {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     vertical-align: middle;
 }
+.input-border-no-paddings {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555;
+    font-size: 14px;
+    height: 34px;
+    line-height: 1.42857;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+    vertical-align: middle;
+    padding-left: 2px;
+}
 
-
+/** Aplicabilidade nas tabelas **/
 .table > tbody > tr:nth-child(2n+1) > td {
 	background-color: #f1ffee;
 }
 .table > tbody > tr:nth-child(2n+1) > th {
-	background-color: #5cb85c;
-	color: white;
+	background-color: #f3f3f3;
 }
 
-.table th {
-    border-top: 1px solid #006633 !important;
+/** Espaçamento entre labels da submissão e seus textos **/
+.metadataFieldValue a {
+	padding-left: 10px;
 }
-

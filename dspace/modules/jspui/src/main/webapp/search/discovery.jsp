@@ -8,6 +8,7 @@
 
 --%>
 
+
 <%--
   - Display the form to refine the simple-search and dispaly the results of the search
   -
@@ -157,6 +158,9 @@
 </script>		
 </c:set>
 
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/discovery-search-tabs.js"></script>
+
+
 <dspace:layout titlekey="jsp.search.title">
 
     <%-- <h1>Search Results</h1> --%>
@@ -172,6 +176,7 @@
          <label for="tlocation">
          	<fmt:message key="jsp.search.results.searchin"/>
          </label>
+         
          <select name="location" id="tlocation" class="input-border-no-paddings">
 <%
     if (scope == null)
@@ -195,8 +200,7 @@
 <%
     }
 %>                                </select>
-<br/>
-<br/>
+<br/><br/>
 
 								<div class="input-group">
                                		<label class="input-group-addon addongreen" for="query"><fmt:message key="jsp.search.results.searchfor"/></label>
@@ -214,63 +218,50 @@
                                 <input type="hidden" value="<%= rpp %>" name="rpp" />
                                 <input type="hidden" value="<%= sortedBy %>" name="sort_by" />
                                 <input type="hidden" value="<%= order %>" name="order" />
-<% if (appliedFilters.size() > 0 ) { %>                   
-		</br>             
+<% if (appliedFilters.size() > 0 ) { %>                                
 		<div class="discovery-search-appliedFilters">
-			
-			<div style="width: 15%;" class=" pull-left">
-				<span>
-					<fmt:message key="jsp.search.filter.applied" />
-				</span>
-			</div>
-			
-			<div  style="width: 30%;" class="form-group  pull-left">
+		<br/>
+		<span><fmt:message key="jsp.search.filter.applied" /></span>
+		<br/>
+		<%
+			int idx = 1;
+			for (String[] filter : appliedFilters)
+			{
+			    boolean found = false;
+			    %>
+			    
+			    <select id="filter_field_<%=idx %>" name="filter_field_<%=idx %>" style="width: 20%;" class="input-border-no-paddings">
 				<%
-					int idx = 1;
-					for (String[] filter : appliedFilters)
+					for (DiscoverySearchFilter searchFilter : availableFilters)
 					{
-					    boolean found = false;
-					    %>
-					    <div class="pull-left" style="width: 48%;" >
-						    <select id="filter_field_<%=idx %>" name="filter_field_<%=idx %>" class="form-control">
-								<%
-									for (DiscoverySearchFilter searchFilter : availableFilters)
-									{
-									    String fkey = "jsp.search.filter."+searchFilter.getIndexFieldName();
-									    %><option value="<%= searchFilter.getIndexFieldName() %>"<% 
-									            if (filter[0].equals(searchFilter.getIndexFieldName()))
-									            {
-									                %> selected="selected"<%
-									                found = true;
-									            }
-									            %>><fmt:message key="<%= fkey %>"/></option><%
-									}
-									if (!found)
-									{
-									    String fkey = "jsp.search.filter."+filter[0];
-									    %><option value="<%= filter[0] %>" selected="selected"><fmt:message key="<%= fkey %>"/></option><%
-									}
-								%>
-							</select>
-					    </div>
-					    
-					    <div class="pull-left" style="padding-left: 10px; width: 48%;" >
-							<select id="filter_type_<%=idx %>" name="filter_type_<%=idx %>" class="form-control">
-							<%
-								for (String opt : options)
-								{
-								    String fkey = "jsp.search.filter.op."+opt;
-								    %><option value="<%= opt %>"<%= opt.equals(filter[1])?" selected=\"selected\"":"" %>><fmt:message key="<%= fkey %>"/></option><%
-								}
-							%>
-							</select>
-					    </div>
-			
-			</div>
-			<div style="width: 55%;" class="form-group pull-left">
-				<input type="text" id="filter_value_<%=idx %>" name="filter_value_<%=idx %>" value="<%= StringEscapeUtils.escapeHtml(filter[2]) %>" size="45" style="width: 85%;" class="pull-left input-border"/>
-				<input class="btn btn-default pull-right" type="submit" id="submit_filter_remove_<%=idx %>" name="submit_filter_remove_<%=idx %>" value="X"/>
-			</div>
+					    String fkey = "jsp.search.filter."+searchFilter.getIndexFieldName();
+					    %><option value="<%= searchFilter.getIndexFieldName() %>"<% 
+					            if (filter[0].equals(searchFilter.getIndexFieldName()))
+					            {
+					                %> selected="selected"<%
+					                found = true;
+					            }
+					            %>><fmt:message key="<%= fkey %>"/></option><%
+					}
+					if (!found)
+					{
+					    String fkey = "jsp.search.filter."+filter[0];
+					    %><option value="<%= filter[0] %>" selected="selected"><fmt:message key="<%= fkey %>"/></option><%
+					}
+				%>
+				</select>
+				<select id="filter_type_<%=idx %>" name="filter_type_<%=idx %>"  style="width: 20%;" class="input-border-no-paddings">
+				<%
+					for (String opt : options)
+					{
+					    String fkey = "jsp.search.filter.op."+opt;
+					    %><option value="<%= opt %>"<%= opt.equals(filter[1])?" selected=\"selected\"":"" %>><fmt:message key="<%= fkey %>"/></option><%
+					}
+				%>
+				</select>
+				<input type="text" id="filter_value_<%=idx %>" name="filter_value_<%=idx %>" value="<%= StringEscapeUtils.escapeHtml(filter[2]) %>" style="width: 48%;" class="input-border-no-paddings"/>
+				<input class="btn btn-default" type="submit" id="submit_filter_remove_<%=idx %>" name="submit_filter_remove_<%=idx %>" value="X" />
+				<br/>
 				<%
 				idx++;
 			}
@@ -279,64 +270,49 @@
 <% } %>
 		</form>
 <% if (availableFilters.size() > 0) { %>
-		<br/>
 		<h5><strong><fmt:message key="jsp.search.filter.heading" /></strong></h5>
 		<p class="discovery-search-filters-hint"><fmt:message key="jsp.search.filter.hint" /></p>
 		<form action="simple-search" method="get">
-		
-			<input type="hidden" value="<%= StringEscapeUtils.escapeHtml(searchScope) %>" name="location" />
-			<input type="hidden" value="<%= StringEscapeUtils.escapeHtml(query) %>" name="query" />
-		
-			<div>
-			
-				<% if (appliedFilterQueries.size() > 0 ) { 
-						int idx = 1;
-						for (String[] filter : appliedFilters)
-						{
-						    boolean found = false;
-						    %>
-						    <input type="hidden" id="filter_field_<%=idx %>" name="filter_field_<%=idx %>" value="<%= filter[0] %>" />
-							<input type="hidden" id="filter_type_<%=idx %>" name="filter_type_<%=idx %>" value="<%= filter[1] %>" />
-							<input type="hidden" id="filter_value_<%=idx %>" name="filter_value_<%=idx %>" value="<%= StringEscapeUtils.escapeHtml(filter[2]) %>" />
-							<%
-							idx++;
-						}
-				} %>
-				
-				<div class="pull-left" style="width: 20%;">
-					<select id="filtername" name="filtername" class="form-control pull-left">
+		<input type="hidden" value="<%= StringEscapeUtils.escapeHtml(searchScope) %>" name="location" />
+		<input type="hidden" value="<%= StringEscapeUtils.escapeHtml(query) %>" name="query" />
+		<% if (appliedFilterQueries.size() > 0 ) { 
+				int idx = 1;
+				for (String[] filter : appliedFilters)
+				{
+				    boolean found = false;
+				    %>
+				    <input type="hidden" id="filter_field_<%=idx %>" name="filter_field_<%=idx %>" value="<%= filter[0] %>" />
+					<input type="hidden" id="filter_type_<%=idx %>" name="filter_type_<%=idx %>" value="<%= filter[1] %>" />
+					<input type="hidden" id="filter_value_<%=idx %>" name="filter_value_<%=idx %>" value="<%= StringEscapeUtils.escapeHtml(filter[2]) %>" />
 					<%
-						for (DiscoverySearchFilter searchFilter : availableFilters)
-						{
-						    String fkey = "jsp.search.filter."+searchFilter.getIndexFieldName();
-						    %><option value="<%= searchFilter.getIndexFieldName() %>"><fmt:message key="<%= fkey %>"/></option><%
-						}
-					%>
-					</select>
-				</div>
-				
-				<div class="pull-left default-padding-left" style="width: 20%;">
-					<select id="filtertype" name="filtertype" class="form-control pull-left ">
-					<%
-						for (String opt : options)
-						{
-						    String fkey = "jsp.search.filter.op."+opt;
-						    %><option value="<%= opt %>"><fmt:message key="<%= fkey %>"/></option><%
-						}
-					%>
-					</select>
-				</div>
-				
-				<div class="pull-left" style="width: 60%;padding-left: 10px;">
-					<input type="text" id="filterquery" name="filterquery" size="45" class="form-control pull-left" style="width: 80%"/>
-			        <input type="hidden" value="<%= rpp %>" name="rpp" />
-			        <input type="hidden" value="<%= sortedBy %>" name="sort_by" />
-			        <input type="hidden" value="<%= order %>" name="order" />
-					<input class="btn btn-default pull-right" type="submit" value="<fmt:message key="jsp.search.filter.add"/>" />
-				</div>
-			</div>
-			
+					idx++;
+				}
+		} %>
+		<select id="filtername" name="filtername" class="input-border-no-paddings">
+		<%
+			for (DiscoverySearchFilter searchFilter : availableFilters)
+			{
+			    String fkey = "jsp.search.filter."+searchFilter.getIndexFieldName();
+			    %><option value="<%= searchFilter.getIndexFieldName() %>"><fmt:message key="<%= fkey %>"/></option><%
+			}
+		%>
+		</select>
+		<select id="filtertype" name="filtertype" class="input-border-no-paddings">
+		<%
+			for (String opt : options)
+			{
+			    String fkey = "jsp.search.filter.op."+opt;
+			    %><option value="<%= opt %>"><fmt:message key="<%= fkey %>"/></option><%
+			}
+		%>
+		</select>
+		<input type="text" id="filterquery" name="filterquery" size="45" class="input-border-no-paddings"/>
+        <input type="hidden" value="<%= rpp %>" name="rpp" />
+        <input type="hidden" value="<%= sortedBy %>" name="sort_by" />
+        <input type="hidden" value="<%= order %>" name="order" />
+		<input class="btn btn-default" type="submit" value="<fmt:message key="jsp.search.filter.add"/>" />
 		</form>
+	</div>
 <% } %>
         <%-- Include a component for modifying sort by, order, results per page, and et-al limit --%>
    <div class="discovery-pagination-controls panel-footer">
@@ -356,7 +332,6 @@
 					idx++;
 				}
 	} %>	
-	
            <label for="rpp"><fmt:message key="search.results.perpage"/></label>
            <select name="rpp" class="input-border-no-paddings">
 <%

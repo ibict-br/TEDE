@@ -137,7 +137,7 @@
 	{
 %>
 		<span><fmt:message key="browse.nav.date.jump"/> </span>
-		<select name="year">
+		<select name="year" class="input-border-no-paddings">
             <option selected="selected" value="-1"><fmt:message key="browse.nav.year"/></option>
 <%
 		int thisYear = DCDate.getCurrent().getYear();
@@ -155,7 +155,7 @@
             <option>1960</option>
             <option>1950</option>
         </select>
-        <select name="month">
+        <select name="month" class="input-border-no-paddings">
             <option selected="selected" value="-1"><fmt:message key="browse.nav.month"/></option>
 <%
 		for (int i = 1; i <= 12; i++)
@@ -212,13 +212,13 @@
 		}
 --%>
 		<label for="order"><fmt:message key="browse.single.order"/></label>
-		<select name="order">
+		<select name="order" class="input-border-no-paddings">
 			<option value="ASC" <%= ascSelected %>><fmt:message key="browse.order.asc" /></option>
 			<option value="DESC" <%= descSelected %>><fmt:message key="browse.order.desc" /></option>
 		</select>
 		
 		<label for="rpp"><fmt:message key="browse.single.rpp"/></label>
-		<select name="rpp">
+		<select name="rpp" class="input-border-no-paddings">
 <%
 	for (int i = 5; i <= 100 ; i += 5)
 	{
