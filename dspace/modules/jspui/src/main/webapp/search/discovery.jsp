@@ -731,8 +731,8 @@ else
 	    
 	    String fkey = "jsp.search.facet.refine."+f;
 	    %><div id="facet_<%= f %>" class="panel panel-success">
-	    <div class="panel-heading"><fmt:message key="<%= fkey %>" /></div>
-	    <ul class="list-group"><%
+	    <div class="panel-heading  facet-panel clickable-panel"><fmt:message key="<%= fkey %>" /><span class="glyphicon glyphicon-plus pull-right"></span></div>
+	    <ul class="list-group hideFacets"><%
 	    int idx = 1;
 	    int currFp = UIUtil.getIntParameter(request, f+"_page");
 	    if (currFp < 0)
@@ -803,6 +803,7 @@ else
 
 </div>
 <% } %>
+<script type="text/javascript" src="<%= request.getContextPath() %>/static/js/clickable-facet.js"></script>
 </dspace:sidebar>
 </dspace:layout>
 
