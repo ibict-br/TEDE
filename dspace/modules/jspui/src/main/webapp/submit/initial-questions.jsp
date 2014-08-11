@@ -72,10 +72,11 @@
     {
 %>			
 		<div class="input-group">
+			<label class="form-control"><fmt:message key="jsp.submit.initial-questions.elem5"/></label>
 			<span class="input-group-addon">
-				<input type="checkbox" name="has_sponsorship" id="has_sponsorship" value="true" <%= (subInfo.getSubmissionItem().hasMultipleTitles() ? "checked='checked'" : "") %> /></td>
+				<input type="radio" name="has_sponsorship" id="has_sponsorship_yes"  value="true" <%= (subInfo.getSubmissionItem().hasMultipleTitles() ? "checked='checked'" : "") %>>&nbsp;<label for="has_sponsorship_yes" style=""><fmt:message key="jsp.submit.sponsorship.yes"/></label></input>
+				<input type="radio" name="has_sponsorship" id="has_sponsorship_no" value="false" <%= (subInfo.getSubmissionItem().hasMultipleTitles() ? "" : "checked='checked'") %>>&nbsp;<label for="has_sponsorship_no"><fmt:message key="jsp.submit.sponsorship.no"/></label></input>
 			</span>
-			<label class="form-control" for="has_sponsorship"><fmt:message key="jsp.submit.initial-questions.elem5"/></label>
 		</div>
 <%
     }

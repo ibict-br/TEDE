@@ -16,7 +16,7 @@
   -    discovery.searchScope - the search scope 
   --%>
 
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@page import="java.net.URLEncoder"%>
 <%@page import="org.dspace.app.webui.discovery.dto.CloudTagResult"%>
 <%@page import="java.util.List"%>
@@ -34,7 +34,7 @@
 		{
 		%>
 			<div class="cloud-tag-label">
-				<h3>Nuvem de tags</h3>
+				<h3><fmt:message key="jsp.home.dspace.cloudheader" /></h3>
 			</div>
 			<div id="cloud2" class="tag-cloud-container"></div>
 		<%
