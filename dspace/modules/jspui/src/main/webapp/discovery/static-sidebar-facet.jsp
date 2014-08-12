@@ -16,6 +16,7 @@
   -    discovery.searchScope - the search scope 
   --%>
 
+<%@page import="org.dspace.app.webui.util.UIUtil"%>
 <%@page import="org.dspace.discovery.configuration.DiscoverySearchFilterFacet"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="java.util.Set"%>
@@ -26,6 +27,14 @@
 <%@ page import="org.apache.commons.lang.StringUtils"%>
 
 <%
+
+	String currentPage = UIUtil.getOriginalURL(request);
+	int c = currentPage.indexOf( '?' );
+	if( c > -1 )
+	{
+	    currentPage = currentPage.substring( 0, c );
+	}
+	
 	boolean brefine = false;
 
 	int discovery_panel_cols = 12;
@@ -83,8 +92,13 @@
 	    String fkey = "jsp.search.facet.refine."+f;
 	    int limit = facetConf.getFacetLimit()+1;
 	    %>
-	    
+       <%
+    	if(currentPage.endsWith("/home.jsp")) {
+    	%>
 	    <div id="facet_<%= f %>" class="col-md-<%= discovery_facet_cols %>">
+	    <%
+    	}
+	    %>
 	    	<div class="panel panel-success">
 		    	<div class="panel-heading facet-panel clickable-panel"><fmt:message key="<%= fkey %>" /><span class="glyphicon glyphicon-plus pull-right"></span></div>
 		    		<ul class="list-group hideFacets"><%
@@ -129,7 +143,13 @@
 					    }
 		    %>	</ul>
 	    </div>
-    </div>
+	      <%
+    	if(currentPage.endsWith("/home.jsp")) {
+    	%>
+   		 </div>
+   		 <%
+    	}
+   		 %>
    <%
 	}
 %></div></div><%
