@@ -106,6 +106,7 @@
 				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
@@ -134,6 +135,7 @@
 				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
@@ -260,6 +262,7 @@
 				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
@@ -288,6 +291,7 @@
 				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
@@ -365,6 +369,8 @@
                 <value>dc.contributor.advisor</value>
             </list>
         </property>
+		<property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
     </bean>
 	
 	<bean id="searchFilterAdvisorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
@@ -546,6 +552,17 @@
         <property name="metadataFields">
             <list>
                 <value>dc.publisher.department</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	<bean id="searchFilterSponsorship" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="sponsorship"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.description.sponsorship</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
