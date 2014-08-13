@@ -128,7 +128,7 @@
 		}
 		else {
 			$('<span id="selectedFile">&nbsp;'+$('#tfile').val().replace(/.*(\/|\\)/, '')+'</span>').insertAfter($('#spanFile')).append('&nbsp;');
-			var span = $('<button class="btn btn-danger pull-left" type="submit" name="submit_remove_6088" value="Deletar"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Deletar</button>');
+			var span = $('<button class="btn btn-danger" type="submit" name="submit_remove_6088" value="Deletar"><span class="glyphicon glyphicon-trash"></span>&nbsp;&nbsp;Deletar</button>');
 			span.appendTo($('#selectedFile'));
     		span.click(function(e){
     				var parent = $('#spanFile').parent();
