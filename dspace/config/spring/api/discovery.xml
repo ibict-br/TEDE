@@ -95,27 +95,54 @@
         <!--Which sidebar facets are to be displayed-->
         <property name="sidebarFacets">
             <list>
-                <ref bean="searchFilterAdvisor" />
 				<ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisorCo" />
+				<ref bean="searchFilterReferees" />
+				<ref bean="searchFilterContributor" />
+                <ref bean="searchFilterSubject" />
 				<ref bean="searchFilterCNPq" /> 
+				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
+				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
-				<ref bean="searchFilterIssued" />
+                <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterFormat" />
+			<!--	<ref bean="searchFilterLicence" /> -->
+				<ref bean="searchFilterAccess" />
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterTitle" />
+				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterAuthorID" />
                 <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisorID" />
+				<ref bean="searchFilterAdvisorCo" />
+				<ref bean="searchFilterAdvisorCoID" />
+				<ref bean="searchFilterReferees" />
+				<ref bean="searchFilterRefereesID" />
+				<ref bean="searchFilterContributor" />
+				<ref bean="searchFilterContributorID" />
                 <ref bean="searchFilterSubject" />
 				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterFormat" />
+				<ref bean="searchFilterLicence" />
+				<ref bean="searchFilterAccess" />
+				<ref bean="searchFilterAll" />
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -224,28 +251,54 @@
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
-				<ref bean="searchFilterAdvisor" />
-                <ref bean="searchFilterAuthor" />
-				<ref bean="searchFilterCNPq" />
+				<ref bean="searchFilterAuthor" />
+                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisorCo" />
+				<ref bean="searchFilterReferees" />
+				<ref bean="searchFilterContributor" />
+                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterCNPq" /> 
+				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
-				<ref bean="searchFilterType" />
-				<ref bean="searchFilterIssued" />
+				<ref bean="searchFilterSponsorship" />
+                <ref bean="searchFilterType" />
+                <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterFormat" />
+			<!--	<ref bean="searchFilterLicence" /> -->
+				<ref bean="searchFilterAccess" />
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
         <property name="searchFilters">
             <list>
-                <ref bean="searchFilterTitle" />
+				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterAuthorID" />
                 <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisorID" />
+				<ref bean="searchFilterAdvisorCo" />
+				<ref bean="searchFilterAdvisorCoID" />
+				<ref bean="searchFilterReferees" />
+				<ref bean="searchFilterRefereesID" />
+				<ref bean="searchFilterContributor" />
+				<ref bean="searchFilterContributorID" />
                 <ref bean="searchFilterSubject" />
-				<ref bean="searchFilterCNPq" />
+				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
                 <ref bean="searchFilterType" />
                 <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterFormat" />
+				<ref bean="searchFilterLicence" />
+				<ref bean="searchFilterAccess" />
+				<ref bean="searchFilterAll" />
             </list>
         </property>
         <!--The sort filters for the discovery search (same as defaultConfiguration above)-->
@@ -256,8 +309,12 @@
                 <property name="defaultSortOrder" value="desc"/>
                 <property name="sortFields">
                     <list>
+						<ref bean="sortDateIssued" />
                         <ref bean="sortTitle" />
-                        <ref bean="sortDateIssued" />
+						<ref bean="sortAuthor" />
+						<ref bean="sortAdvisor" />
+						<ref bean="sortProgram" />
+						<ref bean="sortType" />
                     </list>
                 </property>
             </bean>
@@ -273,12 +330,14 @@
         </property>
     </bean>
 
+		
     <!--Search filter configuration beans-->
     <bean id="searchFilterTitle" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
         <property name="indexFieldName" value="title"/>
         <property name="metadataFields">
             <list>
                 <value>dc.title</value>
+				<value>dc.title.alternative</value>
             </list>
         </property>
     </bean>
@@ -288,13 +347,21 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.author</value>
-                <value>dc.creator</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
+	<bean id="searchFilterAuthorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="authorid"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.authorID</value>
+            </list>
+        </property>
+    </bean>
+	
     <bean id="searchFilterAdvisor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="advisor"/>
         <property name="metadataFields">
@@ -302,11 +369,106 @@
                 <value>dc.contributor.advisor</value>
             </list>
         </property>
+		<property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	<bean id="searchFilterAdvisorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="advisorid"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.advisorID</value>
+            </list>
+        </property>
+    </bean>
+	
+	<bean id="searchFilterAdvisorCo" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="advisorco"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.advisor-co1</value>
+				<value>dc.contributor.advisor-co2</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	<bean id="searchFilterAdvisorCoID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="advisorcoid"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.advisor-co1ID</value>
+				<value>dc.contributor.advisor-co2ID</value>
+            </list>
+        </property>
+    </bean>
+	
+	<bean id="searchFilterReferees" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="referees"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.referees1</value>
+				<value>dc.contributor.referees2</value>
+				<value>dc.contributor.referees3</value>
+				<value>dc.contributor.referees4</value>
+				<value>dc.contributor.referees5</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	<bean id="searchFilterRefereesID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="refereesid"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.referees1ID</value>
+				<value>dc.contributor.referees2ID</value>
+				<value>dc.contributor.referees3ID</value>
+				<value>dc.contributor.referees4ID</value>
+				<value>dc.contributor.referees5ID</value>
+            </list>
+        </property>
+    </bean>
+	
+	<bean id="searchFilterContributor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="contributor"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.author</value>
+				<value>dc.contributor.advisor</value>
+				<value>dc.contributor.advisor-co1</value>
+				<value>dc.contributor.advisor-co2</value>
+				<value>dc.contributor.referees1</value>
+				<value>dc.contributor.referees2</value>
+				<value>dc.contributor.referees3</value>
+				<value>dc.contributor.referees4</value>
+				<value>dc.contributor.referees5</value>
+            </list>
+        </property>
         <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
-    <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
+	<bean id="searchFilterContributorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="contributorid"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.contributor.authorID</value>
+				<value>dc.contributor.advisorID</value>
+				<value>dc.contributor.advisor-co1ID</value>
+				<value>dc.contributor.advisor-co2ID</value>
+				<value>dc.contributor.referees1ID</value>
+				<value>dc.contributor.referees2ID</value>
+				<value>dc.contributor.referees3ID</value>
+				<value>dc.contributor.referees4ID</value>
+				<value>dc.contributor.referees5ID</value>
+            </list>
+        </property>
+    </bean>
+	
+    <bean id="searchFilterSubject" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="subject"/>
         <property name="metadataFields">
             <list>
@@ -315,7 +477,6 @@
         </property>
         <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
-        <property name="splitter" value="::"/>
     </bean>
 	
 	<bean id="searchFilterCNPq" class="org.dspace.discovery.configuration.HierarchicalSidebarFacetConfiguration">
@@ -341,12 +502,34 @@
         <property name="type" value="date"/>
         <property name="sortOrder" value="VALUE"/>
     </bean>
+	
+	<bean id="searchFilterAvailable" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="available"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.date.available</value>
+            </list>
+        </property>
+        <property name="type" value="date"/>
+        <property name="sortOrder" value="VALUE"/>
+    </bean>
 
     <bean id="searchFilterPublisher" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="publisher"/>
         <property name="metadataFields">
             <list>
                 <value>dc.publisher</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	 <bean id="searchFilterInitials" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="initials"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.publisher.initials</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
@@ -375,6 +558,17 @@
         <property name="sortOrder" value="COUNT"/>
     </bean>
 	
+	<bean id="searchFilterSponsorship" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="sponsorship"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.description.sponsorship</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
     <bean id="searchFilterType" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="type"/>
         <property name="metadataFields">
@@ -382,19 +576,106 @@
                 <value>dc.type</value>
             </list>
         </property>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	<bean id="searchFilterFormat" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="format"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.format</value>
+            </list>
+        </property>
         <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
-
-
-    <!--Sort properties-->
-    <bean id="sortTitle" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
-        <property name="metadataField" value="dc.title"/>
+	
+	<bean id="searchFilterAccess" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="access"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.rights</value>
+            </list>
+        </property>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+    <bean id="searchFilterLicence" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+        <property name="indexFieldName" value="licence"/>
+        <property name="metadataFields">
+            <list>
+                <value>dc.rights.uri</value>
+            </list>
+        </property>
+        <property name="facetLimit" value="7"/>
+        <property name="sortOrder" value="COUNT"/>
+    </bean>
+	
+	<bean id="searchFilterAll" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="all"/>
+        <property name="metadataFields">
+            <list>
+				<value>dc.title</value>
+				<value>dc.title.alternative</value>
+				<value>dc.contributor.author</value>
+				<value>dc.contributor.authorID</value>
+				<value>dc.contributor.advisor</value>
+				<value>dc.contributor.advisorID</value>
+				<value>dc.contributor.advisor-co1</value>
+				<value>dc.contributor.advisor-co2</value>
+				<value>dc.contributor.advisor-co1ID</value>
+				<value>dc.contributor.advisor-co2ID</value>
+				<value>dc.contributor.referees1</value>
+				<value>dc.contributor.referees2</value>
+				<value>dc.contributor.referees3</value>
+				<value>dc.contributor.referees4</value>
+				<value>dc.contributor.referees5</value>
+				<value>dc.contributor.referees1ID</value>
+				<value>dc.contributor.referees2ID</value>
+				<value>dc.contributor.referees3ID</value>
+				<value>dc.contributor.referees4ID</value>
+				<value>dc.contributor.referees5ID</value>
+				<value>dc.subject</value>
+				<value>dc.subject.cnpq</value>
+				<value>dc.date.issued</value>
+				<value>dc.date.available</value>
+				<value>dc.publisher</value>
+				<value>dc.publisher.initials</value>
+				<value>dc.publisher.program</value>
+				<value>dc.publisher.department</value>
+				<value>dc.type</value>
+				<value>dc.format</value>
+				<value>dc.rights</value>
+				<value>dc.rights.uri</value>
+            </list>
+        </property>
     </bean>
 
+    <!--Sort properties-->
+	
     <bean id="sortDateIssued" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
         <property name="metadataField" value="dc.date.issued"/>
         <property name="type" value="date"/>
+    </bean>
+	
+    <bean id="sortTitle" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.title"/>
+    </bean>
+	
+	<bean id="sortAuthor" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.author"/>
+    </bean>
+	
+	<bean id="sortAdvisor" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.advisor"/>
+    </bean>
+
+	<bean id="sortProgram" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.publisher.program"/>
+    </bean>
+
+	<bean id="sortType" class="org.dspace.discovery.configuration.DiscoverySortFieldConfiguration">
+        <property name="metadataField" value="dc.type"/>
     </bean>
     
 </beans>
