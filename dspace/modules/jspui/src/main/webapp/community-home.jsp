@@ -248,13 +248,14 @@
 	</div>
 </div>
 
-<div class="row">
+<div class="container row">
 
     <%--
     	int discovery_panel_cols = 12;
     	int discovery_facet_cols = 4;
     --%>
-	<%@ include file="discovery/static-sidebar-facet.jsp" %>
+    <% request.setAttribute("createRootDiv", true); %>
+	<%@ include file="discovery/static-sidebar-facet.jsp"  %>
 </div>
 <div class="row">
 <%

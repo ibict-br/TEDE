@@ -237,6 +237,7 @@
         </select>
         <input type="submit" class="btn btn-default" value="<fmt:message key="browse.nav.go"/>" />
         <br/>
+        <br/>
         <label for="starts_with106540798"><fmt:message key="browse.nav.type-year"/></label>
         <input type="text" name="starts_with" id="starts_with106540798" class="input-border" size="4" maxlength="4"/>
 <%

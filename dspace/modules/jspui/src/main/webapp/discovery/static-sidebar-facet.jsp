@@ -93,7 +93,8 @@
 	    int limit = facetConf.getFacetLimit()+1;
 	    %>
        <%
-    	if(currentPage.endsWith("/home.jsp")) {
+       	boolean renderDiv = request.getAttribute("createRootDiv") != null;
+    	if(renderDiv) {
     	%>
 	    <div id="facet_<%= f %>" class="col-md-<%= discovery_facet_cols %>">
 	    <%
@@ -144,7 +145,7 @@
 		    %>	</ul>
 	    </div>
 	      <%
-    	if(currentPage.endsWith("/home.jsp")) {
+    	if(renderDiv) {
     	%>
    		 </div>
    		 <%

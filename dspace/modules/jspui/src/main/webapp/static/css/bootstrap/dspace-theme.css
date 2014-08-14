@@ -253,6 +253,11 @@ a {
     border-color: #31B404;
 }
 
+.navbar-inverse .navbar-nav > .dropdown > a .caret, .navbar-inverse .navbar-nav > .dropdown > a .caret:HOVER, .nav a:hover .caret {
+    border-bottom-color: #fff;
+    border-top-color: #fff;
+}
+
 a:hover, a:focus {
     color: #449d44;
 }
@@ -380,7 +385,7 @@ h3, .h3 {
 	border-radius: 10px;
 	width: 100%;
 	position: relative;
-	margin: -10px auto 40px;
+	margin: -5px auto 40px;
 	height: 350px;
 	border: 2px solid #f3f3f3;
 }

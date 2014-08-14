@@ -41,6 +41,8 @@
 <%@ page import="org.dspace.eperson.Group"     %>
 <%@ page import="javax.servlet.jsp.jstl.fmt.LocaleSupport" %>
 <%@ page import="java.net.URLEncoder" %>
+<%@ page import="org.apache.commons.lang.StringUtils"%>
+
 
 
 <%
@@ -387,7 +389,7 @@
     	int discovery_panel_cols = 12;
     	int discovery_facet_cols = 12;
     --%>
-    <%@ include file="discovery/static-sidebar-facet.jsp" %>
+	<%@ include file="discovery/static-sidebar-facet.jsp"  %>
   </dspace:sidebar>
 
 </dspace:layout>

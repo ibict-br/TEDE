@@ -74,6 +74,7 @@
 
 <div class="container row">
 
+    <% request.setAttribute("createRootDiv", false); %>
 	<%@ include file="discovery/cloud-tag.jsp" %>
 	
 	<%@ include file="discovery/static-sidebar-facet.jsp" %>
