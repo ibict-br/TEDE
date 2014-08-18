@@ -503,7 +503,7 @@ code {
 }
 
 /** Espaçamento entre labels da submissão e seus textos **/
-.metadataFieldValue a {
+#edit_metadata .metadataFieldValue a {
 	padding-left: 10px;
 }
 
@@ -515,3 +515,7 @@ code {
 .clickable-panel {
 	cursor: pointer;
 }
+
+
+/** JS tree **/
+li.jstree-open > a .jstree-icon { background:url("/images/favorites.png") 0px 0px no-repeat !important; }
