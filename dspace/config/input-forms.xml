@@ -106,7 +106,7 @@
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;
 		 Descrição do &lt;strong&gt;AUTOR&lt;/strong&gt;
-		 &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		 &lt;a tooltiped="" style="float:right" href="help/help-test.html#id-autor" &gt;Exemplos&lt;/a&gt;
 		 &lt;/div&gt;
 		 &lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Informe o nome do autor, conforme o formato de citação.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Informe o nome do AUTOR, conforme o formato de citação.&lt;/font&gt;

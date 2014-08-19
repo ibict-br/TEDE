@@ -515,7 +515,3 @@ code {
 .clickable-panel {
 	cursor: pointer;
 }
-
-
-/** JS tree **/
-li.jstree-open > a .jstree-icon { background:url("/images/favorites.png") 0px 0px no-repeat !important; }

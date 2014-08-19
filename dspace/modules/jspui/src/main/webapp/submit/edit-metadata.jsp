@@ -57,6 +57,14 @@
 
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+
+ <link rel="stylesheet" href="<%= request.getContextPath() %>/static/css/qtip/jquery.qtip.min.css">	
+ <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/qtip/jquery.qtip.min.js"> </script>
+ <script type="text/javascript" src="<%= request.getContextPath() %>/static/js/qtip/imagesloaded.pkg.min.js"> </script>
+ 
+
+
 <%
     request.setAttribute("LanguageSwitch", "hide");
 %>
