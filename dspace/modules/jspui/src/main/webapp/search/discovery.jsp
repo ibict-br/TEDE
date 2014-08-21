@@ -167,11 +167,11 @@
 
 <h2><fmt:message key="jsp.search.title"/></h2>
 
-<div class="discovery-search-form panel panel-default">
+<div class="discovery-search-form">
 
 
 		<%-- Controls for a repeat search --%>
-	<div class="discovery-query panel-heading container form-group">
+	<div class="discovery-query well container form-group">
     <form action="simple-search" method="get">
          <label for="tlocation">
          	<fmt:message key="jsp.search.results.searchin"/>
@@ -315,7 +315,7 @@
 	</div>
 <% } %>
         <%-- Include a component for modifying sort by, order, results per page, and et-al limit --%>
-   <div class="discovery-pagination-controls panel-footer">
+   <div class="discovery-pagination-controls well">
    <form action="simple-search" method="get">
    <input type="hidden" value="<%= StringEscapeUtils.escapeHtml(searchScope) %>" name="location" />
    <input type="hidden" value="<%= StringEscapeUtils.escapeHtml(query) %>" name="query" />

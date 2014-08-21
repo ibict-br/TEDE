@@ -177,7 +177,7 @@
 
 	<%-- Build the header (careful use of spacing) --%>
 	<h2>
-		<fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/></fmt:message> <fmt:message key="<%= typeKey %>"/> <%= value %>
+		<fmt:message key="browse.full.header"><fmt:param value="<%= scope %>"/></fmt:message> <fmt:message key="<%= typeKey %>"/> <b><%= value %></b>
 	</h2>
 
 	<%-- Include the main navigation for all the browse pages --%>
@@ -259,8 +259,8 @@
 %><br/>
 <br/>
 <div class="container">
-	<span><fmt:message key="browse.nav.enter"/></span>
-	<input type="text" name="starts_with" class="input-border"/>&nbsp;<input type="submit" class="btn btn-default" value="<fmt:message key="browse.nav.go"/>" />
+	<label for="navBy777893"><fmt:message key="browse.nav.enter"/></label>
+	<input id="navBy777893" type="text" name="starts_with" class="input-border"/>&nbsp;<input type="submit" class="btn btn-default" value="<fmt:message key="browse.nav.go"/>" />
 </div>
 <%
 	}

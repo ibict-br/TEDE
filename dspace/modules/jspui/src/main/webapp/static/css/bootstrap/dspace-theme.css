@@ -515,3 +515,19 @@ code {
 .clickable-panel {
 	cursor: pointer;
 }
+
+
+/** Cor do carrossel **/
+#recent-submissions-carousel {
+	background-color: #94d984;
+}
+
+/** Tamanho de h2 **/
+h2, .h2 {
+    font-size: 22px;
+}
+
+.well h2 {
+	margin-top: 0px;
+	margin-bottom: 0px;	
+}

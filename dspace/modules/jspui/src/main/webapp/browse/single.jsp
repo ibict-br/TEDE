@@ -184,10 +184,11 @@
 	    for (char c = 'A'; c <= 'Z'; c++)
 	    {
 %>
-        <a href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a>
+      	 <a class="label label-default"  href="<%= sharedLink %>&amp;starts_with=<%= c %>"><%= c %></a>
 <%
 	    }
 %>
+		<br/>
 		<br/>
 		<label for="starts_with65497811"><fmt:message key="browse.nav.enter"/></label>
 		<input type="text" id="starts_with65497811" class="input-border" name="starts_with"/>

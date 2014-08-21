@@ -106,11 +106,11 @@
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;
 		 Descrição do &lt;strong&gt;AUTOR&lt;/strong&gt;
-		 &lt;a tooltiped="" style="float:right" href="help/help-test.html#id-autor" &gt;Exemplos&lt;/a&gt;
+		 &lt;a tooltiped="" style="float:right" href="help/submit-help.html#id-autor" &gt;Exemplos&lt;/a&gt;
 		 &lt;/div&gt;
 		 &lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Informe o nome do autor, conforme o formato de citação.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Informe o nome do AUTOR, conforme o formato de citação.&lt;/font&gt;
-		           &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;</required>
+		           &lt;a href="help/submit-help.html#id-autor" tooltiped="" style="float:right;color:black;" href="#" &gt;Exemplos&lt;/a&gt;</required>
        </field>
 
 	    <field>
@@ -145,11 +145,11 @@
          <label>Orientador:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Descrição do &lt;strong&gt;ORIENTADOR&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a href="help/submit-help.html#id-orientador" style="float:right" tooltiped="" &gt;Exemplos&lt;/a&gt;
 			   &lt;/div&gt;
 		       &lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Informe o nome do orientador, conforme o formato de citação.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Informe o nome do ORIENTADOR, conforme o formato de citação.&lt;/font&gt; 
-		           &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;</required>
+		           &lt;a href="help/submit-help.html#id-orientador" style="float:right;color:black;" tooltiped="" &gt;Exemplos&lt;/a&gt;</required>
        </field>
 
 	    <field>
@@ -184,12 +184,12 @@
          <dc-element>contributor</dc-element>
          <dc-qualifier>advisor-co1</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>Primeiro co-orientador:</label>
+         <label>Primeiro coorientador:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;PRIMEIRO CO-ORIENTADOR&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a href="help/submit-help.html#id-coorientador" tooltiped="" style="float:right" href="#" &gt;Exemplos&lt;/a&gt;
 	           &lt;/div&gt;
-           	   &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro co-orientador, conforme o formato de citação.</hint>
+           	   &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro coorientador, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -198,9 +198,9 @@
          <dc-element>contributor</dc-element>
          <dc-qualifier>advisor-co1Lattes</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do primeiro co-orientador:</label>
+         <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do primeiro coorientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro co-orientador.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro coorientador.</hint>
          <required></required>
        </field>
 	   
@@ -209,9 +209,9 @@
          <dc-element>contributor</dc-element>
          <dc-qualifier>advisor-co1ID</dc-qualifier>
          <repeatable>true</repeatable>
-         <label>Identificador único do primeiro co-orientador:</label>
+         <label>Identificador único do primeiro coorientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro co-orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro coorientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	   
@@ -223,12 +223,12 @@
          <dc-element>contributor</dc-element>
          <dc-qualifier>advisor-co2</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>Segundo co-orientador:</label>
+         <label>Segundo coorientador:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;SEGUNDO CO-ORIENTADOR&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a href="help/submit-help.html#id-coorientador" tooltiped="" style="float:right" href="#" &gt;Exemplos&lt;/a&gt;
                &lt;/div&gt;
-		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo co-orientador, conforme o formato de citação.</hint>
+		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo coorientador, conforme o formato de citação.</hint>
          <required></required>
        </field>
 
@@ -237,9 +237,9 @@
          <dc-element>contributor</dc-element>
          <dc-qualifier>advisor-co2Lattes</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do segundo co-orientador:</label>
+         <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do segundo coorientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do segundo co-orientador.</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do segundo coorientador.</hint>
          <required></required>
        </field>
 	   
@@ -248,9 +248,9 @@
          <dc-element>contributor</dc-element>
          <dc-qualifier>advisor-co2ID</dc-qualifier>
          <repeatable>true</repeatable>
-         <label>Identificador único do segundo co-orientador:</label>
+         <label>Identificador único do segundo coorientador:</label>
          <input-type>onebox</input-type>
-         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do segundo co-orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do segundo coorientador (CPF, ID de autor privativa da instituição ou passaporte).</hint>
          <required></required>
        </field>  
 	
@@ -269,7 +269,7 @@
          <label>Primeiro membro da banca:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Descrição do &lt;strong&gt;PRIMEIRO MEMBRO DA BANCA&lt;/strong&gt;
-			   &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+			   &lt;a style="float:right" href="help/submit-help.html#id-membros-banca" tooltiped="" &gt;Exemplos&lt;/a&gt;
                &lt;/div&gt;
 		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do primeiro membro da banca, conforme o formato de citação.</hint>
          <required></required>
@@ -308,7 +308,7 @@
          <label>Segundo membro da banca:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;SEGUNDO MEMBRO DA BANCA&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a style="float:right" href="help/submit-help.html#id-membros-banca" tooltiped="" &gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
 		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo membro da banca, conforme o formato de citação.
 			   </hint>
@@ -347,7 +347,7 @@
          <label>Terceiro membro da banca:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;TERCEIRO MEMBRO DA BANCA&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a style="float:right" href="help/submit-help.html#id-membros-banca" tooltiped=""&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
 		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo membro da banca, conforme o formato de citação.</hint>
          <required></required>
@@ -385,7 +385,7 @@
          <label>Quarto membro da banca:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;QUARTO MEMBRO DA BANCA&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a style="float:right" href="help/submit-help.html#id-membros-banca" tooltiped=""&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
 		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do quarto membro da banca, conforme o formato de citação.</hint>
          <required></required>
@@ -423,7 +423,7 @@
          <label>Quinto membro da banca:</label>
          <input-type>name</input-type>
          <hint>&lt;div class="alert alert-info"&gt;Se houver, descrição do &lt;strong&gt;QUINTO MEMBRO DA BANCA&lt;/strong&gt;
-		       &lt;a style="float:right" href="#" onclick="var popupwin = window.open('help/index.html#describe2','dspacepopup','height=600,width=550,resizable,scrollbars');popupwin.focus();return false;"&gt;Exemplos&lt;/a&gt;
+		       &lt;a style="float:right" href="help/submit-help.html#id-membros-banca" tooltiped=""&gt;Exemplos&lt;/a&gt;
 		       &lt;/div&gt;
 		       &lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do quinto membro da banca, conforme o formato de citação.</hint>
          <required></required>

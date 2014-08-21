@@ -1013,7 +1013,7 @@ public class ItemTag extends TagSupport
             							out.print("<a target=\"_blank\" href=\"" + bsLink + "\">");
             							out.print("<img src=\"" + myPath + "\" ");
             							out.print("alt=\"" + tAltText
-            									+ "\" /></a><br />");
+            									+ "\" /></a><br /><br />");
             						}
             					}
 
