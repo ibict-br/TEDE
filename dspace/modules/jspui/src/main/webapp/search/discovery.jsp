@@ -730,11 +730,14 @@ else
 	    int limit = facetConf.getFacetLimit()+1;
 	    
 	    String fkey = "jsp.search.facet.refine."+f;
+	    int currFp = UIUtil.getIntParameter(request, f+"_page");
+	    
+	    boolean isSelected = request.getParameter(f+ "_page") != null;
+	    
 	    %><div id="facet_<%= f %>" class="panel panel-success">
 	    <div class="panel-heading  facet-panel clickable-panel"><fmt:message key="<%= fkey %>" /><span class="glyphicon glyphicon-plus pull-right"></span></div>
-	    <ul class="list-group hideFacets"><%
+	    <ul class="list-group hideFacets"  <%= isSelected ? "style=\"display:block\";" : "" %>><%
 	    int idx = 1;
-	    int currFp = UIUtil.getIntParameter(request, f+"_page");
 	    if (currFp < 0)
 	    {
 	        currFp = 0;
