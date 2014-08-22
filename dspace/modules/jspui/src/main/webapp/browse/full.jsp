@@ -98,7 +98,16 @@
 	String argument = null;
 	if (bi.hasAuthority())
     {
-        value = bi.getAuthority();
+		String valueParameter = request.getParameter("label");
+		if(valueParameter != null)
+		{
+			value = valueParameter;
+		}
+		else
+		{
+	        value = bi.getAuthority();
+		}
+		
         argument = "authority";
     }
 	else if (bi.hasValue())

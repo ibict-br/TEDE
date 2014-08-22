@@ -10,13 +10,6 @@
         	 changeYear: true
         });
         
-		
-    /*    
-        $("[tooltiped]").hover(function(){
-        	
-        	
-        });*/
-        
     });
 	
 
@@ -40,8 +33,8 @@ jQuery(document).ready(function(){
 			content: {
 				ajax: {
 					url: urlHref,
-					type: 'GET', // POST or GET
-					data: {}, // Data to pass along with your request
+					type: 'GET',
+					data: {}, 
 					success: function(data, status) {
 						
 						var htmlparts = jQuery.parseHTML(data);

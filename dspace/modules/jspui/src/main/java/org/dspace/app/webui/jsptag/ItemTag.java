@@ -379,7 +379,8 @@ public class ItemTag extends TagSupport
     /**
      * Render an item in the given style
      */
-    private void render() throws IOException, SQLException, DCInputsReaderException
+    @SuppressWarnings("deprecation")
+	private void render() throws IOException, SQLException, DCInputsReaderException
     {
         JspWriter out = pageContext.getOut();
         HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
@@ -612,13 +613,14 @@ public class ItemTag extends TagSupport
                         }
                         else if (browseIndex != null)
                         {
-	                        String argument, value;
+	                        String argument, value, labelAuth = null;
 	                        if ( values[j].authority != null &&
 	                                            values[j].confidence >= MetadataAuthorityManager.getManager()
 	                                                .getMinConfidence( values[j].schema,  values[j].element,  values[j].qualifier))
 	                        {
 	                            argument = "authority";
 	                            value = values[j].authority;
+	                            labelAuth = values[j].value;
 	                        }
 	                        else
 	                        {
@@ -627,7 +629,7 @@ public class ItemTag extends TagSupport
 	                        }
 	                    	out.print("<a class=\"" + ("authority".equals(argument)?"authority ":"") + browseIndex + "\""
 	                                                + "href=\"" + request.getContextPath() + "/browse?type=" + browseIndex + "&amp;" + argument + "="
-	                    				+ URLEncoder.encode(value, "UTF-8") + "\">" + Utils.addEntities(values[j].value)
+	                    				+ URLEncoder.encode(value, "UTF-8") + (labelAuth != null ? "&label=" + URLEncoder.encode(labelAuth, "UTF-8") : "") + "\">" + Utils.addEntities(values[j].value)
 	                    				+ "</a>");
 	                    }
                         else
