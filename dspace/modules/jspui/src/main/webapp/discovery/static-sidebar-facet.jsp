@@ -136,12 +136,12 @@
 						        <% if (currFp > 0) { %>
 						        <a class="pull-left" href="<%= request.getContextPath()
 						                + searchScope
-						                + "?"+f+"_page="+(currFp-1) %>"><fmt:message key="jsp.search.facet.refine.previous" /></a>
+						                + "?"+f+"_page="+(currFp-1) + "#" + "facet_" + f %>"><fmt:message key="jsp.search.facet.refine.previous" /></a>
 					            <% } %>
 					            <% if (idx > limit) { %>
 					            <a href="<%= request.getContextPath()
 						            + searchScope
-					                + "?"+f+"_page="+(currFp+1) %>"><span class="pull-right"><fmt:message key="jsp.search.facet.refine.next" /></span></a>
+					                + "?"+f+"_page="+(currFp+1) + "#" + "facet_" + f %>"><span class="pull-right"><fmt:message key="jsp.search.facet.refine.next" /></span></a>
 					            <%
 					            }
 					            %></li><%
