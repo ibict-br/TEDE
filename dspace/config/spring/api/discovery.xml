@@ -118,30 +118,30 @@
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-				<ref bean="searchFilterTitle" />
-				<ref bean="searchFilterAuthor" />
-				<ref bean="searchFilterAuthorID" />
-                <ref bean="searchFilterAdvisor" />
-				<ref bean="searchFilterAdvisorID" />
-				<ref bean="searchFilterAdvisorCo" />
-				<ref bean="searchFilterAdvisorCoID" />
-				<ref bean="searchFilterReferees" />
-				<ref bean="searchFilterRefereesID" />
-				<ref bean="searchFilterContributor" />
-				<ref bean="searchFilterContributorID" />
-                <ref bean="searchFilterSubject" />
-				<ref bean="searchFilterCNPq" /> 
-				<ref bean="searchFilterPublisher" />
-				<ref bean="searchFilterInitials" />
-				<ref bean="searchFilterProgram" />
-				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterSponsorship" />
-                <ref bean="searchFilterType" />
+				<ref bean="searchFilterCNPq" /> 
+                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterContributor" />
+				<ref bean="searchFilterAdvisorCo" />
                 <ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterFormat" />
+				<ref bean="searchFilterAuthorID" />
+				<ref bean="searchFilterAdvisorID" />
+				<ref bean="searchFilterContributorID" />
+				<ref bean="searchFilterAdvisorCoID" />
+				<ref bean="searchFilterRefereesID" />
+				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterLicence" />
+				<ref bean="searchFilterReferees" />
+                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterProgram" />
+				<ref bean="searchFilterInitials" />
+                <ref bean="searchFilterType" />
 				<ref bean="searchFilterAccess" />
+				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAll" />
             </list>
         </property>
@@ -153,8 +153,12 @@
                 <property name="defaultSortOrder" value="desc"/>
                 <property name="sortFields">
                     <list>
-                        <ref bean="sortTitle" />
+                        <ref bean="sortAuthor" />
                         <ref bean="sortDateIssued" />
+                        <ref bean="sortAdvisor" />
+                        <ref bean="sortProgram" />
+                        <ref bean="sortType" />
+                        <ref bean="sortTitle" />
                     </list>
                 </property>
             </bean>
@@ -274,30 +278,30 @@
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
         <property name="searchFilters">
             <list>
-				<ref bean="searchFilterTitle" />
-				<ref bean="searchFilterAuthor" />
-				<ref bean="searchFilterAuthorID" />
-                <ref bean="searchFilterAdvisor" />
-				<ref bean="searchFilterAdvisorID" />
-				<ref bean="searchFilterAdvisorCo" />
-				<ref bean="searchFilterAdvisorCoID" />
-				<ref bean="searchFilterReferees" />
-				<ref bean="searchFilterRefereesID" />
-				<ref bean="searchFilterContributor" />
-				<ref bean="searchFilterContributorID" />
-                <ref bean="searchFilterSubject" />
-				<ref bean="searchFilterCNPq" /> 
-				<ref bean="searchFilterPublisher" />
-				<ref bean="searchFilterInitials" />
-				<ref bean="searchFilterProgram" />
-				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterSponsorship" />
-                <ref bean="searchFilterType" />
+				<ref bean="searchFilterCNPq" /> 
+                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterContributor" />
+				<ref bean="searchFilterAdvisorCo" />
                 <ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterFormat" />
+				<ref bean="searchFilterAuthorID" />
+				<ref bean="searchFilterAdvisorID" />
+				<ref bean="searchFilterContributorID" />
+				<ref bean="searchFilterAdvisorCoID" />
+				<ref bean="searchFilterRefereesID" />
+				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterLicence" />
+				<ref bean="searchFilterReferees" />
+                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterProgram" />
+				<ref bean="searchFilterInitials" />
+                <ref bean="searchFilterType" />
 				<ref bean="searchFilterAccess" />
+				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAll" />
             </list>
         </property>
