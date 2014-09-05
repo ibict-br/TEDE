@@ -547,3 +547,10 @@ table img {
 h1, .h1 {
 font-size: 20px;
 }
+
+/* Ajuste de tamanho da descrição do repositório */
+
+.repo-description h1 {
+font-size: 40px;
+}
+
