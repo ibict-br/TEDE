@@ -535,3 +535,15 @@ h2, .h2 {
 	margin-top: 0px;
 	margin-bottom: 0px;	
 }
+
+/* Ajuste da largura para o thumbnail */
+table img {
+	width : 100px;
+	height : auto;
+}
+
+/* Ajuste de tamanho dos títulos */
+
+h1, .h1 {
+font-size: 20px;
+}
