@@ -55,11 +55,7 @@
     {
 		
         out.println( "<li class=\"\" " );
-        
-        if(c.getParentCommunity() == null)
-        {
-        	out.println("data-jstree='{\"opened\":true}'");	
-        }
+     
         out.println(">");
 
         out.println( "<a href=\"" + request.getContextPath() + "/handle/" 
