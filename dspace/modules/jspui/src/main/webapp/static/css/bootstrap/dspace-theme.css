@@ -537,7 +537,7 @@ h2, .h2 {
 }
 
 /* Ajuste da largura para o thumbnail */
-table img {
+.thumbnail-image {
 	width : 100px;
 	height : auto;
 }

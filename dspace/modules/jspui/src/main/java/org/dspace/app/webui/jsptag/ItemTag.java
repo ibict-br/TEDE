@@ -12,6 +12,7 @@ import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -183,7 +184,9 @@ import org.dspace.core.Utils;
  */
 public class ItemTag extends TagSupport
 {
-    private static final String HANDLE_DEFAULT_BASEURL = "http://hdl.handle.net/";
+    private static final String LATTES_SUFFIX = "Lattes";
+
+	private static final String HANDLE_DEFAULT_BASEURL = "http://hdl.handle.net/";
 
     private static final String DOI_DEFAULT_BASEURL = "http://dx.doi.org/";
 
@@ -215,6 +218,8 @@ public class ItemTag extends TagSupport
     
     /** regex pattern to capture the style of a field, ie <code>schema.element.qualifier(style)</code> */
     private Pattern fieldStylePatter = Pattern.compile(".*\\((.*)\\)");
+    
+    private List<String> metadataWithLattes;
 
     private static final long serialVersionUID = -3841266490729417240L;
 
@@ -269,9 +274,22 @@ public class ItemTag extends TagSupport
     {
         super();
         getThumbSettings();
+        registerMetadataLattes();
     }
 
-    public int doStartTag() throws JspException
+    /**
+     * Register metadata wich will be associated with lattes link
+     */
+    private void registerMetadataLattes() 
+    {
+    	metadataWithLattes = new ArrayList<String>();
+    	
+    	String[] metadatas = ConfigurationManager.getProperty("webui.itemdisplay.metadatawithlattes").split(",");
+    	metadataWithLattes = Arrays.asList(metadatas);
+    	
+	}
+
+	public int doStartTag() throws JspException
     {
         try
         {
@@ -519,7 +537,8 @@ public class ItemTag extends TagSupport
                  }   
                 for (int j = 0; j < values.length; j++)
                 {
-                    if (values[j] != null && values[j].value != null)
+                    DCValue currentDcValue = values[j];
+					if (currentDcValue != null && currentDcValue.value != null)
                     {						
                         if (j > 0)
                         {
@@ -541,28 +560,25 @@ public class ItemTag extends TagSupport
 
                         if (isLink)
                         {
-                            out.print("<a href=\"" + values[j].value + "\">"
-                                    + Utils.addEntities(values[j].value) + "</a>");
+                            out.print("<a href=\"" + currentDcValue.value + "\">"
+                                    + Utils.addEntities(currentDcValue.value) + "</a>");
                         }
 
                         // Defining a "lattes" presentation
 						else if (isLattes)
                         {
-						    out.print("<span id=\"" + values[j].qualifier + "\">"); 
-                            out.print("<a href=\"" + values[j].value + "\" target=\"_blank\" >"
-                                    + "<img src=\"" + request.getContextPath() + "/image/logolattes.gif\"></a>");
-							out.print("</span>");
+						    renderLattesLink(out, request, values, j);
                         }
                         else if (isDate)
                         {
-                            DCDate dd = new DCDate(values[j].value);
+                            DCDate dd = new DCDate(currentDcValue.value);
 
                             // Parse the date
                             out.print(UIUtil.displayDate(dd, false, false, (HttpServletRequest)pageContext.getRequest()));
                         }
                         else if (isResolver)
                         {
-                            String value = values[j].value;
+                            String value = currentDcValue.value;
                             if (value.startsWith("http://")
                                     || value.startsWith("https://")
                                     || value.startsWith("ftp://")
@@ -601,7 +617,7 @@ public class ItemTag extends TagSupport
                                     String url = urn2baseurl.get(foundUrn);
                                     out.print("<a href=\"" + url
                                             + value + "\">"
-                                            + Utils.addEntities(values[j].value)
+                                            + Utils.addEntities(currentDcValue.value)
                                             + "</a>");
                                 }
                                 else
@@ -614,27 +630,54 @@ public class ItemTag extends TagSupport
                         else if (browseIndex != null)
                         {
 	                        String argument, value, labelAuth = null;
-	                        if ( values[j].authority != null &&
-	                                            values[j].confidence >= MetadataAuthorityManager.getManager()
-	                                                .getMinConfidence( values[j].schema,  values[j].element,  values[j].qualifier))
+	                        if ( currentDcValue.authority != null &&
+	                                            currentDcValue.confidence >= MetadataAuthorityManager.getManager()
+	                                                .getMinConfidence( currentDcValue.schema,  currentDcValue.element,  currentDcValue.qualifier))
 	                        {
 	                            argument = "authority";
-	                            value = values[j].authority;
-	                            labelAuth = values[j].value;
+	                            value = currentDcValue.authority;
+	                            labelAuth = currentDcValue.value;
 	                        }
 	                        else
 	                        {
 	                            argument = "value";
-	                            value = values[j].value;
+	                            value = currentDcValue.value;
 	                        }
+	                        
+	                        
 	                    	out.print("<a class=\"" + ("authority".equals(argument)?"authority ":"") + browseIndex + "\""
 	                                                + "href=\"" + request.getContextPath() + "/browse?type=" + browseIndex + "&amp;" + argument + "="
-	                    				+ URLEncoder.encode(value, "UTF-8") + (labelAuth != null ? "&label=" + URLEncoder.encode(labelAuth, "UTF-8") : "") + "\">" + Utils.addEntities(values[j].value)
+	                    				+ URLEncoder.encode(value, "UTF-8") + (labelAuth != null ? "&label=" + URLEncoder.encode(labelAuth, "UTF-8") : "") + "\">" + Utils.addEntities(currentDcValue.value)
 	                    				+ "</a>");
+	                    	
+	                    	
+	                    	StringBuilder currentMetadata = new StringBuilder();
+	                    	currentMetadata.append(currentDcValue.schema);
+	                    	currentMetadata.append(".");
+	                    	currentMetadata.append(currentDcValue.element);
+	                    	if(currentDcValue.qualifier != null)
+	                    	{
+	                    		currentMetadata.append(".");
+	                    		currentMetadata.append(currentDcValue.qualifier);
+	                    	}
+	                    	
+	                    	String currentMetadataAsString = currentMetadata.toString();
+	                    	
+							if(metadataWithLattes != null && metadataWithLattes.contains(currentMetadataAsString))
+	                    	{
+	                    		DCValue[] urlLattes = item.getMetadata(currentMetadataAsString + LATTES_SUFFIX);
+	                    		if(urlLattes != null && urlLattes.length == 1)
+	                    		{
+	                    			renderLattesLink(out, request, urlLattes, j);
+	                    		}
+	                    	}
+	                    	
+	                    	
+	                    	
 	                    }
                         else
                         {
-                            out.print(Utils.addEntities(values[j].value));
+                            out.print(Utils.addEntities(currentDcValue.value));
                         }
                     }
                 }
@@ -657,6 +700,14 @@ public class ItemTag extends TagSupport
             showLicence();
         }
     }
+
+	private void renderLattesLink(JspWriter out, HttpServletRequest request,
+			DCValue[] values, int j) throws IOException {
+		out.print("&nbsp;<span id=\"" + values[j].qualifier + "\">"); 
+		out.print("<a href=\"" + values[j].value + "\" target=\"_blank\" >"
+		        + "<img src=\"" + request.getContextPath() + "/image/logolattes.gif\"></a>");
+		out.print("</span>");
+	}
 
     /**
      * Render full item record
@@ -1013,7 +1064,7 @@ public class ItemTag extends TagSupport
                                             			Constants.DEFAULT_ENCODING);
 
             							out.print("<a target=\"_blank\" href=\"" + bsLink + "\">");
-            							out.print("<img src=\"" + myPath + "\" ");
+            							out.print("<img class=\"thumbnail-image\" src=\"" + myPath + "\" ");
             							out.print("alt=\"" + tAltText
             									+ "\" /></a><br /><br />");
             						}
