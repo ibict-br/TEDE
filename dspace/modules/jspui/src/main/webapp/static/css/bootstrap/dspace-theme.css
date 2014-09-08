@@ -537,9 +537,14 @@ h2, .h2 {
 }
 
 /* Ajuste da largura para o thumbnail */
-.thumbnail-image {
+table img[src*="/retrieve/"] {
 	width : 100px;
 	height : auto;
+}
+
+.thumbnail-image {
+	width : auto !important;
+	height : auto !important;
 }
 
 /* Ajuste de tamanho dos títulos */
