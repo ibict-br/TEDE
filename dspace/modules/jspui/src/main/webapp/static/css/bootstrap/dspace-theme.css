@@ -559,3 +559,10 @@ font-size: 20px;
 font-size: 40px;
 }
 
+/** Início: Delimitação de sublinado em links **/
+.langChangeOn, .panel-footer a, .panel-heading a, #loginform a, p a[href*="/mydspace"], .link {
+	text-decoration: underline;
+}
+
+/** Fim: Delimitação de sublinado em links **/
+
