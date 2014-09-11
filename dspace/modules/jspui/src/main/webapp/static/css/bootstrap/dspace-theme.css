@@ -239,7 +239,7 @@ a {
 }
 
 /** Modifica cor do link da submissão **/
-.alert a, .alert a:HOVER, .alert a:VISITED, .alert a:FOCUS {
+.alert-info a, .alert-info a:HOVER, .alert-info a:VISITED, .alert-info a:FOCUS {
 	color: #fff;
 }
 

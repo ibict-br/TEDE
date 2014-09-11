@@ -52,7 +52,7 @@
 				for(CloudTagResult cloudTag : tagResult)
 				{
 			%>
-	                {text: "<%= cloudTag.getCloudName() %>", weight: <%= cloudTag.getRelevance() %>, link: "<%= request.getContextPath() + "/simple-search?query="+URLEncoder.encode(cloudTag.getCloudName(),"UTF-8") %>"}<%= (++i < tagResult.size()) ? "," : "" %>
+	                {text: "<%= cloudTag.getCloudName() %>", weight: <%= cloudTag.getRelevance() %>, link: "<%= request.getContextPath() + "/simple-search?query=" + cloudTag.getCloudName() %>"}<%= (++i < tagResult.size()) ? "," : "" %>
 			<%
 				}
 			%>
