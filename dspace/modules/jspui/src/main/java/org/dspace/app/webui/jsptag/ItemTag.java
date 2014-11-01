@@ -649,35 +649,31 @@ public class ItemTag extends TagSupport
 	                                                + "href=\"" + request.getContextPath() + "/browse?type=" + browseIndex + "&amp;" + argument + "="
 	                    				+ URLEncoder.encode(value, "UTF-8") + (labelAuth != null ? "&label=" + URLEncoder.encode(labelAuth, "UTF-8") : "") + "\">" + Utils.addEntities(currentDcValue.value)
 	                    				+ "</a>");
-	                    	
-	                    	
-	                    	StringBuilder currentMetadata = new StringBuilder();
-	                    	currentMetadata.append(currentDcValue.schema);
-	                    	currentMetadata.append(".");
-	                    	currentMetadata.append(currentDcValue.element);
-	                    	if(currentDcValue.qualifier != null)
-	                    	{
-	                    		currentMetadata.append(".");
-	                    		currentMetadata.append(currentDcValue.qualifier);
-	                    	}
-	                    	
-	                    	String currentMetadataAsString = currentMetadata.toString();
-	                    	
-							if(metadataWithLattes != null && metadataWithLattes.contains(currentMetadataAsString))
-	                    	{
-	                    		DCValue[] urlLattes = item.getMetadata(currentMetadataAsString + LATTES_SUFFIX);
-	                    		if(urlLattes != null && urlLattes.length == 1)
-	                    		{
-	                    			renderLattesLink(out, request, urlLattes, j);
-	                    		}
-	                    	}
-	                    	
-	                    	
-	                    	
 	                    }
                         else
                         {
                             out.print(Utils.addEntities(currentDcValue.value));
+                        }
+
+                        StringBuilder currentMetadata = new StringBuilder();
+                        currentMetadata.append(currentDcValue.schema);
+                        currentMetadata.append(".");
+                        currentMetadata.append(currentDcValue.element);
+                        if(currentDcValue.qualifier != null)
+                        {
+                        	currentMetadata.append(".");
+                        	currentMetadata.append(currentDcValue.qualifier);
+                        }
+                        
+                        String currentMetadataAsString = currentMetadata.toString();
+                        
+                        if(metadataWithLattes != null && metadataWithLattes.contains(currentMetadataAsString))
+                        {
+                        	DCValue[] urlLattes = item.getMetadata(currentMetadataAsString + LATTES_SUFFIX);
+                        	if(urlLattes != null && urlLattes.length == 1)
+                        	{
+                        		renderLattesLink(out, request, urlLattes, j);
+                        	}
                         }
                     }
                 }
