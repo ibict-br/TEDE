@@ -84,20 +84,18 @@ input.ds-authority-lock.is-unlocked
 **/
 
 /** Linhas de tabelas **/
-
 .banner {
 	padding-bottom: 15px;
 }
 
-/** Topo **/
+/** Modifica topo, para utilizar cor verde (sobrepõe cor preta) **/
 .navbar-fixed-top {
 	background-color: #088A29;
 	background-image: none;
 }
 
-/** Rodapé **/
+/** Modifica características do rodapé **/
 .navbar-bottom {
-	
 	background-color: #fff;
 	background-image: none;
 	border-radius: 0;
@@ -108,56 +106,79 @@ input.ds-authority-lock.is-unlocked
     padding-top: 3px;
 }
 
+/** Modifica cor do painel central do TEDE **/
 .panel-default > .panel-heading {
     background-image: none;
     background-color: #dcffd4;
 }
 
+/** Modificar cor do rodapé de paineis. A exemplo do rodapé da tabela de apresentação de itens por título. **/
 .panel-footer {
     background-color: #dcffd4;
 }
 
+/** Classe genérica, visa padronização de "margin-left" de 10px para elementos que necessitam de "margin" **/
 .default-padding-left {
 	padding-left: 10px;
 }
 
+/** Aplica estilo aos dados da institução (telefone, nome, etc). Informações presentes no rodapé **/
 .footer-institution-data {
 	clear: both;
 	font-size: 10px;
 	text-align: left;
 }
 
-
+/** Modifica cor de fundo de botões da barra de navegação  **/
 .navbar-inverse .navbar-nav > .active > a {
 	background-color: #006633;	
 }
 
+/** Modifica cor dos links de botões da barra de navegação  **/
 .navbar-inverse .navbar-nav > li > a {
     color: #fff;
 }
 
-
+/** Modifica cor de fundo para de evento "hover" do menu da barra de navegação **/
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
     background-color: #449d44;
 }
 
+/** Modifica codo de fundo de itens clicáveis da barra de navegação **/
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
     background-color: #449d44;
 }
 
+/** Modifica cor das setas dropdown da barra de navegação. **/
+.navbar-inverse .navbar-nav > .dropdown > a .caret, .navbar-inverse .navbar-nav > .dropdown > a .caret:HOVER, .nav a:hover .caret {
+    border-bottom-color: #fff;
+    border-top-color: #fff;
+}
+
+/** Cor do botão de busca **/
+.navbar-form  button, .search-button
+{
+	background-image: none;
+	border: #7aa97a;
+	background-color: #449d44;
+    border-color: #088a29;
+}
+
+/** Modifica cor de fundo para de evento "hover" do menu da barra de menus **/
 .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-menu > .active > a, .dropdown-menu > .active > a:hover, .dropdown-menu > .active > a:focus {
     background-color: #449d44;
     background-image: linear-gradient(to bottom, #7aa97a 0px, #449d44 100%);
     background-repeat: repeat-x;
 }
 
+/** Modifica características de borda de formulários **/
 .form-control:focus {
     border-color: #449d44;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(120, 169, 122, 0.6);
     outline: 0 none;
 }
 
-
+/** Modifica cor de fundo dos títulos de painéis primários **/
 .panel-primary > .panel-heading {
     background-image: none;
     background-color: #449d44;
@@ -165,8 +186,9 @@ input.ds-authority-lock.is-unlocked
     border-bottom: none;
 }
 
+/** Modifica cor de fundo dos títulos de painéis do tipo "info" **/
 .panel-info > .panel-heading  {
-	    background-image: none;
+    background-image: none;
     background-color: #449d44;
     background-repeat: repeat-x;
     border-bottom: none;
@@ -174,16 +196,23 @@ input.ds-authority-lock.is-unlocked
 	
 }
 
+/** Modifica cor de borda dos painéis do tipo "primário" **/
 .panel-primary {
     border-color: #7aa97a;
 }
 
+/** Padroniza cor dos links do repositório. Exceções a essa cor deverão ser tratadas caso a caso **/
 a {
     color: #333;
     text-decoration: none;
 }
 
+/** Padroniza cor de links para os eventos: hover e focus **/
+a:hover, a:focus {
+    color: #449d44;
+}
 
+/** Aumenta tamanho da fonte para campos de formulário "grandes" **/
 .form-group-lg input  {
     font-size: 18px;
     height: 46px;
@@ -191,6 +220,7 @@ a {
     padding: 10px 16px;	
 }
 
+/** Modifica largura de campos de formulário a fim de permitir que o campo de entrada preencha toda largura disponível **/
 .form-group-lg {
 	width: 100%;
 }
@@ -200,7 +230,7 @@ a {
 	cursor: pointer;
 }
 
-/** Cor do rastro **/
+/** Cor do rastro (breadcrumb) **/
 .breadcrumb {
     background-image: linear-gradient(to bottom, #088a29 0px, #189a3a 100%);
 }
@@ -219,7 +249,7 @@ a {
 	color: #fff;	
 }
 
-
+/** Modifica características de fundo (background) para divisões que representam títulos de painéis **/
 .panel-heading {
     background-image: none;
     background-color: #449d44;
@@ -228,11 +258,12 @@ a {
     color: #fff;
 }
 
+/** Modifica borda de painéis do tipo "info" **/
 .panel-info {
 	border-color: #7aa97a;
 }
 
-
+/** Modifica coloração dos botões de paginação. Foi mantida mesma cor, independentemente de evento **/
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
     background-color: #7aa97a;
     border-color: #7aa97a;
@@ -243,27 +274,16 @@ a {
 	color: #fff;
 }
 
+/** Modifica cor de fundo de botões do tipo "primário". Ḿantém somente uma cor, desconsiderando evento **/
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
     background-color: #449d44;
     border-color: #088A29;
 }
 
+/** Modifica cor de fundo de botões do tipo "info". Ḿantém somente uma cor, desconsiderando evento **/
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
     background-color: #31B404;
     border-color: #31B404;
-}
-
-.navbar-inverse .navbar-nav > .dropdown > a .caret, .navbar-inverse .navbar-nav > .dropdown > a .caret:HOVER, .nav a:hover .caret {
-    border-bottom-color: #fff;
-    border-top-color: #fff;
-}
-
-a:hover, a:focus {
-    color: #449d44;
-}
-
-.ui-widget-content {
-	background: #fff;
 }
 
 /** Ícone do sistema junto a barra de navegação. **/
@@ -277,39 +297,13 @@ a:hover, a:focus {
 	padding-bottom: 5px !important;
 }
 
-
-
 /** Div container da descrição do repositório **/
 .repo-description {
 	margin-left: 15px;
 	float: left;
 }
 
-
-/** Cor de fundo do "jumbotron" **/
-.jumbotron {
-	background-color: #f1ffee;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.5;
-    margin-bottom: 5px;
-    padding: 10px;
-}
-
-.jumbotron h1 {
-	font-size: 20px;
-	font-weight: bold;
-}
-
-/** Cor do botão de busca **/
-.navbar-form  button, .search-button
-{
-	background-image: none;
-	border: #7aa97a;
-	background-color: #449d44;
-    border-color: #088a29;
-}
-
+/** Página de busca: Coloração do fundo dos botões que ficam em torno da caixa de busca. **/
 .addongreen {
 	border: #7aa97a;
 	background-color: #449d44;
@@ -317,11 +311,14 @@ a:hover, a:focus {
 	color: white;	
 }
 
+
+/** Página de busca: Coloração da borda dos botões que ficam em torno da caixa de busca. **/
 .addongreen .form-control
 {
 	border-color: #7aa97a;
 }
 
+/** Modifica cor de fundo da caixa de busca da barra de navegação. **/
 .top-search-container {
 	padding-top: 40px;
 	padding-bottom: 40px; 
@@ -338,51 +335,35 @@ h3, .h3 {
 	font-size: 16px;
 	font-weight: bold;	
 }
-
+/** Modifica tamanho da fonte dos elementos de título, nível 4 **/
 h4, .h4 {
 	font-size: 14px;
 }
 
+/** Define padding do parágrafo da página que descreve a BDTD e TEDE **/
 .about-bdtd {
 	padding-top: 10px;
 }
 
+/** Define fonte negritada para título da busca facetada **/
 .facetName {
 	font-weight: bold;
 }
 
-
-/*** Nuvem de tags ***/
-.cloudtag-1 {
-	font-size: 14px;	
-}
-
-.cloudtag-2 {
-	font-size: 18px;	
-}
-.cloudtag-3 {
-	font-size: 22px;	
-}
-.cloudtag-4 {
-	font-size: 26px;	
-}
-
+/** Centraliza elementos da nuvem de tags: título e termos da nuvem  **/
 .cloud-tag-label {
 	width: 100%; 
 	text-align: center;
 }
 
+/** Customiza título utilizado na nuvem de tags **/
 .cloud-tag-label h3 {
 	color: #c4c4c4;
 	font-size: 22px;
 	letter-spacing: 3px;
 }
  
-#cloud a
-{
-	color: #8d8f92;
-} 
- 
+/** Divisão "container" da nuvem de tags **/ 
 .tag-cloud-container {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -394,32 +375,37 @@ h4, .h4 {
 	border: 2px solid #f3f3f3;
 }
 
-
-#cloud-text {
-	text-align: center;
-}
-
+/** Define padding para evitar que termos da nuvem ultrapassem os limites do container (div superior) **/
 #cloud-text span {
 	padding-right: 10px;
 }
 
+/**
+ * Customiza largura de campos de data, no formulário de entrada. 
+ * A intenção é evitar que um campo "ondebox" faça uso de toda largura do site
+ */
 .date-lenght, .submit-date-field {
 	width: 16%;
 }
 
+/** Eveita que o seletor de data seja sobreposto pelo rodapé **/
+.ui-datepicker {
+	z-index: 2000 !important;	
+}
+
+
+/** Customiza cores de links aninhados a caixas de alerta **/
 .alert-warning a {
 	
 	color: #006633;
 }
 
+/** Modifica cor de fundo de labels (utilizados principalmente na lista de arquivos submetidos) **/
 .label-important {
 	background-color: #d9534f;
 }
 
-
-/**
- * Statistics customization
- */
+/** Início: definições das tabelas de statísticas **/
  .statsTable {
  	width: 100%;
  }
@@ -435,10 +421,8 @@ h4, .h4 {
 .stats-item-title {
 	width: 20%;	
 }
+/** Fim: definições das tabelas de statísticas **/
 
-.ui-datepicker {
-	z-index: 2000 !important;	
-}
 
 /** Cor da seta (dropdown) dos menus **/
 .nav .caret {
@@ -466,11 +450,13 @@ code {
 	background-color: #7aa97a;
 }
 
+/** Modifica características dos links do alfabeto da caixa de busca **/
 #browse_navigation a {
 	font-size: 15px;
 	font-weight: bold;
 }
 
+/** Modifica borda de campos de formulário (textarea, select, etc) **/
 .input-border {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -484,6 +470,8 @@ code {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
     vertical-align: middle;
 }
+
+/** Modifica borda de campos de formulário (textarea, select, etc), com ausência de "padding" **/
 .input-border-no-paddings {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -498,10 +486,12 @@ code {
     padding-left: 2px;
 }
 
-/** Aplicabilidade nas tabelas **/
+/** Zebra em linhas de tabelas, regidas por "TD" **/
 .table > tbody > tr:nth-child(2n+1) > td {
 	background-color: #f1ffee;
 }
+
+/** Cor de fundo de títulos de tabela **/
 .table > tbody > tr:nth-child(2n+1) > th {
 	background-color: #f3f3f3;
 }
@@ -516,10 +506,13 @@ code {
 	display: none;
 }
 
+/**
+ * Classe a ser utilizada por elementos que não são clicáveis nativamente, porém, necessitam 
+ * indicar ao usuário que o elemento associado é passível de clique
+ */
 .clickable-panel {
 	cursor: pointer;
 }
-
 
 /** Cor do carrossel **/
 #recent-submissions-carousel {
@@ -531,6 +524,7 @@ h2, .h2 {
     font-size: 22px;
 }
 
+/** Remove "margin" de caixas "well" **/
 .well h2 {
 	margin-top: 0px;
 	margin-bottom: 0px;	
@@ -542,21 +536,20 @@ table img[src*="/retrieve/"] {
 	height : auto;
 }
 
+/** Padroniza altura e largura de thumbnails **/
 .thumbnail-image {
 	width : auto !important;
 	height : auto !important;
 }
 
 /* Ajuste de tamanho dos títulos */
-
 h1, .h1 {
-font-size: 20px;
+	font-size: 20px;
 }
 
 /* Ajuste de tamanho da descrição do repositório */
-
 .repo-description h1 {
-font-size: 40px;
+	font-size: 40px;
 }
 
 /** Início: Delimitação de sublinado em links **/
@@ -564,5 +557,7 @@ font-size: 40px;
 	text-decoration: underline;
 }
 
-/** Fim: Delimitação de sublinado em links **/
-
+/** Corrige sobreposição de footer sobre as opções do controle de autoridade **/
+.ui-autocomplete {
+	z-index: 99999 !important;
+}
