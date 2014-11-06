@@ -96,19 +96,19 @@
         <property name="sidebarFacets">
             <list>
 				<ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisor" />
 				<ref bean="searchFilterAdvisorCo" />
 				<ref bean="searchFilterReferees" />
 				<ref bean="searchFilterContributor" />
-                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterSubject" />
 				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterSponsorship" />
-                <ref bean="searchFilterType" />
-                <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterType" />
+				<ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
 				<ref bean="searchFilterFormat" />
 			<!--	<ref bean="searchFilterLicence" /> -->
@@ -120,11 +120,11 @@
             <list>
 				<ref bean="searchFilterSponsorship" />
 				<ref bean="searchFilterCNPq" /> 
-                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterSubject" />
 				<ref bean="searchFilterAuthor" />
 				<ref bean="searchFilterContributor" />
 				<ref bean="searchFilterAdvisorCo" />
-                <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
 				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterFormat" />
@@ -136,12 +136,13 @@
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterLicence" />
 				<ref bean="searchFilterReferees" />
-                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisor" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterInitials" />
-                <ref bean="searchFilterType" />
+				<ref bean="searchFilterType" />
 				<ref bean="searchFilterAccess" />
 				<ref bean="searchFilterTitle" />
+				<ref bean="searchFilterAbstract" />
 				<ref bean="searchFilterAll" />
             </list>
         </property>
@@ -190,7 +191,7 @@
                             <property name="field" value="dc.title"/>
                             <property name="snippets" value="5"/>
                         </bean>
-						<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.contributor.author"/>
                             <property name="snippets" value="5"/>
                         </bean>
@@ -198,15 +199,15 @@
                             <property name="field" value="dc.contributor.advisor"/>
                             <property name="snippets" value="5"/>
                         </bean>
-						<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.publisher"/>
                             <property name="snippets" value="5"/>
                         </bean>
-					    <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+			<bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.publisher.program"/>
                             <property name="snippets" value="5"/>
                         </bean>
-					    <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
+		    <bean class="org.dspace.discovery.configuration.DiscoveryHitHighlightFieldConfiguration">
                             <property name="field" value="dc.publisher.department"/>
                             <property name="snippets" value="5"/>
                         </bean>
@@ -231,7 +232,7 @@
                 <property name="similarityMetadataFields">
                     <list>
                         <value>dc.title</value>
-						<value>dc.contributor.author</value>
+			<value>dc.contributor.author</value>
                         <value>dc.contributor.advisor</value>
                         <value>dc.creator</value>
                         <value>dc.subject</value>
@@ -255,24 +256,24 @@
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
-				<ref bean="searchFilterAuthor" />
-                <ref bean="searchFilterAdvisor" />
+				<!-- <ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterAdvisor" />
 				<ref bean="searchFilterAdvisorCo" />
-				<ref bean="searchFilterReferees" />
+				<ref bean="searchFilterReferees" /> -->
 				<ref bean="searchFilterContributor" />
-                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterSubject" />
 				<ref bean="searchFilterCNPq" /> 
-				<ref bean="searchFilterPublisher" />
+				<!-- <ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterInitials" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterDepartment" />
-				<ref bean="searchFilterSponsorship" />
-                <ref bean="searchFilterType" />
-                <ref bean="searchFilterIssued" />
-				<ref bean="searchFilterAvailable" />
+				<ref bean="searchFilterSponsorship" /> -->
+				<ref bean="searchFilterType" />
+				<ref bean="searchFilterIssued" />
+				<!-- <ref bean="searchFilterAvailable" /> -->
 				<ref bean="searchFilterFormat" />
 			<!--	<ref bean="searchFilterLicence" /> -->
-				<ref bean="searchFilterAccess" />
+				<!-- <ref bean="searchFilterAccess" /> -->
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
@@ -280,11 +281,11 @@
             <list>
 				<ref bean="searchFilterSponsorship" />
 				<ref bean="searchFilterCNPq" /> 
-                <ref bean="searchFilterSubject" />
+				<ref bean="searchFilterSubject" />
 				<ref bean="searchFilterAuthor" />
 				<ref bean="searchFilterContributor" />
 				<ref bean="searchFilterAdvisorCo" />
-                <ref bean="searchFilterIssued" />
+				<ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
 				<ref bean="searchFilterDepartment" />
 				<ref bean="searchFilterFormat" />
@@ -296,10 +297,10 @@
 				<ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterLicence" />
 				<ref bean="searchFilterReferees" />
-                <ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterAdvisor" />
 				<ref bean="searchFilterProgram" />
 				<ref bean="searchFilterInitials" />
-                <ref bean="searchFilterType" />
+				<ref bean="searchFilterType" />
 				<ref bean="searchFilterAccess" />
 				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAll" />
@@ -314,7 +315,7 @@
                 <property name="sortFields">
                     <list>
 						<ref bean="sortDateIssued" />
-                        <ref bean="sortTitle" />
+						<ref bean="sortTitle" />
 						<ref bean="sortAuthor" />
 						<ref bean="sortAdvisor" />
 						<ref bean="sortProgram" />
@@ -341,7 +342,7 @@
         <property name="metadataFields">
             <list>
                 <value>dc.title</value>
-				<value>dc.title.alternative</value>
+		<value>dc.title.alternative</value>
             </list>
         </property>
     </bean>
@@ -391,7 +392,7 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.advisor-co1</value>
-				<value>dc.contributor.advisor-co2</value>
+		<value>dc.contributor.advisor-co2</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
@@ -403,7 +404,7 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.advisor-co1ID</value>
-				<value>dc.contributor.advisor-co2ID</value>
+		<value>dc.contributor.advisor-co2ID</value>
             </list>
         </property>
     </bean>
@@ -413,10 +414,10 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.referees1</value>
-				<value>dc.contributor.referees2</value>
-				<value>dc.contributor.referees3</value>
-				<value>dc.contributor.referees4</value>
-				<value>dc.contributor.referees5</value>
+		<value>dc.contributor.referees2</value>
+		<value>dc.contributor.referees3</value>
+		<value>dc.contributor.referees4</value>
+		<value>dc.contributor.referees5</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
@@ -428,10 +429,10 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.referees1ID</value>
-				<value>dc.contributor.referees2ID</value>
-				<value>dc.contributor.referees3ID</value>
-				<value>dc.contributor.referees4ID</value>
-				<value>dc.contributor.referees5ID</value>
+		<value>dc.contributor.referees2ID</value>
+		<value>dc.contributor.referees3ID</value>
+		<value>dc.contributor.referees4ID</value>
+		<value>dc.contributor.referees5ID</value>
             </list>
         </property>
     </bean>
@@ -441,14 +442,14 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.author</value>
-				<value>dc.contributor.advisor</value>
-				<value>dc.contributor.advisor-co1</value>
-				<value>dc.contributor.advisor-co2</value>
-				<value>dc.contributor.referees1</value>
-				<value>dc.contributor.referees2</value>
-				<value>dc.contributor.referees3</value>
-				<value>dc.contributor.referees4</value>
-				<value>dc.contributor.referees5</value>
+		<value>dc.contributor.advisor</value>
+		<value>dc.contributor.advisor-co1</value>
+		<value>dc.contributor.advisor-co2</value>
+		<value>dc.contributor.referees1</value>
+		<value>dc.contributor.referees2</value>
+		<value>dc.contributor.referees3</value>
+		<value>dc.contributor.referees4</value>
+		<value>dc.contributor.referees5</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
@@ -460,14 +461,14 @@
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.authorID</value>
-				<value>dc.contributor.advisorID</value>
-				<value>dc.contributor.advisor-co1ID</value>
-				<value>dc.contributor.advisor-co2ID</value>
-				<value>dc.contributor.referees1ID</value>
-				<value>dc.contributor.referees2ID</value>
-				<value>dc.contributor.referees3ID</value>
-				<value>dc.contributor.referees4ID</value>
-				<value>dc.contributor.referees5ID</value>
+		<value>dc.contributor.advisorID</value>
+		<value>dc.contributor.advisor-co1ID</value>
+		<value>dc.contributor.advisor-co2ID</value>
+		<value>dc.contributor.referees1ID</value>
+		<value>dc.contributor.referees2ID</value>
+		<value>dc.contributor.referees3ID</value>
+		<value>dc.contributor.referees4ID</value>
+		<value>dc.contributor.referees5ID</value>
             </list>
         </property>
     </bean>
@@ -651,9 +652,23 @@
 				<value>dc.format</value>
 				<value>dc.rights</value>
 				<value>dc.rights.uri</value>
+				<value>dc.description.abstract</value>
+				<value>dc.description.resumo</value>
             </list>
         </property>
     </bean>
+    
+    <bean id="searchFilterAbstract" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="abstract"/>
+        <property name="metadataFields">
+            <list>
+	      <value>dc.description.abstract</value>
+	      <value>dc.description.resumo</value>
+	    </list>
+        </property>
+    </bean>
+    
+   
 
     <!--Sort properties-->
 	
