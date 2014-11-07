@@ -111,39 +111,33 @@
 				<ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
 				<ref bean="searchFilterFormat" />
-			<!--	<ref bean="searchFilterLicence" /> -->
 				<ref bean="searchFilterAccess" />
             </list>
         </property>
         <!--The search filters which can be used on the discovery search page-->
         <property name="searchFilters">
             <list>
-				<ref bean="searchFilterSponsorship" />
-				<ref bean="searchFilterCNPq" /> 
-				<ref bean="searchFilterSubject" />
+                        	<ref bean="searchFilterType" />
+				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterReferees" />
 				<ref bean="searchFilterContributor" />
-				<ref bean="searchFilterAdvisorCo" />
+				<ref bean="searchFilterContributorID" />
+				<ref bean="searchFilterAbstract" />
+				<ref bean="searchFilterSubject" />
+				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
-				<ref bean="searchFilterDepartment" />
-				<ref bean="searchFilterFormat" />
-				<ref bean="searchFilterAuthorID" />
-				<ref bean="searchFilterAdvisorID" />
-				<ref bean="searchFilterContributorID" />
-				<ref bean="searchFilterAdvisorCoID" />
-				<ref bean="searchFilterRefereesID" />
-				<ref bean="searchFilterPublisher" />
-				<ref bean="searchFilterLicence" />
-				<ref bean="searchFilterReferees" />
-				<ref bean="searchFilterAdvisor" />
-				<ref bean="searchFilterProgram" />
-				<ref bean="searchFilterInitials" />
-				<ref bean="searchFilterType" />
 				<ref bean="searchFilterAccess" />
-				<ref bean="searchFilterTitle" />
-				<ref bean="searchFilterAbstract" />
+				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterInitials" />
+				<ref bean="searchFilterProgram" />
+				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
+				<ref bean="searchFilterFormat" />
 				<ref bean="searchFilterAll" />
+	
             </list>
         </property>
         <!--The sort filters for the discovery search-->
@@ -256,10 +250,9 @@
         <!--Which sidebar facets are to be displayed (same as defaultConfiguration above)-->
         <property name="sidebarFacets">
             <list>
-				<!-- <ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterAuthor" />
 				<ref bean="searchFilterAdvisor" />
-				<ref bean="searchFilterAdvisorCo" />
-				<ref bean="searchFilterReferees" /> -->
+				<ref bean="searchFilterReferees" />
 				<ref bean="searchFilterContributor" />
 				<ref bean="searchFilterSubject" />
 				<ref bean="searchFilterCNPq" /> 
@@ -279,30 +272,25 @@
         <!--The search filters which can be used on the discovery search page (same as defaultConfiguration above)-->
         <property name="searchFilters">
             <list>
-				<ref bean="searchFilterSponsorship" />
-				<ref bean="searchFilterCNPq" /> 
-				<ref bean="searchFilterSubject" />
+            			<ref bean="searchFilterType" />
+				<ref bean="searchFilterTitle" />
 				<ref bean="searchFilterAuthor" />
+				<ref bean="searchFilterAdvisor" />
+				<ref bean="searchFilterReferees" />
 				<ref bean="searchFilterContributor" />
-				<ref bean="searchFilterAdvisorCo" />
+				<ref bean="searchFilterContributorID" />
+				<ref bean="searchFilterAbstract" />
+				<ref bean="searchFilterSubject" />
+				<ref bean="searchFilterCNPq" /> 
 				<ref bean="searchFilterIssued" />
 				<ref bean="searchFilterAvailable" />
-				<ref bean="searchFilterDepartment" />
-				<ref bean="searchFilterFormat" />
-				<ref bean="searchFilterAuthorID" />
-				<ref bean="searchFilterAdvisorID" />
-				<ref bean="searchFilterContributorID" />
-				<ref bean="searchFilterAdvisorCoID" />
-				<ref bean="searchFilterRefereesID" />
-				<ref bean="searchFilterPublisher" />
-				<ref bean="searchFilterLicence" />
-				<ref bean="searchFilterReferees" />
-				<ref bean="searchFilterAdvisor" />
-				<ref bean="searchFilterProgram" />
-				<ref bean="searchFilterInitials" />
-				<ref bean="searchFilterType" />
 				<ref bean="searchFilterAccess" />
-				<ref bean="searchFilterTitle" />
+				<ref bean="searchFilterPublisher" />
+				<ref bean="searchFilterInitials" />
+				<ref bean="searchFilterProgram" />
+				<ref bean="searchFilterDepartment" />
+				<ref bean="searchFilterSponsorship" />
+				<ref bean="searchFilterFormat" />
 				<ref bean="searchFilterAll" />
             </list>
         </property>
@@ -358,58 +346,38 @@
         <property name="sortOrder" value="COUNT"/>
     </bean>
 
-	<bean id="searchFilterAuthorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
-        <property name="indexFieldName" value="authorid"/>
-        <property name="metadataFields">
-            <list>
-                <value>dc.contributor.authorID</value>
-            </list>
-        </property>
-    </bean>
-	
+
     <bean id="searchFilterAdvisor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="advisor"/>
         <property name="metadataFields">
             <list>
                 <value>dc.contributor.advisor</value>
+                <value>dc.contributor.advisor-co1</value>
+                <value>dc.contributor.advisor-co2</value>
             </list>
         </property>
 		<property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
 	
-	<bean id="searchFilterAdvisorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
-        <property name="indexFieldName" value="advisorid"/>
+	<bean id="searchFilterContributorID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
+        <property name="indexFieldName" value="contributorid"/>
         <property name="metadataFields">
             <list>
+		<value>dc.contributor.authorID</value>
                 <value>dc.contributor.advisorID</value>
-            </list>
-        </property>
-    </bean>
-	
-	<bean id="searchFilterAdvisorCo" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
-        <property name="indexFieldName" value="advisorco"/>
-        <property name="metadataFields">
-            <list>
-                <value>dc.contributor.advisor-co1</value>
-		<value>dc.contributor.advisor-co2</value>
-            </list>
-        </property>
-        <property name="facetLimit" value="7"/>
-        <property name="sortOrder" value="COUNT"/>
-    </bean>
-	
-	<bean id="searchFilterAdvisorCoID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
-        <property name="indexFieldName" value="advisorcoid"/>
-        <property name="metadataFields">
-            <list>
                 <value>dc.contributor.advisor-co1ID</value>
 		<value>dc.contributor.advisor-co2ID</value>
+		<value>dc.contributor.referees1ID</value>
+		<value>dc.contributor.referees2ID</value>
+		<value>dc.contributor.referees3ID</value>
+		<value>dc.contributor.referees4ID</value>
+		<value>dc.contributor.referees5ID</value>
             </list>
         </property>
     </bean>
 	
-	<bean id="searchFilterReferees" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
+    <bean id="searchFilterReferees" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="referees"/>
         <property name="metadataFields">
             <list>
@@ -423,19 +391,7 @@
         <property name="facetLimit" value="7"/>
         <property name="sortOrder" value="COUNT"/>
     </bean>
-	
-	<bean id="searchFilterRefereesID" class="org.dspace.discovery.configuration.DiscoverySearchFilter">
-        <property name="indexFieldName" value="refereesid"/>
-        <property name="metadataFields">
-            <list>
-                <value>dc.contributor.referees1ID</value>
-		<value>dc.contributor.referees2ID</value>
-		<value>dc.contributor.referees3ID</value>
-		<value>dc.contributor.referees4ID</value>
-		<value>dc.contributor.referees5ID</value>
-            </list>
-        </property>
-    </bean>
+
 	
 	<bean id="searchFilterContributor" class="org.dspace.discovery.configuration.DiscoverySearchFilterFacet">
         <property name="indexFieldName" value="contributor"/>
