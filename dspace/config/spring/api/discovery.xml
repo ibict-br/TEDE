@@ -97,7 +97,6 @@
             <list>
 				<ref bean="searchFilterAuthor" />
 				<ref bean="searchFilterAdvisor" />
-				<ref bean="searchFilterAdvisorCo" />
 				<ref bean="searchFilterReferees" />
 				<ref bean="searchFilterContributor" />
 				<ref bean="searchFilterSubject" />
