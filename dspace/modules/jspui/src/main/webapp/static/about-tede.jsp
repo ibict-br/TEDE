@@ -28,15 +28,15 @@
 				</h3>
 				<%=topNews%>
 				
-				<p>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</p>
+				<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
 				<blockquote>
-					<p>Coordenação-Geral de Pesquisa e Manutenção de Produtos Consolidadados</p> 
+					<p><strong>Coordenação-Geral de Pesquisa e Manutenção de Produtos Consolidadados</strong></p> 
 					<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
 					<blockquote>
-						<p>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</p>
+						<p><strong>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</strong></p>
 						<p><strong>Bianca Amaro de Melo</strong></p>
 						<p>Tainá Batista de Assis</p>
-				        	<p>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</p>
+				        	<p><strong>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</strong></p>
 				        	<p><strong>Milton Shintaku</strong></p>
 				        	<p>Washington L. R. de Carvalho Segundo</p>
 				        	<p>Diego José Macêdo</p>
