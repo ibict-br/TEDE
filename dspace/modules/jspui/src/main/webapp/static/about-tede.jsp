@@ -25,7 +25,7 @@
 			<div class="jumbotron">
 				<strong>
 					<fmt:message key="jsp.home.about"></fmt:message>
-				</strong></br></br>
+				</strong></br>
 				<%=topNews%>
 				</br></br>
 				<table style="width:100%">
@@ -44,9 +44,9 @@
 						<blockquote>
 				        		<p><strong>Coordenação de Tecnologia da Informação (COAT)</strong></p>
 				        		<p><strong>Milton Shintaku</strong></p>
-				        		<p>Washington L. R. de Carvalho Segundo</p>
-				        		<p>Diego José Macêdo</p>
 				        		<p>Márcio Ribeiro Gurgel do Amaral</p>
+				        		<p>Diego José Macêdo</p>
+				        		<p>Washington L. R. de Carvalho Segundo</p>
 				        	</blockquote>
 					<!-- </blockquote> -->
 				</blockquote>
@@ -58,6 +58,7 @@
 					<blockquote>
 						<p><strong>Cláudia Oliveira de Moura Bueno</strong></p>
 						<p>Carla L. Ferreira</p>
+						<p>Jaqueline Taketsugu Alves da Silva</p>
 						<p>Marcos Roberto Ribeiro</p>
 						<p>Pablo Henrique Rodrigues</p>
 					</blockquote>
