@@ -23,9 +23,9 @@
 	<div id="pageContents">
 
 			<div class="jumbotron">
-				<h1>
+				<h3>
 					<fmt:message key="jsp.home.about"></fmt:message>
-				</h1>
+				</h3>
 				<%=topNews%>
 				<p class="about-bdtd">
 					<a href="bdtd.jsp"><button class="btn btn-primary">
