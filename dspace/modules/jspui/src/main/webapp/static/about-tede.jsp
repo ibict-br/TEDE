@@ -27,6 +27,19 @@
 					<fmt:message key="jsp.home.about"></fmt:message>
 				</h3>
 				<%=topNews%>
+				
+				<p>UFG</p>
+				<blockquote>
+					<p>Marcos Roberto Ribeiro</p>
+					<p>Pablo Henrique Rodrigues</p>
+				</blockquote>
+				
+				<p>UFPel</p>
+				<blockquote>
+					<p>HENRIQUE DE VASCONCELLOS RIPPEL</p>
+					<p>TIAGO CAMARGO AL-ALAM</p>
+				</blockquote>
+				
 				<p class="about-bdtd">
 					<a href="bdtd.jsp"><button class="btn btn-primary">
 							<fmt:message key="jsp.home.about.bdtd" />
