@@ -32,8 +32,8 @@
   				<tr><td>
 				<p><strong>Realização</strong></p>
 				<blockquote>
-					<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
-					<blockquote>
+					<!-- <p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p> -->
+					<!-- <blockquote> -->
 						<p><strong>Coordenação-Geral (CGPM)</strong></p> 
 						<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
 						<blockquote>
@@ -48,7 +48,7 @@
 				        		<p>Diego José Macêdo</p>
 				        		<p>Márcio Ribeiro Gurgel do Amaral</p>
 				        	</blockquote>
-					</blockquote>
+					<!-- </blockquote> -->
 				</blockquote>
   				</td>
   				<td>
