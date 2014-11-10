@@ -23,11 +23,13 @@
 	<div id="pageContents">
 
 			<div class="jumbotron">
-				<h2>
+				<strong>
 					<fmt:message key="jsp.home.about"></fmt:message>
-				</h2>
+				</strong>
 				<%=topNews%>
 				
+				<table style="width:100%">
+  				<tr>
 				<p><strong>Realização</strong></p>
 				<blockquote>
 					<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
@@ -48,6 +50,8 @@
 				        	</blockquote>
 					</blockquote>
 				</blockquote>
+  				</tr>
+  				<tr>
 				<p><strong>Colaboração</strong></p>
 				<blockquote>
 					<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
@@ -64,7 +68,11 @@
 						<p>Henrique de Vasconcellos Rippel</p>
 						<p>Tiago Camargo Al-Alam</p>
 					</blockquote>
-				</blockquote>
+				</blockquote>			
+  				</tr>
+				</table> 
+				
+				
 				
 				<p class="about-bdtd">
 					<a href="bdtd.jsp"><button class="btn btn-primary">
