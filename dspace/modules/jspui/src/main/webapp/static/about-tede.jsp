@@ -50,8 +50,8 @@
 				        	</blockquote>
 					</blockquote>
 				</blockquote>
-  				</td></tr>
-  				<tr><td>
+  				</td>
+  				<td>
 				<p><strong>Colaboração</strong></p>
 				<blockquote>
 					<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
