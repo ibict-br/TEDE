@@ -49,19 +49,21 @@
 					</blockquote>
 				</blockquote>
 				<p><strong>Colaboração</strong></p>
-				<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
 				<blockquote>
-					<p><strong>Cláudia Oliveira de Moura Bueno</strong></p>
-					<p>Carla L. Ferreira</p>
-					<p>Marcos Roberto Ribeiro</p>
-					<p>Pablo Henrique Rodrigues</p>
-				</blockquote>
-				<p><strong>Universidade Federal de Pelotas (UFPel)</strong></p>
-				<blockquote>
-					<p><strong>Daiane Almeida Schramm</strong></p>
-					<p>Aline Herbstrith Batista</p>
-					<p>Henrique de Vasconcellos Rippel</p>
-					<p>Tiago Camargo Al-Alam</p>
+					<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
+					<blockquote>
+						<p><strong>Cláudia Oliveira de Moura Bueno</strong></p>
+						<p>Carla L. Ferreira</p>
+						<p>Marcos Roberto Ribeiro</p>
+						<p>Pablo Henrique Rodrigues</p>
+					</blockquote>
+					<p><strong>Universidade Federal de Pelotas (UFPel)</strong></p>
+					<blockquote>
+						<p><strong>Daiane Almeida Schramm</strong></p>
+						<p>Aline Herbstrith Batista</p>
+						<p>Henrique de Vasconcellos Rippel</p>
+						<p>Tiago Camargo Al-Alam</p>
+					</blockquote>
 				</blockquote>
 				
 				<p class="about-bdtd">
