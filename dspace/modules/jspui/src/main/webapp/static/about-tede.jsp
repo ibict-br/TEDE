@@ -40,6 +40,7 @@
 							<p><strong>Coordenação de Gestão da Informação (COLI)</strong></p>
 							<p><strong>Bianca Amaro de Melo</strong></p>
 							<p>Tainá Batista de Assis</p>
+							<p>Alan Christian de Lima Oliveira</p>
 						</blockquote>
 						<blockquote>
 				        		<p><strong>Coordenação de Tecnologia da Informação (COAT)</strong></p>
