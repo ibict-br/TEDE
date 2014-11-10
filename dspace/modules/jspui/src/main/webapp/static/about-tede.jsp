@@ -28,16 +28,35 @@
 				</h3>
 				<%=topNews%>
 				
-				<p>UFG</p>
+				<p>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</p>
 				<blockquote>
+					<p>Coordenação-Geral de Pesquisa e Manutenção de Produtos Consolidadados</p> 
+					<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
+					<blockquote>
+						<p>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</p>
+						<p><strong>Bianca Amaro de Melo</strong></p>
+						<p>Tainá Batista de Assis</p>
+				        	<p>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</p>
+				        	<p><strong>Milton Shintaku</strong></p>
+				        	<p>Washington L. R. de Carvalho Segundo</p>
+				        	<p>Diego José Macêdo</p>
+				        	<p>Márcio Ribeiro Gurgel do Amaral</p>
+				        </blockquote>
+				</blockquote>
+				<p><strong>Colaboração</strong></p>
+				<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
+				<blockquote>
+					<p><strong>Cláudia Oliveira de Moura Bueno</strong></p>
+					<p>Carla L. Ferreira</p>
 					<p>Marcos Roberto Ribeiro</p>
 					<p>Pablo Henrique Rodrigues</p>
 				</blockquote>
-				
-				<p>UFPel</p>
+				<p><strong>Universidade Federal de Pelotas (UFPel)</strong></p>
 				<blockquote>
-					<p>HENRIQUE DE VASCONCELLOS RIPPEL</p>
-					<p>TIAGO CAMARGO AL-ALAM</p>
+					<p><strong>Daiane Almeida Schramm</strong></p>
+					<p>Aline Herbstrith Batista</p>
+					<p>Henrique de Vasconcellos Rippel</p>
+					<p>Tiago Camargo Al-Alam</p>
 				</blockquote>
 				
 				<p class="about-bdtd">
