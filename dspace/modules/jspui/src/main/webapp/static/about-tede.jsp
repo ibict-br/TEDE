@@ -23,27 +23,30 @@
 	<div id="pageContents">
 
 			<div class="jumbotron">
-				<h3>
+				<h2>
 					<fmt:message key="jsp.home.about"></fmt:message>
-				</h3>
+				</h2>
 				<%=topNews%>
 				
-				<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
+				<p><strong>Realização</strong></p>
 				<blockquote>
-					<p><strong>Coordenação-Geral de Pesquisa e Manutenção de Produtos Consolidadados</strong></p> 
-					<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
+					<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
 					<blockquote>
-						<p><strong>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</strong></p>
-						<p><strong>Bianca Amaro de Melo</strong></p>
-						<p>Tainá Batista de Assis</p>
+						<p><strong>Coordenação-Geral de Pesquisa e Manutenção de Produtos Consolidadados (CGPM)</strong></p> 
+						<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
+						<blockquote>
+							<p><strong>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</strong></p>
+							<p><strong>Bianca Amaro de Melo</strong></p>
+							<p>Tainá Batista de Assis</p>
+						</blockquote>
+						<blockquote>
+				        		<p><strong>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</strong></p>
+				        		<p><strong>Milton Shintaku</strong></p>
+				        		<p>Washington L. R. de Carvalho Segundo</p>
+				        		<p>Diego José Macêdo</p>
+				        		<p>Márcio Ribeiro Gurgel do Amaral</p>
+				        	</blockquote>
 					</blockquote>
-					<blockquote>
-				        	<p><strong>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</strong></p>
-				        	<p><strong>Milton Shintaku</strong></p>
-				        	<p>Washington L. R. de Carvalho Segundo</p>
-				        	<p>Diego José Macêdo</p>
-				        	<p>Márcio Ribeiro Gurgel do Amaral</p>
-				        </blockquote>
 				</blockquote>
 				<p><strong>Colaboração</strong></p>
 				<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
