@@ -32,15 +32,15 @@
 				<blockquote>
 					<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
 					<blockquote>
-						<p><strong>Coordenação-Geral de Pesquisa e Manutenção de Produtos Consolidadados (CGPM)</strong></p> 
+						<p><strong>Coordenação-Geral (CGPM)</strong></p> 
 						<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
 						<blockquote>
-							<p><strong>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</strong></p>
+							<p><strong>Coordenação de Gestão da Informação (COLI)</strong></p>
 							<p><strong>Bianca Amaro de Melo</strong></p>
 							<p>Tainá Batista de Assis</p>
 						</blockquote>
 						<blockquote>
-				        		<p><strong>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</strong></p>
+				        		<p><strong>Coordenação de Tecnologia da Informação (COAT)</strong></p>
 				        		<p><strong>Milton Shintaku</strong></p>
 				        		<p>Washington L. R. de Carvalho Segundo</p>
 				        		<p>Diego José Macêdo</p>
