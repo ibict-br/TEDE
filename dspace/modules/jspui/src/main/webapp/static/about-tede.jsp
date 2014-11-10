@@ -25,9 +25,9 @@
 			<div class="jumbotron">
 				<strong>
 					<fmt:message key="jsp.home.about"></fmt:message>
-				</strong>
+				</strong></br></br>
 				<%=topNews%>
-				
+				</br></br>
 				<table style="width:100%">
   				<tr><td>
 				<p><strong>Realização</strong></p>
