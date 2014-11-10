@@ -36,6 +36,8 @@
 						<p><strong>Coordenação de Metodologias de Tratamento e Disseminação da Informação (COLI)</strong></p>
 						<p><strong>Bianca Amaro de Melo</strong></p>
 						<p>Tainá Batista de Assis</p>
+					</blockquote>
+					<blockquote>
 				        	<p><strong>Coordenação de Articulação, Geração e Aplicação de Tecnologia (COAT)</strong></p>
 				        	<p><strong>Milton Shintaku</strong></p>
 				        	<p>Washington L. R. de Carvalho Segundo</p>
