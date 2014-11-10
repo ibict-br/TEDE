@@ -29,7 +29,7 @@
 				<%=topNews%>
 				
 				<table style="width:100%">
-  				<tr>
+  				<tr><td>
 				<p><strong>Realização</strong></p>
 				<blockquote>
 					<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p>
@@ -50,8 +50,8 @@
 				        	</blockquote>
 					</blockquote>
 				</blockquote>
-  				</tr>
-  				<tr>
+  				</td></tr>
+  				<tr><td>
 				<p><strong>Colaboração</strong></p>
 				<blockquote>
 					<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
@@ -69,7 +69,7 @@
 						<p>Tiago Camargo Al-Alam</p>
 					</blockquote>
 				</blockquote>			
-  				</tr>
+  				</td></tr>
 				</table> 
 				
 				
