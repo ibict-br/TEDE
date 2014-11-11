@@ -27,7 +27,7 @@
 <%@ taglib uri="http://www.dspace.org/dspace-tags.tld" prefix="dspace" %>
 
 
-<dspace:layout titlekey="jsp.layout.navbar-default.bdtd">
+<dspace:layout titlekey="jsp.home.about.bdtd">
 <div id="pageContents">
 
 <div id="BDTDtext">

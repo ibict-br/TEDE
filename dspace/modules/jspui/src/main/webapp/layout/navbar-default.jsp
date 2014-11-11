@@ -117,7 +117,8 @@
 		    </li>
 		    
            <li class="<%= currentPage.endsWith("/about-tede.jsp")? "active" : "" %>"><a href="<%= request.getContextPath() %>/static/about-tede.jsp"><span class="glyphicon"></span> <fmt:message key="jsp.home.about"/></a></li>
-		    
+	   <li class="<%= currentPage.endsWith("/bdtd.jsp")? "active" : "" %>"><a href="<%= request.getContextPath() %>/static/bdtd.jsp"><span class="glyphicon"></span> <fmt:message key="jsp.home.about.bdtd"/></a></li>
+	  
        </ul>
        <div class="nav navbar-nav navbar-right">
 		<ul class="nav navbar-nav navbar-right">

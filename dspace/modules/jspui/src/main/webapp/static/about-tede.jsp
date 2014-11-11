@@ -74,13 +74,6 @@
   				</td></tr>
 				</table> 
 				
-				
-				
-				<p class="about-bdtd">
-					<a href="bdtd.jsp"><button class="btn btn-primary">
-							<fmt:message key="jsp.home.about.bdtd" />
-						</button></a>
-				</p>
 
 		</div>
 
