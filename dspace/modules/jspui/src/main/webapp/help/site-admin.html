@@ -11,448 +11,391 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> 
-    <title>DSpace: Site Administrator Help</title>
+    <title>Ajuda do Administrador</title>
     <link rel="stylesheet" href="../styles.css" type="text/css"/>
   </head>
 
   <body class="help">
-    <h2>Site Administrator Help</h2>
+    <h2>Ajuda do Administrador</h2>
 
     <table>
       <tr>
-        <td align="left"><h3>Help Contents</h3></td>
-        <td align="right"><a href="#" onclick="window.close()">Close this window</a></td>
+        <td align="left"><h3>Conteúdo da Ajuda</h3></td>
+        <td align="right"><a href="#" onclick="window.close()">Fechar</a></td>
       </tr>
     </table>
 
     <ul>
-      <li><a href="#general">General Information</a></li>
-      <li><a href="#topcommunity">Creating a Top-level Community</a></li>
-      <li><a href="#subcommunity">Creating a Sub-community</a></li>
-      <li><a href="#editcommunity">Editing a Community</a></li>
-      <li><a href="#createcollection">Creating a Collection</a></li>
-      <li><a href="#editcollection">Editing a Collection</a></li>
-      <li><a href="#epeople">E-people</a></li>
-      <li><a href="#groups">Groups</a></li>
-      <li><a href="#items">Items</a></li>
-      <li><a href="#supervision">Supervision Orders</a></li>
-      <li><a href="#dublincore">Dublin Core Registry</a></li>
-      <li><a href="#bitstream">Bitstream Format Registry</a></li>
-      <li><a href="#workflow">Workflow</a></li>
-      <li><a href="#authorize">Authorization</a></li>
-      <li><a href="#editnews">Edit News</a></li>
-      <li><a href="#editlicense">Edit Default License</a></li>
+      <li><a href="#general">Informações gerais</a></li>
+      <li><a href="#topcommunity">Criação de uma comunidade de nível superior</a></li>
+      <li><a href="#subcommunity">Criando uma Sub-comunidade</a></li>
+      <li><a href="#editcommunity">Editando uma comunidade</a></li>
+      <li><a href="#createcollection">Criar uma coleção</a></li>
+      <li><a href="#editcollection">Editando uma coleção</a></li>
+      <li><a href="#epeople">E-usuário</a></li>
+      <li><a href="#groups">Grupos</a></li>
+      <li><a href="#items">Itens</a></li>
+      <li><a href="#supervision">Ordens de Supervisão</a></li>
+      <li><a href="#dublincore">Registro Dublin Core</a></li>
+      <li><a href="#bitstream">Formato do Registro Bitstream</a></li>
+      <li><a href="#workflow">Fluxo de Trabalho</a></li>
+      <li><a href="#authorize">Autorização</a></li>
+      <li><a href="#editnews">Editar Notícias</a></li>
+      <li><a href="#editlicense">Editar Licença Padrão</a></li>
     </ul>
 
-    <h3><a name="general"></a>General Information</h3>
+    <h3><a name="general"></a>Informações gerais</h3>
 
-    <p>As of DSpace 1.2, many administration tools can now be accessed via the regular DSpace UI.  However, they only appear if you are logged in as an administrator.  The easiest way to do this is to go to your 'My DSpace' page.</p>
+    <p>A partir da versão DSpace 1.2, muitas ferramentas de administração podem agora ser acessadas pelo DSpace padrão UI (User Interface).  No entanto, elas só aparecem se você estiver logado como Administrador. A maneira mais fácil de fazer isso é ir para a página "Meu espaço".</p>
 
-    <p>Some tasks must be performed entrally using the administration user interface, part of the Web UI. To access the administration UI, enter the base URL of your DSpace followed by <code>/dspace-admin</code>, for example:</p>
+    <p>Algumas tarefas devem ser realizadas internamente usando a interface do usuário Administrador, parte da Interface do Usuário Web. Para acessar a interface do usuário Administrador, digite a URL base do seu DSpace seguido por <pre>/dspace-admin</pre>, por exemplo:</p>
 
     <pre>https://dspace.myu.edu/dspace-admin</pre>
 
-    <p>You will need to authenticate as an administrator to be able to access the page.  Then, click on the relevant tool on the left-hand navigation bar.</p>
+    <p>Você vai precisar da autenticação como administrador para ser autorizado a acessar a página. Em seguida, clique na ferramenta respectiva na barra de navegação do lado esquerdo.</p>
 
 
-    <h3><a name="topcommunity"></a>Creating a Top-level Community</h3>
+    <h3><a name="topcommunity"></a>Criação de uma Comunidade de Nível Superior</h3>
 
-    <p>To add a top-level community, go to the community/collection listing page
-    while logged in as an administrator.  On the right there will be an option
-    to <em>Create Top-Level Community...</em>.  Clicking on this will create the
-    new top level community and take you to the 'Edit Community' page.</p>
+    <p>Para adicionar uma comunidade de nível superior, vá para a página da listagem  de Comunidade / Coleção quando estiver conectado como administrador. À direita, haverá uma opção <em>Criar Comunidade de Primeiro Nível ...</em>. Ao clicar sobre esta opção você criará uma nova Comunidade de nível superior e será levado para a página 'Editar Comunidade'.</p>
 
 
-    <h3><a name="subcommunity"></a>Creating a Sub-community</h3>
+    <h3><a name="subcommunity"></a>Criando uma Sub-comunidade</h3>
 
-    <p>To create a sub-community, go to the community home page of the community that is to be the parent of the new sub-community.  Then, click on the 'Create sub-community' in the 'Admin Tools' box at the top right-hand corner of the page.  This will create the new community and take you to the 'Edit Community' page for that community.</p>
+    <p>Para criar uma sub-comunidade, vá para a página inicial da Comunidade pai da nova sub-comunidade. Em seguida, clique no botão "Criar sub-comunidade" na caixa "Ferramentas Admin" no canto superior direito da página. Isto irá criar a nova comunidade e levará para a página 'Editar Comunidade'.</p>
 
 
-    <h3><a name="editcommunity"></a>Editing a Community</h3>
+    <h3><a name="editcommunity"></a>Editando uma Comunidade</h3>
 
     <ul>
-      <li>Fill out the form as needed. 'Name', 'short description' and 'Introductory text' are required; the rest of the fields are optional.</li>
-      <li>The 'short description' appears on the community list page below the community name, and should be one or two sentences of plain text describing the community.</li>
-      <li>The 'introductory text,' 'side bar' and 'copyright text' fields are displayed on the community's home page.  'Introductory text' and 'side bar text' are both HTML fields, which means you should place text in &lt;P&gt; &lt;/P&gt;</li>
-      <li>To add a logo to be displayed on the community's home page, click on the <strong>Upload Logo</strong> button.  On the next screen either type in a path to the logo file or browse to the logo file, then click on the <strong>Upload</strong> button. Note, if you're creating a community, it's best to fill out the rest of the form, click 'Update' and then come back to do this.  Note that in general, relatively small logo sizes look best due to the design of the collection home page.</li>
-      <li>When all information for the Community Page is entered, click on the <strong>Create</strong> button.</li>
+      <li>Preencha o formulário conforme necessário. Os campos 'Nome', 'Descrição curta' e 'Texto introdutório' são obrigatórios; os demais campos são opcionais.</li>
+      <li>A 'Descrição curta' aparece na página da comunidade abaixo do nome da comunidade, e deve ser uma ou duas frases de texto simples que descrevem a comunidade.</li>
+      <li>Os campos "Texto introdutório 'Texto da barra lateral' e 'Texto de copyright' são exibidos na página inicial da comunidade. 'Texto introdutório' e 'Texto da barra lateral' "são os dois campos de HTML, o que significa que você deve colocar o texto em &lt;P&gt; &lt;/P&gt;</li>
+      <li>Para adicionar um logotipo a ser exibido na página inicial da comunidade, clique no botão <strong>Upload logo</strong>. Na próxima tela, digite um caminho para o arquivo do logotipo ou navegue até o arquivo de logotipo, em seguida, clique no  botão <strong>Upload logo</strong>. Note que, se você está criando uma comunidade, é melhor preencher o restante do formulário, clique em "Update" e depois voltar para fazer isso. Note-se que, em geral, os logotipos pequenos são mais adequados devido ao design da home page da coleção.</li>
+      <li>Quando todas as informações para a página da comunidade estiverem inseridas, clique no botão <strong>Criar</strong> button.</li>
     </ul>
 
 
-    <h3><a name="createcollection"></a>Creating a Collection</h3>
+    <h3><a name="createcollection"></a>Criando uma coleção</h3>
 
-    <p>Creating a collection is done with a 'wizard' style tool that should be familiar to most people who've used modern operating systems user interfaces.  It's rather similar to the submission interface in DSpace.</p>
+    <p>A criação de uma coleção é feita com uma ferramenta de estilo 'wizard' que deve ser familiar para a maioria das pessoas que já usaram interfaces de usuário de sistemas operacionais modernos.  Ela é bastante semelhante à interface de submissão no DSpace.</p>
 
-    <p><strong>Note:  You cannot add new e-people records with this wizard.</strong>  All the e-person records must be loaded into the system first.  However, you will be able to add more e-people and/or groups to each group associated with the collection later if required.</p>
+    <p><strong>Nota: Você não pode adicionar novos registros de usuários com este assistente.</strong> Todos os registros de usuários devem ser carregados primeiro no sistema. No entanto, depois você poderá adicionar mais usuários e / ou grupos a cada grupo associado à coleção, se necessário.</p>
 
-    <p>To create a collection, ensure you're logged in, go to the community home page for the community in which the collection is to appear, and click 'Create Collection' on the top-right hand corner of the page.  This will start the wizard.</p>
+    <p>Para criar uma coleção, assegure-se que você está logado, vá para a página inicial da comunidade na qual coleção deve aparecer, e clique em "Criar Coleção” 'no canto superior direito da página. Isto irá iniciar o assistente.</p>
 
-    <h4><a name="wizard_questions"></a>Describe the Collection (Checkboxes)</h4>
+    <h4><a name="wizard_questions"></a>Descrever a Coleção (caixas de seleção)</h4>
 
-    <p>The first page of the wizard will ask you some questions about the new collection.  Check those that apply and click on the 'Next&nbsp;&gt;' button.  Note that after you've completed the wizard, you will be able to edit the collection later, so decisions you make here are not permanent.</p>
+    <p>A primeira página do assistente vai lhe fazer algumas perguntas sobre a nova coleção. Confira as que se aplicam e clique no botão 'Próximo>'. Observe que depois de ter concluído o assistente, você poderá editar a coleção mais tarde, então as decisões que você fizer aqui não são definitivas.</p>
 
-    <p>However, also note that this wizard is a little less polished than the submission UI, which basically means there are no 'back' buttons, so if you want to change something you entered on one page after clicking 'next', you need to finish the wizard and then go back and edit the collection.</p>
+    <p>No entanto, observe também que o assistente é um pouco menos sofisticado do que a submissão pela Interface do Usuário, o que significa que não há botões "Voltar", se você quiser mudar algo depois de clicar em 'próximo'. Para isto você precisa concluir a tarefa no assistente e, em seguida, voltar e editar a coleção.</p>
 
-    <p>When you have completed the wizard, you're dropped into the Edit Collection screen.  This allows you to review what you've entered and make any necessary tweaks.</p>
+    <p>Quando tiver concluído o assistente, você entrará na tela Editar Coleção. Isso permite que você reveja o que digitou e faça os ajustes necessários.</p>
 
-    <p>Note 1:  If the <strong>New items should be publicly readable</strong> option is checked, it means that new items arriving via the submission UI or batch importer will, by default, will get anonymous READ permissions for both the item and all the bitstreams).  You can change this later so that e.g. items get anonymous READ permissions but bitstreams do not.  Items that are 'mapped' or included from other collections will not have their authorizations changed.</p>
+    <p>Nota 1: Se a opção <strong>Novos itens podem ser legíveis publicamente</strong> for marcada, significa que os novos itens submetidos pela interface do usuário ou por importação em lote, terão por padrão, a permissão READ dos usuários anônimos, tanto para o item e todos os bitstreams. Você pode mudar este padrão,  para que, por exemplo, os itens possam ter permissões de leitura por usuários anônimos, mas os bitstreams não. Os itens que são "mapeados" ou incluídos partir de outras coleções, não terão suas autorizações alteradas.</p>
 
-    <p>Note 2:  <strong>New items should be publicly readable</strong> is just a default; an item's permissions may later changed.</p>
+    <p>Nota 2:  <strong>Novos itens podem ser legíveis publicamente</strong> é apenas um padrão; permissões de um item poderão ser modificadas.</p>
 
-    <p>Note 3:  If <strong>New items should be publicly readable</strong> is <em>not</em> checked, you will be asked later in the wizard who is allowed to read new items.  Again, this is just a default, and can be changed later.</p>
-
-
-    <h4><a name="wizard_description"></a>Describe the Collection (Information)</h4>
-
-    <p>The next page allows you to fill in some basic information about the collection.  The <strong>Name</strong>, <strong>Short Description</strong> and <strong>Introductory Text</strong> fields are mandatory, the others are not.  (Note that the wizard is not strict, however, and will not enforce this.)</p>
-
-    <p><strong>Copyright Text</strong> is simply text that will appear at the bottom of the collection's home page.</p>
-
-    <p><strong>License</strong> is the <em>deposit license</em> (the license that submitters must grant when they submit an item) for this collection.  This overrides the site default (which is stored in <em>[dspace]</em>/config/default.license and must be edited by a systems adminstrator).  If you leave this field blank, the site default license is used.</p>
-
-    <p><strong>Provenance</strong> is a free-text field you can put any provenance information in you feel like.  It is not visible to end-users.</p>
+    <p>Nota 3: Se a opção <strong>Novos itens podem ser legíveis publicamente</strong> <em>não</em> é marcada, você será solicitado, posteriormente, a informar no assistente  quem tem permissão para ler os novos itens. Novamente, este é apenas um padrão, e pode ser alterado posteriormente.</p>
 
 
-    <h4><a name="wizard_permissions"></a>Collection Authorization</h4>
+    <h4><a name="wizard_description"></a>Descrever a Coleção (Informação)</h4>
 
-    <p>Depending on the boxes you checked on the first page of the wizard, you will go through a number of screens asking you which e-people and/or groups can or should perform which actions, for example who can submit, and who should perform the <em>accept/reject</em> submission workflow step.  These pages work exactly the same as the <a href="collection-admin.html#groupeditor">group editor</a>.  Click 'Next&nbsp;&gt;' when you have selected all the e-people and/or groups to appear in the relevant permissions group.</p>
+    <p>A próxima página permite que você preencha algumas informações básicas sobre a coleção. <p>O <strong>Nome</strong>, a <strong>Descrição curta</strong> e o <strong>Texto introdutório</strong> não são campos obrigatórios. Note que, no entanto, que é altamente recomendado o preechimento destes.</p>
 
-    <p>Note:  You cannot add new e-people records with this wizard.  All the e-person records must be loaded into the system first.  You can add more e-people and/or groups to each group later if required.</p>
+    <p><strong>Texto de Copyright</strong> é um texto que será exibido na parte inferior da home page da coleção.</p>
+
+    <p><strong>Licença</strong> é a <em>licença de depósito</em> (licença que o depositante deverá conceder quando submete o item) para esta coleção.  Esta substitui a licença padrão da Biblioteca Digital (que é armazenada em <pre>[dspace]/config/default.license</pre> e deve ser editada pelo administrador do sistema). Se você deixar este campo em branco, a licença padrão da Biblioteca Digital será usada.</p>
+
+    <p><strong>Procedência</strong> é um campo de texto livre no qual você pode digitar qualquer informação de proveniência. Esta informação não é visível para os usuários finais.</p>
 
 
-    <h4><a name="wizard_default"></a>Enter Default Item Metadata</h4>
+    <h4><a name="wizard_permissions"></a>Autorização de Coleção</h4>
 
-    <p>On this screen you can specify some Dublin Core values that new submissions will have pre-filled out.  Some of the values you can set here do not appear in the submission UI, so end-users may not have the chance to edit them.  This can be a good or a bad thing!  (FIXME?)  Also note that these Dublin Core values will be added to items imported via the batch importer.</p>
+    <p>Dependendo das caixas que você marcou na primeira página do assistente, você vai passar por uma série de telas perguntando quais usuários e/ou grupos podem ou devem realizar ações como, por exemplo, quem pode submeter, e quem deve <em>aceitar/rejeitar</em> a submissão no fluxo de trabalho. Essas páginas funcionam exatamente como o <a href="collection-admin.html#groupeditor">editor de grup</a>.  Clique em 'Próximo&nbsp;&gt;' uando você tiver selecionado todos os usuários e/ou grupos que aparecem no respectivo grupo de permissões.</p>
+
+    <p>Nota: Você não pode adicionar novos registros de usuários com este assistente. Todos os registros de usuários devem ser primeiramente carregados no sistema. Você pode adicionar mais usuários e/ou grupos a cada grupo mais tarde, se necessário.</p>
+
+
+    <h4><a name="wizard_default"></a>Digite Metadados Padrão do Item</h4>
+
+    <p>Nesta tela você pode especificar alguns valores Dublin Core que terão que ser pré-preenchidos para as novas submissões. Alguns dos valores que você definir aqui não aparecem para submissão na interface do usuário, por isso os usuários finais podem não ter a oportunidade de editá-los. Esta pode ser uma coisa boa ou ruim! (FIXME?) Observe também que esses valores Dublin Core serão adicionados aos itens importados por lote.</p>
 
     
-    <h3><a name="editcollection"></a>Editing a Collection</h3>
-    <p>The Edit Collection page allows you to change collection metadata (such as name and introductory text), configure authorization and workflow, or delete the collection entirely.</p>
+    <h3><a name="editcollection"></a>Editando uma coleção</h3>
+    <p>A página Editar Coleção permite que você altere os metadados da coleção (como Nome e Texto introdutório), configurar a autorização e fluxo de trabalho, ou excluir a coleção inteiramente.</p>
 
-    <p>The 'Delete' button (located at the top of the page) will remove the collection (including all its items) from the repository.</p>
+    <p>O botão "Apagar' (localizado no topo da página) irá remover a coleção (incluindo todos os seus itens) da Biblioteca Digital.</p>
 
-    <p>The <strong>Name</strong>, <strong>Short Description</strong> and <strong>Introductory Text</strong> fields are mandatory, the others are not. Note that this is not enforced, but is highly recommended.</p>
+    <p>O <strong>Nome</strong>, a <strong>Descrição curta</strong> e o <strong>Texto introdutório</strong> não são campos obrigatórios.  que, no entanto, que é altamente recomendado o preechimento destes.</p>
 
-    <p><strong>Copyright Text</strong> is simply text that will appear at the bottom of the collection's home page.</p>
+    <p>O <strong>Copyright Text</strong> is simply text that will appear at the bottom of the collection's home page.</p>
 
-    <p><strong>License</strong> is the <em>deposit license</em> (the license that submitters must grant when they submit an item) for this collection.  This overrides the site default (which is stored in <em>[dspace]</em>/config/default.license and must be edited by a systems adminstrator).  If you leave this field blank, the site default license is used.
-    There are some substitution variables that can be used to create personalized licenses:</p>
+    <p><p><strong>Licença</strong> é a <em>licença de depósito</em> (licença que o depositante deverá conceder quando submete o item) para esta coleção.  Esta substitui a licença padrão da Biblioteca Digital (que é armazenada em <pre>[dspace]/config/default.license</pre> e deve ser editada pelo administrador do sistema). Se você deixar este campo em branco, a licença padrão da Biblioteca Digital será usada.
+    Existem algumas variáveis ​​de substituição, que podem ser utilizadas para criar licenças personalizadas:</p>
     <ul>
-	    <li><strong>%1$s</strong> will be translated in the "submitter first name"</li> 
-		<li><strong>%2$s</strong> will be translated in the "submitter last name"</li>
-		<li><strong>%3$s</strong> will be translated in the "submitter email" </li>
-		<li><strong>%4$s</strong> will be translated in the current date</li>
-		<li><strong>%5$s</strong> will be translated in the collection info</li> 
-		<li><strong>%6$s</strong> will be translated in the item info </li>
-		<li><strong>%7$s</strong> will be translated in the eperson info</li> 
+	    <li><strong>%1$s</strong> será traduzido para o "primeiro nome do depositante"</li> 
+		<li><strong>%2$s</strong> será traduzido para o "último sobrenome do depositante"</li>
+		<li><strong>%3$s</strong> será traduzido no "email do depositante" </li>
+		<li><strong>%4$s</strong> será traduzido para a data atual</li>
+		<li><strong>%5$s</strong> será traduzido na informação da coleção</li> 
+		<li><strong>%6$s</strong> será traduzido na informação do item</li>
+		<li><strong>%7$s</strong> será traduzido na informação do usuário</li> 
     </ul>
-	<p>If you need to embed in the license text the % symbol you need to escape it with a second %, i.e. you need to write %%. 
-	It is recommended to use a dummy submission to check the license change:  <strong>check the resulting license in the Accept/reject Licence step.</strong> 
+	<p>Se você precisa incorporar no texto da licença o símbolo %, você pode evitar a inclusão de um segundo %, escrevendo %%. Recomenda-se usar uma submissão fictícia para verificar a mudança na licença:   <strong>verifique a licença resultante na etapa Aceitar / Rejeitar licença.</strong> 
     </p>
 
-    <p><strong>Provenance</strong> is a free-text field you can put any provenance information in you feel like.  It is not visible to end-users.</p>
+    <p><strong>Procedência</strong> é um campo de texto livre você pode colocar qualquer informação de proveniência que lhe convier. Esta informação não é visível para os usuários finais.</p>
 
-    <p>To add or change the logo to be displayed on the collection's home page, click on the Upload Logo button. On the next screen either type in a path to the logo file or browse to the logo file, then click on the Upload button.</p>
+    <p>Para adicionar ou alterar o logotipo a ser exibido na home page da coleção, clique no botão “Carregar Logo”. Na próxima tela, digite um caminho para o arquivo do logotipo ou navegue até o arquivo do logotipo, em seguida, clique no botão “Carregar”.</p>
 
-    <p>To add or change <a href="#authorize">authorisations</a>, <a href="collection-admin.html#submitters">submitters</a> or collection administrators click on the appropriate buttons to create/edit groups and their actions.</p>
+    <p>Para adicionar ou alterar as <a href="#authorize">autorizações</a>, os <a href="collection-admin.html#submitters">depositantes</a> ou administradores de coleção, clicar nos botões respectivos para criar/editar grupos e suas ações.</p>
 
-    <p>To edit the workflow groups, select the workflow step whose group you want to create or change and follow the <a href="collection-admin.html#groupeditor">group edit</a> process</p>
+    <p>Para editar os fluxos de trabalho de grupos, selecione a etapa do fluxo de trabalho para o grupo que deseja criar ou alterar e siga o processo  <a href="collection-admin.html#groupeditor">editar grupo</a> process</p>
 
-    <p>Click on the 'Item Template' button to display the <a href="#wizard_default">default item metadata page</a> where you can set default values for metadata fields for all items added to the collection.</p>
+    <p>Clique no botão 'Template do Item' para exibir a <a href="#wizard_default">página de metadados padrão do item</a>  onde você pode definir os valores padrão para os campos de metadados para todos os itens adicionados à coleção.</p>
 
-    <h3><a name="epeople"></a>E-people</h3>
+    <h3><a name="epeople"></a>e-Usuário</h3>
 
-    <p>Use this tool to register e-mail addresses and other information about people you wish to authorize to play a role in the system, either as submitters, administrators, submission workflow participants, subscribers, or users with permissions to read restricted content.</p>
+    <p>Utilize esta ferramenta para registrar os endereços de e-mail e outras informações sobre as pessoas que você deseja autorizar a desempenhar um papel no sistema, seja como depositante, administradores, os participantes do fluxo de trabalho de submissão, assinantes ou usuários com permissões para ler um conteúdo restrito.</p>
 
-    <p>Users can also get onto this list by self-registering (if the site configuration allows this).  This does not give them any authorization, however.  All people you wish to add to a group for submitter or workflow authorization must first be registered here.</p>
+    <p>Os e-usuários também podem ir para esta lista por auto-registro (se a configuração do site permitir esta função). Isso, no entanto,  não lhes dá qualquer autorização. Todas as pessoas que você deseja adicionar a um grupo de depositantes ou conceder autorização de workflow devem ser, primeiramente, registradas aqui.</p>
 
-    <h4>Register an E-Person</h4>
+    <h4>Registre um e-Usuário</h4>
 
-    <p>To register someone, click on the <strong>Add EPerson</strong> button and add their information.</p>
+    <p>Para inscrever alguém, clique no botão <strong>Add ePerson</strong> e adicionar suas informações.</p>
 
     <ul>
-      <li><p>If the user will be logging in with a password, <em>do not</em> check <strong>Can Log In</strong> as this informs the system the user has a registered, active account, which isn't the case for a new e-person--they'll need to register using the UI to set a password first.</p></li>
-      <li><p>The 'require certificate' checkbox is used by MIT's X509 certificate authenticator.  Ignore this unless you are using the <code>MITAuthenticator</code> authenticator.</p>
+      <li><p>Se o usuário fizer login com uma senha, <em>não use</em> <strong>Can Log In</strong>, pois isto informa  ao sistema que o usuário tem uma conta registrada e ativa, o que não é o caso de um novo e-usuário – que necessitará usar a interface do usuário para registrar uma senha pela primeira vez.</p></li>
+      <li><p>A caixa de seleção "exigir certificado' é usada pelo certificado X509 do autenticador MIT. Ignore essa opção, a menos que esteja usando o autenticador <code>MITAuthenticator</code>.</p>
 
-      <p>If you check 'require certificate', you may also check 'can log in'.  This  means the user can log straight in with their certificate without registering.  If you want users to go through the registration process (so that they enter their name etc.) then do not check 'can log in'.</p></li>
+      <p>Se você marcar "exigir certificado', você também pode marcar "pode logar". Isso significa que o usuário pode fazer logon diretamente com o seu certificado, sem registrar. Se você quiser que os usuários passem pelo processo de registro (para que digitem o nome etc), então não marque 'pode logar'.</p></li>
     </ul>
 
-    <p>Click on <strong>Save Edits</strong> when done.</p>
+    <p>Clique em <strong>Salvar edições</strong> quando terminar..</p>
 
-    <h4>Delete an E-Person or Edit Information About an E-Person</h4>
+    <h4>Excluir uma informação E-Usuário ou Editar Informação sobre um E-Usuário</h4>
 
-    <p>Click on the <strong>Select EPeople...</strong> button to get a pop-up list of e-people in the system.  The links at the top and bottom of the pop-up let you page through the list.  You can also sort the list by e-mail address, last name or ID by clicking on the relevant column heading.  On the left of each e-person in the list is a 'select' button.  Click this next to the relevant e-person, and the pop-up will close and the e-person will appear in the box on the main 'Adminster EPeople' page.  Now you can click the 'edit' or 'delete' buttons which let you edit information about a user or to delete them from the system.</p>
+    <p>Clique no botão <strong>Select EPeople</strong> para obter uma lista pop-up de e-usuários no sistema. Os links na parte superior e inferior do pop-up permite que você percorra a lista. Você também pode ordenar a lista por endereço de e-mail, sobrenome ou ID, clicando no cabeçalho da coluna correspondente. Na lista, à esquerda de cada e-usuário há um botão 'selecionar'. Clique próximo do nome do e-usuário correspondente e o pop-up será fechado e  e-usuário vai aparecer na caixa da página principal do 'Administer EPeople'. Agora você pode clicar nos botões “deletar” ou "editar" que lhe permitem editar informações sobre um usuário ou para excluí-las do sistema.</p>
 
 
-    <h3><a name="groups"></a>Groups</h3>
+    <h3><a name="groups"></a>Grupos</h3>
 
-    <p>Use this section to create, edit and delete groups of e-persons and/or groups who can be authorized for specific functions in the system.</p>
+    <p>Use esta seção para criar, editar e excluir grupos de e-usuários e/ou grupos que podem ser autorizados para executar funções específicas no sistema.</p>
 
-    <p>The 'Anonymous' group is a 'special' group that represents every person using the system.  This group exists so that authorization policies can be specified for anonymous access ('everyone in the world can read this item').</p>
+    <p>O grupo 'Anonymous' é um grupo "especial" que representa cada pessoa que usa o sistema. Este grupo existe para que as políticas de autorização possam ser especificadas para acesso anônimo ("todo mundo pode ler este item).</p>
 
-    <p>Members of the 'Administrator' group are allowed to perform any action in the system, so be careful who you put in this group!</p>
+    <p>Os membros do grupo "Administrador" estão autorizados a executar qualquer ação no sistema, por isso pense bem sobre quem serão os usuários que você vai incluir neste grupo!</p>
 
-    <p>Other groups can be used for a variety of purposes.  Groups may represent e-people who are allowed to submit to a particular collection; e-people who are responsible for performing a particular workflow step such as reviewing incoming submissions; or groups of e-people who have permission to access some restricted content.  Information about what each group is allowed to do is controlled using the <a href="#authorize">authorization section</a>.</p>
+    <p>Outros grupos podem ser usados ​​para uma variedade de fins. Os grupos podem representar e-usuários que têm permissão para submeter a uma coleção particular; e-usuários responsáveis ​​pela realização de uma etapa específica do fluxo de trabalho, como rever as submissões recebidas; ou grupos de e-usuários que têm permissão para acessar algum conteúdo restrito. Informações sobre o que cada grupo tem permissão para fazer são controladas usando a <a href="#authorize"> seção de autorização</a>.</p>
 
-    <p>Groups may contain other groups to provide greater flexibility in assigning actions and to simplify maintenance. This is useful for reflecting hierarchical group structures, where a group of e-people with particular responsibilties are also part of a larger group with differing reponsibilities and/or scope of responsibility.</p>
+    <p>Os grupos podem conter outros grupos para proporcionar maior flexibilidade na atribuição de ações e para simplificar a manutenção. Isso é útil para refletir estruturas de grupos hierárquicos, onde um grupo de e-usuários com responsabilidades particulares também faz parte de um grupo maior com diferentes reponsabilidades e/ou escopo de responsabilidade.</p>
 
-    <p>Groups can have names.  Names automatically created by the system follow a convention depending on the what the group is for.  The general form of this is:</p>
+    <p>Os grupos podem ter nomes. Os nomes criados automaticamente pelo sistema seguem uma convenção de acordo com o objetivo do grupo. A forma geral é:</p>
 
     <pre>OBJECTTYPE_OBJECTID_ACTION</pre>
 
-    <p>For example, the group of e-people who are authorized to submit to collection XYZ would be called:</p>
+    <p>Por exemplo, o grupo de e-usuários autorizado a submeter para a coleção XYZ seria denominado:</p>
 
     <pre>COLLECTION_XYZ_ADD</pre>
 
-    <p>Note that XYZ in this case is the <em>internal</em> ID (the database primary key) of the collection, rather than the Handle.  You can find out the internal ID of a collection or community by clicking on 'Communities/collections'.  The second number in brackets beside a community or collection name is that object's internal ID.</p>
+    <p>Note que XYZ neste caso é o ID <em>interno</em> (a chave primária do banco de dados) da coleção, ao invés do Handle. Você pode descobrir o ID interno de uma coleção ou da comunidade clicando em “Comunidades/coleções”. O segundo número entre parênteses ao lado do nome da comunidade ou coleção é ID interno desse objeto.</p>
 
-    <p>It is recommended that you follow this convention for manually created groups so it's easy to find the group you need.  The admin UI will automatically create groups for workflow steps, but you need to create groups for submitters manually.</p>
+    <p>É recomendado que você siga essa convenção para grupos criados manualmente, visando facilitar a localização do grupo que você precisa. A interface do administrador criará automaticamente os grupos para as etapas de fluxo de trabalho, mas você precisa criar manualmente os grupos que submeteu.</p>
 
-    <h4>Create and Editing Groups</h4>
+    <h4>Criar e editar grupos</h4>
 
-    <p>To manually create a group, click on <strong>Create New Group</strong>.  Change the default group name at top to desired name and click on <strong>Update Name</strong>.</p>
+    <p>Para criar manualmente um grupo, clique em <strong>Criar Novo Grupo</strong>.  Na parte superior altere o nome padrão para o nome desejado e clique em <strong>Atualizar o nome</strong>.</p>
 
-    <p><a href="collection-admin.html#groupeditor">Instructions for using the group editor</a></p>
-
-
-
-    <h3><a name="items"></a>Items</h3>
-
-    <p>Use this tool to edit, withdraw or delete an item.  You can enter an item's Handle or internal ID (database primary key) into the relevant box.  Alternatively, you may find it easier to go to the relevant item's display page and then click the <strong>Edit</strong> button on the page which appears if you're logged in as an administrator.</p>
-
-    <p><a href="collection-admin.html#editmetadata">Instructions for editing items</a></p>
-
-    <p><a href="collection-admin.html#withdraw">Instructions for withdrawing items</a></p>
-
-    <p>Note that the 'expunge' function will expunge the item and its metadata from the system without  leaving a trace.  Note that this functionality hasn't been fully tested (and it's not recommended), so there may be problems.  For example, since there's no record of the deletion, the fact that the item has been deleted isn't exposed to OAI harvesters.</p>
+    <p><a href="collection-admin.html#groupeditor">Instruções para utilização do editor de grupo</a></p>
 
 
-    <h3><a name="supervision"></a>Supervision Orders</h3>
+
+    <h3><a name="items"></a>Itens</h3>
+
+    <p>Utilize esta ferramenta para editar, retirar ou excluir um item. Você pode inserir o Handle ou ID interno (chave primária do banco de dados) do item na caixa respectiva. Alternativamente, se você estiver logado como administrador, pode ir para a página de exibição do respectivo item e, em seguida, clicar no botão <strong>Editar</strong> nessa página.</p>
+
+    <p><a href="collection-admin.html#editmetadata">Instruções para a edição de itens</a></p>
+
+    <p><a href="collection-admin.html#withdraw">As instruções para retirar itens</a></p>
+
+    <p>Note que a função 'expurgo' vai eliminar o item e seus metadados do sistema sem deixar rastro. Note que esta funcionalidade não foi totalmente testada (e não é recomendada), portanto, pode haver problemas. Por exemplo, uma vez que não há registro da exclusão, o item excluído não está exposto aos coletadores OAI.</p>
+
+
+    <h3><a name="supervision"></a>Ordens de Supervisão</h3>
     
-    <p>Select <em>Supervisors</em> in the administration area and you are presented with three options:</p>
+    <p>Selecione os <em>supervisores</em> na área de administração e serão apresentadas três opções:</p>
 
 	<ul>
-		<li>Add a Supervision Order</li>
-		<li>View Current Supervision Orders</li>
-		<li>Clean Supervision Order Database</li>
+		<li>Adicionar uma Ordem de Supervisão</li>
+		<li>Ver Ordens de Supervisão atuais</li>
+		<li>Limpar banco de dados de Ordem de Supervisão</li>
 	</ul>
 
-	<p>The sections below detail how to deal with common supervision order tasks.</p>
+	<p>As seções a seguir detalham como lidar com tarefas de ordem de supervisão comuns.</p>
 
-	<p><em>Note: The option to Clean Supervision Order Database should be used once 
-	in a while just to perform basic maintenance operations on the database.  It is 
-	completely automatic and takes a very short time to execute.</em></p>
+	<p><em>Nota: A opção limpar banco de dados de Ordem de Supervisão deve ser usado de vez em quando apenas para executar operações básicas de manutenção no banco de dados. O processo é completamente automático e leva pouco tempo para ser executado.</em></p>
 
+	<h4>Vendo Ordens de supervisão atuais</h4>
 
-	<h4>Viewing Current Supervision Orders</h4>
+	<p>Selecione <em>Exibir Ordens de Supervisão Atuais</em> e será apresentada uma lista de todas as ordens de supervisão em vigor. A partir desta página você pode modificar as políticas para a ordem de supervisão ou remover a ordem de supervisão. (Veja as seções abaixo).</p>
 
-	<p>Select <em>View Current Supervision Orders</em> and you are presented with a list 
-	of all supervision orders currently in effect.  From this page you can modify the 
-	policies for the supervision order or remove the supervision order. (see the sections
-	below).</p>
+	<p>Os detalhes que você tem nesta página permitem que você veja o nome do grupo que faz a supervisão, o autor do item que está sendo supervisionado e o título desse item.</p>
 
-	<p>The details you have on this page allow you to see the name of the group doing 
-	the supervising, the author of the item being supervised and the title of that item.</p>
-
-	<p>You may also add a supervision order from this page as per the section <strong>Adding Supervision Orders</strong> below.</p>
+	<p>Você também pode adicionar uma ordem de supervisão desta página conforme a seção <strong>Adicionando Ordens Supervisão</strong> abaixo.</p>
 
 
-	<h4>Adding Supervision Orders</h4>
+	<h4>Adicionando Ordens de Supervisão</h4>
 
-	<p>Select <em>Add a Supervision Order</em> from either the main supervision order 
-	page or the Current Supervision Orders page.</p>
+	<p>Selecione <em>Adicionar uma Ordem de Supervisão</em> a partir de qualquer página da ordem de supervisão principal ou da página Ordens de Supervisão atual.</p>
 
-	<p>To set a supervision order you need to define the group to do the supervising 
-	and the item in the workspace to be supervised.  In addition, this page gives you 
-	the option to set a default set of policies for the supervising group to have over 
-	the item.</p>
+	<p>Para definir uma ordem de supervisão você precisa para definir o grupo que fará a supervisão e o item na área de trabalho que será supervisionado. Além disso, esta página lhe dá a opção de definir um conjunto de políticas padrão que o grupo de controle terá sobre o item.</p>
 	
-	<p>Select the desired group from the pull down list of groups on this page; 
-	this box contains all the groups that currently exist on the system.  Next select the WorkSpace item to be 
-	Supervised.  This means clicking on the round select box on the right of the item in the listing you can see on this page,
-	which shows all items currently in user workspaces.</p>
+	<p>Selecione o grupo desejado da lista <em>pull down<em> nesta página; esta caixa contém todos os grupos que existem atualmente no sistema. Em seguida, selecione a área de trabalho do item que será supervisionado. Isso significa clicar na caixa de seleção redonda à direita do item na listagem da página, e que mostra todos os itens atualmente na área de trabalho do usuário.</p>
 
-	<p><em>Note: the ID that is in the left hand column of the item listing is the 
-	database id for the workspace item, and is there for the reference of system 
-	administrators.</em></p>
+	<p><em>Nota: o ID que está na coluna do lado esquerdo do item listado é o ID do banco de dados para a área de trabalho do item, e está lá para a referência dos administradores do sistema.</em></p>
 
-	<p>Once you have chosen the group and the workspace item to be connected you 
-	may also select a default policy from the <em>Initial Policy Setting</em> pull down box.
-	The default policy options that this provides are:</p>
+	<p>Uma vez escolhido o grupo e a área de trabalho do item a ser conectado, você também pode selecionar uma política padrão da caixa <em>Initial Policy Setting</em>.
+	As opções de política padrão são:</p>
 	
 	<ul>
-		<li><strong>None</strong> - The supervision order is created but the supervising group is 
-		not given any policies regarding the item to be supervised.  This usually 
-		indicates that the administrator has decided to manually set policies for 
-		this supervision order.</li>
-		<li><strong>Observer</strong> - The supervising group is given READ access to the item 
-		(but not to any bundles or bitstreams that already exist).  Any new 
-		bundles or bitstreams inherit the supervision group's policy to permit 
-		READ operations.</li>
-		<li><strong>Editor</strong> - The supervising group is given ADD, WRITE, 
-		and READ access to the item (but not any bundles or bitstreams that 
-		already exist).  Any new bundles or bitstreams inherit the supervising 
-		groups's policy to permit ADD, WRITE and READ operations.</li>
+		<li><strong>Nenhum</strong> - A ordem de supervisão é criada, mas ao grupo de controle não é dada qualquer política em relação ao item a ser supervisionado. Isso geralmente indica que o administrador decidiu criar, manualmente, as políticas de supervisão para este fim.</li>
+		<li><strong>Observador</strong> -o grupo de supervisão é dado acesso de READ ao item (mas não a quaisquer pacotes ou bitstreams que já existem). Todos os novos pacotes ou bitstreams herdam a política do grupo de supervisão para permitir operações de leitura.</li>
+		<li><strong>Editor</strong> - Ao grupo de supervisão é dado acesso de ADD, WRITE E READ ao item (mas não todos os pacotes ou bitstreams que já existem). Todos os novos pacotes ou bitstreams herdam a política do grupo de supervisão para permitir as operações ADD, WRITE E READ.</li>
 	</ul>
 	
-	<p>Once happy with your selection click on <em>Submit Supervision Order</em> 
-	and your settings will be applied, and you will be returned to the 
-	supervision order main page.</p>
+	<p>Uma vez concluída a seleção, clique em Enviar Ordem de Supervisão e suas configurações serão aplicadas, e você retornará à página principal da ordem de supervisão.</p>
 
 
-	<h4>Removing Supervision Orders</h4>
+	<h4>Removendo Ordens de Supervisão</h4>
 
-	<p>Go to the <em>View Current Supervision Orders</em> page and select <em>Remove</em>
-	from the supervision order that to wish to remove.  You will be asked to confirm 
-	the removal of the order, upon confirmation of which it will be removed from the system.</p>
-
-
-	<h4>Customising Supervision Order Policies</h4>
-
-	<p>Go to the <em>View Current Supervision Orders</em> page and select <em>Policies</em> for 
-	the supervision order for which you would like to customise the policies.  You will be 
-	taken to the <em>Policies for Item</em> page.  From here you may customise the policies 
-	for the particular item.</p>
-
-	<p>In order to set policies for the supervisor group you should select, for example, 
-	<em>Add New Policy</em> for the item or any of its component parts, then select the 
-	supervisor group that you are wanting to configure from the given list of groups.  
-	You can then select the Action that you want to perform and hit <em>Save Policy</em>.</p>
+	<p>Ir para a página <em>Ver Ordens de Supervisão Atual </em> e selecione <em>Remover</em>
+	da ordem de supervisão a ordem que deseja remover. Você será solicitado a confirmar a remoção da ordem, após a confirmação ela será removida do sistema.</p>
 
 
-    <h3><a name="dublincore"></a>Metadata Registry</h3>
+	<h4>Personalizando Políticas de Ordens de Supervisão</h4>
 
-    <p>By default DSpace uses a qualified version of the Dublin Core schema based on the <a href="http://dublincore.org/documents/library-application-profile/">Dublin Core Libraries Working Group Application Profile (LAP)</a>. You can also configure other flat metadata schemas in the registry. The metadata registry provides a list of the elements and qualifiers, with comments.</p>
+	<p>Ir para a página <em>Ver Ordens de Supervisão Atual</em> e selecione <em>Políticas</em> para as ordens de supervisão para o qual você gostaria de ter políticas personalizadas.  
+	Você será levado para a página <em>Políticas do item</em>.  A partir daí você pode personalizar as políticas para o item específico.</p>
 
-    <p>You can edit the registry to suit your needs with this tool, but note that:</p>
+	<p>A fim de definir políticas para o grupo supervisor você deve selecionar, por exemplo, 
+	<em>Adicionar Nova Política</em> para o item ou qualquer um dos seus componentes, em seguida, selecione da lista de grupos, o grupo supervisor que você quer configurar. Selecione a ação que deseja realizar e clique em <em>Salvar Política</em>.</p>
+
+
+    <h3><a name="dublincore"></a>Registro de Metadados</h3>
+
+    <p>Por padrão o DSpace usa uma versão qualificada do esquema Dublin Core baseado no <a href="http://dublincore.org/documents/library-application-profile/">Dublin Core Libraries Working Group Application Profile (LAP)</a>. Você também pode configurar outros esquemas de metadados no registro. O registro de metadados fornece uma lista dos elementos e qualificadores, com comentários.</p>
+
+    <p>Com esta ferramenta você pode editar o registro para atender às suas necessidades, mas note que:</p>
 
     <ul>
-      <li>You can only edit one element/qualifier at a time.  Make the edits to one row, and click the relevant 'update' button.  Only edits you've made to that row will be saved.</li>
-      <li>If you delete an element and qualifier, all instances of that element and qualifier in items' metadata will be deleted</li>
-      <li>If you update an element or qualifier, for example changing 'contributor' to 'creator' and clicking 'Update', all instances of 'contributor' in items' metadata will be changed to 'creator'.</li>
-      <li>Some Dublin Core elements/qualifiers are used by the system for various functions, such as <code>date.available</code> for OAI harvesting, and <code>title</code> for the item display and search index.  You can change the scope notes for these but you shouldn't change or remove the element or qualifier.  To see which elements/qualifiers are used by the system, check out the <code><em>[dspace-source]</em>/config/registries/dublin-core.xml</code> file.</li>
+      <li>Você só pode editar um elemento/qualificador de cada vez. Coloque estas  edições em fila, e clique no botão 'Update'. Só edições feitas para essa linha serão salvas.</li>
+      <li>Se você excluir um elemento qualificador, todas as ocorrências desse elemento e de qualificador nos metadados dos itens serão excluídos.</li>
+      <li>Se você atualizar um elemento ou qualificador, por exemplo, mudando de 'contribuidor' para 'criador' e clicando em 'Update', todas as ocorrências de 'contribuidor' nos metadados dos itens serão alterados para "criador".</li>
+      <li>Alguns elementos e qualificadores Dublin Core são utilizados para várias funções pelo sistema, tais como  <code>date.available</code> para a coleta OAI, e <code>title</code> para a exibição de item e índice de busca.  Você pode alterar as notas de escopo para estes, mas você não deve alterar ou remover o elemento ou qualificador. Para ver quais elementos / qualificadores são utilizados pelo sistema, veja o arquivo <code><em>[dspace-source]</em>/config/registries/dublin-core.xml</code>.</li>
     </ul>
 
-    <p>Also note that the <code>dublin-core-types.xml</code> is only used during the build process to populate the metadata registry in the database, which is the 'live' version.  Changes you make with this UI will only be reflected in the database registry, and not the XML file (and vice versa.)</p>
+    <p>Observe também que o <code>dublin-core-types.xml</code> só é usado durante o processo de construção para preencher o Registro de metadados no banco de dados, que é a versão "ao vivo". As alterações que você faz pela interface do usuário só serão refletidas no registro de banco de dados, e não o arquivo XML (e vice-versa.)</p>
 
 
-    <h3><a name="bitstream"></a>Bitstream Format Registry</h3>
+    <h3><a name="bitstream"></a>Formato do Registro Bitstream</h3>
 
-    <p>This list of bitstreams provides information about known bitstreams and their support level.  You can edit or add new bitstream formats with this tool.  Please take note of the following:</p>
+    <p>Esta lista de bitstream fornece informações sobre fluxos de bits conhecidos e seu nível de suporte. Você pode editar ou adicionar novos formatos bitstream com esta ferramenta. Mas, por favor, observe o que segue:</p>
 
     <ul>
-      <li>You can only edit one bitstream format at a time.  Make the edits to one row, and click the relevant 'update' button.  Only edits you've made to that row will be saved.</li>
-      <li>'Extensions' are file extensions that are used to automatically identify the format of uploaded files.  You can enter several comma-separate extensions for each format.</li>
-      <li>The 'Name' of each format must be unique, though the MIME type need not be.  For example, you might have separate format registry entries for different versions of Microsoft Word, even though the MIME type will be the same for each of them.</li>
-      <li>'Internal' formats are hidden from the user, and are used for administrative purposes.  For example, the licenses that submitters grant are stored as 'License' format bitstreams, and these aren't shown to end users.</li>
-      <li>If you delete a bitstream format, any bitstreams in the system of that format will be reverted to the 'Unknown' format.</li>
-      <li>Do not delete the 'Unknown' or 'License' formats!</li>
+      <li>Você só pode editar um formato bitstream de cada vez. Faça uma fila de edições, e clique no botão 'update'. Só edições feitas para essa seção serão salvas.</li>
+      <li>"Extensões" são extensões de arquivos que são usadas ​​para identificar automaticamente o formato dos arquivos submetidos. Você pode inserir várias extensões para cada formato, separadas por vírgula.</li>
+      <li>O "nome" de cada formato deve ser único, embora o tipo MIME não precisa ser. Por exemplo, você pode ter entradas separadas para formatos de registros em diferentes versões do Microsoft Word, mesmo que o tipo MIME seja o mesmo para cada um deles.</li>
+      <li>Formatos "internos" são escondidos do usuário, e são utilizados para fins administrativos. Por exemplo, as licenças que os depositantes submetem são armazenadas como bitstream de formato "licença", e estes não são exibidos para usuários finais.</li>
+      <li>Se você excluir um formato bitstream, qualquer bitstream para aquele formato no sistema  será convertido para formato 'Desconhecido'.</li>
+      <li>Não exclua os formatos 'Unknown' ou 'License'!</li>
     </ul>
 
-    <p>Also note that the <code>config/registries/bitstream-formats.xml</code> is only used during the build process to populate the format registry in the database, which is the 'live' version.  Changes you make with this UI will only be reflected in the database registry, and not the XML file (and vice versa.)</p>
+    <p>Observe também que o <code>config/registries/bitstream-formats.xml</code> só é usado durante o processo de construção do banco de dados, que é a versão "ao vivo". As alterações que você faz neste UI só serão refletidas no registro de banco de dados, e não o arquivo XML (e vice-versa.)</p>
+
+    <h3><a name="workflow"></a>Fluxo de Trabalho</h3>
+
+    <p>Utilize esta ferramenta para limpar os fluxos de trabalho que foram abandonados e nunca serão concluídos.</p>
 
 
-    <h3><a name="workflow"></a>Workflow</h3>
+    <h3><a name="authorize"></a>Autorização</h3>
 
-    <p>Use this tool to clear out workflows that have been abandoned and will never be completed.</p>
+    <p>Esta seção é usada para definir as políticas específicas de autorização das comunidades, coleções e itens. Para que os usuários possam executar uma ação em um objeto, eles devem ter permissão; o DSpace adota política "negar por padrão". Permissões não são comutáveis; por exemplo, se um e-usuário tem permissão de LER um item, ele não necessariamente tem a permissão sobre os pacotes e <em>bitstreams<em> daquele item.</p>
 
+    <h4><a name="collectionpolicies"></a>Gerenciar Políticas de uma Coleção</h4>
 
-    <h3><a name="authorize"></a>Authorization</h3>
-
-    <p>This section is used to set specific authorization policies
-     for communities, collections, and items. In order for users
-      to perform an action on an object, they must have permission;
-       DSpace operates a 'default deny' policy. Permissions do not 'commute';
-        for example, if an e-person has READ permission on an item,
-         they might not necessarily have READ permission on the bundles
-          and bitstreams in that item.</p>
-
-    <h4><a name="collectionpolicies"></a>Manage a Collection's Policies</h4>
-
-    <p>Use this tool to authorize collection-related groups to perform their roles.</p>
+    <p>Utilize esta ferramenta para autorizar os grupos ligados à coleção para executarem suas funções.</p>
 
     <ul>
-      <li>Click on <strong>Manage a Collection's Policies</strong>.</li>
-      <li>Select the name of the collection for which you wish to set authorizations and click on <strong>Edit Policies</strong>.</li>
-      <li>Click on <strong>Add New</strong>.</li>
-      <li>Select the group for which you wish to set authorizations, and then select an action for that group from the drop-down menu.</li>
-      <li>Click on <strong>Save Policy</strong>.</li>
-      <li>Repeat until all policies are in place.</li>
+      <li>Clique em <strong>Gerenciar políticas de uma Coleção</strong>;</li>
+      <li>Selecione o nome da coleção para o qual você deseja definir as autorizações e clique em <strong>Editar diretivas</strong>;</li>
+      <li>Clique em <strong>Adicionar Novo</strong>;</li>
+      <li>Selecione o grupo para o qual você deseja definir as autorizações, em seguida, selecione uma ação para esse grupo a partir do menu drop-down.</li>
+      <li>Clique em <strong>Salvar Política</strong>;</li>
+      <li>Repita até que todas as políticas estejam armazenadas.</li>
     </ul>
 
-    <p>Note:</p>
+    <p>Nota:</p>
     <ul>
-      <li><p>Newly-submitted items accepted into a collection inherit the
-       <strong>DEFAULT_ITEM_READ</strong> and
+      <li><p>Os itens recém submetidos aceitos em uma coleção herdam as políticas de autorização
+       <strong>DEFAULT_ITEM_READ</strong> e
        <strong>DEFAULT_BITSTREAM_READ</strong>
-       authorization policies associated with the collection, which
-       become the <strong>READ</strong> policies for the item and its
-       bitstreams.  However, if you change a
-       collection's default policies after items have been accepted,
-       policies for existing
-       items will not be changed automatically.  You would have
-       to change the permissions on those items using the
+       associadas à coleção, que se tornam políticas <strong>READ</strong> para o item e seus bitstreams.  
+       No entanto, se você mudar as políticas padrão de uma coleção após itens terem sido aceitos, as políticas existentes para esses itens não serão alteradas automaticamente. 
+       Você terá que alterar as permissões para esses itens usando a ferramenta
        <strong>Advanced Policy Admin Tool</strong>
-       to make them accessible.</p></li>
-       <li><p>All collections must have an <strong>ADD</strong>
-       policy for a submitter group, or else no one will be able
-       to submit items to the collection.</p></li>
+       para torná-las acessíveis.</p></li>
+       <li><p>Todas as coleções devem ter uma política <strong>ADD</strong>
+       para um grupo de depositantes, ou então ninguém vai ser capaz de enviar itens para a coleção.</p></li>
     </ul>
 
 
-    <h4><a name="communitypolicies"></a>Manage a Community's Policies</h4>
+    <h4><a name="communitypolicies"></a>Gerenciar Políticas de uma Comunidade</h4>
 
-    <p>This tool allows you to edit a community's policies in much the same way as a collection's are edited, described above.</p>
+    <p>Esta ferramenta permite que você edite as políticas de uma comunidade da mesma forma que as coleções são editadas, conforme descrito acima.</p>
 
-    <p>Presently, since administration is done centrally, this tool doesn't have a lot of use--usually you will just add <strong>READ</strong> permission for the <strong>Anonymous</strong> group just after you create a community, and leave it at that.  This permission is applied to the community's logo if there is one, which allows people to see the logo when they go to the community home page.</p>
+    <p>Atualmente, como a administração é feita de forma centralizada, esta ferramenta não tem muito uso - geralmente você só vai adicionar a permissão <strong>READ</strong> para o grupo <strong>Anonymous</strong> apenas depois de criar uma comunidade, e deixar desta forma. Esta permissão é aplicada a logomarca da comunidade, se houver uma, o que permite que as pessoas vejam o logotipo quando eles forem para a página inicial da comunidade.</p>
 
-    <p>A community's policies are set to a default
+    <p>Políticas de uma comunidade são definidas como um padrão
     <strong>Anonymous READ</strong>.</p>
 
 
-    <h4><a name="itempolicies"></a>Manage an Item's Policies</h4>
+    <h4><a name="itempolicies"></a>Gerenciando políticas de um item</h4>
 
-    <p>This tool allows you to edit the policies for individual items.  When you
-    wish an item's policies to be different from those of the rest of those in
-    a collection, you can use the item policy editor to customize the policies.
-    It is a good practice long term management of a collection however, for
-    all of the items in a collection to share the same authorizations.</p>
+    <p>Esta ferramenta permite que você edite as políticas para itens individuais. Quando você quiser que um item tenha uma política diferente do restante dos itens de uma coleção, você pode usar o editor de política de item para personalizar as políticas. No entanto, no longo prazo uma boa prática de gestão de uma coleção  é que todos os itens compartilhem as mesmas autorizações.</p>
 
+ 
+    <h4><a name="advancedpolicies"></a>Ferramenta de Política de Administração Avançada (Advanced Policy Admin Tool)</h4>
 
-    <h4><a name="advancedpolicies"></a>Advanced Policy Admin Tool</h4>
+    <p>Utilize esta ferramenta para definir e limpar políticas para itens ou bitstreams para toda a coleção. Tenha cuidado ao usar a botão <strong>Clear Policies</strong>.</p>
 
-    <p>Use this tool to set and clear policies for items or bitstreams across a whole collection. Be careful about using the <strong>Clear Policies</strong> button.</p>
+    <p>Selecione da lista top a coleção e da lista inferior o grupo que pretende dar ou retirar a permissão. Em seguida, selecione o tipo de objeto (item ou bitstream) para o qual você deseja editar permissões. Em seguida, selecione a ação a partir da caixa drop-down.</p>
 
-    <p>Select the collection from the top list and the group you want to give or remove permission for from the bottom list.  Then select the type of object (item or bitstream) that you want to edit permissions for.  Then select the action from the drop-down.</p>
-
-    <p>For example, say you wanted to give everyone in a group 'privileged_users' <strong>Read</strong> access to all of the bitstreams in a restricted collection.  You'd select 'privileged users' from the top list, 'bitstream' from the 'content type' drop-down, 'privileged_users' from the 'group' list, 'Read' from the 'action' drop-down, and click 'Add policy'.</p>
+    <p>Por exemplo, digamos que você queira dar a todos os membros de um grupo de “Usuários privilegiados” um acesso <strong>Read</strong> a todos os bitstreams de uma coleção restrita. Você iria selecionar 'Usuários privilegiados ' da lista top, 'Bitstream' da caixa drop-down 'tipo de conteúdo', 'usuários privilegiados' na lista 'Grupo', 'Leitura' da caixa drop-down 'Ação', e clicar em 'Adicionar políticas'.</p>
 
 
-    <h3><a name="editnews"></a>Edit News</h3>
+    <h3><a name="editnews"></a>Editar Notícias</h3>
 
-    <p>You can use this tool to edit the text ("news") in two places on the DSpace home page:
-    the top box of the center frame, and the right sidebar. </p>
-    <p>After clicking on "Edit News" on the admin menu, click on the <strong>Edit</strong> button next
-    to the news item you wish to edit. A text box will be displayed with the current news, which can be deleted
-    or modified by typing directly in the box. You can use HTML tags to format the text, but note that the html won't
-    be validated here.</p>
+    <p>Você pode usar esta ferramenta para editar o texto ("notícias") em dois lugares na home page DSpace: a top box da moldura central e na barra lateral direita. </p>
+    <p>Depois de clicar em "Editar Notícias" no menu do Administrador, clique no botão <strong>Editar</strong> ao lado da notícia que você deseja editar.
+   Uma caixa de texto será exibida com as notícias atuais, que podem ser eliminadas ou modificadas, digitando diretamente na caixa. Você pode usar tags HTML para formatar o texto, mas note que o html não será validado aqui.</p>
     <p>&nbsp;</p>
     
-    <h3><a name="editlicense"></a>Edit Default License</h3>
-    <p>You can use this tool to edit the default license of DSpace</p>
-    <p>The default license is used when no collection specific license is defined.</p>
-    <p>Note that changing the default license has no effect on already published items.</p>
-	<p>Some substitution variables are available to make possible configure a contextual submission license:</p>
-    <ul>
-	    <li><strong>%1$s</strong> will be translated in the "submitter first name"</li> 
-		<li><strong>%2$s</strong> will be translated in the "submitter last name"</li>
-		<li><strong>%3$s</strong> will be translated in the "submitter email" </li>
-		<li><strong>%4$s</strong> will be translated in the current date</li>
-		<li><strong>%5$s</strong> will be translated in the collection info</li> 
-		<li><strong>%6$s</strong> will be translated in the item info </li>
-		<li><strong>%7$s</strong> will be translated in the eperson info</li> 
+    <h3><a name="editlicense"></a>Editar Licença Padrão</h3>
+    <p>Você pode usar esta ferramenta para editar a licença padrão do DSpace.</p>
+    <p>A licença padrão é usada quando nenhuma licença específica de coleção está definida.</p>
+    <p>Observe que alterar a licença padrão não tem efeito sobre os itens já publicados.</p>
+	<p>Algumas variáveis ​​de substituição estão disponíveis para configurar uma submissão de licença contextual:</p>
+     <ul>
+		<li><strong>%1$s</strong> será traduzido para o "primeiro nome do depositante"</li> 
+		<li><strong>%2$s</strong> será traduzido para o "último sobrenome do depositante"</li>
+		<li><strong>%3$s</strong> será traduzido no "email do depositante" </li>
+		<li><strong>%4$s</strong> será traduzido para a data atual</li>
+		<li><strong>%5$s</strong> será traduzido na informação da coleção</li> 
+		<li><strong>%6$s</strong> será traduzido na informação do item</li>
+		<li><strong>%7$s</strong> será traduzido na informação do usuário</li> 
     </ul>
-	<p>If you need to embed in the license text the % symbol you need to escape it with a second %, i.e. you need to write %%. 
-	It is recommended to use a dummy submission to check the license change:  <strong>check the resulting license in the Accept/reject Licence step.</strong> 
+	<p>Se você precisa incorporar no texto da licença o símbolo %, você pode evitar a inclusão de um segundo %, escrevendo %%. Recomenda-se usar uma submissão fictícia para verificar a mudança da licença:  <strong>verifique a licença resultante na etapa Aceitar / Rejeitar licença.</strong> 
     </p>
 	
   </body>
