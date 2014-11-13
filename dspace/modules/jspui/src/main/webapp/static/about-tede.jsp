@@ -21,58 +21,48 @@
 <dspace:layout titlekey="jsp.home.about">
 
 	<div id="pageContents">
+	
+	
+	<div id="TEDEtext>
+	<h2> <b>Sobre o TEDE</b></h2>			
+
+<p align="justify">O Sistema de Publicação Eletrônica de Teses e Dissertações (TEDE), desenvolvido e mantido pelo <a target="_blank" href="http://www.ibict.br/">Ibict</a>,
+tem por objetivo proporcionar a implantação de bibliotecas digitais de teses e dissertações nas instituições de ensino pesquisa e, com isso,
+a sua integração à <a target="_blank" href="http://bdtd.ibict.br/">Biblioteca Digital Brasileira de Teses e Dissertações (BDTD).</a> 
+Após dez anos de desenvolvido, o TEDE foi totalmente atualizado. A nova versão do sistema, chamada aqui de TEDE2, está configurado no software livre
+DSpace, a mesma plataforma utilizada para a criação de Repositórios Digitais de Acesso Aberto. O TEDE2 já está configurado de acordo com o Novo Padrão de Metadados da BDTD estando totalmente interoperável com outros sistemas. Ainda, é possível
+fazer as customizações na interface e definições do fluxo de trabalho dentro do sistema. As instituições que utilizam o antigo TEDE podem migrar diretamente as suas teses e dissertações para o TEDE2. Para isso, o IBICT desenvolveu
+uma ferramenta que possibilita a migração das informações sem a sua perda e sem trabalho duplicado. Entre em contato com a Equipe BDTD e 
+obtenha mais informações sobre esse processo. </p>
+ 
+				</br>
+				<table style="width:100%">
+  				<tbody><tr><td>
+				<p><strong>Realização</strong></p>
+				<blockquote>
+				<p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p> 
+				</blockquote>
+  				</td>
+  				<td>
+				<p><strong>Colaborações</strong></p>
+				<blockquote>
+					<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
+					<p><strong>Universidade Federal de Pelotas (UFPel)</strong></p>
+				</blockquote>			
+  				</td></tr>
+				</tbody></table> 
+				
+
+	</div>
 
 			<div class="jumbotron">
 				<strong>
 					<fmt:message key="jsp.home.about"></fmt:message>
 				</strong></br>
+				
+				
 				<%=topNews%>
-				</br></br>
-				<table style="width:100%">
-  				<tr><td>
-				<p><strong>Realização</strong></p>
-				<blockquote>
-					<!-- <p><strong>Instituto Brasileiro de Informação em Ciência e Tecnologia (Ibict)</strong></p> -->
-					<!-- <blockquote> -->
-						<p><strong>Coordenação-Geral (CGPM)</strong></p> 
-						<p><strong>Lilian M. Araújo de Rezende Alvares</strong></p>
-						<blockquote>
-							<p><strong>Coordenação de Gestão da Informação (COLI)</strong></p>
-							<p><strong>Bianca Amaro de Melo</strong></p>
-							<p>Tainá Batista de Assis</p>
-							<p>Alan Christian de Lima Oliveira</p>
-						</blockquote>
-						<blockquote>
-				        		<p><strong>Coordenação de Tecnologia da Informação (COAT)</strong></p>
-				        		<p><strong>Milton Shintaku</strong></p>
-				        		<p>Márcio Ribeiro Gurgel do Amaral</p>
-				        		<p>Diego José Macêdo</p>
-				        		<p>Washington L. R. de Carvalho Segundo</p>
-				        	</blockquote>
-					<!-- </blockquote> -->
-				</blockquote>
-  				</td>
-  				<td>
-				<p><strong>Colaboração</strong></p>
-				<blockquote>
-					<p><strong>Universidade Federal de Goiás (UFG)</strong></p>
-					<blockquote>
-						<p><strong>Cláudia Oliveira de Moura Bueno</strong></p>
-						<p>Carla L. Ferreira</p>
-						<p>Jaqueline Taketsugu Alves da Silva</p>
-						<p>Marcos Roberto Ribeiro</p>
-						<p>Pablo Henrique Rodrigues</p>
-					</blockquote>
-					<p><strong>Universidade Federal de Pelotas (UFPel)</strong></p>
-					<blockquote>
-						<p><strong>Daiane Almeida Schramm</strong></p>
-						<p>Aline Herbstrith Batista</p>
-						<p>Henrique de Vasconcellos Rippel</p>
-						<p>Tiago Camargo Al-Alam</p>
-					</blockquote>
-				</blockquote>			
-  				</td></tr>
-				</table> 
+
 				
 
 		</div>
