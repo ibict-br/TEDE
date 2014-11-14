@@ -807,15 +807,15 @@
  
    <value-pairs value-pairs-name="common_ies" dc-term="publisher">
      <pair>
-       <displayed-value>Insitituto Brasileiro de Informação em Ciência e Tecnologia</displayed-value>
-       <stored-value>Insitituto Brasileiro de Informação em Ciência e Tecnologia</stored-value>
+       <displayed-value>Nome da Instituição</displayed-value>
+       <stored-value>Nome da Instituição</stored-value>
      </pair>
    </value-pairs>
    
    <value-pairs value-pairs-name="common_sigla_ies" dc-term="initials">
      <pair>
-       <displayed-value>IBICT</displayed-value>
-       <stored-value>IBICT</stored-value>
+       <displayed-value>SIGLA</displayed-value>
+       <stored-value>SIGLA</stored-value>
      </pair>
    </value-pairs>
    

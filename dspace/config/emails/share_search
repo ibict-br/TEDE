@@ -4,9 +4,9 @@
 #             {1} Search URL
 #             {2} sender message 
 
-Subject: TEDE | Você recebeu um compartilhamento de resultado de busca
+Subject: TEDE | Voc&ecirc; recebeu um compartilhamento de resultado de busca
 
-Olá,
+Ol&aacute;,
 
 {0} nos solicitou o compartilhamento de um resultado de busca, segue abaixo link para acesso:
 
@@ -14,6 +14,4 @@ URL: {1}
 
 Mensagem enviada: {2}
 
-
-Atenciosamente,
-Equipe do Repositório de Teses e Dissertações
+Equipe TEDE

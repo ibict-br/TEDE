@@ -34,6 +34,13 @@ DSpace, a mesma plataforma utilizada para a criação de Repositórios Digitais 
 fazer as customizações na interface e definições do fluxo de trabalho dentro do sistema. As instituições que utilizam o antigo TEDE podem migrar diretamente as suas teses e dissertações para o TEDE2. Para isso, o IBICT desenvolveu
 uma ferramenta que possibilita a migração das informações sem a sua perda e sem trabalho duplicado. Entre em contato com a Equipe BDTD e 
 obtenha mais informações sobre esse processo. </p>
+
+<p align="justify">A execução do projeto do TEDE 2 toma como base o Software DSpace, com a interface JSPUI, 
+e possui customizações específicas (configurações, modificações de layout e itens de desenvolvimento) para adaptação às características das teses e dissertações. Muitas dessas customizações 
+apresentam-se úteis não só para essa tipologia documental restrita, mas para a comunidade geral de usuários do DSpace. Para tanto, definiu-se que as novas funcionalidades seriam organizadas 
+em grupos que poderiam dar origens a plugins do projeto original do DSpace.</p> 
+
+<p>Para mais informações consulte: &lt;<a href="http://wiki.ibict.br/index.php/TEDE">http://wiki.ibict.br/index.php/TEDE</a></p>
  
 				</br>
 				<table style="width:100%">
@@ -56,10 +63,7 @@ obtenha mais informações sobre esse processo. </p>
 	</div>
 
 			<div class="jumbotron">
-				<strong>
-					<fmt:message key="jsp.home.about"></fmt:message>
-				</strong></br>
-				
+			
 				
 				<%=topNews%>
 

@@ -6,19 +6,16 @@
 # {3}  Description of task
 # {4}  link to 'my DSpace' page 
 #
-Subject: DSpace: You have a new task
+Subject: TEDE: Voc&ecirc; tem uma nova tarefa
 
-A new item has been submitted:
+Um novo item foi depositado:
 
-Title:        {0}
-Collection:   {1}
-Submitted by: {2}
+T&iacutetulo:        {0}
+Cole&ccedil;&atilde;o:   {1}
+Depositado por: {2}
 
 {3}
 
-To claim this task, please visit your "My DSpace"
-page:  {4}
+Para rexecutar a terefa acesse:  {4}
 
-Many thanks!
-
-DSpace
+Equipe TEDE

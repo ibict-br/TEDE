@@ -6,18 +6,18 @@
 # {3}  Reason for the rejection
 # {4}  Link to 'My DSpace' page
 #
-Subject: DSpace: Submission Rejected
+Subject: TEDE: Dep&oacute;sito rejeitado
 
-You submitted: {0}
+Voc&ecirc; depositou: {0}
 
-To collection: {1}
+Na cole&ccedil;&atilde;o: {1}
 
-Your submission has been rejected by {2}
-with the following explanation:
+Seu dep&oacute;sito foi rejeitado por {2}
+com a seguinte justificativa:
 
 {3}
 
-Your submission has not been deleted.  You can access it from your
-"My DSpace" page: {4}
+Seu dep&oacute;sito n&atilde;o foi descartado. Voc&ecirc; poder&aacute; 
+acess&aacute;-lo em: {4}
 
-DSpace
+Equipe TEDE

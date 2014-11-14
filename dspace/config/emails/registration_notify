@@ -8,10 +8,10 @@
 #
 # See org.dspace.core.Email for information on the format of this file.
 #
-Subject: DSpace: Registration Notification
+Subject: Registro de nova conta no TEDE
 
-A new user has registered on {0} at {1}:
+Um novo usu&aacute;rio se registro em {0} para {1}:
 
-Name:                   {2}
+Nome:                   {2}
 Email:                  {3}
-Date:                   {4}
+Data:                   {4}
