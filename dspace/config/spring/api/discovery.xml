@@ -253,7 +253,7 @@
 				<ref bean="searchFilterAdvisor" />
 				<ref bean="searchFilterReferees" />
 				<ref bean="searchFilterContributor" />
-				<ref bean="searchFilterSubject" />
+				<!-- <ref bean="searchFilterSubject" /> -->
 				<ref bean="searchFilterCNPq" /> 
 				<!-- <ref bean="searchFilterPublisher" />
 				<ref bean="searchFilterInitials" />
@@ -263,7 +263,7 @@
 				<ref bean="searchFilterType" />
 				<ref bean="searchFilterIssued" />
 				<!-- <ref bean="searchFilterAvailable" /> -->
-				<ref bean="searchFilterFormat" />
+				<!-- <ref bean="searchFilterFormat" /> -->
 			<!--	<ref bean="searchFilterLicence" /> -->
 				<!-- <ref bean="searchFilterAccess" /> -->
             </list>
