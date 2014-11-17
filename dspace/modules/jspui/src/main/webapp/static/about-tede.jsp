@@ -40,7 +40,7 @@ e possui customizações específicas (configurações, modificações de layout
 apresentam-se úteis não só para essa tipologia documental restrita, mas para a comunidade geral de usuários do DSpace. Para tanto, definiu-se que as novas funcionalidades seriam organizadas 
 em grupos que poderiam dar origens a plugins do projeto original do DSpace.</p> 
 
-<p>Para mais informações consulte: &lt;<a href="http://wiki.ibict.br/index.php/TEDE">http://wiki.ibict.br/index.php/TEDE</a></p>
+<p>Para mais informações consulte: <a href="http://wiki.ibict.br/index.php/TEDE">&lt;http://wiki.ibict.br/index.php/TEDE&gt;</a></p>
  
 				</br>
 				<table style="width:100%">
