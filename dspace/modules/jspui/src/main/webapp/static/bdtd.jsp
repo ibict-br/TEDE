@@ -50,7 +50,7 @@ Na BDTD, portanto, as instituições de ensino e pesquisa atuam como provedores 
 das teses e dissertações dos sistemas de informação das instituições, fornecendo serviços de informação sobre com nos metadados coletados e os expondo para a coleta 
 automática de outros provedores de serviços.</p> 
 
-<p> <b>Conheça a BDTD! Visite, <a href="bdtd.ibict.br&gt">&lt;bdtd.ibict.br&gt;</a></b>. </p> 
+<p> <b>Conheça a BDTD! Visite, <a href="http://bdtd.ibict.br&gt">&lt;http://bdtd.ibict.br&gt;</a></b>. </p> 
 
 <h3> Breve histórico </h3>
 
