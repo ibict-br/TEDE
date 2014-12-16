@@ -64,7 +64,7 @@ public class InitialQuestionsStep extends AbstractProcessingStep
     /**
      * Global flags to determine if we need to prune anything
      */
-    protected boolean willRemoveTitles = false;
+    protected boolean willRemoveSponsor = false;
 
     protected boolean willRemoveDate = false;
 
@@ -154,9 +154,9 @@ public class InitialQuestionsStep extends AbstractProcessingStep
                 if (!hasSponsorship)
                 {
                     DCValue[] altTitles = subInfo.getSubmissionItem().getItem()
-                            .getDC("title", "alternative", Item.ANY);
+                            .getDC("description", "sponsorship", Item.ANY);
 
-                    willRemoveTitles = altTitles.length > 0;
+                    willRemoveSponsor = altTitles.length > 0;
                 }
 
                 if (!publishedBefore)
@@ -191,10 +191,10 @@ public class InitialQuestionsStep extends AbstractProcessingStep
             // If anything is going to be removed from the item as a result
             // of changing the answer to one of the questions, we need
             // to inform the user and make sure that's OK, before saving!
-            if (willRemoveTitles || willRemoveDate || willRemoveFiles)
+            if (willRemoveSponsor || willRemoveDate || willRemoveFiles)
             {
                 //save what we will need to prune to request (for UI to process)
-                request.setAttribute("will.remove.titles", Boolean.valueOf(willRemoveTitles));
+                request.setAttribute("will.remove.titles", Boolean.valueOf(willRemoveSponsor));
                 request.setAttribute("will.remove.date", Boolean.valueOf(willRemoveDate));
                 request.setAttribute("will.remove.files", Boolean.valueOf(willRemoveFiles));
 
@@ -292,7 +292,7 @@ public class InitialQuestionsStep extends AbstractProcessingStep
 
         if (!multipleTitles && subInfo.getSubmissionItem().hasMultipleTitles())
         {
-            item.clearDC("title", "alternative", Item.ANY);
+            item.clearDC("description", "sponsorship", Item.ANY);
         }
 
         if (!publishedBefore && subInfo.getSubmissionItem().isPublishedBefore())
