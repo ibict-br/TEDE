@@ -99,8 +99,8 @@
 	
        <field>
 		 <dc-schema>dc</dc-schema>
-         <dc-element>contributor</dc-element>
-         <dc-qualifier>author</dc-qualifier>
+         <dc-element>creator</dc-element>
+         <dc-qualifier></dc-qualifier>
          <repeatable>false</repeatable>
          <label>Autor:</label>
          <input-type>name</input-type>
@@ -115,8 +115,8 @@
 
 	    <field>
 		 <dc-schema>dc</dc-schema>
-         <dc-element>contributor</dc-element>
-         <dc-qualifier>authorLattes</dc-qualifier>
+         <dc-element>creator</dc-element>
+         <dc-qualifier>Lattes</dc-qualifier>
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do autor:</label>
          <input-type>onebox</input-type>
@@ -126,8 +126,8 @@
 	   
 	    <field>
 		 <dc-schema>dc</dc-schema>
-         <dc-element>contributor</dc-element>
-         <dc-qualifier>authorID</dc-qualifier>
+         <dc-element>creator</dc-element>
+         <dc-qualifier>ID</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Identificador único do autor:</label>
          <input-type>onebox</input-type>
@@ -135,27 +135,63 @@
          <required></required>
        </field>  
 	   
-	   <!-- ORIENTADOR -->
+	   <!-- ORIENTADORES -->
 	   
 	   <field>
 		 <dc-schema>dc</dc-schema>
          <dc-element>contributor</dc-element>
-         <dc-qualifier>advisor</dc-qualifier>
+         <dc-qualifier>advisor1</dc-qualifier>
          <repeatable>false</repeatable>
-         <label>Orientador:</label>
+         <label>Primeiro orientador:</label>
          <input-type>name</input-type>
-         <hint>&lt;div class="alert alert-info"&gt;Descrição do &lt;strong&gt;ORIENTADOR&lt;/strong&gt;
+         <hint>&lt;div class="alert alert-info"&gt;Descrição do &lt;strong&gt;PRIMEIRO ORIENTADOR&lt;/strong&gt;
 		       &lt;a href="help/submit-help.html#id-orientador" style="float:right" tooltiped="" &gt;Exemplos&lt;/a&gt;
 			   &lt;/div&gt;
-		       &lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Informe o nome do orientador, conforme o formato de citação.</hint>
-         <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Informe o nome do ORIENTADOR, conforme o formato de citação.&lt;/font&gt; 
+		       &lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Informe o nome do primeiro orientador, conforme o formato de citação.</hint>
+         <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Informe o nome do PRIMEIRO ORIENTADOR, conforme o formato de citação.&lt;/font&gt; 
 		           &lt;a href="help/submit-help.html#id-orientador" style="float:right;color:black;" tooltiped="" &gt;Exemplos&lt;/a&gt;</required>
        </field>
 
 	    <field>
 		 <dc-schema>dc</dc-schema>
          <dc-element>contributor</dc-element>
-         <dc-qualifier>advisorLattes</dc-qualifier>
+         <dc-qualifier>advisor1Lattes</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do primeiro orientador:</label>
+         <input-type>onebox</input-type>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe a URL do currículo lattes do primeiro orientador.</hint>
+         <required></required>
+       </field>
+	   
+	   <field>
+		 <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>advisor1ID</dc-qualifier>
+         <repeatable>true</repeatable>
+         <label>Identificador único do primeiro orientador:</label>
+         <input-type>onebox</input-type>
+         <hint>&lt;font color="#449d44"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o identificador único do primeiro orientador(CPF, ID de autor privativa da instituição ou passaporte).</hint>
+         <required></required>
+       </field>  
+       
+       	   <field>
+		 <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>advisor2</dc-qualifier>
+         <repeatable>false</repeatable>
+         <label>Segundo orientador:</label>
+         <input-type>name</input-type>
+         <hint>&lt;div class="alert alert-info"&gt;Descrição do &lt;strong&gt;SEGUNDO ORIENTADOR&lt;/strong&gt;
+		       &lt;a href="help/submit-help.html#id-orientador" style="float:right" tooltiped="" &gt;Exemplos&lt;/a&gt;
+			   &lt;/div&gt;
+		       &lt;font color="blue"&gt;CAMPO OPCIONAL: &lt;/font&gt; Informe o nome do segundo orientador, conforme o formato de citação.</hint>
+         <required></required>
+        </field>
+
+	    <field>
+		 <dc-schema>dc</dc-schema>
+         <dc-element>contributor</dc-element>
+         <dc-qualifier>advisor2Lattes</dc-qualifier>
          <repeatable>false</repeatable>
          <label>&lt;a href="http://buscatextual.cnpq.br/buscatextual/busca.do?metodo=apresentar" target="_blank" &gt;URL do Currículo Lattes&lt;/a&gt; do orientador:</label>
          <input-type>onebox</input-type>
@@ -166,7 +202,7 @@
 	   <field>
 		 <dc-schema>dc</dc-schema>
          <dc-element>contributor</dc-element>
-         <dc-qualifier>advisorID</dc-qualifier>
+         <dc-qualifier>advisor2ID</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Identificador único do orientador:</label>
          <input-type>onebox</input-type>
