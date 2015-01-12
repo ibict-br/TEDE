@@ -378,11 +378,11 @@
                 <value>dc.contributor.advisor2ID</value>
                 <value>dc.contributor.advisor-co1ID</value>
 		<value>dc.contributor.advisor-co2ID</value>
-		<value>dc.contributor.referees1ID</value>
-		<value>dc.contributor.referees2ID</value>
-		<value>dc.contributor.referees3ID</value>
-		<value>dc.contributor.referees4ID</value>
-		<value>dc.contributor.referees5ID</value>
+		<value>dc.contributor.referee1ID</value>
+		<value>dc.contributor.referee2ID</value>
+		<value>dc.contributor.referee3ID</value>
+		<value>dc.contributor.referee4ID</value>
+		<value>dc.contributor.referee5ID</value>
             </list>
         </property>
     </bean>
@@ -391,11 +391,11 @@
         <property name="indexFieldName" value="referees"/>
         <property name="metadataFields">
             <list>
-                <value>dc.contributor.referees1</value>
-		<value>dc.contributor.referees2</value>
-		<value>dc.contributor.referees3</value>
-		<value>dc.contributor.referees4</value>
-		<value>dc.contributor.referees5</value>
+                <value>dc.contributor.referee1</value>
+		<value>dc.contributor.referee2</value>
+		<value>dc.contributor.referee3</value>
+		<value>dc.contributor.referee4</value>
+		<value>dc.contributor.referee5</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
@@ -413,11 +413,11 @@
 		<value>dc.contributor.advisor2</value>
 		<value>dc.contributor.advisor-co1</value>
 		<value>dc.contributor.advisor-co2</value>
-		<value>dc.contributor.referees1</value>
-		<value>dc.contributor.referees2</value>
-		<value>dc.contributor.referees3</value>
-		<value>dc.contributor.referees4</value>
-		<value>dc.contributor.referees5</value>
+		<value>dc.contributor.referee1</value>
+		<value>dc.contributor.referee2</value>
+		<value>dc.contributor.referee3</value>
+		<value>dc.contributor.referee4</value>
+		<value>dc.contributor.referee5</value>
             </list>
         </property>
         <property name="facetLimit" value="7"/>
@@ -585,16 +585,16 @@
 				<value>dc.contributor.advisor-co2</value>
 				<value>dc.contributor.advisor-co1ID</value>
 				<value>dc.contributor.advisor-co2ID</value>
-				<value>dc.contributor.referees1</value>
-				<value>dc.contributor.referees2</value>
-				<value>dc.contributor.referees3</value>
-				<value>dc.contributor.referees4</value>
-				<value>dc.contributor.referees5</value>
-				<value>dc.contributor.referees1ID</value>
-				<value>dc.contributor.referees2ID</value>
-				<value>dc.contributor.referees3ID</value>
-				<value>dc.contributor.referees4ID</value>
-				<value>dc.contributor.referees5ID</value>
+				<value>dc.contributor.referee1</value>
+				<value>dc.contributor.referee2</value>
+				<value>dc.contributor.referee3</value>
+				<value>dc.contributor.referee4</value>
+				<value>dc.contributor.referee5</value>
+				<value>dc.contributor.referee1ID</value>
+				<value>dc.contributor.referee2ID</value>
+				<value>dc.contributor.referee3ID</value>
+				<value>dc.contributor.referee4ID</value>
+				<value>dc.contributor.referee5ID</value>
 				<value>dc.subject</value>
 				<value>dc.subject.cnpq</value>
 				<value>dc.date.issued</value>
