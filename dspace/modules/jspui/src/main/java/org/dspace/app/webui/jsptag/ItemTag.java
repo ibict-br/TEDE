@@ -12,7 +12,6 @@ import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -219,7 +218,7 @@ public class ItemTag extends TagSupport
     /** regex pattern to capture the style of a field, ie <code>schema.element.qualifier(style)</code> */
     private Pattern fieldStylePatter = Pattern.compile(".*\\((.*)\\)");
     
-    private List<String> metadataWithLattes;
+    private Map<String, String> metadataWithLattes;
 
     private static final long serialVersionUID = -3841266490729417240L;
 
@@ -282,13 +281,28 @@ public class ItemTag extends TagSupport
      */
     private void registerMetadataLattes() 
     {
-    	metadataWithLattes = new ArrayList<String>();
+    	metadataWithLattes = new HashMap<String, String>();
     	
     	String[] metadatas = ConfigurationManager.getProperty("webui.itemdisplay.metadatawithlattes").split(",");
-    	metadataWithLattes = Arrays.asList(metadatas);
     	
+    	for(String metadataWithLink : metadatas)
+    	{
+    		if(metadataWithLink.contains("(") && metadataWithLink.contains(")"))
+    		{
+    			final Pattern pattern = Pattern.compile("\\((.+?)\\)");
+    			final Matcher matcher = pattern.matcher(metadataWithLink);
+    			matcher.find();
+    			
+    			metadataWithLattes.put(metadataWithLink.replaceAll("\\(.*?\\)", "").trim(), matcher.group(1).trim());
+    		}
+    		else
+    		{
+    			log.warn(MessageFormat.format("O metadado {0} não possui link Lattes. Verifique a configuração do parâmetro \"webui.itemdisplay.metadatawithlattes\"", metadataWithLink));
+    		}
+    	}
 	}
-
+    
+    
 	public int doStartTag() throws JspException
     {
         try
@@ -667,9 +681,9 @@ public class ItemTag extends TagSupport
                         
                         String currentMetadataAsString = currentMetadata.toString();
                         
-                        if(metadataWithLattes != null && metadataWithLattes.contains(currentMetadataAsString))
+                        if(metadataWithLattes != null && metadataWithLattes.containsKey(currentMetadataAsString))
                         {
-                        	DCValue[] urlLattes = item.getMetadata(currentMetadataAsString + LATTES_SUFFIX);
+                        	DCValue[] urlLattes = item.getMetadata(metadataWithLattes.get(currentMetadataAsString));
                         	if(urlLattes != null && urlLattes.length == 1)
                         	{
                         		renderLattesLink(out, request, urlLattes, j);
