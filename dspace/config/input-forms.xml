@@ -521,7 +521,7 @@
          <dc-qualifier>department</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Faculdade, Instituto ou Departamento:</label>
-         <input-type>onebox</input-type>
+         <input-type value-pairs-name="common_publisher_department">dropdown</input-type> 
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Nome, por extenso, da unidade acadêmica: faculdade, escola, instituto, departamento ou estrutura equivalente.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Nome, por extenso, da unidade acadêmica: faculdade, escola, instituto, departamento ou estrutura equivalente.&lt;/font&gt;</required>
        </field>
@@ -533,7 +533,7 @@
          <dc-qualifier>program</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Nome(s) do(s) programa(s) de pós-graduação por extenso:</label>
-         <input-type>onebox</input-type>
+         <input-type value-pairs-name="common_publisher_programs">dropdown</input-type> 
 		 <!-- &lt;br&gt;&lt;font color="red"&gt;Mantenha a tecla&lt;/font&gt;  &lt;code&gt;"Ctrl"&lt;/code&gt;  &lt;font color="red"&gt;pressionada para selecionar mais de um valor. &lt;/font&gt; -->
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt; Nome(s) do(s) programa(s) de pós-graduação por extenso.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Nome(s) do(s) programa(s) de pós-graduação por extenso.&lt;/font&gt;</required>
@@ -867,7 +867,7 @@
      </pair>
    </value-pairs>
    
-   <value-pairs value-pairs-name="common_publisher_department" dc-term="department">
+   <value-pairs value-pairs-name="common_publisher_ment" dc-term="department">
      <pair>
        <displayed-value>Faculdade 1::Departamento 1</displayed-value>
        <stored-value>Faculdade 1::Departamento 1</stored-value>
