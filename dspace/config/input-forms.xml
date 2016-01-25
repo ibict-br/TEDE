@@ -867,7 +867,7 @@
      </pair>
    </value-pairs>
    
-   <value-pairs value-pairs-name="common_publisher_ment" dc-term="department">
+   <value-pairs value-pairs-name="common_publisher_department" dc-term="department">
      <pair>
        <displayed-value>Faculdade 1::Departamento 1</displayed-value>
        <stored-value>Faculdade 1::Departamento 1</stored-value>
