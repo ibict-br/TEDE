@@ -611,10 +611,10 @@
          <dc-qualifier>cnpq</dc-qualifier>
          <repeatable>true</repeatable>
          <label>Áreas de conhecimento de acordo com tabela do CNPq:</label>
-		 <input-type>textarea</input-type> 
+		 <!-- <input-type>textarea</input-type> -->
 		 <!-- <vocabulary>cnpq</vocabulary>  -->
 		 <!-- <vocabulary closed="true">cnpq</vocabulary> -->
-		 <!-- <input-type>onebox</input-type> -->
+		  <input-type>onebox</input-type> 
          <hint>&lt;font color="red"&gt;CAMPO OBRIGATÓRIO: &lt;/font&gt;Selecione a(s) área(s) de conhecimento correspondente(s), de acordo com tabela do CNPq.</hint>
          <required>&lt;font color="red"&gt;&lt;strong&gt;CAMPO OBRIGATÓRIO:&lt;/strong&gt; Selecione a(s) área(s) de conhecimento correspondente(s), de acordo com tabela do CNPq. &lt;/font&gt;</required>
        </field>
